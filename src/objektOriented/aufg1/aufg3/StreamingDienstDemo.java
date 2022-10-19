@@ -138,12 +138,8 @@ public class StreamingDienstDemo {
                                         while (!creditcard.matches("[0-9 ]{19}")) {
                                             System.out.println("Enter your Credit Card Information correctly pls.(Like : XXXX XXXX XXXX XXXX)");
                                             creditcard = scanner.nextLine();
-                                            for (int i = 0; i < tempList.size(); i++) {
-                                                //if (credit(i).equals()){
-                                                //}
-                                            }
-                                            //tempList.get(i).setCreditCard(scanner.nextLine());
                                         }
+                                        credit.setCreditCard(creditcard);
                                     }
                                 }
                                 break;
@@ -158,15 +154,10 @@ public class StreamingDienstDemo {
                                 System.out.println(counter);
                                 break;
 
-                            case 4:                 //TODO ALLE CREDITCARDS AUSGEBEN VON USERN MIT MONATLICHER ZAHLUNG
-                                List<StreamingDienst> creditCards = new ArrayList<>();
-                                for (StreamingDienst entry : creditCards) {
-                                    for (int i = 0; i < tempList.size(); i++) { //TODO DIE KARTEN ALS HEXCODE AUS ODER OBJEKTCODE(DER SPEICHERORT VOM OBJEKT) MACHEN DAS ES DIE KARTEN ANGIBT.
-                                        if (entry.getSubscriptionType().equals("monthly")){
-                                            for (StreamingDienst printer : tempList) {
-                                                System.out.println(entry.getCreditCard(i));
-                                            }
-                                        }
+                            case 4:
+                                for (StreamingDienst entry : tempList) {
+                                    if (entry.getSubscriptionType().equals("monthly")) {
+                                            System.out.println(entry.getCreditCard());
                                     }
                                 }
                                 break;
@@ -224,26 +215,17 @@ public class StreamingDienstDemo {
                                             break;
 
                                         case 2:
-                                            System.out.println("Pls enter your Old CreditCard Information if you wish to change it.Enter it like :XXXX XXXX XXXX XXXX");
+                                            System.out.println("Pls enter your Old CreditCard Information if you wish to change it. Enter it like :XXXX XXXX XXXX XXXX");
                                             creditcard = scanner.nextLine();
-                                            for (StreamingDienst input : tempList) {
-                                                while (!input.getCreditCard().equals(creditcard)) {
-                                                    System.out.println("Enter your old creditcard pls, if you dont remeber it type 'no' ");
-                                                    creditcard = scanner.nextLine();
-                                                    if (creditcard.equals("no")) {
-                                                        break;
-
-                                                    }
-                                                }
-                                            }
                                             for (StreamingDienst credit : tempList) {
                                                 if (credit.getCreditCard().equals(creditcard)) {
-                                                    System.out.println("Type in your new Creditcard Information");
-                                                    creditcard = scanner.nextLine();                            //TODO WENN DER EINTE CODE FUNKTIONIERT IHN HIER HER COPY-PASTEN
+                                                    System.out.println("Type in your new Creditcard Information");              //TODO NEUE KREDITKARTE EINGEBEN KÖNNEN
+                                                    creditcard = scanner.nextLine();
                                                     while (!creditcard.matches("[0-9 ]{19}")) {
                                                         System.out.println("Enter your Credit Card Information correctly pls.(Like : XXXX XXXX XXXX XXXX)");
                                                         creditcard = scanner.nextLine();
                                                     }
+                                                    credit.setCreditCard(creditcard);
                                                 }
                                             }
                                             break;
@@ -260,9 +242,9 @@ public class StreamingDienstDemo {
                                             break;
 
                                         case 4:
-                                            for (StreamingDienst monthly : tempList) {
-                                                if (monthly.getSubscriptionType().equalsIgnoreCase("Monthly")) {            //TODO GLEICEHS HIER MIT DEM COPIEREN
-                                                    System.out.println(new StreamingDienst(monthly.getCreditCard()));
+                                            for (StreamingDienst entry2 : tempList) {
+                                                if (entry2.getSubscriptionType().equals("monthly")) {
+                                                    System.out.println(entry2.getCreditCard());
                                                 }
                                             }
                                             break;
