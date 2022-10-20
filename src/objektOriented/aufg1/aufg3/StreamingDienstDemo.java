@@ -344,6 +344,7 @@ public class StreamingDienstDemo {
         movieList.add(new StreamingDienstFilme("Joker", "122", "Thriller " + "Detective Story " + "Drama", "Todd Phillips", "0", false));
         movieList.add(new StreamingDienstFilme("The Wolf of Wall Street", "180", "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", "0", false));
         movieList.add(new StreamingDienstFilme("The Truman Show", "103", "Drama " + "Comedy", "Peter Weir", "0", false));
+        System.out.println("TESTIN TESTIN");
         return movieList;
     }
 }
