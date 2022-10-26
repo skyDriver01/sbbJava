@@ -120,7 +120,7 @@ public class StreamingDienstDemo {
                                 System.out.println("Type 1: To search for a movie with its name. Type 2: To search for a movie with its genre.");
                                 int search = Integer.parseInt(scanner.nextLine());
                                 switch (search) {
-                                    case 1 -> {
+                                    case 1 -> {          //TODO GIBT NOCH NIchT AN OB EIN FILM VIEWED UND WIE VIELE VIEWS ER HAT.
                                         nameSearch();
                                         break;
                                     }
@@ -344,7 +344,6 @@ public class StreamingDienstDemo {
         movieList.add(new StreamingDienstFilme("Joker", "122", "Thriller " + "Detective Story " + "Drama", "Todd Phillips", "0", false));
         movieList.add(new StreamingDienstFilme("The Wolf of Wall Street", "180", "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", "0", false));
         movieList.add(new StreamingDienstFilme("The Truman Show", "103", "Drama " + "Comedy", "Peter Weir", "0", false));
-        System.out.println("TESTIN TESTIN");
         return movieList;
     }
 }
