@@ -157,7 +157,7 @@ public class StreamingDienstDemo {
                             case 4:
                                 for (StreamingDienst entry : tempList) {
                                     if (entry.getSubscriptionType().equals("monthly")) {
-                                            System.out.println(entry.getCreditCard());
+                                        System.out.println(entry.getCreditCard());
                                     }
                                 }
                                 break;
@@ -294,10 +294,10 @@ public class StreamingDienstDemo {
     public static void nameSearch() {
         movies();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Type in the movie name or a word that might appear in its name");
+        System.out.println("Type in the movie name or a word that might appear in its name (if you want to see all Movies just press enter)");
         String movieFinder = scanner.nextLine();
         for (StreamingDienstFilme movieList : movies()) {
-            if (movieList.getName().toUpperCase().contains(movieFinder)) {
+            if (movieList.getName().toLowerCase().contains(movieFinder)) {
                 System.out.println(movieList.getName());
             }
         }
@@ -332,18 +332,18 @@ public class StreamingDienstDemo {
 
     public static List<StreamingDienstFilme> movies() {
         List<StreamingDienstFilme> movieList = new ArrayList<>();
-        movieList.add(new StreamingDienstFilme("The Godfather", "175", "Crime " + "Drama", "Francis Ford Coppola", "0", false));
-        movieList.add(new StreamingDienstFilme("The Shawshank Redemption", "142", "Drama", "Frank Darabont", "0", false));
-        movieList.add(new StreamingDienstFilme("Shindler's List", "195", "History " + "Drama " + "Biography", "Steven Spielberg", "0", false));
-        movieList.add(new StreamingDienstFilme("Forrest Gump", "142", "Romance " + "Drama", "Robert Zemechkis", "0", false));
-        movieList.add(new StreamingDienstFilme("Angry Birds", "97", "Animation " + "Action " + "Adventure", "Clay Kaytis" + " Fergal Reilly", "0", false));
-        movieList.add(new StreamingDienstFilme("Shrek", "90", "Fantasy " + "Adventure " + "Animation", "Andrew Adamson", "0", false));
-        movieList.add(new StreamingDienstFilme("The Dark Knight", "152", "Action " + "Drama " + "Detective story", "Christopher Nolan", "0", false));
-        movieList.add(new StreamingDienstFilme("Wall-E", "98", "Adventure " + "Animation " + "Family", "Andrew Stanton", "0", false));
-        movieList.add(new StreamingDienstFilme("Avengers: Infinity War", "149", "Sci-Fi " + "Adventure " + "Action", "Anthony Russo" + "Joe Russo", "0", false));
-        movieList.add(new StreamingDienstFilme("Joker", "122", "Thriller " + "Detective Story " + "Drama", "Todd Phillips", "0", false));
-        movieList.add(new StreamingDienstFilme("The Wolf of Wall Street", "180", "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", "0", false));
-        movieList.add(new StreamingDienstFilme("The Truman Show", "103", "Drama " + "Comedy", "Peter Weir", "0", false));
+        movieList.add(new StreamingDienstFilme("the Godfather", "175", "Crime " + "Drama", "Francis Ford Coppola", "0", false));
+        movieList.add(new StreamingDienstFilme("the Shawshank Redemption", "142", "Drama", "Frank Darabont", "0", false));
+        movieList.add(new StreamingDienstFilme("shindler's List", "195", "History " + "Drama " + "Biography", "Steven Spielberg", "0", false));
+        movieList.add(new StreamingDienstFilme("forrest Gump", "142", "Romance " + "Drama", "Robert Zemechkis", "0", false));
+        movieList.add(new StreamingDienstFilme("angry Birds", "97", "Animation " + "Action " + "Adventure", "Clay Kaytis" + " Fergal Reilly", "0", false));
+        movieList.add(new StreamingDienstFilme("shrek", "90", "Fantasy " + "Adventure " + "Animation", "Andrew Adamson", "0", false));
+        movieList.add(new StreamingDienstFilme("the Dark Knight", "152", "Action " + "Drama " + "Detective story", "Christopher Nolan", "0", false));
+        movieList.add(new StreamingDienstFilme("wall-E", "98", "Adventure " + "Animation " + "Family", "Andrew Stanton", "0", false));
+        movieList.add(new StreamingDienstFilme("avengers: Infinity War", "149", "Sci-Fi " + "Adventure " + "Action", "Anthony Russo" + "Joe Russo", "0", false));
+        movieList.add(new StreamingDienstFilme("joker", "122", "Thriller " + "Detective Story " + "Drama", "Todd Phillips", "0", false));
+        movieList.add(new StreamingDienstFilme("the Wolf of Wall Street", "180", "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", "0", false));
+        movieList.add(new StreamingDienstFilme("the Truman Show", "103", "Drama " + "Comedy", "Peter Weir", "0", false));
         return movieList;
     }
 }

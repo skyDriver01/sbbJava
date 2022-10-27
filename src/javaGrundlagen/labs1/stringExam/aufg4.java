@@ -81,8 +81,8 @@ public class aufg4 {
         String[] stringArray = newString.toLowerCase().split(" ");
         int length = stringArray.length;
         String temp;
-        for (int i = 0; i < length; i++) {
-            for (int j = i + 1; j < length; j++) {
+        for (int i = 1; i < length; i++) {
+            for (int j = i + 1; j < length + 1; j++) {
                 if (stringArray[i].length() > stringArray[j].length()) {
                     temp = stringArray[i];
                     stringArray[i] = stringArray[j];

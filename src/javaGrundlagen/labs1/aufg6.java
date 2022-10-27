@@ -8,8 +8,8 @@ public class aufg6 {
         einsBisHundert(0);
     }
     public static void fakultaet(int a){
-        int fakult = 1;
-        for (int n = 1; n <= a; n++){
+        int fakult = 5;
+        for (int n = 1; n+5 <= a; n++){
             fakult = fakult * n;
             System.out.println(fakult);
         }
