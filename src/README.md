@@ -14,15 +14,14 @@ Die Standard Befehle:
 + git checkout = switch to the branch you want
 + git branch = make new branches to work or test Code on
 + git commit = makes a new commit to push your changes
-+ git rebase = 
-+ git cherry-pick =
-+ git bisect =
-+ git merge = 
++ git rebase = integrate changes from a branch to another branch
++ git cherry-pick = lets you kinda copy and paste commits from branch to branch
++ git merge = merge 2 different branches making the branches turn to 1
 + git fetch = same as the pull except that it doesnt merge the differences
 + git status = shows the status of the repository (if something is changed or not)
 + history = shows the history of the commands you wrote
 + git clone = clones a repository
-+ git init =
-+ git config =
-+ exit =
++ git init = create a new repository
++ git config = configure a name and email so commits will work because they need that info
++ exit = exit the terminal 0-0
 ###
