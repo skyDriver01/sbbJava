@@ -18,10 +18,10 @@ Die Standard Befehle:
 + git cherry-pick =
 + git bisect =
 + git merge = 
-+ git fetch =
-+ git status =
-+ history = 
-+ git copy =
++ git fetch = same as the pull except that it doesnt merge the differences
++ git status = shows the status of the repository (if something is changed or not)
++ history = shows the history of the commands you wrote
++ git clone = clones a repository
 + git init =
 + git config =
 + exit =
