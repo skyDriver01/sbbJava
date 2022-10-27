@@ -22,7 +22,7 @@ public class ImmobilienfirmaDemo {
     public static void Firm() {
         List<Immobilienfirma> tempList = new ArrayList<>();
         Stream<Immobilienfirma> temp = tempList.stream();
-        tempList.add(new Immobilienfirma("Index 0 out of bounds", "Keine Angabe"));
+        tempList.add(new Immobilienfirma("Index 0 out of bounds", "No Entry"));
         System.out.println(temp);
     }
 }
