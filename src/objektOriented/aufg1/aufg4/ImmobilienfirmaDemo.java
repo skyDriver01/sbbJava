@@ -18,16 +18,27 @@ public class ImmobilienfirmaDemo {
         output();
     }
     public static void output(){
-        firm();
+        apartmentFinder();
     }
-    public static void property(){
+    public static List<Property> property(){
+        apartment();
         Scanner scanner = new Scanner(System.in);
         List<Property> propertyList = new ArrayList<>();
         propertyList.add(new Property("Luka Nikolic","Rahul Gurung","Jamie Bläsi","Kornweg 71"));
         propertyList.add(new Property("Yanir Gopal","Neil Ramseier","Sven Schmid","Ensingerstrasse 36"));
-        apartment();
+        return propertyList;
     }
-    public static void apartment(){
+  /*  public static void apartmentFinder(){
+        Scanner scanner = new Scanner(System.in);
+        property();
+        apartment();
+        for (Property entry: property()){
+            if (entry.getAddress().equals()){
+
+            }
+        }
+    }*/
+    public static List<Apartment> apartment(){
         List<Apartment> apartmentList = new ArrayList<>();
         //Apartments for the first Property \/
         apartmentList.add(new Apartment("Kornweg 71",1,11,"1'900Fr.","3 Room apartment with a good earthy feel to it","Shervan Yacoub"));
@@ -40,15 +51,16 @@ public class ImmobilienfirmaDemo {
         apartmentList.add(new Apartment("Kornweg 71",2,24,"1'600Fr.","1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)",""));
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Apartments for the second Property \/
-        apartmentList.add(new Apartment("Ensingerstrasse 36",1,11,"2'000Fr.","3, 1/2 Room apartment with a nice small terrace","Nihat Yilmazer"));
+        apartmentList.add(new Apartment("Ensingerstrasse 36",1,11,"2'000Fr.","3, 1/2 Room apartment with a nice small terrace","Tobias Merino"));
         apartmentList.add(new Apartment("Ensingerstrasse 36",1,12,"2'000Fr.","3, 1/2 Room apartment with a nice small terrace","Michael Widmer"));
         apartmentList.add(new Apartment("Ensingerstrasse 36",2,23,"2'250Fr.","4, 1/2 Room apartment with a nice cozy feeling",""));
-        apartmentList.add(new Apartment("Ensingerstrasse 36",2,21,"2'250Fr.","4, 1/2 Room apartment with a nice cozy feeling","Joshua Scholze"));
+        apartmentList.add(new Apartment("Ensingerstrasse 36",2,21,"2'250Fr.","4, 1/2 Room apartment with a nice cozy feeling","Michael Widmer"));
         apartmentList.add(new Apartment("Ensingerstrasse 36",2,22,"2'250Fr.","4, 1/2 Room apartment with a nice cozy feeling","Arthur Deierlein"));
         apartmentList.add(new Apartment("Ensingerstrasse 36",1,13,"2'000Fr.","3, 1/2 Room apartment with a nice small terrace",""));
         apartmentList.add(new Apartment("Ensingerstrasse 36",3,31,"2'750Fr.","6 Room apartment with big balcony and nice View","Andrin Gurtner"));
         apartmentList.add(new Apartment("Ensingerstrasse 36",3,32,"2'750Fr.","6 Room apartment with big balcony and nice View","Lars Ruch"));
-        apartmentList.add(new Apartment("Ensingerstrasse 36",3,33,"2'750Fr.","6 Room apartment with big balcony and nice View",""));
+        apartmentList.add(new Apartment("Ensingerstrasse 36",3,33,"2'750Fr.","6 Room apartment with big balcony and nice View","Nick Bracher"));
+        return apartmentList;
     }
     public static void contract(){
         property();
