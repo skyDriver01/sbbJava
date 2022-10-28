@@ -18,7 +18,7 @@ public class ImmobilienfirmaDemo {
         output();
     }
     public static void output(){
-        apartmentFinder();
+       //git  apartmentFinder();
     }
     public static List<Property> property(){
         apartment();
