@@ -1,5 +1,7 @@
 package objektOriented.aufg1.aufg2;
 
+import objektOriented.aufg1.aufg3.StreamingDienst;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -25,43 +27,32 @@ public class AdressBuchDemo {
                 case 1:
                     System.out.println("Enter The New Persons Name");
                     String name = scanner.nextLine();
-                    boolean containsAnAet = false;
-                    System.out.println("Enter your E-mail address");
+                    boolean noSameMail = true;
+                    boolean loop = true;
+                    System.out.println("What is your E-mail address?");
                     String mail = scanner.nextLine();
-                    while (!containsAnAet) {
-                        if (mail.contains("@")) {
-                            containsAnAet = true;
-                        } else {
-                            System.out.println("Your mail needs an @");
-                            mail = scanner.nextLine();
+                    for (AddressBook entry : addressBookList) {
+                        boolean containsAnAet = false;
+                        while (!containsAnAet) {
+                            if (mail.contains("@")) {
+                                containsAnAet = true;
+                            } else {
+                                System.out.println("Your mail needs an @");
+                                mail = scanner.nextLine();
+                            }
                         }
-                    }
-                    /*
-                    while (noSameMail) {
-                        for (StreamingDienst entry : tempList) {
-                            while (loop) {
-                                boolean containsAnAet = false;
-                                while (!containsAnAet) {
-                                    if (email.contains("@")) {
-                                        containsAnAet = true;
-                                    } else {
-                                        System.out.println("Your mail needs an @");
-                                        email = scanner.nextLine();
-                                    }
-                                }
-                                if (email.equals(entry.getEmail())) {
-                                    System.out.println("Email is already in use try another one ");
-                                    email = scanner.nextLine();
-                                } else {
-                                    loop = false;
-                                }
-                                if (!email.equals(entry.getEmail())) {
-                                    noSameMail = false;
-                                }
+                        while (noSameMail) {
+                            if (mail.equals(entry.getEmail())) {
+                                System.out.println("Email is already in use try another one ");
+                                mail = scanner.nextLine();
+                            } else {
+                                loop = false;
+                            }
+                            if (!mail.equals(entry.getEmail())) {
+                                noSameMail = false;
                             }
                         }
                     }
-                     */
                     System.out.println("Enter your phone Number");
                     String phoneNumber = scanner.nextLine();
 
@@ -78,8 +69,8 @@ public class AdressBuchDemo {
                     for (AddressBook entry : addressBookList) {
                         System.out.println("--------------------");
                         System.out.print(entry.getName() + ", ");
-                        System.out.println("____________________");
                     }
+                    System.out.println("________________________");
 
                     String desiredPerson = scanner.nextLine();
                     for (AddressBook entry : addressBookList) {
