@@ -14,7 +14,9 @@ import java.util.stream.Stream;
 //TODO GIVE OUT THE MONTHLY GROSS INCOME PER PROPERTY
 //TODO GIVE OUT THE YEARLY GROSS INCOME OF THE FIRM (CONTRACTS CAN EXPIRE WITHIN THE YEAR)
 public class ImmobilienfirmaDemo {
+
     public static void main(String[] args) {
+
         output();
     }
 
@@ -23,26 +25,46 @@ public class ImmobilienfirmaDemo {
         apartment();
         property();
         firm();
-        options();
-        boolean exit = true;
-        while (exit){
-
+        boolean questions = true;
+        while (questions) {
+            options();
+            int choice = Integer.parseInt(scanner.nextLine());
+            switch (choice){
+                case 1: //TODO number of apartments
+                    break;
+                case 2: //TODO janitor given
+                    break;
+                case 3:  //todo specific property contract
+                    break;
+                case 4: //Todo all expire conts in month
+                    break;
+                case 5: //todo contracts sorted by peeps
+                    break;
+                case 6:   //todo monthly gross income from props
+                    break;
+                case 7:   //todo yearly gross income of firm
+                    break;
+                case 8:
+                    questions = false;
+            }
         }
     }
-public static void options(){
-    System.out.println("-----------------------------------------------------------------------");
-    System.out.println("Hello, What would you like to do?");
-    System.out.println("1: See the total number of apartments from all properties together");
-    System.out.println("2: Find out who the janitor is for a specific property");
-    System.out.println("3: Show all Contracts from a specific property");
-    System.out.println("4: Show all Contracts that will expire next month");
-    System.out.println("5: Show all Contracts sorted by People");
-    System.out.println("6: See the monthly gross income per property");
-    System.out.println("7: See the yearly gross income from the Firm");
-    System.out.println("8: Exit");
-    System.out.println("-----------------------------------------------------------------------");
-    System.out.println("Select what you would like to do with typing the Number in.");
-}
+
+    public static void options() {
+        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("Hello, What would you like to do?");
+        System.out.println("1: See the total number of apartments from all properties together");
+        System.out.println("2: Find out who the janitor is for a specific property");
+        System.out.println("3: Show all Contracts from a specific property");
+        System.out.println("4: Show all Contracts that will expire next month");
+        System.out.println("5: Show all Contracts sorted by People");
+        System.out.println("6: See the monthly gross income per property");
+        System.out.println("7: See the yearly gross income from the Firm");
+        System.out.println("8: Exit");
+        System.out.println("-----------------------------------------------------------------------");
+        System.out.println("Select what you would like to do with typing the Number in.");
+    }
+
     public static List<Property> property() {
         List<Property> propertyList = new ArrayList<>();
         propertyList.add(new Property("Luka Nikolic", "Rahul Gurung", "Jamie Bläsi", "Kornweg 71"));

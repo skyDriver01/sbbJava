@@ -8,14 +8,15 @@ public class AdressBuchDemo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<AddressBook> addressBookList = new ArrayList<>();
-        System.out.println("1: Add a new Person in the address book");
-        System.out.println("2: Give out the Number of People in the address book");
-        System.out.println("3: Search for a specific Person");
-        System.out.println("4: Delete a contact from the book via the contacts E-mail");
-        System.out.println("5: Close the book");
-
         boolean programmEnd = false;
         while (!programmEnd) {
+            System.out.println("--------------------------------------------------------");
+            System.out.println("1: Add a new Person in the address book");
+            System.out.println("2: Give out the Number of People in the address book");
+            System.out.println("3: Search for a specific Person");
+            System.out.println("4: Delete a contact from the book via the contacts E-mail");
+            System.out.println("5: Close the book");
+            System.out.println("________________________________________________________");
             System.out.println("Type the Number of what you would like to do.(1,2,3,4,5)");
 
             int performTask = Integer.parseInt(scanner.nextLine());
@@ -55,7 +56,9 @@ public class AdressBuchDemo {
                     String desiredPerson = scanner.nextLine();
                     for (AddressBook entry : addressBookList) {
                         if (entry.getName().equalsIgnoreCase(desiredPerson)) {
+                            System.out.println("-----------------------------------------------------------");
                             System.out.println(entry.getName() + " " + entry.getEmail() + " " + entry.getPhoneNumber());
+                            System.out.println("___________________________________________________________");
                         }
                     }
                     break;
