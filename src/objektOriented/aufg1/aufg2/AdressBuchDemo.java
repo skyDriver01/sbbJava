@@ -8,8 +8,8 @@ public class AdressBuchDemo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<AddressBook> addressBookList = new ArrayList<>();
-        boolean programmEnd = false;
-        while (!programmEnd) {
+        boolean programmEnd = true;
+        while (programmEnd) {
             System.out.println("--------------------------------------------------------");
             System.out.println("1: Add a new Person in the address book");
             System.out.println("2: Give out the Number of People in the address book");
@@ -79,7 +79,7 @@ public class AdressBuchDemo {
                     break;
 
                 case 5:
-                    programmEnd = true;
+                    programmEnd = false;
                     System.out.println("bye");
                     break;
             }
