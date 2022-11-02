@@ -55,6 +55,10 @@ public class AdressBuchDemo {
                     }
                     System.out.println("Enter your phone Number");
                     String phoneNumber = scanner.nextLine();
+                    while (!phoneNumber.matches("^+[0-9]")){        //TODO will noch nicht shcauen das nur eben zahlen und ein Plus erlaubt sind.
+                        System.out.println("Enter a PhoneNumber like this: +XX XX XXX XX XX");
+                        phoneNumber = scanner.nextLine();
+                    }
 
                     addressBookList.add(new AddressBook(name, mail, phoneNumber));
 
