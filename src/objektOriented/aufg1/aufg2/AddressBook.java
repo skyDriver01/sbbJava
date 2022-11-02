@@ -2,18 +2,18 @@ package objektOriented.aufg1.aufg2;
 
 public class AddressBook {
 
-    private String name;
+    private String Name;
     private String Email;
     private String PhoneNumber;
 
     public AddressBook(String name, String email, String phoneNumber) {
-        this.name = name;
+        this.Name = name;
         this.Email = email;
         this.PhoneNumber = phoneNumber;
     }
 
     public String getName() {
-        return this.name;
+        return this.Name;
     }
 
     public String getEmail() {
@@ -25,7 +25,7 @@ public class AddressBook {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 
     public void setEmail(String email) {

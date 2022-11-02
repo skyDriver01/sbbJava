@@ -30,7 +30,7 @@ public class StreamingDienstDemo {
                         for (StreamingDienst entry : tempList) {
                             while (isLooping) {
                                 if (username.equals(entry.getUsername())) {
-                                    System.out.println("That Username is alread  in use please enter another one.");
+                                    System.out.println("That Username is already in use please enter another one.");
                                     username = scanner.nextLine();
                                 } else {
                                     isLooping = false;

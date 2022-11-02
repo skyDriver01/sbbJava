@@ -8,8 +8,8 @@ public class AdressBuchDemo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<AddressBook> addressBookList = new ArrayList<>();
-        boolean programmEnd = true;
-        while (programmEnd) {
+        boolean programmEnd = false;
+        while (!programmEnd) {
             System.out.println("--------------------------------------------------------");
             System.out.println("1: Add a new Person in the address book");
             System.out.println("2: Give out the Number of People in the address book");
@@ -36,6 +36,32 @@ public class AdressBuchDemo {
                             mail = scanner.nextLine();
                         }
                     }
+                    /*
+                    while (noSameMail) {
+                        for (StreamingDienst entry : tempList) {
+                            while (loop) {
+                                boolean containsAnAet = false;
+                                while (!containsAnAet) {
+                                    if (email.contains("@")) {
+                                        containsAnAet = true;
+                                    } else {
+                                        System.out.println("Your mail needs an @");
+                                        email = scanner.nextLine();
+                                    }
+                                }
+                                if (email.equals(entry.getEmail())) {
+                                    System.out.println("Email is already in use try another one ");
+                                    email = scanner.nextLine();
+                                } else {
+                                    loop = false;
+                                }
+                                if (!email.equals(entry.getEmail())) {
+                                    noSameMail = false;
+                                }
+                            }
+                        }
+                    }
+                     */
                     System.out.println("Enter your phone Number");
                     String phoneNumber = scanner.nextLine();
 
@@ -50,15 +76,15 @@ public class AdressBuchDemo {
                 case 3:
                     System.out.println("What Persons Information do you want to get?");
                     for (AddressBook entry : addressBookList) {
+                        System.out.println("--------------------");
                         System.out.print(entry.getName() + ", ");
+                        System.out.println("____________________");
                     }
 
                     String desiredPerson = scanner.nextLine();
                     for (AddressBook entry : addressBookList) {
                         if (entry.getName().equalsIgnoreCase(desiredPerson)) {
-                            System.out.println("-----------------------------------------------------------");
                             System.out.println(entry.getName() + " " + entry.getEmail() + " " + entry.getPhoneNumber());
-                            System.out.println("___________________________________________________________");
                         }
                     }
                     break;
@@ -79,7 +105,7 @@ public class AdressBuchDemo {
                     break;
 
                 case 5:
-                    programmEnd = false;
+                    programmEnd = true;
                     System.out.println("bye");
                     break;
             }
