@@ -22,17 +22,22 @@ public class ImmobilienfirmaDemo {
 
     public static void output() {
         Scanner scanner = new Scanner(System.in);
-        apartment();
         property();
         firm();
         boolean questions = true;
         while (questions) {
             options();
             int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice){
-                case 1: //TODO number of apartments
+            switch (choice) {
+                case 1:
+                    System.out.println((apartment().size()));
+
                     break;
                 case 2: //TODO janitor given
+                    property().stream().forEach(a -> System.out.println(a.getAddress()));
+                    System.out.println("Type the adress of the Property that you want to get the janitor from.");
+                    String input = scanner.nextLine();
+                    property().stream().filter(property -> property.getAddress().equals(input)).toList().stream().forEach(a -> System.out.println(a.getJanitor()));
                     break;
                 case 3:  //todo specific property contract
                     break;
@@ -62,7 +67,7 @@ public class ImmobilienfirmaDemo {
         System.out.println("7: See the yearly gross income from the Firm");
         System.out.println("8: Exit");
         System.out.println("-----------------------------------------------------------------------");
-        System.out.println("Select what you would like to do with typing the Number in.");
+        System.out.println("Type in the number of the Task that you want to do.");
     }
 
     public static List<Property> property() {
