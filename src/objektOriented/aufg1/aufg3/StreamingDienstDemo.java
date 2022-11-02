@@ -120,7 +120,7 @@ public class StreamingDienstDemo {
                                 System.out.println("Type 1: To search for a movie with its name. Type 2: To search for a movie with its genre.");
                                 int search = Integer.parseInt(scanner.nextLine());
                                 switch (search) {
-                                    case 1 -> {          //TODO GIBT NOCH NIchT AN OB EIN FILM VIEWED UND WIE VIELE VIEWS ER HAT.
+                                    case 1 -> {          //TODO GIBT NOCH NICHT AN OB EIN FILM VIEWED UND WIE VIELE VIEWS ER HAT.
                                         nameSearch();
                                         break;
                                     }
@@ -133,7 +133,7 @@ public class StreamingDienstDemo {
                                 creditcard = scanner.nextLine();
                                 for (StreamingDienst credit : tempList) {
                                     if (credit.getCreditCard().equals(creditcard)) {
-                                        System.out.println("Type in your new Creditcard Information");              //TODO NEUE KREDITKARTE EINGEBEN KÖNNEN
+                                        System.out.println("Type in your new Creditcard Information");
                                         creditcard = scanner.nextLine();
                                         while (!creditcard.matches("[0-9 ]{19}")) {
                                             System.out.println("Enter your Credit Card Information correctly pls.(Like : XXXX XXXX XXXX XXXX)");
@@ -219,7 +219,7 @@ public class StreamingDienstDemo {
                                             creditcard = scanner.nextLine();
                                             for (StreamingDienst credit : tempList) {
                                                 if (credit.getCreditCard().equals(creditcard)) {
-                                                    System.out.println("Type in your new Creditcard Information");              //TODO NEUE KREDITKARTE EINGEBEN KÖNNEN
+                                                    System.out.println("Type in your new Creditcard Information");
                                                     creditcard = scanner.nextLine();
                                                     while (!creditcard.matches("[0-9 ]{19}")) {
                                                         System.out.println("Enter your Credit Card Information correctly pls.(Like : XXXX XXXX XXXX XXXX)");
