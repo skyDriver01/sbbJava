@@ -31,16 +31,16 @@ public class AdressBuchDemo {
                     boolean loop = true;
                     System.out.println("What is your E-mail address?");
                     String mail = scanner.nextLine();
-                    for (AddressBook entry : addressBookList) {
-                        boolean containsAnAet = false;
-                        while (!containsAnAet) {
-                            if (mail.contains("@")) {
-                                containsAnAet = true;
-                            } else {
-                                System.out.println("Your mail needs an @");
-                                mail = scanner.nextLine();
-                            }
+                    boolean containsAnAet = false;
+                    while (!containsAnAet) {
+                        if (mail.contains("@")) {
+                            containsAnAet = true;
+                        } else {
+                            System.out.println("Your mail needs an @");
+                            mail = scanner.nextLine();
                         }
+                    }
+                    for (AddressBook entry : addressBookList) {
                         while (noSameMail) {
                             if (mail.equals(entry.getEmail())) {
                                 System.out.println("Email is already in use try another one ");
@@ -55,7 +55,7 @@ public class AdressBuchDemo {
                     }
                     System.out.println("Enter your phone Number");
                     String phoneNumber = scanner.nextLine();
-                    while (!phoneNumber.matches("^+[0-9]")){        //TODO will noch nicht shcauen das nur eben zahlen und ein Plus erlaubt sind.
+                    while (!(phoneNumber.contains( "+")&&phoneNumber.length()>=16)) {
                         System.out.println("Enter a PhoneNumber like this: +XX XX XXX XX XX");
                         phoneNumber = scanner.nextLine();
                     }
@@ -74,8 +74,6 @@ public class AdressBuchDemo {
                         System.out.println("--------------------");
                         System.out.print(entry.getName() + ", ");
                     }
-                    System.out.println("________________________");
-
                     String desiredPerson = scanner.nextLine();
                     for (AddressBook entry : addressBookList) {
                         if (entry.getName().equalsIgnoreCase(desiredPerson)) {
