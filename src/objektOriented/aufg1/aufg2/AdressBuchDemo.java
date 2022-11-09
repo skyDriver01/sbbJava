@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class AdressBuchDemo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        List<AddressBook> addressBookList = new ArrayList<>();
+        List<Contact> addressBookList = new ArrayList<>();
         boolean programmEnd = false;
         while (!programmEnd) {
             System.out.println("--------------------------------------------------------");
@@ -22,46 +22,10 @@ public class AdressBuchDemo {
             System.out.println("Type the Number of what you would like to do.(1,2,3,4,5)");
 
             int performTask = Integer.parseInt(scanner.nextLine());
-
+//TODO Hashmaps anschauen
             switch (performTask) {
-                case 1:
-                    System.out.println("Enter The New Persons Name");
-                    String name = scanner.nextLine();
-                    boolean noSameMail = true;
-                    boolean loop = true;
-                    System.out.println("What is your E-mail address?");
-                    String mail = scanner.nextLine();
-                    boolean containsAnAet = false;
-                    while (!containsAnAet) {
-                        if (mail.contains("@")) {
-                            containsAnAet = true;
-                        } else {
-                            System.out.println("Your mail needs an @");
-                            mail = scanner.nextLine();
-                        }
-                    }
-                    for (AddressBook entry : addressBookList) {
-                        while (noSameMail) {
-                            if (mail.equals(entry.getEmail())) {
-                                System.out.println("Email is already in use try another one ");
-                                mail = scanner.nextLine();
-                            } else {
-                                loop = false;
-                            }
-                            if (!mail.equals(entry.getEmail())) {
-                                noSameMail = false;
-                            }
-                        }
-                    }
-                    System.out.println("Enter your phone Number");
-                    String phoneNumber = scanner.nextLine();
-                    while (!(phoneNumber.contains( "+")&&phoneNumber.length()>=16)) {
-                        System.out.println("Enter a PhoneNumber like this: +XX XX XXX XX XX");
-                        phoneNumber = scanner.nextLine();
-                    }
-
-                    addressBookList.add(new AddressBook(name, mail, phoneNumber));
-
+                case 1: //TODO Schreibweise ändenr zu ->{}.
+                    startUserPoll(scanner, addressBookList); //TODO Cases zu methoden ändern.
                     break;
 
                 case 2:
@@ -70,12 +34,12 @@ public class AdressBuchDemo {
 
                 case 3:
                     System.out.println("What Persons Information do you want to get?");
-                    for (AddressBook entry : addressBookList) {
+                    for (Contact entry : addressBookList) {
                         System.out.println("--------------------");
                         System.out.print(entry.getName() + ", ");
                     }
                     String desiredPerson = scanner.nextLine();
-                    for (AddressBook entry : addressBookList) {
+                    for (Contact entry : addressBookList) {
                         if (entry.getName().equalsIgnoreCase(desiredPerson)) {
                             System.out.println(entry.getName() + " " + entry.getEmail() + " " + entry.getPhoneNumber());
                         }
@@ -84,7 +48,7 @@ public class AdressBuchDemo {
 
                 case 4:
                     System.out.println("What Contact do you want to Delete?");
-                    for (AddressBook entry : addressBookList) {
+                    for (Contact entry : addressBookList) {
                         System.out.println(entry.getEmail());
                     }
 
@@ -96,12 +60,53 @@ public class AdressBuchDemo {
                         }
                     }
                     break;
-
+//TODO Scanner so wie weg bekommen für immer(mit Readern)
                 case 5:
                     programmEnd = true;
                     System.out.println("bye");
                     break;
             }
         }
+    }
+
+    private static void startUserPoll(Scanner scanner, List<Contact> addressBookList) {
+        System.out.println("Enter The New Persons Name");
+        String name = scanner.nextLine();
+        boolean noSameMail = true;
+        boolean loop = true;
+        System.out.println("What is your E-mail address?");
+        String mail = scanner.nextLine();
+        boolean containsAnAet = false;
+        while (!containsAnAet) {
+            if (mail.contains("@")) {
+                containsAnAet = true;
+            } else {
+                System.out.println("Your mail needs an @");
+                mail = scanner.nextLine();
+            }
+        } //TODO Mehr kommentare machen zum sicher sein
+        for (Contact entry : addressBookList) {
+            while (noSameMail) { //can't have the same Email twice.
+                if (mail.equals(entry.getEmail())) {
+                    System.out.println("Email is already in use try another one ");
+                    mail = scanner.nextLine();
+                } else {
+                    loop = false;
+                }
+                if (!mail.equals(entry.getEmail())) {
+                    noSameMail = false;
+                }
+            }
+        }
+        System.out.println("Enter your phone Number");
+        String phoneNumber = scanner.nextLine();
+        while (!(phoneNumber.contains( "+")&&phoneNumber.length()>=16)) {
+            System.out.println("Enter a PhoneNumber like this: +XX XX XXX XX XX");
+            phoneNumber = scanner.nextLine();
+        }
+
+        addressBookList.add(new Contact(name, mail, phoneNumber));
+
+        return;
     }
 }

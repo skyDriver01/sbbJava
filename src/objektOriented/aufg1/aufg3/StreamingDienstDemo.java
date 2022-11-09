@@ -4,11 +4,12 @@ package objektOriented.aufg1.aufg3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+                //TODO Methoden nicht länger als 100 zeilen haben.
 public class StreamingDienstDemo {
     public static void main(String[] args) {
-        List<StreamingDienst> tempList = new ArrayList<>();
-        tempList.add(new StreamingDienst("siu", "siu", "siu@", "1234 1234 1234 1234", "12/12", "012", true, "monthly"));
+        List<StreamingDienst> tempList = new ArrayList<>(); //TODO klasse wo alle personen und filme verwaltet erstellen. Mit den meisten methoden von hier integrieren und ohne static.
+        tempList.add(new StreamingDienst("siu", "siu", "siu@", "1234 1234 1234 1234",
+        "12/12", "012", true, StreamingDienst.SubscriptionType.MONTHLY));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, What would you like to do?");
         System.out.println("1: Create an Account");
@@ -93,10 +94,14 @@ public class StreamingDienstDemo {
                     }
                     System.out.println("Do you want to get a subscription to enjoy Ad-Free and unlimited Viewing? (Type true if you want a subscription or false if you don't want one");
                     boolean subscription = true;
-                    String subscriptionType = null;
+                    StreamingDienst.SubscriptionType subscriptionType = null;
                     if (subscription == Boolean.parseBoolean(scanner.nextLine())) {
                         System.out.println("What kind of subscription would you like the monthly subscription for 15Fr.(type: monthly) or the yearly subscription for 150fr.(type: yearly)");
-                        subscriptionType = scanner.nextLine();
+                        subscriptionType = switch (scanner.nextLine().toUpperCase()){
+                            case "MONTHLY"-> StreamingDienst.SubscriptionType.MONTHLY;
+                            case "YEARLY" -> StreamingDienst.SubscriptionType.YEARLY;
+                            default -> null;
+                        };
                     } else {
                         System.out.println("You can choose a subscription at a later point if you want");
                     }
@@ -124,7 +129,7 @@ public class StreamingDienstDemo {
                                         nameSearch();
                                         break;
                                     }
-                                    case 2 -> genreSearch();
+                                    case 2 -> genreSearch(); //Todo methoden aufrufen nach dem switch aka. case
                                 }
                                 break;
 
@@ -315,7 +320,6 @@ public class StreamingDienstDemo {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type in the Genre of the Movie you want to find. Keep in mind the Genre might not fit any movie");
         String genreFinder = scanner.nextLine();
-        int viewCount = 0;
         for (StreamingDienstFilme movieList : movies()) {
             if (movieList.getGenre().toLowerCase().contains(genreFinder)) {
                 System.out.println(movieList.getName());
@@ -332,7 +336,7 @@ public class StreamingDienstDemo {
 
     public static List<StreamingDienstFilme> movies() {
         List<StreamingDienstFilme> movieList = new ArrayList<>();
-        movieList.add(new StreamingDienstFilme("the Godfather", "175", "Crime " + "Drama", "Francis Ford Coppola", "4322+", false));
+        movieList.add(new StreamingDienstFilme("the Godfather", "175", "Crime " + "Drama", "Francis Ford Coppola", "4322", false));
         movieList.add(new StreamingDienstFilme("the Shawshank Redemption", "142", "Drama", "Frank Darabont", "11234", false));
         movieList.add(new StreamingDienstFilme("shindler's List", "195", "History " + "Drama " + "Biography", "Steven Spielberg", "654321", false));
         movieList.add(new StreamingDienstFilme("forrest Gump", "142", "Romance " + "Drama", "Robert Zemechkis", "0", false));

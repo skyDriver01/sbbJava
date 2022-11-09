@@ -1,6 +1,6 @@
 package objektOriented.aufg1.aufg3;
 
-public class StreamingDienst {
+public class StreamingDienst { //TODO gleich wie beim SDFilme namen ändern
     private String username;
     private String password;
     private String email;
@@ -8,9 +8,11 @@ public class StreamingDienst {
     private String creditCardExperation;
     private String creditCardSecurityNumber;
     private boolean subscription;
-    private String subscriptionType;
+    private SubscriptionType subscriptionType; //TODO enum draus machen
+    public enum SubscriptionType{MONTHLY,YEARLY}
 
-    public StreamingDienst(String username, String password, String email, String creditCard, String creditCardExperation, String creditCardSecurityNumber, boolean subscription, String subscriptionType) {
+    public StreamingDienst(String username, String password, String email, String creditCard, String creditCardExperation,
+                           String creditCardSecurityNumber, boolean subscription, SubscriptionType subscriptionType) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -81,11 +83,11 @@ public class StreamingDienst {
         this.password = password;
     }
 
-    public String getSubscriptionType() {
+    public SubscriptionType getSubscriptionType() {
         return subscriptionType;
     }
 
-    public void setSubscriptionType(String subscriptionType) {
+    public void setSubscriptionType(SubscriptionType subscriptionType) {
         this.subscriptionType = subscriptionType;
     }
 

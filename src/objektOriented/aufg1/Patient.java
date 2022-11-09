@@ -11,30 +11,6 @@ public class Patient {
     private int ID;
     private static int anzahl;
 
-    private String name() {
-        return null;
-    }
-
-    private int age() {
-        return 0;
-    }
-
-    private float height() {
-        return 0;
-    }
-
-    private float weight() {
-        return 0;
-    }
-
-    private float temperature() {
-        return 0;
-    }
-
-    private boolean isVaccinated() {
-        return isVaccinated();
-    }
-
     public Patient(String name, int age, float height, float weight, float temperature, boolean isVaccinated) {
         this.name = name;
         this.age = age;
