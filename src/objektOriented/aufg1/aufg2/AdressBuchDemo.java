@@ -1,7 +1,5 @@
 package objektOriented.aufg1.aufg2;
 
-import objektOriented.aufg1.aufg3.StreamingDienst;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,47 +22,60 @@ public class AdressBuchDemo {
             int performTask = Integer.parseInt(scanner.nextLine());
 //TODO Hashmaps anschauen
             switch (performTask) {
-                case 1: //TODO Schreibweise ändenr zu ->{}.
-                    startUserPoll(scanner, addressBookList); //TODO Cases zu methoden ändern.
+                case 1 -> {
+                    startUserPoll(scanner, addressBookList);
                     break;
+                }
 
-                case 2:
+                case 2 -> {
                     System.out.println("There are currently " + addressBookList.size() + " People in this address book");
                     break;
+                }
 
-                case 3:
-                    System.out.println("What Persons Information do you want to get?");
-                    for (Contact entry : addressBookList) {
-                        System.out.println("--------------------");
-                        System.out.print(entry.getName() + ", ");
-                    }
-                    String desiredPerson = scanner.nextLine();
-                    for (Contact entry : addressBookList) {
-                        if (entry.getName().equalsIgnoreCase(desiredPerson)) {
-                            System.out.println(entry.getName() + " " + entry.getEmail() + " " + entry.getPhoneNumber());
-                        }
-                    }
+                case 3 -> {
+                    findUser(scanner, addressBookList);
                     break;
+                }
 
-                case 4:
-                    System.out.println("What Contact do you want to Delete?");
-                    for (Contact entry : addressBookList) {
-                        System.out.println(entry.getEmail());
-                    }
-
-                    String wantedEmail = scanner.nextLine();
-
-                    for (int i = 0; i < addressBookList.size(); i++) {
-                        if (addressBookList.get(i).getEmail().equals(wantedEmail)) {
-                            addressBookList.remove(i);
-                        }
-                    }
+                case 4 -> {
+                    deleteUser(scanner, addressBookList);
                     break;
+                }
 //TODO Scanner so wie weg bekommen für immer(mit Readern)
-                case 5:
-                    programmEnd = true;
-                    System.out.println("bye");
-                    break;
+                case 5 ->{ programmEnd = true;
+                System.out.println("bye");
+                break;
+            }
+            }
+        }
+    }
+
+    private static void deleteUser(Scanner scanner, List<Contact> addressBookList) {
+        System.out.println("What Contact do you want to Delete?");
+        for (Contact entry : addressBookList) {
+            System.out.println(entry.getEmail());
+        }
+
+        String wantedEmail = scanner.nextLine();
+
+        for (int i = 0; i < addressBookList.size(); i++) {
+            if (addressBookList.get(i).getEmail().equals(wantedEmail)) {
+                addressBookList.remove(i);
+            }
+        }
+    }
+
+
+    private static void findUser(Scanner scanner, List<Contact> addressBookList) {
+        System.out.println("What Persons Information do you want to get?");
+        for (Contact entry : addressBookList) {
+            System.out.println("--------------------");
+            System.out.print(entry.getName() + ", ");
+        }
+        String desiredPerson = scanner.nextLine();
+        for (Contact entry : addressBookList) {
+            if (entry.getName().equalsIgnoreCase(desiredPerson)) {
+                System.out.println(entry.getName() + " " + entry.getEmail() + " " + entry.getPhoneNumber());
             }
         }
     }

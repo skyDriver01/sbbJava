@@ -134,19 +134,7 @@ public class StreamingDienstDemo {
                                 break;
 
                             case 2:
-                                System.out.println("Pls enter your Old CreditCard Information if you wish to change it. Enter it like :XXXX XXXX XXXX XXXX");
-                                creditcard = scanner.nextLine();
-                                for (StreamingDienst credit : tempList) {
-                                    if (credit.getCreditCard().equals(creditcard)) {
-                                        System.out.println("Type in your new Creditcard Information");
-                                        creditcard = scanner.nextLine();
-                                        while (!creditcard.matches("[0-9 ]{19}")) {
-                                            System.out.println("Enter your Credit Card Information correctly pls.(Like : XXXX XXXX XXXX XXXX)");
-                                            creditcard = scanner.nextLine();
-                                        }
-                                        credit.setCreditCard(creditcard);
-                                    }
-                                }
+                                changeCreditcard(creditcard, scanner, tempList);
                                 break;
 
                             case 3:
@@ -161,7 +149,7 @@ public class StreamingDienstDemo {
 
                             case 4:
                                 for (StreamingDienst entry : tempList) {
-                                    if (entry.getSubscriptionType().equals("monthly")) {
+                                    if (entry.getSubscriptionType().equals(StreamingDienst.SubscriptionType.MONTHLY)) {
                                         System.out.println(entry.getCreditCard());
                                     }
                                 }
@@ -220,19 +208,7 @@ public class StreamingDienstDemo {
                                             break;
 
                                         case 2:
-                                            System.out.println("Pls enter your Old CreditCard Information if you wish to change it. Enter it like :XXXX XXXX XXXX XXXX");
-                                            creditcard = scanner.nextLine();
-                                            for (StreamingDienst credit : tempList) {
-                                                if (credit.getCreditCard().equals(creditcard)) {
-                                                    System.out.println("Type in your new Creditcard Information");
-                                                    creditcard = scanner.nextLine();
-                                                    while (!creditcard.matches("[0-9 ]{19}")) {
-                                                        System.out.println("Enter your Credit Card Information correctly pls.(Like : XXXX XXXX XXXX XXXX)");
-                                                        creditcard = scanner.nextLine();
-                                                    }
-                                                    credit.setCreditCard(creditcard);
-                                                }
-                                            }
+                                            changeCreditcard(creditcard, scanner, tempList); //TODO fragen wo fehler sein könnte.
                                             break;
 
                                         case 3:
@@ -248,7 +224,7 @@ public class StreamingDienstDemo {
 
                                         case 4:
                                             for (StreamingDienst entry2 : tempList) {
-                                                if (entry2.getSubscriptionType().equals("monthly")) {
+                                                if (entry2.getSubscriptionType().equals(StreamingDienst.SubscriptionType.MONTHLY)) {
                                                     System.out.println(entry2.getCreditCard());
                                                 }
                                             }
@@ -296,7 +272,23 @@ public class StreamingDienstDemo {
         }
     }
 
-    public static void nameSearch() {
+                    private static void changeCreditcard(String creditcard, Scanner scanner, List<StreamingDienst> tempList) {
+                        System.out.println("Pls enter your Old CreditCard Information if you wish to change it. Enter it like :XXXX XXXX XXXX XXXX");
+                        creditcard = scanner.nextLine();
+                        for (StreamingDienst credit : tempList) {
+                            if (credit.getCreditCard().equals(creditcard)) {
+                                System.out.println("Type in your new Creditcard Information");
+                                creditcard = scanner.nextLine();
+                                while (!creditcard.matches("[0-9 ]{19}")) {
+                                    System.out.println("Enter your Credit Card Information correctly pls.(Like : XXXX XXXX XXXX XXXX)");
+                                    creditcard = scanner.nextLine();
+                                }
+                                credit.setCreditCard(creditcard);
+                            }
+                        }
+                    }
+
+                    public static void nameSearch() {
         movies();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type in the movie name or a word that might appear in its name (if you want to see all Movies just press enter)");
