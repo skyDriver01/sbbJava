@@ -89,8 +89,21 @@ public class AddressBook {
     private static void gatherUserInformation(Scanner scanner, List<Contact> addressBookList) {
         System.out.println("Enter The New Persons Name");
         String name = scanner.nextLine();
+        String mail = getUserEmail(scanner, addressBookList);
+        System.out.println("Enter your phone Number");
+        String phoneNumber = scanner.nextLine();
+        while (!(phoneNumber.contains("+") && phoneNumber.length() >= 16)) {
+            System.out.println("Enter a PhoneNumber like this: +XX XX XXX XX XX");
+            phoneNumber = scanner.nextLine();
+        }
+
+        addressBookList.add(new Contact(name, mail, phoneNumber));
+
+        return;
+    }
+
+    private static String getUserEmail(Scanner scanner, List<Contact> addressBookList) {
         boolean noSameMail = true;
-        boolean loop = true;
         System.out.println("What is your E-mail address?");
         String mail = scanner.nextLine();
         boolean containsAnAet = false;
@@ -107,23 +120,12 @@ public class AddressBook {
                 if (mail.equals(entry.getEmail())) {
                     System.out.println("Email is already in use try another one ");
                     mail = scanner.nextLine();
-                } else {
-                    loop = false;
                 }
                 if (!mail.equals(entry.getEmail())) {
                     noSameMail = false;
                 }
             }
         }
-        System.out.println("Enter your phone Number");
-        String phoneNumber = scanner.nextLine();
-        while (!(phoneNumber.contains("+") && phoneNumber.length() >= 16)) {
-            System.out.println("Enter a PhoneNumber like this: +XX XX XXX XX XX");
-            phoneNumber = scanner.nextLine();
-        }
-
-        addressBookList.add(new Contact(name, mail, phoneNumber));
-
-        return;
+        return mail;
     }
 }

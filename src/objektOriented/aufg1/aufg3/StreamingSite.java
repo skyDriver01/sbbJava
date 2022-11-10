@@ -41,6 +41,119 @@ public class StreamingSite {
         }
     }
 
+    private static boolean gatherUsersInformation(List<Person> tempList, Scanner scanner, boolean exit) {
+        boolean noSameUsernames = false;
+        boolean isLooping = true;
+        System.out.println("Enter your username");
+        String username = scanner.nextLine();
+        while (!noSameUsernames) {
+            for (Person entry : tempList) {
+                while (isLooping) {
+                    if (username.equals(entry.getUsername())) {
+                        System.out.println("That Username is already in use please enter another one.");
+                        username = scanner.nextLine();
+                    } else {
+                        isLooping = false;
+                    }
+                    if (!username.equals(entry.getUsername())) {
+                        noSameUsernames = true;
+
+                    }
+                }
+            }
+            break;
+        }
+        System.out.println("Enter a Password you will remember");
+        String password = scanner.nextLine();
+        String email = getUsersEmail(tempList, scanner);
+
+        System.out.println("Enter your CreditCard Information");
+        String creditcard = scanner.nextLine();
+        creditcard = getCreditcardNumber(scanner, creditcard);
+
+        String creditcardExperation = getCreditcardExperation(scanner);
+        String creditcardSecurityNumber = getCreditcardSecurityNumber(scanner);
+
+        System.out.println("Do you want to get a subscription to enjoy Ad-Free and unlimited Viewing? (Type true if you want a subscription or false if you don't want one");
+        boolean subscription = true;
+        Person.SubscriptionType subscriptionType = null;
+        if (subscription == Boolean.parseBoolean(scanner.nextLine())) {
+            System.out.println("What kind of subscription would you like the monthly subscription for 15Fr.(type: monthly) or the yearly subscription for 150fr.(type: yearly)");
+            subscriptionType = switch (scanner.nextLine().toUpperCase()) {
+                case "MONTHLY" -> Person.SubscriptionType.MONTHLY;
+                case "YEARLY" -> Person.SubscriptionType.YEARLY;
+                default -> null;
+            };
+        } else {
+            System.out.println("You can choose a subscription at a later point if you want");
+        }
+
+        tempList.add(new Person(username, password, email, creditcard, creditcardExperation, creditcardSecurityNumber, subscription, subscriptionType));
+
+        streamSiteOn(tempList, scanner, creditcard);
+        return noSameUsernames;
+    }
+
+    private static String getUsersEmail(List<Person> tempList, Scanner scanner) {
+        boolean noSameMail = true;
+        boolean loop = true;
+        System.out.println("What is your E-mail address?");
+        String email = scanner.nextLine();
+        while (noSameMail) {
+            for (Person entry : tempList) {
+                while (loop) {
+                    boolean containsAnAet = false;
+                    while (!containsAnAet) {
+                        if (email.contains("@")) {
+                            containsAnAet = true;
+                        } else {
+                            System.out.println("Your mail needs an @");
+                            email = scanner.nextLine();
+                        }
+                    }
+                    if (email.equals(entry.getEmail())) {
+                        System.out.println("Email is already in use try another one ");
+                        email = scanner.nextLine();
+                    } else {
+                        loop = false;
+                    }
+                    if (!email.equals(entry.getEmail())) {
+                        noSameMail = false;
+                    }
+                }
+            }
+        }
+        return email;
+    }
+
+    private static String getCreditcardNumber(Scanner scanner, String creditcard) {
+        while (!creditcard.matches("[0-9 ]{19}")) {
+            System.out.println("Enter your Credit Card Information correctly pls.(Like : XXXX XXXX XXXX XXXX)");
+            creditcard = scanner.nextLine();
+        }
+        return creditcard;
+    }
+
+    private static String getCreditcardExperation(Scanner scanner) {
+        System.out.println("Enter your CreditCards Experation Date pls. Keep in Mind to put a / between both numbers");
+        String creditcardExperation = scanner.nextLine();
+        while (!creditcardExperation.matches("[0-9 / ]{5}")) {
+            System.out.println("Enter your CreditCards Experation Date like this Pls(XX/XX)");
+            creditcardExperation = scanner.nextLine();
+        }
+        return creditcardExperation;
+    }
+
+    private static String getCreditcardSecurityNumber(Scanner scanner) {
+        System.out.println("Enter your CreditCards Security Number pls.");
+        String creditcardSecurityNumber = scanner.nextLine();
+        while (!creditcardSecurityNumber.matches("[0-9]{3}")) {
+            System.out.println("Enter your CreditCards Security Number like this pls.(XXX)");
+            creditcardSecurityNumber = scanner.nextLine();
+        }
+        return creditcardSecurityNumber;
+    }
+
     private static boolean loginToExistingUser(List<Person> tempList, Scanner scanner, boolean exit) {
         System.out.println("What account would you like to enter?");
         for (Person entry : tempList) {
@@ -120,75 +233,7 @@ public class StreamingSite {
         return exit;
     }
 
-    private static void deleteUser(List<Person> tempList, Scanner scanner) {
-        System.out.println("What Contact do you want to Delete?");
-        for (Person entry : tempList) {
-            System.out.println(entry.getUsername());
-        }
-        String input = scanner.nextLine();
-        for (int i = 0; i < tempList.size(); i++) {
-            if (input.equalsIgnoreCase(tempList.get(i).getUsername())) {
-                System.out.println("Password pls:");
-                String pass = scanner.nextLine();
-                if (pass.equalsIgnoreCase(tempList.get(i).getPassword())) {
-                    tempList.remove(tempList.get(i));
-                }
-            }
-        }
-    }
-
-    private static boolean gatherUsersInformation(List<Person> tempList, Scanner scanner, boolean exit) {
-        boolean noSameUsernames = false;
-        boolean isLooping = true;
-        System.out.println("Enter your username");
-        String username = scanner.nextLine();
-        while (!noSameUsernames) {
-            for (Person entry : tempList) {
-                while (isLooping) {
-                    if (username.equals(entry.getUsername())) {
-                        System.out.println("That Username is already in use please enter another one.");
-                        username = scanner.nextLine();
-                    } else {
-                        isLooping = false;
-                    }
-                    if (!username.equals(entry.getUsername())) {
-                        noSameUsernames = true;
-
-                    }
-                }
-            }
-            break;
-        }
-        System.out.println("Enter a Password you will remember");
-        String password = scanner.nextLine();
-        String email = getUsersEmail(tempList, scanner);
-        System.out.println("Enter your CreditCard Information");
-        String creditcard = scanner.nextLine();
-        creditcard = getCreditcardNumber(scanner, creditcard);
-
-        String creditcardExperation = getCreditcardExperation(scanner);
-        System.out.println("Enter your CreditCards Security Number pls.");
-        String creditcardSecurityNumber = scanner.nextLine();
-        while (!creditcardSecurityNumber.matches("[0-9]{3}")) {
-            System.out.println("Enter your CreditCards Security Number like this pls.(XXX)");
-            creditcardSecurityNumber = scanner.nextLine();
-        }
-        System.out.println("Do you want to get a subscription to enjoy Ad-Free and unlimited Viewing? (Type true if you want a subscription or false if you don't want one");
-        boolean subscription = true;
-        Person.SubscriptionType subscriptionType = null;
-        if (subscription == Boolean.parseBoolean(scanner.nextLine())) {
-            System.out.println("What kind of subscription would you like the monthly subscription for 15Fr.(type: monthly) or the yearly subscription for 150fr.(type: yearly)");
-            subscriptionType = switch (scanner.nextLine().toUpperCase()) {
-                case "MONTHLY" -> Person.SubscriptionType.MONTHLY;
-                case "YEARLY" -> Person.SubscriptionType.YEARLY;
-                default -> null;
-            };
-        } else {
-            System.out.println("You can choose a subscription at a later point if you want");
-        }
-
-        tempList.add(new Person(username, password, email, creditcard, creditcardExperation, creditcardSecurityNumber, subscription, subscriptionType));
-
+    private static void streamSiteOn(List<Person> tempList, Scanner scanner, String creditcard) {
         boolean streamsiteOn;
         streamsiteOn = false;
         System.out.println("Welcome to the Site. Please keep in mind while searching for movies to use proper grammar. Enjoy the movies");
@@ -233,72 +278,13 @@ public class StreamingSite {
                     break;
 
                 case 5:
-                    streamsiteOn = streamSiteIsOn();
+                    streamsiteOn = logOutOfTheStreamSite();
                     break;
             }
         }
-        return noSameUsernames;
     }
 
-    private static String getCreditcardExperation(Scanner scanner) {
-        System.out.println("Enter your CreditCards Experation Date pls. Keep in Mind to put a / between both numbers");
-        String creditcardExperation = scanner.nextLine();
-        while (!creditcardExperation.matches("[0-9 / ]{5}")) {
-            System.out.println("Enter your CreditCards Experation Date like this Pls(XX/XX)");
-            creditcardExperation = scanner.nextLine();
-        }
-        return creditcardExperation;
-    }
-
-    private static String getCreditcardNumber(Scanner scanner, String creditcard) {
-        while (!creditcard.matches("[0-9 ]{19}")) {
-            System.out.println("Enter your Credit Card Information correctly pls.(Like : XXXX XXXX XXXX XXXX)");
-            creditcard = scanner.nextLine();
-        }
-        return creditcard;
-    }
-
-    private static String getUsersEmail(List<Person> tempList, Scanner scanner) {
-        boolean noSameMail = true;
-        boolean loop = true;
-        System.out.println("What is your E-mail address?");
-        String email = scanner.nextLine();
-        while (noSameMail) {
-            for (Person entry : tempList) {
-                while (loop) {
-                    boolean containsAnAet = false;
-                    while (!containsAnAet) {
-                        if (email.contains("@")) {
-                            containsAnAet = true;
-                        } else {
-                            System.out.println("Your mail needs an @");
-                            email = scanner.nextLine();
-                        }
-                    }
-                    if (email.equals(entry.getEmail())) {
-                        System.out.println("Email is already in use try another one ");
-                        email = scanner.nextLine();
-                    } else {
-                        loop = false;
-                    }
-                    if (!email.equals(entry.getEmail())) {
-                        noSameMail = false;
-                    }
-                }
-            }
-        }
-        return email;
-    }
-
-    private static void getCreditcardInfoFromMonthlyPaymentUsers(List<Person> tempList) {
-        for (Person entry : tempList) {
-            if (entry.getSubscriptionType().equals(Person.SubscriptionType.MONTHLY)) {
-                System.out.println(entry.getCreditCard());
-            }
-        }
-    }
-
-    private static boolean streamSiteIsOn() {
+    private static boolean logOutOfTheStreamSite() {
         boolean streamsiteOn;
         boolean exit;
         streamsiteOn = true;
@@ -309,6 +295,31 @@ public class StreamingSite {
         System.out.println("4: Exit");
         exit = false;
         return streamsiteOn;
+    }
+
+    private static void getCreditcardInfoFromMonthlyPaymentUsers(List<Person> tempList) {
+        for (Person entry : tempList) {
+            if (entry.getSubscriptionType().equals(Person.SubscriptionType.MONTHLY)) {
+                System.out.println(entry.getCreditCard());
+            }
+        }
+    }
+
+    private static void deleteUser(List<Person> tempList, Scanner scanner) {
+        System.out.println("What Contact do you want to Delete?");
+        for (Person entry : tempList) {
+            System.out.println(entry.getUsername());
+        }
+        String input = scanner.nextLine();
+        for (int i = 0; i < tempList.size(); i++) {
+            if (input.equalsIgnoreCase(tempList.get(i).getUsername())) {
+                System.out.println("Password pls:");
+                String pass = scanner.nextLine();
+                if (pass.equalsIgnoreCase(tempList.get(i).getPassword())) {
+                    tempList.remove(tempList.get(i));
+                }
+            }
+        }
     }
 
     private static void changeCreditcard(String creditcard, Scanner scanner, List<Person> tempList) {
