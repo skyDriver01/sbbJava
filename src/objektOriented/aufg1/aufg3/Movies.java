@@ -1,10 +1,7 @@
 package objektOriented.aufg1.aufg3;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
-
 //TODO klassenname
-public class StreamingDienstFilme {
+public class Movies {
     final String name;
     final String duration; //TODO: Datentyp für Dauer, z.B. Duration
     final String genre;
@@ -12,7 +9,7 @@ public class StreamingDienstFilme {
     final String views;
     private boolean viewed; //TODO eine liste machen wo zeigt welche personen ihn gesehen haben oder zu einer person eine Liste machen wo zeigt welche filme angesehen worden sind.
 
-    public StreamingDienstFilme(String name, String duration, String genre, String producer, String views, boolean viewed) {
+    public Movies(String name, String duration, String genre, String producer, String views, boolean viewed) {
         this.name = name;
         this.duration = duration;
         this.genre = genre;
