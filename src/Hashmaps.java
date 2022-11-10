@@ -1,5 +1,3 @@
-package objektOriented.aufg1;
-
 import java.util.HashMap;
 
 public class Hashmaps {
