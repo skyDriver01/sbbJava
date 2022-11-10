@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class StreamingSite {
     public static void executeSite() {
-        List<Person> tempList = new ArrayList<>(); //TODO klasse wo alle personen und filme verwaltet erstellen. Mit den meisten methoden von hier integrieren
+        List<Person> tempList = new ArrayList<>();
         tempList.add(new Person("siu", "siu", "siu@", "1234 1234 1234 1234", "12/12", "012", true, Person.SubscriptionType.MONTHLY));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, What would you like to do?");
@@ -174,7 +174,7 @@ public class StreamingSite {
                     while (!streamsiteOn) {
                         System.out.println("1: Search for a Movie");
                         System.out.println("2: Change your CreditCard Information");
-                        System.out.println("3: View the amount of people with a subscription");
+                        System.out.println("3: View the amount of people with a subscription");         //TODO besser mit reader probieren
                         System.out.println("4 Show all creditCard information's of people with a monthly subscription");
                         System.out.println("5: Logout of your account");
                         System.out.println("[Select your Number]");
@@ -194,7 +194,7 @@ public class StreamingSite {
                                 break;
 
                             case 2:
-                                //    changeCreditcard(creditcard, scanner, tempList); //TODO fragen wo fehler sein könnte.
+                                    changeCreditcard(null, scanner, tempList);
                                 break;
 
                             case 3:

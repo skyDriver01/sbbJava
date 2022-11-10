@@ -12,7 +12,7 @@ public class Hashmaps {
         System.out.println(capitalCities);   //Gibt alle werte aus wie das Land und die Hauptstadt
         System.out.println(capitalCities.get("USA")); //Gibt nur die Hauptstadt von diesem Land an
         //kann auch .clear machen damit alles im hash gelöscht wird. mir .remove kann man auswählen was gelöscht werden soll
-        for (String i : capitalCities.keySet()) {       //KeySet() ist nur für die keys(die Länder in dem fall)
+        for (String i : capitalCities.keySet()) {       //keySet() ist nur für die keys(die Länder in dem fall)
             System.out.println(i);                      //values() ist nur für die werte/values(die Hauptstädte in diesem fall)
         }
     }
