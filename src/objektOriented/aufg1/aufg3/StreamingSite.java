@@ -15,11 +15,11 @@ public class StreamingSite {
         System.out.println("3: Remove an account");
         System.out.println("4: Exit");
 
-        boolean exit = false;
-        switchOptions(tempList, scanner, exit);
+        switchOptions(tempList, scanner);
     }
 
-    private static void switchOptions(List<Person> tempList, Scanner scanner, boolean exit) {
+    private static void switchOptions(List<Person> tempList, Scanner scanner) {
+        boolean exit = false;
         while (!exit) {
             System.out.println("[Select your Number]");
             int login = Integer.parseInt(scanner.nextLine());

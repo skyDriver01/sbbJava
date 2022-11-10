@@ -1,6 +1,5 @@
 package objektOriented.aufg1.aufg3;
 
-//TODO klassenname
 public class Movies {
     final String name;
     final String duration; //TODO: Datentyp für Dauer, z.B. Duration
@@ -15,7 +14,7 @@ public class Movies {
         this.genre = genre;
         this.producer = producer;
         this.views = views;
-        this.viewed = viewed; //TODO merken das constructoren immer unter instanzvariabel sein sollten für übersichtlichkeit
+        this.viewed = viewed;
     }
 
     public String getName() {
@@ -42,11 +41,6 @@ public class Movies {
     public boolean isViewed() {
         return viewed;
     }
-
-    public void setViewed(boolean viewed) {
-        this.viewed = viewed;
-    }
-
 
     @Override
     public String toString() {

@@ -1,6 +1,6 @@
 package objektOriented.aufg1.aufg3;
 
-public class Person { //TODO gleich wie beim SDFilme namen ändern
+public class Person {
     private String username;
     private String password;
     private String email;
@@ -8,7 +8,7 @@ public class Person { //TODO gleich wie beim SDFilme namen ändern
     private String creditCardExperation;
     private String creditCardSecurityNumber;
     private boolean subscription;
-    private SubscriptionType subscriptionType; //TODO enum draus machen
+    private SubscriptionType subscriptionType;
     public enum SubscriptionType{MONTHLY,YEARLY}
 
     public Person(String username, String password, String email, String creditCard, String creditCardExperation,
