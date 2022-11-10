@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class StreamingSite {
     public static void executeSite() {
-        List<Person> tempList = new ArrayList<>(); //TODO klasse wo alle personen und filme verwaltet erstellen. Mit den meisten methoden von hier integrieren und ohne static.
+        List<Person> tempList = new ArrayList<>(); //TODO klasse wo alle personen und filme verwaltet erstellen. Mit den meisten methoden von hier integrieren
         tempList.add(new Person("siu", "siu", "siu@", "1234 1234 1234 1234", "12/12", "012", true, Person.SubscriptionType.MONTHLY));
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, What would you like to do?");
@@ -210,7 +210,7 @@ public class StreamingSite {
                             nameSearch();
                             break;
                         }
-                        case 2 -> genreSearch(); //Todo methoden aufrufen nach dem switch aka. case
+                        case 2 -> genreSearch();
                     }
                     break;
 

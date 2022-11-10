@@ -101,7 +101,7 @@ public class AddressBook {
                 System.out.println("Your mail needs an @");
                 mail = scanner.nextLine();
             }
-        } //TODO Mehr kommentare machen zum sicher sein
+        }
         for (Contact entry : addressBookList) {
             while (noSameMail) { //can't have the same Email twice.
                 if (mail.equals(entry.getEmail())) {
