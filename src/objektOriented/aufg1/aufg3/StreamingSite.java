@@ -312,18 +312,19 @@ public class StreamingSite {
 
     public static List<Movies> movies() {
         List<Movies> movieList = new ArrayList<>();
-        movieList.add(new Movies("the Godfather", "175", "Crime " + "Drama", "Francis Ford Coppola", "4322", false));
-        movieList.add(new Movies("the Shawshank Redemption", "142", "Drama", "Frank Darabont", "11234", false));
-        movieList.add(new Movies("shindler's List", "195", "History " + "Drama " + "Biography", "Steven Spielberg", "654321", false));
-        movieList.add(new Movies("forrest Gump", "142", "Romance " + "Drama", "Robert Zemechkis", "0", false));
-        movieList.add(new Movies("angry Birds", "97", "Animation " + "Action " + "Adventure", "Clay Kaytis" + " Fergal Reilly", "456452", false));
-        movieList.add(new Movies("shrek", "90", "Fantasy " + "Adventure " + "Animation", "Andrew Adamson", "9999999999", false));
-        movieList.add(new Movies("the Dark Knight", "152", "Action " + "Drama " + "Detective story", "Christopher Nolan", "42312", false));
-        movieList.add(new Movies("wall-E", "98", "Adventure " + "Animation " + "Family", "Andrew Stanton", "1", false));
-        movieList.add(new Movies("avengers: Infinity War", "149", "Sci-Fi " + "Adventure " + "Action", "Anthony Russo" + "Joe Russo", "54345", false));
-        movieList.add(new Movies("joker", "122", "Thriller " + "Detective Story " + "Drama", "Todd Phillips", "9999998", false));
-        movieList.add(new Movies("the Wolf of Wall Street", "180", "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", "1234543", false));
-        movieList.add(new Movies("the Truman Show", "103", "Drama " + "Comedy", "Peter Weir", "9999997", false));
+        movieList.add(new Movies("the Godfather", "175", "Crime " + "Drama", "Francis Ford Coppola", 4322, false));
+        movieList.add(new Movies("the Shawshank Redemption", "142", "Drama", "Frank Darabont", 11239, false));
+        movieList.add(new Movies("shindler's List", "195", "History " + "Drama " + "Biography", "Steven Spielberg", 654321, false));
+        movieList.add(new Movies("forrest Gump", "142", "Romance " + "Drama", "Robert Zemechkis", 4576856, false));
+        movieList.add(new Movies("angry Birds", "97", "Animation " + "Action " + "Adventure", "Clay Kaytis" + " Fergal Reilly", 0, false));
+        movieList.add(new Movies("shrek", "90", "Fantasy " + "Adventure " + "Animation", "Andrew Adamson", 999999999, false));
+        movieList.add(new Movies("the Dark Knight", "152", "Action " + "Drama " + "Detective story", "Christopher Nolan", 42312, false));
+        movieList.add(new Movies("wall-E", "98", "Adventure " + "Animation " + "Family", "Andrew Stanton", 1, false));
+        movieList.add(new Movies("avengers: Infinity War", "149", "Sci-Fi " + "Adventure " + "Action", "Anthony Russo" + "Joe Russo", 54345, false));
+        movieList.add(new Movies("joker", "122", "Thriller " + "Detective Story " + "Drama", "Todd Phillips", 999999998, false));
+        movieList.add(new Movies("the Wolf of Wall Street", "180", "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", 1234543, false));
+        movieList.add(new Movies("the Truman Show", "103", "Drama " + "Comedy", "Peter Weir", 999999997, false));
+        //TODO make the duration parameter a duration datatype not a string
         return movieList;
     }
 }

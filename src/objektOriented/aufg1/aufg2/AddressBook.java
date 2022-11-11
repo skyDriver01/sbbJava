@@ -89,7 +89,9 @@ public class AddressBook {
     private static void gatherUserInformation(Scanner scanner, List<Contact> addressBookList) {
         System.out.println("Enter The New Persons Name");
         String name = scanner.nextLine();
+
         String mail = getUserEmail(scanner, addressBookList);
+
         System.out.println("Enter your phone Number");
         String phoneNumber = scanner.nextLine();
         while (!(phoneNumber.contains("+") && phoneNumber.length() >= 16)) {

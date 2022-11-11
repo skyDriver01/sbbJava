@@ -5,10 +5,10 @@ public class Movies {
     final String duration; //TODO: Datentyp für Dauer, z.B. Duration
     final String genre;
     final String producer; //Todo kann man velinken mit klasse customer wenn sie gemacht worden ist anstatt einen String zu benutzen.
-    final String views;
+    final int views;
     final boolean viewed; //TODO eine liste machen wo zeigt welche personen ihn gesehen haben oder zu einer person eine Liste machen wo zeigt welche filme angesehen worden sind.
 
-    public Movies(String name, String duration, String genre, String producer, String views, boolean viewed) {
+    public Movies(String name, String duration, String genre, String producer, int views, boolean viewed) {
         this.name = name;
         this.duration = duration;
         this.genre = genre;
@@ -34,7 +34,7 @@ public class Movies {
         return producer;
     }
 
-    public String getViews() {
+    public int getViews() {
         return views;
     }
 

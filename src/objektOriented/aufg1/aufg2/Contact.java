@@ -4,7 +4,7 @@ public class Contact {
 
     private String name;
     private String email;
-    private String phoneNumber;  //TODO Klasse mit adressbuch machen wo sich um die adressen kümmert, da es noch nicht so ganz OOP ist gerade.
+    private String phoneNumber;
 
     public Contact(String name, String email, String phoneNumber) {
         this.name = name;
@@ -22,18 +22,6 @@ public class Contact {
 
     public String getPhoneNumber() {
         return this.phoneNumber;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
 }
