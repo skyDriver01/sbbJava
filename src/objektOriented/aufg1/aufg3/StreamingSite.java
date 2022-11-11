@@ -24,44 +24,26 @@ public class StreamingSite {
             System.out.println("[Select your Number]");
             int login = Integer.parseInt(scanner.nextLine());
             switch (login) {
-                case 1:
-                    exit = gatherUsersInformation(tempList, scanner, exit);
-                    break;
+                case 1 -> exit = gatherUsersInformation(tempList, scanner);
 
-                case 2:
-                    exit = loginToExistingUser(tempList, scanner, exit);
-                    break;
+                case 2 -> exit = loginToExistingUser(tempList, scanner, exit);
 
-                case 3:
-                    deleteUser(tempList, scanner);
-                    break;
-                case 4:
-                    exit = true;
+                case 3 -> deleteUser(tempList, scanner);
+                case 4 -> exit = true;
             }
         }
     }
 
-    private static boolean gatherUsersInformation(List<Person> tempList, Scanner scanner, boolean exit) {
-        boolean noSameUsernames = false;
-        boolean isLooping = true;
+    private static boolean gatherUsersInformation(List<Person> tempList, Scanner scanner) {
+        boolean noSameUsernames = true;
         System.out.println("Enter your username");
         String username = scanner.nextLine();
-        while (!noSameUsernames) {
-            for (Person entry : tempList) {
-                while (isLooping) {
-                    if (username.equals(entry.getUsername())) {
-                        System.out.println("That Username is already in use please enter another one.");
-                        username = scanner.nextLine();
-                    } else {
-                        isLooping = false;
-                    }
-                    if (!username.equals(entry.getUsername())) {
-                        noSameUsernames = true;
-
-                    }
-                }
+        for (Person entry : tempList) {
+            while (username.equals(entry.getUsername())) {
+                System.out.println("That Username is already in use please enter another one.");
+                username = scanner.nextLine();
             }
-            break;
+
         }
         System.out.println("Enter a Password you will remember");
         String password = scanner.nextLine();
@@ -84,13 +66,10 @@ public class StreamingSite {
                 case "YEARLY" -> Person.SubscriptionType.YEARLY;
                 default -> null;
             };
-        } else {
-            System.out.println("You can choose a subscription at a later point if you want");
         }
-
         tempList.add(new Person(username, password, email, creditcard, creditcardExperation, creditcardSecurityNumber, subscription, subscriptionType));
 
-        streamSiteOn(tempList, scanner, creditcard);
+        streamSiteOn(tempList, scanner);
         return noSameUsernames;
     }
 
@@ -137,7 +116,7 @@ public class StreamingSite {
     private static String getCreditcardExperation(Scanner scanner) {
         System.out.println("Enter your CreditCards Experation Date pls. Keep in Mind to put a / between both numbers");
         String creditcardExperation = scanner.nextLine();
-        while (!creditcardExperation.matches("[0-9 / ]{5}")) {
+        while (!creditcardExperation.matches("[0-9 /]{5}")) {
             System.out.println("Enter your CreditCards Experation Date like this Pls(XX/XX)");
             creditcardExperation = scanner.nextLine();
         }
@@ -168,7 +147,7 @@ public class StreamingSite {
                 if (desiredPassword.equals(entry.getPassword())) {
                     System.out.println("Welcome back. Enjoy the movies");
                     exit = true;
-                    boolean streamsiteOn = false;
+                    boolean streamsiteOn = true;
                     System.out.println("Welcome to the Site. Please keep in mind while searching for movies to use proper grammar. Enjoy the movies");
 
                     while (!streamsiteOn) {
@@ -181,59 +160,39 @@ public class StreamingSite {
 
                         int options = Integer.parseInt(scanner.nextLine());
                         switch (options) {
-                            case 1:
+                            case 1 -> {
                                 System.out.println("Type 1: To search for a movie with its name. Type 2: To search for a movie with its genre.");
                                 int search = Integer.parseInt(scanner.nextLine());
                                 switch (search) {
-                                    case 1 -> {
-                                        nameSearch();
-                                        break;
-                                    }
+                                    case 1 -> nameSearch();
                                     case 2 -> genreSearch();
                                 }
-                                break;
-
-                            case 2:
-                                changeCreditcard(null, scanner, tempList);
-                                break;
-
-                            case 3:
-                                int counter = 0;
-                                for (Person people : tempList) {
-                                    if (people.isSubscription() == true) {
-                                        counter++;
-                                        ;
-                                    }
-                                }
-                                System.out.println(counter);
-                                break;
-
-                            case 4:
-                                getCreditcardInfoFromMonthlyPaymentUsers(tempList);
-                                break;
-
-                            case 5:
-                                streamsiteOn = true;
-                                System.out.println("Hello, What would you like to do?");
-                                System.out.println("1: Create an Account");
-                                System.out.println("2: Log into your Account");
-                                System.out.println("3: Remove an account");
-                                System.out.println("4: Exit");
-                                exit = false;
-                                break;
+                            }
+                            case 2 -> changeCreditcard(scanner, tempList);
+                            case 3 -> countUsersWithSubscriptions(tempList);
+                            case 4 -> getCreditcardInfoFromMonthlyPaymentUsers(tempList);
+                            case 5 -> executeSite();
                         }
                     }
                 } else {
                     System.out.println("Wrong Password");
                 }
-            } else {
-                System.out.println("Wrong username or user not found");
             }
         }
         return exit;
     }
 
-    private static void streamSiteOn(List<Person> tempList, Scanner scanner, String creditcard) {
+    private static void countUsersWithSubscriptions(List<Person> tempList) {
+        int counter = 0;
+        for (Person people : tempList) {
+            if (people.isSubscription()) {
+                counter++;
+            }
+        }
+        System.out.println(counter);
+    }
+
+    private static void streamSiteOn(List<Person> tempList, Scanner scanner) {
         boolean streamsiteOn;
         streamsiteOn = false;
         System.out.println("Welcome to the Site. Please keep in mind while searching for movies to use proper grammar. Enjoy the movies");
@@ -247,54 +206,32 @@ public class StreamingSite {
 
             int options = Integer.parseInt(scanner.nextLine());
             switch (options) {
-                case 1:
+                case 1 -> {
                     System.out.println("Type 1: To search for a movie with its name. Type 2: To search for a movie with its genre.");
                     int search = Integer.parseInt(scanner.nextLine());
                     switch (search) {
-                        case 1 -> {          //TODO GIBT NOCH NICHT AN OB EIN FILM VIEWED UND WIE VIELE VIEWS ER HAT.
-                            nameSearch();
-                            break;
-                        }
+                        case 1 -> nameSearch(); //TODO viewed und views machen
                         case 2 -> genreSearch();
                     }
-                    break;
-
-                case 2:
-                    changeCreditcard(creditcard, scanner, tempList);
-                    break;
-
-                case 3:
-                    int counter = 0;
-                    for (Person people : tempList) {
-                        if (people.isSubscription() == true) {
-                            counter++;
-                        }
-                    }
-                    System.out.println(counter);
-                    break;
-
-                case 4:
-                    getCreditcardInfoFromMonthlyPaymentUsers(tempList);
-                    break;
-
-                case 5:
-                    streamsiteOn = logOutOfTheStreamSite();
-                    break;
+                }
+                case 2 -> changeCreditcard(scanner, tempList);
+                case 3 -> countUsersWithSubscriptions(tempList);
+                case 4 -> getCreditcardInfoFromMonthlyPaymentUsers(tempList);
+                case 5 -> streamsiteOn = logOutOfTheStreamSite(tempList);
             }
         }
     }
 
-    private static boolean logOutOfTheStreamSite() {
-        boolean streamsiteOn;
-        boolean exit;
-        streamsiteOn = true;
+    private static boolean logOutOfTheStreamSite(List<Person> tempList) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, What would you like to do?");
         System.out.println("1: Create an Account");
         System.out.println("2: Log into your Account");
         System.out.println("3: Remove an account");
         System.out.println("4: Exit");
-        exit = false;
-        return streamsiteOn;
+
+        switchOptions(tempList, scanner);
+        return true;
     }
 
     private static void getCreditcardInfoFromMonthlyPaymentUsers(List<Person> tempList) {
@@ -322,9 +259,9 @@ public class StreamingSite {
         }
     }
 
-    private static void changeCreditcard(String creditcard, Scanner scanner, List<Person> tempList) {
+    private static void changeCreditcard(Scanner scanner, List<Person> tempList) {
         System.out.println("Pls enter your Old CreditCard Information if you wish to change it. Enter it like :XXXX XXXX XXXX XXXX");
-        creditcard = scanner.nextLine();
+        String creditcard = scanner.nextLine();
         for (Person credit : tempList) {
             if (credit.getCreditCard().equals(creditcard)) {
                 System.out.println("Type in your new Creditcard Information");
