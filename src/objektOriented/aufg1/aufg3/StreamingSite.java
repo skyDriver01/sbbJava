@@ -271,6 +271,10 @@ public class StreamingSite {
             }
         }
     }
+    public static List<Movies> watchedMovies(){
+        List<Movies> watchedMovieList = new ArrayList<>();
+        return watchedMovieList;
+    }
 
     public static void nameSearch() {
         movies();

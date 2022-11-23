@@ -44,6 +44,8 @@ public class Movies {
 
     @Override
     public String toString() {
-        return "StreamingDienstFilme{" + "name='" + name + '\'' + ", duration='" + duration + '\'' + ", genre='" + genre + '\'' + ", producer='" + producer + '\'' + ", views='" + views + '\'' + ", viewed=" + viewed + '}';
+        return "StreamingDienstFilme{" + "name='" + name + '\'' + ", duration='" + duration + '\''
+                + ", genre='" + genre + '\'' + ", producer='" + producer + '\'' +
+                ", views='" + views + '\'' + ", viewed=" + viewed + '}';
     }
 }

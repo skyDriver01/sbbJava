@@ -11,10 +11,8 @@ public class Person {
     final SubscriptionType subscriptionType;
 
     public enum SubscriptionType {MONTHLY, YEARLY}
-    public Movies watchedMovies;
 
-    public Person(String username, String password, String email, String creditCard, String creditCardExperation,
-                  String creditCardSecurityNumber, boolean subscription, SubscriptionType subscriptionType, Movies watchedMovies) {
+    public Person(String username, String password, String email, String creditCard, String creditCardExperation, String creditCardSecurityNumber, boolean subscription, SubscriptionType subscriptionType) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -23,10 +21,6 @@ public class Person {
         this.creditCardSecurityNumber = creditCardSecurityNumber;
         this.subscription = subscription;
         this.subscriptionType = subscriptionType;
-        this.watchedMovies = watchedMovies;
-    }
-    public Movies getWatchedMovies(){
-        return watchedMovies;
     }
 
     public String getUsername() {
