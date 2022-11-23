@@ -153,7 +153,7 @@ public class StreamingSite {
                     while (!streamsiteOn) {
                         System.out.println("1: Search for a Movie");
                         System.out.println("2: Change your CreditCard Information");
-                        System.out.println("3: View the amount of people with a subscription");         //TODO besser mit reader probieren
+                        System.out.println("3: View the amount of people with a subscription");         //TODO utility class für scanner so wie schon einmal erwähnt
                         System.out.println("4 Show all creditCard information's of people with a monthly subscription");
                         System.out.println("5: Logout of your account");
                         System.out.println("[Select your Number]");

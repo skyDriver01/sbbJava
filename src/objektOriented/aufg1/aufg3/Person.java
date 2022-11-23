@@ -9,7 +9,7 @@ public class Person {
     final String creditCardSecurityNumber;
     final boolean subscription;
     final SubscriptionType subscriptionType;
-
+    private Movies watchedMovies;
     public enum SubscriptionType {MONTHLY, YEARLY}
 
     public Person(String username, String password, String email, String creditCard, String creditCardExperation, String creditCardSecurityNumber, boolean subscription, SubscriptionType subscriptionType) {
