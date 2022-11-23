@@ -11,6 +11,7 @@ public class Person {
     final SubscriptionType subscriptionType;
 
     public enum SubscriptionType {MONTHLY, YEARLY}
+    public Movies watchedMovies;
 
     public Person(String username, String password, String email, String creditCard, String creditCardExperation, String creditCardSecurityNumber, boolean subscription, SubscriptionType subscriptionType) {
         this.username = username;

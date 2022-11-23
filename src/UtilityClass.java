@@ -7,7 +7,7 @@ public class UtilityClass {
     }
 
     public static void switches() { //switch cases gemeint
-        Scanner scanner = new Scanner(System.in):
+        Scanner scanner = new Scanner(System.in);
         int aSwitch = Integer.parseInt(scanner.nextLine());
         switch (aSwitch){
             case 1 -> {}

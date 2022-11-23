@@ -47,7 +47,7 @@ public class AddressBook {
                 deleteUser(scanner, addressBookList);
                 break;
             }
-//TODO Scanner so wie weg bekommen für immer(mit Readern)
+//TODO Scanner so wie weg bekommen für immer(mit Readern) Utility class für scanner machen NICHT reader benutzen.
             case 5 -> {
                 programmEnd = true;
                 System.out.println("bye");
