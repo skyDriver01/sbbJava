@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class AddressBook {
     public static void executeTheSite() {
-        Scanner scanner = new Scanner(System.in);
         List<Contact> addressBookList = new ArrayList<>();
         HashMap<Integer, String> systemOptions = new HashMap<Integer, String>();
         boolean programmEnd = false;
@@ -43,7 +42,6 @@ public class AddressBook {
             case 4 -> {
                 deleteUser(scanner, addressBookList);
             }
-//TODO Scanner so wie weg bekommen für immer(mit Readern) Utility class für scanner machen NICHT reader benutzen.
             case 5 -> {
                 programmEnd = true;
                 System.out.println("bye");
@@ -58,7 +56,7 @@ public class AddressBook {
             System.out.println(entry.getEmail());
         }
 
-        String wantedEmail = scanner.nextLine();
+        String wantedEmail = InputIn.nextLine();
 
         for (int i = 0; i < addressBookList.size(); i++) {
             if (addressBookList.get(i).getEmail().equals(wantedEmail)) {
