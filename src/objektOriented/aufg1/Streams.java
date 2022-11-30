@@ -1,3 +1,5 @@
+package objektOriented.aufg1;
+
 import objektOriented.aufg1.Patient;
 
 import java.util.ArrayList;
