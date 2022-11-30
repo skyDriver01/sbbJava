@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AddressBook {
-    public static void executeTheSite() {
+    public static void executeTheSite() { //TODO Claudio fragen wegen der Utility class InoutIn , weil sie nicht aufgerufen werden kann
+        Scanner scanner = new Scanner(System.in);
         List<Contact> addressBookList = new ArrayList<>();
         HashMap<Integer, String> systemOptions = new HashMap<Integer, String>();
         boolean programmEnd = false;
@@ -20,7 +21,6 @@ public class AddressBook {
             System.out.println("________________________________________________________");
             System.out.println("Type the Number of what you would like to do.(1,2,3,4,5)");
             int performTask = Integer.parseInt(scanner.nextLine());
-//TODO Hashmaps anschauen
             programmEnd = getOptionsForTheAddressBook(scanner, addressBookList, false, performTask);
         }
     }
@@ -56,7 +56,7 @@ public class AddressBook {
             System.out.println(entry.getEmail());
         }
 
-        String wantedEmail = InputIn.nextLine();
+        String wantedEmail = scanner.nextLine();
 
         for (int i = 0; i < addressBookList.size(); i++) {
             if (addressBookList.get(i).getEmail().equals(wantedEmail)) {
@@ -71,7 +71,7 @@ public class AddressBook {
             System.out.println("--------------------");
             System.out.print(entry.getName() + ", ");
         }
-        String desiredPerson = scanner.nextLine();
+        String desiredPerson = InputIn.nextLine();
         for (Contact entry : addressBookList) {
             if (entry.getName().equalsIgnoreCase(desiredPerson)) {
                 System.out.println(entry.getName() + " " + entry.getEmail() + " " + entry.getPhoneNumber());
@@ -80,16 +80,13 @@ public class AddressBook {
     }
 
     private static void gatherUserInformation(Scanner scanner, List<Contact> addressBookList) {
-        System.out.println("Enter The New Persons Name");
-        String name = scanner.nextLine();
+        String name = InputIn.nextLineOut("Enter the new Persons Name");
 
         String mail = getUserEmail(scanner, addressBookList);
 
-        System.out.println("Enter your phone Number");
-        String phoneNumber = scanner.nextLine();
+        String phoneNumber = InputIn.nextLineOut("Enter the Persons PhoneNumber");
         while (!(phoneNumber.contains("+") && phoneNumber.length() >= 16)) {
-            System.out.println("Enter a PhoneNumber like this: +XX XX XXX XX XX");
-            phoneNumber = scanner.nextLine();
+            phoneNumber = InputIn.nextLineOut("Enter a PhoneNumber like this: +XX XX XXX XX XX");
         }
 
         addressBookList.add(new Contact(name, mail, phoneNumber));
@@ -97,8 +94,7 @@ public class AddressBook {
 
     private static String getUserEmail(Scanner scanner, List<Contact> addressBookList) {
         boolean noSameMail = true;
-        System.out.println("What is your E-mail address?");
-        String mail = scanner.nextLine();
+        String mail = InputIn.nextLineOut("What is your E-mail address?");
         boolean containsAnAet = false;
         while (!containsAnAet) {
             if (mail.contains("@")) {

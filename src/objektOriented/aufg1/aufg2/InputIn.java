@@ -1,8 +1,10 @@
+package objektOriented.aufg1.aufg2;
+
 import java.util.Scanner;
 
-public final class InputIn {
+public final class InputIn { //Final zum nicht veränder bar.
 
-    private InputIn() {
+    private InputIn() { //Damit es nicht Instanziert werden kann
 
     }
 
@@ -16,9 +18,4 @@ public final class InputIn {
         System.out.println(output);
         return scanner.nextLine();
     }
-    /*public static void main(String[] args) {
-        String name = InputIn.nextLineOut("Wie heisst du?");
-        System.out.println(name);
-    }
-*/
 }

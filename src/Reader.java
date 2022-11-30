@@ -1,5 +1,3 @@
-package objektOriented.aufg1;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -7,7 +5,7 @@ public class Reader {
     public static void main(String[] args) throws Exception {
 
         InputStreamReader r = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(r); //objektOriented.aufg1.Reader ist eine superclass mit mehreren sub-classes damit es so wie eine verbesserte version von eine scanner sein kann.
+        BufferedReader br = new BufferedReader(r); //Reader ist eine superclass mit mehreren sub-classes damit es so wie eine verbesserte version von eine scanner sein kann.
 
         String name = "";
 
