@@ -30,28 +30,23 @@ public class AddressBook {
         switch (performTask) {
             case 1 -> {
                 gatherUserInformation(scanner, addressBookList);
-                break;
             }
 
             case 2 -> {
                 System.out.println("There are currently " + addressBookList.size() + " People in this address book");
-                break;
             }
 
             case 3 -> {
                 findUser(scanner, addressBookList);
-                break;
             }
 
             case 4 -> {
                 deleteUser(scanner, addressBookList);
-                break;
             }
 //TODO Scanner so wie weg bekommen für immer(mit Readern) Utility class für scanner machen NICHT reader benutzen.
             case 5 -> {
                 programmEnd = true;
                 System.out.println("bye");
-                break;
             }
         }
         return programmEnd;
@@ -100,8 +95,6 @@ public class AddressBook {
         }
 
         addressBookList.add(new Contact(name, mail, phoneNumber));
-
-        return;
     }
 
     private static String getUserEmail(Scanner scanner, List<Contact> addressBookList) {
