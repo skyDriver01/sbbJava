@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StreamingSite {
+    static List<Movies> movies = new ArrayList<>();
     public static void executeSite() {
+        initMovies();
         List<Person> tempList = new ArrayList<>();
         tempList.add(new Person("siu", "siu", "siu@", "1234 1234 1234 1234", "12/12", "012", true, Person.SubscriptionType.MONTHLY));
         System.out.println("Hello, What would you like to do?");
@@ -259,40 +261,38 @@ public class StreamingSite {
     }
 
     public static void nameSearch() {
-        movies();
         String movieFinder = InputIn.nextLineOut("Type in the movie name or a word that might appear in its name (if you want to see all Movies just press enter)");
-        for (Movies movieList : movies()) {
-            if (movieList.getName().toLowerCase().contains(movieFinder)) {
-                System.out.println(movieList.getName());
+        for (Movies movieSave : movies) {      //movieSave ist die Klasse wo alles abgespeichert ist von den Infos der Filme
+            if (movieSave.getName().toLowerCase().contains(movieFinder)) {
+                System.out.println(movieSave.getName());
             }
         }
         String getInformation = InputIn.nextLineOut("Which of these Movies do you want the Information of");
-        for (Movies movieList : movies()) {
-            if (movieList.getName().equalsIgnoreCase(getInformation)) {
-                movieList.setViews(movieList.getViews() + 1);
-                System.out.println(movieList.getName() + " " + movieList.getDuration() + " " + movieList.getGenre() + " " + movieList.getProducer() + " " + movieList.getViews() + " " + movieList.isViewed());
+        for (Movies movieSave : movies) {
+            if (movieSave.getName().equalsIgnoreCase(getInformation)) {
+                movieSave.setViews(movieSave.getViews() + 1);
+                System.out.println(movieSave.getName() + " " + movieSave.getDuration() + " " + movieSave.getGenre() + " " + movieSave.getProducer() + " " + movieSave.getViews() + " " + movieSave.isViewed());
             }
         }
     }
 
     public static void genreSearch() {
-        movies();
         String genreFinder = InputIn.nextLineOut("Type in the Genre of the Movie you want to find. Keep in mind the Genre might not fit any movie");
-        for (Movies movieList : movies()) {
-            if (movieList.getGenre().toLowerCase().contains(genreFinder)) {
-                System.out.println(movieList.getName());
+        for (Movies movieSave : movies) {
+            if (movieSave.getGenre().toLowerCase().contains(genreFinder)) {
+                System.out.println(movieSave.getName());
             }
         }
         String getInformation = InputIn.nextLineOut("Which of these Movies do you want the Information of");
-        for (Movies movieList : movies()) {
-            if (movieList.getName().equalsIgnoreCase(getInformation)) {
-                movieList.setViews(movieList.getViews() + 1);
-                System.out.println(movieList.getDuration() + " " + movieList.getGenre() + " " + movieList.getProducer() + " " + movieList.getViews() + " " + movieList.isViewed());
+        for (Movies movieSave : movies) {
+            if (movieSave.getName().equalsIgnoreCase(getInformation)) {
+                movieSave.setViews(movieSave.getViews() + 1);
+                System.out.println(movieSave.getDuration() + " " + movieSave.getGenre() + " " + movieSave.getProducer() + " " + movieSave.getViews() + " " + movieSave.isViewed());
             }
         }
     }
 
-    public static List<Movies> movies() {
+    public static void initMovies() {
         List<Movies> movieList = new ArrayList<>();
         movieList.add(new Movies("the Godfather", Duration.ofMinutes(175), "Crime " + "Drama", "Francis Ford Coppola", 4322, false));
         movieList.add(new Movies("the Shawshank Redemption", Duration.ofMinutes(142), "Drama", "Frank Darabont", 11239, false));
@@ -306,6 +306,6 @@ public class StreamingSite {
         movieList.add(new Movies("joker", Duration.ofMinutes(122), "Thriller " + "Detective Story " + "Drama", "Todd Phillips", 999999998, false));
         movieList.add(new Movies("the Wolf of Wall Street", Duration.ofMinutes(180), "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", 1234543, false));
         movieList.add(new Movies("the Truman Show", Duration.ofMinutes(103), "Drama " + "Comedy", "Peter Weir", 999999997, false));
-        return movieList;
+        movies = movieList;
     }
 }
