@@ -24,4 +24,11 @@ Die Standard Befehle:
 + git init = create a new repository
 + git config = configure a name and email so commits will work because they need that info
 + exit = exit the terminal 0-0
+---
+Static
+---
+###
+Wenn etwas static ist  vordefinieren wie  damit nicht so machen musst : Variabel variabel = new variabel();
+und non-Static objekt variabel muss neu immer angefüngen
+###
 ###

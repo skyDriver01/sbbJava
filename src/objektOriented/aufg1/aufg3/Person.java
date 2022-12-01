@@ -1,5 +1,8 @@
 package objektOriented.aufg1.aufg3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
     final String username;
     final String password;
@@ -9,7 +12,7 @@ public class Person {
     final String creditCardSecurityNumber;
     final boolean subscription;
     final SubscriptionType subscriptionType;
-    private Movies watchedMovies;
+    private List<Movie> watchedMovies;
     public enum SubscriptionType {MONTHLY, YEARLY}
 
     public Person(String username, String password, String email, String creditCard, String creditCardExperation, String creditCardSecurityNumber, boolean subscription, SubscriptionType subscriptionType) {
@@ -21,6 +24,7 @@ public class Person {
         this.creditCardSecurityNumber = creditCardSecurityNumber;
         this.subscription = subscription;
         this.subscriptionType = subscriptionType;
+        watchedMovies = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -52,4 +56,13 @@ public class Person {
     public SubscriptionType getSubscriptionType() {
         return subscriptionType;
     }
+
+    public List<Movie> getWatchedMovies() {
+        return watchedMovies;
+    }
+
+    public void watchMovie(Movie movie) {
+        this.watchedMovies.add(movie);
+    }
+
 }
