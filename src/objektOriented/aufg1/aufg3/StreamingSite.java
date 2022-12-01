@@ -140,7 +140,7 @@ public class StreamingSite {
             if (desiredLogin.equals(existingAccount.getUsername())) {
                 String desiredPassword = InputIn.nextLineOut("Type your password");
                 if (desiredPassword.equals(existingAccount.getPassword())) {
-                    System.out.println("Welcome back. Enjoy the movies"); //TODO Namen gut ändern
+                    System.out.println("Welcome back. Enjoy the movies");
                     exit = true;
                     streamSiteOn(existingAccount);
                 } else {
