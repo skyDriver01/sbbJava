@@ -131,7 +131,7 @@ public class StreamingSite {
         System.out.println("What account would you like to enter?");
         for (Person entry : tempList) {
             System.out.println(entry.getUsername() + ", ");
-        }                   //TODO scanner ändern zu InputIn util class
+        }
         String desiredLogin = InputIn.nextLineOut("Type your username");
         for (Person entry : tempList) {
             if (desiredLogin.equals(entry.getUsername())) {
@@ -144,7 +144,7 @@ public class StreamingSite {
                     while (streamsiteOn) {
                         System.out.println("1: Search for a Movie");
                         System.out.println("2: Change your CreditCard Information");
-                        System.out.println("3: View the amount of people with a subscription");         //TODO utility class für scanner so wie schon einmal erwähnt
+                        System.out.println("3: View the amount of people with a subscription");
                         System.out.println("4 Show all creditCard information's of people with a monthly subscription");
                         System.out.println("5: Logout of your account");
                         System.out.println("[Select your Number]");
@@ -199,7 +199,7 @@ public class StreamingSite {
                 case 1 -> {
                     int search = Integer.parseInt(InputIn.nextLineOut("Type 1: To search for a movie with its name. Type 2: To search for a movie with its genre."));
                     switch (search) {
-                        case 1 -> nameSearch(); //TODO viewed und views machen
+                        case 1 -> nameSearch();
                         case 2 -> genreSearch();
                     }
                 }
@@ -257,10 +257,6 @@ public class StreamingSite {
             }
         }
     }
-    public static List<Movies> watchedMovies(){
-        List<Movies> watchedMovieList = new ArrayList<>();
-        return watchedMovieList;
-    }
 
     public static void nameSearch() {
         movies();
@@ -273,6 +269,7 @@ public class StreamingSite {
         String getInformation = InputIn.nextLineOut("Which of these Movies do you want the Information of");
         for (Movies movieList : movies()) {
             if (movieList.getName().equalsIgnoreCase(getInformation)) {
+                movieList.setViews(movieList.getViews() + 1);
                 System.out.println(movieList.getName() + " " + movieList.getDuration() + " " + movieList.getGenre() + " " + movieList.getProducer() + " " + movieList.getViews() + " " + movieList.isViewed());
             }
         }
@@ -289,6 +286,7 @@ public class StreamingSite {
         String getInformation = InputIn.nextLineOut("Which of these Movies do you want the Information of");
         for (Movies movieList : movies()) {
             if (movieList.getName().equalsIgnoreCase(getInformation)) {
+                movieList.setViews(movieList.getViews() + 1);
                 System.out.println(movieList.getDuration() + " " + movieList.getGenre() + " " + movieList.getProducer() + " " + movieList.getViews() + " " + movieList.isViewed());
             }
         }
@@ -308,7 +306,6 @@ public class StreamingSite {
         movieList.add(new Movies("joker", Duration.ofMinutes(122), "Thriller " + "Detective Story " + "Drama", "Todd Phillips", 999999998, false));
         movieList.add(new Movies("the Wolf of Wall Street", Duration.ofMinutes(180), "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", 1234543, false));
         movieList.add(new Movies("the Truman Show", Duration.ofMinutes(103), "Drama " + "Comedy", "Peter Weir", 999999997, false));
-        //TODO make the duration parameter a duration datatype not a string
         return movieList;
     }
 }

@@ -4,11 +4,11 @@ import java.time.Duration;
 
 public class Movies {
     final String name;
-    final Duration duration; //TODO: Datentyp für Dauer, z.B. Duration
+    final Duration duration;
     final String genre;
     final String producer;
-    final int views;
-    final boolean viewed; //TODO eine liste machen wo zeigt welche personen ihn gesehen haben oder zu einer person eine Liste machen wo zeigt welche filme angesehen worden sind.
+    private int views;
+    final boolean viewed; //TODO person eine Liste machen wo zeigt welche filme angesehen worden sind.
 
     public Movies(String name, Duration duration, String genre, String producer, int views, boolean viewed) {
         this.name = name;
@@ -36,6 +36,7 @@ public class Movies {
         return producer;
     }
 
+
     public int getViews() {
         return views;
     }
@@ -44,7 +45,10 @@ public class Movies {
         return viewed;
     }
 
-    @Override
+    public void setViews(int views) {
+        this.views = views;
+    }
+
     public String toString() {
         return "StreamingDienstFilme{" + "name='" + name + '\'' + ", duration='" + duration + '\''
                 + ", genre='" + genre + '\'' + ", producer='" + producer + '\'' +

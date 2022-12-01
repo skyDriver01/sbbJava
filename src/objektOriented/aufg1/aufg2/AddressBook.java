@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AddressBook {
-    public static void executeTheSite() { //TODO Claudio fragen wegen der Utility class InoutIn , weil sie nicht aufgerufen werden kann
+    public static void executeTheSite() {
         List<Contact> addressBookList = new ArrayList<>();
         HashMap<Integer, String> systemOptions = new HashMap<Integer, String>();
         boolean programmEnd = false;
