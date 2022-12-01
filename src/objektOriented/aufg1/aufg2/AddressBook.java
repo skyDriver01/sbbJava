@@ -3,11 +3,9 @@ package objektOriented.aufg1.aufg2;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 
 public class AddressBook {
     public static void executeTheSite() { //TODO Claudio fragen wegen der Utility class InoutIn , weil sie nicht aufgerufen werden kann
-        Scanner scanner = new Scanner(System.in);
         List<Contact> addressBookList = new ArrayList<>();
         HashMap<Integer, String> systemOptions = new HashMap<Integer, String>();
         boolean programmEnd = false;
@@ -20,15 +18,15 @@ public class AddressBook {
             System.out.println("5: Close the book");
             System.out.println("________________________________________________________");
             System.out.println("Type the Number of what you would like to do.(1,2,3,4,5)");
-            int performTask = Integer.parseInt(scanner.nextLine());
-            programmEnd = getOptionsForTheAddressBook(scanner, addressBookList, false, performTask);
+            int performTask = Integer.parseInt(InputIn.nextLine());
+            programmEnd = getOptionsForTheAddressBook(addressBookList, false, performTask);
         }
     }
 
-    private static boolean getOptionsForTheAddressBook(Scanner scanner, List<Contact> addressBookList, boolean programmEnd, int performTask) {
+    private static boolean getOptionsForTheAddressBook(List<Contact> addressBookList, boolean programmEnd, int performTask) {
         switch (performTask) {
             case 1 -> {
-                gatherUserInformation(scanner, addressBookList);
+                gatherUserInformation(addressBookList);
             }
 
             case 2 -> {
@@ -36,11 +34,11 @@ public class AddressBook {
             }
 
             case 3 -> {
-                findUser(scanner, addressBookList);
+                findUser(addressBookList);
             }
 
             case 4 -> {
-                deleteUser(scanner, addressBookList);
+                deleteUser(addressBookList);
             }
             case 5 -> {
                 programmEnd = true;
@@ -50,13 +48,13 @@ public class AddressBook {
         return programmEnd;
     }
 
-    private static void deleteUser(Scanner scanner, List<Contact> addressBookList) {
+    private static void deleteUser(List<Contact> addressBookList) {
         System.out.println("What Contact do you want to Delete?");
         for (Contact entry : addressBookList) {
             System.out.println(entry.getEmail());
         }
 
-        String wantedEmail = scanner.nextLine();
+        String wantedEmail = InputIn.nextLine();
 
         for (int i = 0; i < addressBookList.size(); i++) {
             if (addressBookList.get(i).getEmail().equals(wantedEmail)) {
@@ -65,7 +63,7 @@ public class AddressBook {
         }
     }
 
-    private static void findUser(Scanner scanner, List<Contact> addressBookList) {
+    private static void findUser(List<Contact> addressBookList) {
         System.out.println("What Persons Information do you want to get?");
         for (Contact entry : addressBookList) {
             System.out.println("--------------------");
@@ -79,10 +77,9 @@ public class AddressBook {
         }
     }
 
-    private static void gatherUserInformation(Scanner scanner, List<Contact> addressBookList) {
+    private static void gatherUserInformation(List<Contact> addressBookList) {
         String name = InputIn.nextLineOut("Enter the new Persons Name");
-
-        String mail = getUserEmail(scanner, addressBookList);
+        String mail = getUserEmail(addressBookList);
 
         String phoneNumber = InputIn.nextLineOut("Enter the Persons PhoneNumber");
         while (!(phoneNumber.contains("+") && phoneNumber.length() >= 16)) {
@@ -92,7 +89,7 @@ public class AddressBook {
         addressBookList.add(new Contact(name, mail, phoneNumber));
     }
 
-    private static String getUserEmail(Scanner scanner, List<Contact> addressBookList) {
+    private static String getUserEmail(List<Contact> addressBookList) {
         boolean noSameMail = true;
         String mail = InputIn.nextLineOut("What is your E-mail address?");
         boolean containsAnAet = false;
@@ -100,15 +97,13 @@ public class AddressBook {
             if (mail.contains("@")) {
                 containsAnAet = true;
             } else {
-                System.out.println("Your mail needs an @");
-                mail = scanner.nextLine();
+                mail = InputIn.nextLineOut("Your mail needs an @");
             }
         }
         for (Contact entry : addressBookList) {
             while (noSameMail) { //can't have the same Email twice.
                 if (mail.equals(entry.getEmail())) {
-                    System.out.println("Email is already in use try another one ");
-                    mail = scanner.nextLine();
+                    mail = InputIn.nextLineOut("Email is already in use try another one");
                 }
                 if (!mail.equals(entry.getEmail())) {
                     noSameMail = false;
