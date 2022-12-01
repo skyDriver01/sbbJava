@@ -32,7 +32,7 @@ public class immobilienFirmaSite {
                     break;
                 case 2: //TODO janitor given
                     property().stream().forEach(a -> System.out.println(a.getAddress()));
-                    String input = InputIn.nextLineOut("Type the adress of the Property that you want to get the janitor from.");
+                    String input = InputIn.nextLineOut("Type the address of the Property that you want to get the janitor from.");
                     property().stream().filter(property -> property.getAddress().equals(input)).toList().stream().forEach(a -> System.out.println(a.getJanitor()));
                     break;
                 case 3:  //todo specific property contract
