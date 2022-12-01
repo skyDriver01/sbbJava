@@ -8,16 +8,18 @@ import java.util.List;
 
 public class StreamingSite {
     static List<Movie> movies;
-    static List<Person> accounts = new ArrayList<>(); //merken Static ist nicht immer gut. "Sobald du static los hasst kann alles besser werden" -Linus von Sbb
+    static List<Person> accounts = new ArrayList<>(); //merken Static ist nicht immer gut. "Sobald du static weg hasst kann alles besser/leichter und fehlerfreier werden" -Linus von Sbb
 
     public static void executeSite() {
-            initMovies();
-            accounts.add(new Person("siu", "siu", "siu@", "1234 1234 1234 1234", "12/12", "012", true, Person.SubscriptionType.MONTHLY));
-            System.out.println("Hello, What would you like to do?");
-            System.out.println("1: Create an Account");
-            System.out.println("2: Log into your Account");
-            System.out.println("3: Remove an account");
-            System.out.println("4: Exit");
+        initMovies();
+        accounts.add(new Person("siu", "siu", "siu@", "1234 1234 1234 1234", "12/12", "012", true, Person.SubscriptionType.MONTHLY));
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("Hello, What would you like to do?");
+        System.out.println("1: Create an Account");
+        System.out.println("2: Log into your Account");
+        System.out.println("3: Remove an account");
+        System.out.println("4: Exit");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         switchOptions();
     }
@@ -38,8 +40,8 @@ public class StreamingSite {
     private static boolean gatherUsersInformation() {
         boolean noSameUsernames = true;
         String username = InputIn.nextLineOut("Enter your username");
-        for (Person entry : accounts) {
-            while (username.equals(entry.getUsername())) {
+        for (Person existingAccount : accounts) {
+            while (username.equals(existingAccount.getUsername())) {
                 System.out.println("That Username is already in use please enter another one.");
                 username = InputIn.nextLine();
             }
@@ -67,17 +69,17 @@ public class StreamingSite {
         }
         accounts.add(new Person(username, password, email, creditcard, creditcardExperation, creditcardSecurityNumber, subscription, subscriptionType));
 
-        streamSiteOn(accounts.get(accounts.size()-1));
+        streamSiteOn(accounts.get(accounts.size() - 1));
         return noSameUsernames;
     }
 
     private static String getUsersEmail() {
         boolean noSameMail = true;
-        boolean loop = true;
+        boolean spellChecker = true;
         String email = InputIn.nextLineOut("What is your E-mail address?");
         while (noSameMail) {
-            for (Person entry : accounts) {
-                while (loop) {
+            for (Person existingAccount : accounts) {
+                while (spellChecker) {
                     boolean containsAnAet = false;
                     while (!containsAnAet) {
                         if (email.contains("@")) {
@@ -87,13 +89,13 @@ public class StreamingSite {
                             email = InputIn.nextLine();
                         }
                     }
-                    if (email.equals(entry.getEmail())) {
+                    if (email.equals(existingAccount.getEmail())) {
                         System.out.println("Email is already in use try another one ");
                         email = InputIn.nextLine();
                     } else {
-                        loop = false;
+                        spellChecker = false;
                     }
-                    if (!email.equals(entry.getEmail())) {
+                    if (!email.equals(existingAccount.getEmail())) {
                         noSameMail = false;
                     }
                 }
@@ -130,23 +132,57 @@ public class StreamingSite {
 
     private static boolean loginToExistingUser(boolean exit) {
         System.out.println("What account would you like to enter?");
-        for (Person entry : accounts) {
-            System.out.println(entry.getUsername() + ", ");
+        for (Person existingAccounts : accounts) {
+            System.out.println(existingAccounts.getUsername() + ", ");
         }
         String desiredLogin = InputIn.nextLineOut("Type your username");
-        for (Person entry : accounts) {
-            if (desiredLogin.equals(entry.getUsername())) {
+        for (Person existingAccount : accounts) {
+            if (desiredLogin.equals(existingAccount.getUsername())) {
                 String desiredPassword = InputIn.nextLineOut("Type your password");
-                if (desiredPassword.equals(entry.getPassword())) {
+                if (desiredPassword.equals(existingAccount.getPassword())) {
                     System.out.println("Welcome back. Enjoy the movies"); //TODO Namen gut ändern
                     exit = true;
-                    streamSiteOn(entry);
+                    streamSiteOn(existingAccount);
                 } else {
                     System.out.println("Wrong Password");
                 }
             }
         }
         return exit;
+    }
+
+    private static void streamSiteOn(Person loggedInAccount) {
+        boolean streamsiteOn;
+        streamsiteOn = false;
+        System.out.println("Welcome to the Site. Please keep in mind while searching for movies to use proper grammar. Enjoy the movies");
+        while (!streamsiteOn) {
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("1: Search for a Movie");
+            System.out.println("2: Change your CreditCard Information");
+            System.out.println("3: View the amount of people with a subscription");
+            System.out.println("4 Show all creditCard information's of people with a monthly subscription");
+            System.out.println("5: Show Movie-Search History");
+            System.out.println("6: Logout of your account");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("[Select your Number]");
+
+
+            int options = Integer.parseInt(InputIn.nextLine());
+            switch (options) {
+                case 1 -> {
+                    int search = Integer.parseInt(InputIn.nextLineOut("Type 1: To search for a movie with its name. Type 2: To search for a movie with its genre."));
+                    switch (search) {
+                        case 1 -> nameSearch(loggedInAccount);
+                        case 2 -> genreSearch(loggedInAccount);
+                    }
+                }
+                case 2 -> changeCreditcard();
+                case 3 -> countUsersWithSubscriptions();
+                case 4 -> getCreditcardInfoFromMonthlyPaymentUsers();
+                case 5 -> displayMovieSearchHistory(loggedInAccount);
+                case 6 -> streamsiteOn = logOutOfTheStreamSite();
+            }
+        }
     }
 
     private static void countUsersWithSubscriptions() {
@@ -159,64 +195,22 @@ public class StreamingSite {
         System.out.println(counter);
     }
 
-    private static void streamSiteOn(Person entry) {
-        boolean streamsiteOn;
-        streamsiteOn = false;
-        System.out.println("Welcome to the Site. Please keep in mind while searching for movies to use proper grammar. Enjoy the movies");
-        while (!streamsiteOn) {
-            System.out.println("1: Search for a Movie");
-            System.out.println("2: Change your CreditCard Information");
-            System.out.println("3: View the amount of people with a subscription");
-            System.out.println("4 Show all creditCard information's of people with a monthly subscription");
-            System.out.println("5: Show all watched Movies");
-            System.out.println("6: Logout of your account");
-            System.out.println("[Select your Number]");
-
-            int options = Integer.parseInt(InputIn.nextLine());
-            switch (options) {
-                case 1 -> {
-                    int search = Integer.parseInt(InputIn.nextLineOut("Type 1: To search for a movie with its name. Type 2: To search for a movie with its genre."));
-                    switch (search) {
-                        case 2 -> genreSearch(entry);
-                        case 1 -> nameSearch(entry);
-                    }
-                }
-                case 2 -> changeCreditcard();
-                case 3 -> countUsersWithSubscriptions();
-                case 4 -> getCreditcardInfoFromMonthlyPaymentUsers();
-                case 5 -> displayWatchedMovies(accounts.get(accounts.size() - 1));
-                case 6 -> streamsiteOn = logOutOfTheStreamSite();
-            }
-        }
-    }
-
-    private static boolean logOutOfTheStreamSite() {
-        System.out.println("Hello, What would you like to do?");
-        System.out.println("1: Create an Account");
-        System.out.println("2: Log into your Account");
-        System.out.println("3: Remove an account");
-        System.out.println("4: Exit");
-
-        switchOptions();
-        return true;
-    }
-
-    private static void displayWatchedMovies(Person entry) {
-        entry.getWatchedMovies().forEach(movie -> System.out.println(movie.name));
+    private static void displayMovieSearchHistory(Person loggedInAccount) {
+        loggedInAccount.getWatchedMovies().forEach(movie -> System.out.println(movie.name));
     }
 
     private static void getCreditcardInfoFromMonthlyPaymentUsers() {
-        for (Person entry : accounts) {
-            if (entry.getSubscriptionType().equals(Person.SubscriptionType.MONTHLY)) {
-                System.out.println(entry.getCreditCard());
+        for (Person loggedInAccount : accounts) {
+            if (loggedInAccount.getSubscriptionType().equals(Person.SubscriptionType.MONTHLY)) {
+                System.out.println(loggedInAccount.getCreditCard());
             }
         }
     }
 
     private static void deleteUser() {
         System.out.println("What Contact do you want to Delete?");
-        for (Person entry : accounts) {
-            System.out.println(entry.getUsername());
+        for (Person existingAccounts : accounts) {
+            System.out.println(existingAccounts.getUsername());
         }
         String input = InputIn.nextLine();
         for (int i = 0; i < accounts.size(); i++) {
@@ -241,7 +235,7 @@ public class StreamingSite {
         }
     }
 
-    public static void nameSearch(Person entry) {
+    public static void nameSearch(Person loggedInAccount) {
         String movieFinder = InputIn.nextLineOut("Type in the movie name or a word that might appear in its name (if you want to see all Movies just press enter)");
         for (Movie movieSave : movies) {      //movieSave ist die Klasse wo alles abgespeichert ist von den Infos der Filme
             if (movieSave.getName().toLowerCase().contains(movieFinder)) {
@@ -253,12 +247,12 @@ public class StreamingSite {
             if (movieSave.getName().equalsIgnoreCase(getInformation)) {
                 movieSave.setViews(movieSave.getViews() + 1);
                 System.out.println(movieSave.getName() + " " + movieSave.getDuration() + " " + movieSave.getGenre() + " " + movieSave.getProducer() + " " + movieSave.getViews());
-                entry.watchMovie(movieSave);
+                loggedInAccount.watchMovie(movieSave);
             }
         }
     }
 
-    public static void genreSearch(Person entry) {
+    public static void genreSearch(Person loggedInAccount) {
         String genreFinder = InputIn.nextLineOut("Type in the Genre of the Movie you want to find. Keep in mind the Genre might not fit any movie");
         for (Movie movieSave : movies) {
             if (movieSave.getGenre().toLowerCase().contains(genreFinder)) {
@@ -270,9 +264,22 @@ public class StreamingSite {
             if (movieSave.getName().equalsIgnoreCase(getInformation)) {
                 movieSave.setViews(movieSave.getViews() + 1);
                 System.out.println(movieSave.getDuration() + " " + movieSave.getGenre() + " " + movieSave.getProducer() + " " + movieSave.getViews());
-                entry.watchMovie(movieSave);
+                loggedInAccount.watchMovie(movieSave);
             }
         }
+    }
+
+    private static boolean logOutOfTheStreamSite() {
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("Hello, What would you like to do?");
+        System.out.println("1: Create an Account");
+        System.out.println("2: Log into your Account");
+        System.out.println("3: Remove an account");
+        System.out.println("4: Exit");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+        switchOptions();
+        return true;
     }
 
     public static void initMovies() {
