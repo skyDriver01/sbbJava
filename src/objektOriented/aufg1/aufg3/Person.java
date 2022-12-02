@@ -13,6 +13,7 @@ public class Person {
     final boolean subscription;
     final SubscriptionType subscriptionType;
     private List<Movie> watchedMovies;
+
     public enum SubscriptionType {MONTHLY, YEARLY}
 
     public Person(String username, String password, String email, String creditCard, String creditCardExperation, String creditCardSecurityNumber, boolean subscription, SubscriptionType subscriptionType) {

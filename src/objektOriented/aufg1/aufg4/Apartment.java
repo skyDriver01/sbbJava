@@ -1,67 +1,43 @@
 package objektOriented.aufg1.aufg4;
 
 public class Apartment {
-    private String Adress;
-    private int Floor;
-    private int HouseNumber;
-    String Price;
-    private String Description;
-    private String Tenant;
+    public static String address; //TODO maybe make it an enum not a String
+    private int floor;
+    private int houseNumber;
+    public static String price;
+    private String description;
+    private String tenant;
 
-    public String getAdress() {
-        return Adress;
+    public Apartment(String adress, int floor, int houseNumber, String price, String description, String tenant) {
+        this.address = adress;
+        this.floor = floor;
+        this.houseNumber = houseNumber;
+        this.price = price;
+        this.description = description;
+        this.tenant = tenant;
     }
 
-    public void setAdress(String adress) {
-        Adress = adress;
+    public String getAddress() {
+        return address;
     }
 
     public int getFloor() {
-        return Floor;
-    }
-
-    public void setFloor(int floor) {
-        Floor = floor;
+        return floor;
     }
 
     public int getHouseNumber() {
-        return HouseNumber;
-    }
-
-    public void setHouseNumber(int houseNumber) {
-        HouseNumber = houseNumber;
+        return houseNumber;
     }
 
     public String getPrice() {
-        return Price;
-    }
-
-    public void setPrice(String price) {
-        Price = price;
+        return price;
     }
 
     public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
+        return description;
     }
 
     public String getTenant() {
-        return Tenant;
-    }
-
-    public void setTenant(String tenant) {
-        Tenant = tenant;
-    }
-
-    public Apartment(String adress, int floor, int houseNumber, String price, String description, String tenant) {
-        Adress = adress;
-        Floor = floor;
-        HouseNumber = houseNumber;
-        Price = price;
-        Description = description;
-        Tenant = tenant;
+        return tenant;
     }
 }
