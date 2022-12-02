@@ -9,6 +9,10 @@ public class AddressBook {
         List<Contact> addressBookList = new ArrayList<>();
         HashMap<Integer, String> systemOptions = new HashMap<Integer, String>();
         boolean programmEnd = false;
+        showSiteFunctions (addressBookList, programmEnd);
+    }
+
+    private static void showSiteFunctions(List<Contact> addressBookList, boolean programmEnd) {
         while (!programmEnd) {
             System.out.println("--------------------------------------------------------");
             System.out.println("1: Add a new Person in the address book");
@@ -50,12 +54,13 @@ public class AddressBook {
 
     private static void deleteUser(List<Contact> addressBookList) {
         System.out.println("What Contact do you want to Delete?");
-        for (Contact entry : addressBookList) {
-            System.out.println(entry.getEmail());
-        }
+        showAllExistingEmails (addressBookList);
 
         String wantedEmail = InputIn.nextLine();
+        deleteTheWantedPerson (addressBookList, wantedEmail);
+    }
 
+    private static void deleteTheWantedPerson(List<Contact> addressBookList, String wantedEmail) {
         for (int i = 0; i < addressBookList.size(); i++) {
             if (addressBookList.get(i).getEmail().equals(wantedEmail)) {
                 addressBookList.remove(i);
@@ -63,13 +68,21 @@ public class AddressBook {
         }
     }
 
+    private static void showAllExistingEmails(List<Contact> addressBookList) {
+        for (Contact entry : addressBookList) {
+            System.out.println(entry.getEmail());
+        }
+    }
+
     private static void findUser(List<Contact> addressBookList) {
         System.out.println("What Persons Information do you want to get?");
-        for (Contact entry : addressBookList) {
-            System.out.println("--------------------");
-            System.out.print(entry.getName() + ", ");
-        }
+        getAllExistingPeople (addressBookList);
+
         String desiredPerson = InputIn.nextLine();
+        getTheInformationOfTheWantedPerson (addressBookList, desiredPerson);
+    }
+
+    private static void getTheInformationOfTheWantedPerson(List<Contact> addressBookList, String desiredPerson) {
         for (Contact entry : addressBookList) {
             if (entry.getName().equalsIgnoreCase(desiredPerson)) {
                 System.out.println(entry.getName() + " " + entry.getEmail() + " " + entry.getPhoneNumber());
@@ -77,8 +90,16 @@ public class AddressBook {
         }
     }
 
+    private static void getAllExistingPeople(List<Contact> addressBookList) {
+        for (Contact entry : addressBookList) {
+            System.out.println("--------------------");
+            System.out.print(entry.getName() + ", ");
+        }
+    }
+
     private static void gatherUserInformation(List<Contact> addressBookList) {
         String name = InputIn.nextLineOut("Enter the new Persons Name");
+
         String mail = getUserEmail(addressBookList);
 
         String phoneNumber = InputIn.nextLineOut("Enter the Persons PhoneNumber");
@@ -93,6 +114,12 @@ public class AddressBook {
         boolean noSameMail = true;
         String mail = InputIn.nextLineOut("What is your E-mail address?");
         boolean containsAnAet = false;
+        mail = checkIfTheEmailHasAnAet (mail, containsAnAet);
+        mail = checkIfThatEmailIsAlreadyInUse (addressBookList, noSameMail, mail);
+        return mail;
+    }
+
+    private static String checkIfTheEmailHasAnAet(String mail, boolean containsAnAet) {
         while (!containsAnAet) {
             if (mail.contains("@")) {
                 containsAnAet = true;
@@ -100,6 +127,10 @@ public class AddressBook {
                 mail = InputIn.nextLineOut("Your mail needs an @");
             }
         }
+        return mail;
+    }
+
+    private static String checkIfThatEmailIsAlreadyInUse(List<Contact> addressBookList, boolean noSameMail, String mail) {
         for (Contact entry : addressBookList) {
             while (noSameMail) { //can't have the same Email twice.
                 if (mail.equals(entry.getEmail())) {
