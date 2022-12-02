@@ -68,8 +68,8 @@ public class ImmobilienFirmaSite {
 
     public static List<Property> property() {
         List<Property> propertyList = new ArrayList<> ();
-        propertyList.add (new Property ("Luka Nikolic", "Rahul Gurung", "Jamie Bläsi", "Kornweg 71"));
-        propertyList.add (new Property ("Yanir Gopal", "Neil Ramseier", "Sven Schmid", "Ensingerstrasse 36"));
+        propertyList.add (new Property ("Luka Nikolic", "Rahul Gurung", "Jamie Bläsi", "Kornweg71"));
+        propertyList.add (new Property ("Yanir Gopal", "Neil Ramseier", "Sven Schmid", "Ensingerstrasse36"));
         return propertyList;
     }
 
@@ -112,11 +112,11 @@ public class ImmobilienFirmaSite {
     public static void fullContract() {
         System.out.println ("From what property do you want to see the Contracts");
         property ().stream ().forEach (a -> System.out.println (a.getAddress ()));
-        if (InputIn.nextLine ().toUpperCase ().equals (Contract.getPropertyContract.KORNWEG71)) { //TODO anderen weg finden.
+        if (InputIn.nextLine().toUpperCase().equals(Contract.getPropertyContract.KORNWEG71.toString ())) { //TODO anderen weg finden.
             kornwegContracts ();
         }
 
-        if (InputIn.nextLine ().toUpperCase ().equals (Contract.getPropertyContract.Ensingerstrasse36)) {
+        else if (InputIn.nextLine ().toUpperCase ().equals (Contract.getPropertyContract.Ensingerstrasse36.toString ())) {
             ensingerContracts ();
         } else {
             System.out.println ("Whatever you typed is not valid sorry.");
@@ -129,11 +129,13 @@ public class ImmobilienFirmaSite {
         System.out.println ("Type firstfloor or secondfloor");
         kornwegApartments = switch (InputIn.nextLine ().toUpperCase ()) {
             case "FIRSTFLOOR" -> {
-                for (Apartment getApartmentInformation : apartment) {
-                    if (getApartmentInformation.getFloor () == 1 && getApartmentInformation.getAddress () == "Kornweg 71") {
-                        System.out.println (getApartmentInformation.getPrice ());
+                System.out.println ("hey");
+                for (Apartment apartment : apartment){              //Todo make it acknowledge the for-each
+                    if (apartment.getFloor () == 1 && apartment.getAddress () == "Kornweg71"){
+                        System.out.println (apartment.getPrice ());
                     }
                 }
+                    //apartment.stream ().forEach (a -> System.out.println (a.getPrice ())); //TODO rn it prints only 2750Fr/ make it print the value of that buildings floor
                 yield Contract.getKornwegApartments.FIRSTFLOOR;
             }
             case "SECONDFLOOR" -> {
@@ -158,8 +160,8 @@ public class ImmobilienFirmaSite {
           case "THIRDFLOOR" -> {
               yield Contract.getEnsingerApartments.THIRDFLOOR;
           }
+            default -> null;
         };
-
-
+        return ensingerApartments;
     }
 }
