@@ -76,25 +76,25 @@ public class ImmobilienFirmaSite {
     public static void initApartment() {
         List<Apartment> apartmentList = new ArrayList<> ();
         //Apartments for the first Property \/
-        apartmentList.add (new Apartment ("Kornweg 71", 1, 11, "1'900Fr.", "3 Room apartment with a good earthy feel to it", "Shervan Yacoub"));
-        apartmentList.add (new Apartment ("Kornweg 71", 1, 12, "1'900Fr.", "3 Room apartment with a good earthy feel to it", "Tobias Merino"));
-        apartmentList.add (new Apartment ("Kornweg 71", 1, 13, "1'900Fr.", "3 Room apartment with a good earthy feel to it", "Nick Bracher"));
-        apartmentList.add (new Apartment ("Kornweg 71", 1, 13, "1'900Fr.", "3 Room apartment with a good earthy feel to it", ""));
-        apartmentList.add (new Apartment ("Kornweg 71", 2, 21, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", "Yanick Minder"));
-        apartmentList.add (new Apartment ("Kornweg 71", 2, 22, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", "Manuel Möri"));
-        apartmentList.add (new Apartment ("Kornweg 71", 2, 23, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", "Jannik Pulfer"));
-        apartmentList.add (new Apartment ("Kornweg 71", 2, 24, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", ""));
+        apartmentList.add (new Apartment ("Kornweg71", 1, 11, "1'900Fr.", "3 Room apartment with a good earthy feel to it", "Shervan Yacoub"));
+        apartmentList.add (new Apartment ("Kornweg71", 1, 12, "1'900Fr.", "3 Room apartment with a good earthy feel to it", "Tobias Merino"));
+        apartmentList.add (new Apartment ("Kornweg71", 1, 13, "1'900Fr.", "3 Room apartment with a good earthy feel to it", "Nick Bracher"));
+        apartmentList.add (new Apartment ("Kornweg71", 1, 13, "1'900Fr.", "3 Room apartment with a good earthy feel to it", ""));
+        apartmentList.add (new Apartment ("Kornweg71", 2, 21, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", "Yanick Minder"));
+        apartmentList.add (new Apartment ("Kornweg71", 2, 22, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", "Manuel Möri"));
+        apartmentList.add (new Apartment ("Kornweg71", 2, 23, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", "Jannik Pulfer"));
+        apartmentList.add (new Apartment ("Kornweg71", 2, 24, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", ""));
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Apartments for the second Property \/
-        apartmentList.add (new Apartment ("Ensingerstrasse 36", 1, 11, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", "Tobias Merino"));
-        apartmentList.add (new Apartment ("Ensingerstrasse 36", 1, 12, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", "Michael Widmer"));
-        apartmentList.add (new Apartment ("Ensingerstrasse 36", 1, 13, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", ""));
-        apartmentList.add (new Apartment ("Ensingerstrasse 36", 2, 23, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", ""));
-        apartmentList.add (new Apartment ("Ensingerstrasse 36", 2, 21, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", "Michael Widmer"));
-        apartmentList.add (new Apartment ("Ensingerstrasse 36", 2, 22, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", "Arthur Deierlein"));
-        apartmentList.add (new Apartment ("Ensingerstrasse 36", 3, 31, "2'750Fr.", "6 Room apartment with big balcony and nice View", "Andrin Gurtner"));
-        apartmentList.add (new Apartment ("Ensingerstrasse 36", 3, 32, "2'750Fr.", "6 Room apartment with big balcony and nice View", "Lars Ruch"));
-        apartmentList.add (new Apartment ("Ensingerstrasse 36", 3, 33, "2'750Fr.", "6 Room apartment with big balcony and nice View", "Nick Bracher"));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 1, 11, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", "Tobias Merino"));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 1, 12, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", "Michael Widmer"));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 1, 13, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", ""));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 2, 23, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", ""));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 2, 21, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", "Michael Widmer"));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 2, 22, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", "Arthur Deierlein"));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 31, "2'750Fr.", "6 Room apartment with big balcony and nice View", "Andrin Gurtner"));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 32, "2'750Fr.", "6 Room apartment with big balcony and nice View", "Lars Ruch"));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 33, "2'750Fr.", "6 Room apartment with big balcony and nice View", "Nick Bracher"));
         apartment = apartmentList;
     }
 
@@ -112,7 +112,7 @@ public class ImmobilienFirmaSite {
     public static void fullContract() {
         System.out.println ("From what property do you want to see the Contracts");
         property ().stream ().forEach (a -> System.out.println (a.getAddress ()));
-        if (InputIn.nextLine ().toUpperCase ().equals (Contract.getPropertyContract.KORNWEG71)) {
+        if (InputIn.nextLine ().toUpperCase ().equals (Contract.getPropertyContract.KORNWEG71)) { //TODO anderen weg finden.
             kornwegContracts ();
         }
 
@@ -134,21 +134,32 @@ public class ImmobilienFirmaSite {
                         System.out.println (getApartmentInformation.getPrice ());
                     }
                 }
+                yield Contract.getKornwegApartments.FIRSTFLOOR;
             }
-        //    case "SECONDFLOOR" -> {}
+            case "SECONDFLOOR" -> {
+                yield Contract.getKornwegApartments.SECONDFLOOR;
+            }
+            default -> null;
         };
         return kornwegApartments;
     }
 
-    private static void ensingerContracts() {
+    private static Contract.getEnsingerApartments ensingerContracts() {
         Contract.getEnsingerApartments ensingerApartments;
         System.out.println ("Do you want to see the Contract for Firstfloor Apartments or from the SecondFloor Apartments or from the ThirdFloor Apartments?");
         System.out.println ("Type firstfloor, secondfloor or thirdfloor");
-        // ensingerApartments = switch (InputIn.nextLine ().toUpperCase ()) {
-        //  case "FIRSTFLOOR" -> {}
-        //  case "SECONDFLOOR" -> {}
-        //  case "THIRDFLOOR" -> {}
+        ensingerApartments = switch (InputIn.nextLine ().toUpperCase ()){
+          case "FIRSTFLOOR" -> {
+              yield Contract.getEnsingerApartments.FIRSTFLOOR;
+          }
+          case "SECONDFLOOR" -> {
+              yield Contract.getEnsingerApartments.SECONDFLOOR;
+          }
+          case "THIRDFLOOR" -> {
+              yield Contract.getEnsingerApartments.THIRDFLOOR;
+          }
+        };
+
+
     }
-
-
 }
