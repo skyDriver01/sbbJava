@@ -65,14 +65,6 @@ public class StreamingSite {
         return noSameUsernames;
     }
 
-    private static Person.SubscriptionType askIfSubscriptionIsWanted(boolean subscription) {
-        Person.SubscriptionType subscriptionType = null;
-        if (subscription == Boolean.parseBoolean (InputIn.nextLine ())) {
-            subscriptionType = getSubscriptionType ();
-        }
-        return subscriptionType;
-    }
-
     private static String createNewUserName() {
         String username = InputIn.nextLineOut ("Enter your username");
         for (Person existingAccount : accounts) {
@@ -83,17 +75,6 @@ public class StreamingSite {
 
         }
         return username;
-    }
-
-    private static Person.SubscriptionType getSubscriptionType() {
-        Person.SubscriptionType subscriptionType;
-        System.out.println ("What kind of subscription would you like the monthly subscription for 15Fr.(type: monthly) or the yearly subscription for 150fr.(type: yearly)");
-        subscriptionType = switch (InputIn.nextLine ().toUpperCase ()) {
-            case "MONTHLY" -> Person.SubscriptionType.MONTHLY;
-            case "YEARLY" -> Person.SubscriptionType.YEARLY;
-            default -> null;
-        };
-        return subscriptionType;
     }
 
     private static String getUsersEmail() {
@@ -166,6 +147,25 @@ public class StreamingSite {
             creditcardSecurityNumber = InputIn.nextLine ();
         }
         return creditcardSecurityNumber;
+    }
+
+    private static Person.SubscriptionType askIfSubscriptionIsWanted(boolean subscription) {
+        Person.SubscriptionType subscriptionType = null;
+        if (subscription == Boolean.parseBoolean (InputIn.nextLine ())) {
+            subscriptionType = getSubscriptionType ();
+        }
+        return subscriptionType;
+    }
+
+    private static Person.SubscriptionType getSubscriptionType() {
+        Person.SubscriptionType subscriptionType;
+        System.out.println ("What kind of subscription would you like the monthly subscription for 15Fr.(type: monthly) or the yearly subscription for 150fr.(type: yearly)");
+        subscriptionType = switch (InputIn.nextLine ().toUpperCase ()) {
+            case "MONTHLY" -> Person.SubscriptionType.MONTHLY;
+            case "YEARLY" -> Person.SubscriptionType.YEARLY;
+            default -> null;
+        };
+        return subscriptionType;
     }
 
     private static boolean loginToExistingUser(boolean exit) {
