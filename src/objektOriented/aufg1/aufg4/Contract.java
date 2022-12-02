@@ -1,5 +1,9 @@
 package objektOriented.aufg1.aufg4;
 
+import objektOriented.aufg1.aufg2.InputIn;
+
+import static objektOriented.aufg1.aufg4.ImmobilienFirmaSite.property;
+
 public class Contract {
     private int contractBeginning;
     private int contractEnd;
@@ -11,9 +15,13 @@ public class Contract {
     public enum getPropertyContract {
         KORNWEG71, Ensingerstrasse36
     }
+    public enum getApartmentContract{KF1, KF2, EF1, EF2, EF3}   //KF1 = kornweg Floor 1 / EF1 = EnsingerStrasse Floor 1
+    public void fullContract() {
+        System.out.println ("From what property do you want to see the Contracts");
+        property().stream().forEach(a -> System.out.println(a.getAddress()));
+        if (InputIn.nextLine().toUpperCase ().equals (getPropertyContract.KORNWEG71)){
 
-    public enum getApartment {
-        KF1, KF2, EF1, EF2, EF3            //KF für Kornweg Floor 1 odr 2/ EF für Ensingerstrasse Floor 1, 2 odr 3
+        }
     }
 
     public Contract(int contractBeginning, int contractEnd, String monthlyPayment, String gender, int birthDate) {
