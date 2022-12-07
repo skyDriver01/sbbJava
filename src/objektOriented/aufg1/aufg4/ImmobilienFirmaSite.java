@@ -112,11 +112,9 @@ public class ImmobilienFirmaSite {
     public static void fullContract() {
         System.out.println ("From what property do you want to see the Contracts");
         property ().stream ().forEach (a -> System.out.println (a.getAddress ()));
-        if (InputIn.nextLine().toUpperCase().equals(Contract.getPropertyContract.KORNWEG71.toString ())) { //TODO anderen weg finden.
+        if (InputIn.nextLine ().toUpperCase ().equals (Contract.getPropertyContract.KORNWEG71.toString ())) { //TODO Wenn man ensingerstrasse36 eingibt muss man es zwei mal eingeben, weil es 2 mal InputIn.nextline anschaut. Sehen wie ich es ändern kann.
             kornwegContracts ();
-        }
-
-        else if (InputIn.nextLine ().toUpperCase ().equals (Contract.getPropertyContract.Ensingerstrasse36.toString ())) {
+        } else if (InputIn.nextLine ().toUpperCase ().equals (Contract.getPropertyContract.ENSINGERSTRASSE36.toString ())) {
             ensingerContracts ();
         } else {
             System.out.println ("Whatever you typed is not valid sorry.");
@@ -129,11 +127,21 @@ public class ImmobilienFirmaSite {
         Contract.getKornwegApartments kornwegApartments = switch (InputIn.nextLine ().toUpperCase ()) {
             case "FIRSTFLOOR" -> {
                 System.out.println ("hey");
-                    apartment.stream ().forEach (a -> System.out.println (a.getPrice ()));
+                apartment.stream ().forEach (a -> {
+                    if (a.getFloor () == 1) {
+                        System.out.println (a.getPrice ());
+                    }
+                });
                 //apartment.stream ().forEach (a -> System.out.println (a.getPrice ())); //TODO rn it prints only 2750Fr/ make it print the value of that buildings floor
                 yield Contract.getKornwegApartments.FIRSTFLOOR;
             }
             case "SECONDFLOOR" -> {
+                System.out.println ("hey");
+                apartment.stream ().forEach (a -> {
+                    if (a.getFloor () == 2) {
+                        System.out.println (a.getPrice ());
+                    }
+                });
                 yield Contract.getKornwegApartments.SECONDFLOOR;
             }
             default -> null;
@@ -142,19 +150,36 @@ public class ImmobilienFirmaSite {
     }
 
     private static Contract.getEnsingerApartments ensingerContracts() {
-        Contract.getEnsingerApartments ensingerApartments;
         System.out.println ("Do you want to see the Contract for Firstfloor Apartments or from the SecondFloor Apartments or from the ThirdFloor Apartments?");
         System.out.println ("Type firstfloor, secondfloor or thirdfloor");
-        ensingerApartments = switch (InputIn.nextLine ().toUpperCase ()){
-          case "FIRSTFLOOR" -> {
-              yield Contract.getEnsingerApartments.FIRSTFLOOR;
-          }
-          case "SECONDFLOOR" -> {
-              yield Contract.getEnsingerApartments.SECONDFLOOR;
-          }
-          case "THIRDFLOOR" -> {
-              yield Contract.getEnsingerApartments.THIRDFLOOR;
-          }
+        Contract.getEnsingerApartments ensingerApartments = switch (InputIn.nextLine ().toUpperCase ()) {
+            case "FIRSTFLOOR" -> {
+                System.out.println ("hey");
+                apartment.stream ().forEach (a -> {
+                    if (a.getFloor () == 1) {
+                        System.out.println (a.getPrice ());
+                    }
+                });
+                yield Contract.getEnsingerApartments.FIRSTFLOOR;
+            }
+            case "SECONDFLOOR" -> {
+                System.out.println ("hey");
+                apartment.stream ().forEach (a -> {
+                    if (a.getFloor () == 2) {
+                        System.out.println (a.getPrice ());
+                    }
+                });
+                yield Contract.getEnsingerApartments.SECONDFLOOR;
+            }
+            case "THIRDFLOOR" -> {
+                System.out.println ("hey");
+                apartment.stream ().forEach (a -> {
+                    if (a.getFloor () == 3) {
+                        System.out.println (a.getPrice ());
+                    }
+                });
+                yield Contract.getEnsingerApartments.THIRDFLOOR;
+            }
             default -> null;
         };
         return ensingerApartments;

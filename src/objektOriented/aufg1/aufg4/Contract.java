@@ -9,7 +9,7 @@ public class Contract {
     private int birthDate;
 
     public enum getPropertyContract {
-        KORNWEG71, Ensingerstrasse36
+        KORNWEG71, ENSINGERSTRASSE36
     }
     public enum getKornwegApartments {FIRSTFLOOR, SECONDFLOOR}
 

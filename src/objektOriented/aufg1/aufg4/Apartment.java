@@ -17,6 +17,10 @@ public class Apartment {
         this.tenant = tenant;
     }
 
+    public static void setPrice(String price) {
+        Apartment.price = price;
+    }
+
     public String getAddress() {
         return address;
     }
