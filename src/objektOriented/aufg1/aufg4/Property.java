@@ -6,6 +6,13 @@ public class Property {
     private String employee;
     private String address;
 
+    public Property(String administrator, String janitor, String employee, String address) {
+        this.administrator = administrator;
+        this.janitor = janitor;
+        this.employee = employee;
+        this.address = address;
+    }
+
     public String getAdministrator() {
         return administrator;
     }
@@ -32,12 +39,5 @@ public class Property {
 
     public String getAddress() {
         return address;
-    }
-
-    public Property(String administrator, String janitor, String employee, String address) {
-        this.administrator = administrator;
-        this.janitor = janitor;
-        this.employee = employee;
-        this.address = address;
     }
 }
