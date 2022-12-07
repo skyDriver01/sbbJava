@@ -112,13 +112,21 @@ public class ImmobilienFirmaSite {
     public static void fullContract() {
         System.out.println ("From what property do you want to see the Contracts");
         property ().stream ().forEach (a -> System.out.println (a.getAddress ()));
-        if (InputIn.nextLine ().toUpperCase ().equals (Contract.getPropertyContract.KORNWEG71.toString ())) { //TODO Wenn man ensingerstrasse36 eingibt muss man es zwei mal eingeben, weil es 2 mal InputIn.nextline anschaut. Sehen wie ich es ändern kann.
-            kornwegContracts ();
-        } else if (InputIn.nextLine ().toUpperCase ().equals (Contract.getPropertyContract.ENSINGERSTRASSE36.toString ())) {
-            ensingerContracts ();
-        } else {
-            System.out.println ("Whatever you typed is not valid sorry.");
-        }
+        Contract.getPropertyContract chooseProperty = switch (InputIn.nextLine ().toUpperCase ()) {
+            case "KORNWEG71" -> {
+                kornwegContracts ();
+                {
+                    yield Contract.getPropertyContract.KORNWEG71;
+                }
+            }
+            case "ENSINGERSTRASSE36" -> {
+                ensingerContracts ();
+                {
+                    yield Contract.getPropertyContract.ENSINGERSTRASSE36;
+                }
+            }
+            default -> null;
+        };
     }
 
     private static Contract.getKornwegApartments kornwegContracts() {
