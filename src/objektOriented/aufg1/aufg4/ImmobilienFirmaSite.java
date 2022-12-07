@@ -48,7 +48,7 @@ public class ImmobilienFirmaSite {
         property ().stream ().forEach (a -> System.out.println (a.getAddress ()));
         String input = InputIn.nextLineOut ("Type the address of the Property that you want to get the janitor from.");
         property ().stream ().filter (property -> property.getAddress ().equals (input)).toList ().stream ().forEach (a -> System.out.println ("The Janitor of this Property is: " + a.getJanitor ()));
-        Thread.sleep (1250);
+        Thread.sleep (1250); //fragen was Thread ist.
     }
 
     public static void options() {
@@ -136,7 +136,7 @@ public class ImmobilienFirmaSite {
             case "FIRSTFLOOR" -> {
                 System.out.println ("hey");
                 apartment.stream ().forEach (a -> {
-                    if (a.getFloor () == 1) {
+                    if (a.getFloor () == 1 && a.getAddress ().equals ("Kornweg71")) {
                         System.out.println (a.getPrice ());
                     }
                 });
@@ -173,7 +173,7 @@ public class ImmobilienFirmaSite {
             case "SECONDFLOOR" -> {
                 System.out.println ("hey");
                 apartment.stream ().forEach (a -> {
-                    if (a.getFloor () == 2) {
+                    if (a.getFloor () == 2) {               //TODO Nur einmal den Preis ausschreiben und noch den ganzen Contract erstellen.
                         System.out.println (a.getPrice ());
                     }
                 });

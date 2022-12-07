@@ -1,10 +1,10 @@
 package objektOriented.aufg1.aufg4;
 
 public class Apartment {
-    public static String address; //TODO maybe make it an enum not a String
+    public  String address; //TODO maybe make it an enum not a String
     private int floor;
     private int houseNumber;
-    public static String price;
+    public  String price;
     private String description;
     private String tenant;
 
@@ -17,9 +17,6 @@ public class Apartment {
         this.tenant = tenant;
     }
 
-    public static void setPrice(String price) {
-        Apartment.price = price;
-    }
 
     public String getAddress() {
         return address;

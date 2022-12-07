@@ -5,7 +5,6 @@ public class Contract {
     private int contractEnd;
     private String monthlyPayment;
     private String gender;
-    private getPropertyContract address = getPropertyContract.valueOf (Apartment.address);
     private int birthDate;
 
     public enum getPropertyContract {
