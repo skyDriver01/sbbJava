@@ -4,14 +4,14 @@ public class Apartment {
     public String address; //TODO maybe make it an enum not a String
     private int floor;
     private int houseNumber;
-    public String price;
+    public String monthlyPrice;
     private String description;
 
     public Apartment(String adress, int floor, int houseNumber, String price, String description) {
         this.address = adress;
         this.floor = floor;
         this.houseNumber = houseNumber;
-        this.price = price;
+        this.monthlyPrice = price;
         this.description = description;
     }
 
@@ -28,8 +28,8 @@ public class Apartment {
         return houseNumber;
     }
 
-    public String getPrice() {
-        return price;
+    public String getMonthlyPrice() {
+        return monthlyPrice;
     }
 
     public String getDescription() {

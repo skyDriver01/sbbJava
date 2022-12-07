@@ -6,6 +6,7 @@ public class Property {
     private String employee;
     private String address;
 
+
     public Property(String administrator, String janitor, String employee, String address) {
         this.administrator = administrator;
         this.janitor = janitor;

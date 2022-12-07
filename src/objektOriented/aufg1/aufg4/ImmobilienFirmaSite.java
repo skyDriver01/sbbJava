@@ -136,7 +136,7 @@ public class ImmobilienFirmaSite {
             case "FIRSTFLOOR" -> {
                 apartment.stream ().forEach (a -> {
                     if (a.getFloor () == 1 && a.getAddress ().equals ("Kornweg71")) {
-                 //       System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
+                        //       System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
 
                     }
                 });
@@ -146,7 +146,7 @@ public class ImmobilienFirmaSite {
             case "SECONDFLOOR" -> {
                 apartment.stream ().forEach (a -> {
                     if (a.getFloor () == 2 && a.getAddress ().equals ("Kornweg71")) {
-                //        System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
+                        //        System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
 
                     }
                 });
@@ -164,7 +164,7 @@ public class ImmobilienFirmaSite {
             case "FIRSTFLOOR" -> {
                 apartment.stream ().forEach (a -> {
                     if (a.getFloor () == 1 && a.getAddress ().equals ("Ensingerstrasse36")) {
-                    //    System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
+                        //    System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
 
                     }
                 });
@@ -172,8 +172,8 @@ public class ImmobilienFirmaSite {
             }
             case "SECONDFLOOR" -> {
                 apartment.stream ().forEach (a -> {
-                    if (a.getFloor () == 2 && a.getAddress ().equals ("Ensingerstrasse36")) {               //TODO Nur einmal den Preis ausschreiben und noch den ganzen Contract erstellen.
-                     //   System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
+                    if (a.getFloor () == 2 && a.getAddress ().equals ("Ensingerstrasse36")) {               //TODO alle contract infos anzeigen und auch die getPrice zu getMonthlyPrice ändern sonst passt es nicht mit der Variabel
+                        //   System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
 
                     }
                 });
@@ -182,7 +182,7 @@ public class ImmobilienFirmaSite {
             case "THIRDFLOOR" -> {
                 apartment.stream ().forEach (a -> {
                     if (a.getFloor () == 3 && a.getAddress ().equals ("Ensingerstrasse36")) {
-                     //   System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
+                        //   System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
 
                     }
                 });
