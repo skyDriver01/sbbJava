@@ -48,7 +48,7 @@ public class ImmobilienFirmaSite {
         property ().stream ().forEach (a -> System.out.println (a.getAddress ()));
         String input = InputIn.nextLineOut ("Type the address of the Property that you want to get the janitor from.");
         property ().stream ().filter (property -> property.getAddress ().equals (input)).toList ().stream ().forEach (a -> System.out.println ("The Janitor of this Property is: " + a.getJanitor ()));
-        Thread.sleep (1500);
+        Thread.sleep (1250);
     }
 
     public static void options() {
@@ -124,18 +124,13 @@ public class ImmobilienFirmaSite {
     }
 
     private static Contract.getKornwegApartments kornwegContracts() {
-        Contract.getKornwegApartments kornwegApartments;
         System.out.println ("Do you want to see the Contract for Firstfloor Apartments or from the SecondFloor Apartments?");
         System.out.println ("Type firstfloor or secondfloor");
-        kornwegApartments = switch (InputIn.nextLine ().toUpperCase ()) {
+        Contract.getKornwegApartments kornwegApartments = switch (InputIn.nextLine ().toUpperCase ()) {
             case "FIRSTFLOOR" -> {
                 System.out.println ("hey");
-                for (Apartment apartment : apartment){              //Todo make it acknowledge the for-each
-                    if (apartment.getFloor () == 1 && apartment.getAddress () == "Kornweg71"){
-                        System.out.println (apartment.getPrice ());
-                    }
-                }
-                    //apartment.stream ().forEach (a -> System.out.println (a.getPrice ())); //TODO rn it prints only 2750Fr/ make it print the value of that buildings floor
+                    apartment.stream ().forEach (a -> System.out.println (a.getPrice ()));
+                //apartment.stream ().forEach (a -> System.out.println (a.getPrice ())); //TODO rn it prints only 2750Fr/ make it print the value of that buildings floor
                 yield Contract.getKornwegApartments.FIRSTFLOOR;
             }
             case "SECONDFLOOR" -> {
