@@ -18,4 +18,11 @@ public final class InputIn { //Final zum nicht veränder bar.
         System.out.println(output);
         return scanner.nextLine();
     }
+    public static int nextIntOut(String output){
+        System.out.println (output);
+        return Integer.parseInt (scanner.nextLine ());
+    }
+    public static int nextInt(){
+        return Integer.parseInt (scanner.nextLine ());
+    }
 }

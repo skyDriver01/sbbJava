@@ -1,13 +1,12 @@
 package objektOriented.aufg1.aufg2;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class AddressBook {
     public void executeTheSite() {
         List<Contact> addressBookList = new ArrayList<>();
-        HashMap<Integer, String> systemOptions = new HashMap<Integer, String>();
+      //  HashMap<Integer, String> systemOptions = new HashMap<Integer, String>();
         boolean programmEnd = false;
         showSiteFunctions (addressBookList, programmEnd);
     }

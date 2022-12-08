@@ -124,7 +124,7 @@ public class StreamingSite {
     }
 
     private static String getCreditcardNumber(String creditcard) {
-        while (!creditcard.matches ("[0-9 ]{19}")) {
+        while (!creditcard.matches ("[0-9 ]{19}")) { //TODO: Schauen das regex auch mit aet für mail gemacht werden kann
             System.out.println ("Enter your Credit Card Information correctly pls.(Like : XXXX XXXX XXXX XXXX)");
             creditcard = InputIn.nextLine ();
         }
