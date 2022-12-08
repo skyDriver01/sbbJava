@@ -41,9 +41,9 @@ public class aufg1 {
         inputIsPostionInList.add (x8);
         inputIsPostionInList.add (x9);
         numberList = inputIsPostionInList;
-    }
-
-    private static void checkList(){ //looks for the number that is at the index of the first number that was typed
-
+    //---------------------------------------extract the method when its written fully
+        for (int i = 0; i <= x ; i++) {//TODO rn it only counts like a counter change to make it check the index number ad give that out
+            System.out.println (i);
+        }
     }
 }
