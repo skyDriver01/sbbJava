@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AddressBook {
-    public static void executeTheSite() {
+    public void executeTheSite() {
         List<Contact> addressBookList = new ArrayList<>();
         HashMap<Integer, String> systemOptions = new HashMap<Integer, String>();
         boolean programmEnd = false;
