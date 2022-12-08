@@ -137,7 +137,7 @@ public class ImmobilienFirmaSite {
             case "FIRSTFLOOR" -> {
                 apartment.stream ().forEach (a -> {
                     if (a.getFloor () == 1 && a.getAddress ().equals ("Kornweg71")) {
-                        System.out.println ("The Price per month: " + a.monthlyPrice + " The Owner of this apartment: " + Tenant.class.getName ());
+                        System.out.println ("The Price per month: " + a.monthlyPrice + " The Owner of this apartment: " + a.getContract ().getTenant ().getTenant () + ", This Person defines themself as: " + a.getContract ().getTenant ().getGender () + ", This Contract expires on this date: " + a.getContract ().getExperationDate () ); //TODO wenn a.getContract eingeschrieben wird gibt es mir den Code für seinen speicherort ab. machen das ich auf die Daten wie Tenant und experation Date zugreifen kann. wenn möglich ohne 2te liste
 
                     }
                 });
