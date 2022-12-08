@@ -137,18 +137,19 @@ public class ImmobilienFirmaSite {
             case "FIRSTFLOOR" -> {
                 apartment.stream ().forEach (a -> {
                     if (a.getFloor () == 1 && a.getAddress ().equals ("Kornweg71")) {
-                        System.out.println ("The Price per month: " + a.monthlyPrice + " The Owner of this apartment: " + a.getContract ().getTenant ().getTenant () + ", This Person defines themself as: " + a.getContract ().getTenant ().getGender () + ", This Contract expires on this date: " + a.getContract ().getExperationDate () ); //TODO wenn a.getContract eingeschrieben wird gibt es mir den Code für seinen speicherort ab. machen das ich auf die Daten wie Tenant und experation Date zugreifen kann. wenn möglich ohne 2te liste
-
+                        System.out.println ("The Price per month: " + a.monthlyPrice + " The Owner of this apartment: " + a.getContract ().getTenant ().getTenant () +
+                                ", This Person defines themself as: " + a.getContract ().getTenant ().getGender () + ", The Tenant was born on: " + a.getContract ().getTenant ().getBirthDate () +
+                                ", This Contract expires on this date: " + a.getContract ().getExperationDate ());
                     }
                 });
-                //apartment.stream ().forEach (a -> System.out.println (a.getPrice ())); //TODO rn it prints only 2750Fr/ make it print the value of that buildings floor
                 yield Contract.getKornwegApartments.FIRSTFLOOR;
             }
             case "SECONDFLOOR" -> {
                 apartment.stream ().forEach (a -> {
                     if (a.getFloor () == 2 && a.getAddress ().equals ("Kornweg71")) {
-                        //        System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
-
+                        System.out.println ("The Price per month: " + a.monthlyPrice + " The Owner of this apartment: " + a.getContract ().getTenant ().getTenant () +
+                                ", This Person defines themself as: " + a.getContract ().getTenant ().getGender () + ", The Tenant was born on: " + a.getContract ().getTenant ().getBirthDate () +
+                                ", This Contract expires on this date: " + a.getContract ().getExperationDate ());
                     }
                 });
                 yield Contract.getKornwegApartments.SECONDFLOOR;
@@ -165,17 +166,19 @@ public class ImmobilienFirmaSite {
             case "FIRSTFLOOR" -> {
                 apartment.stream ().forEach (a -> {
                     if (a.getFloor () == 1 && a.getAddress ().equals ("Ensingerstrasse36")) {
-                        //    System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
-
+                        System.out.println ("The Price per month: " + a.monthlyPrice + " The Owner of this apartment: " + a.getContract ().getTenant ().getTenant () +
+                                ", This Person defines themself as: " + a.getContract ().getTenant ().getGender () + ", The Tenant was born on: " + a.getContract ().getTenant ().getBirthDate () +
+                                ", This Contract expires on this date: " + a.getContract ().getExperationDate ());
                     }
                 });
                 yield Contract.getEnsingerApartments.FIRSTFLOOR;
             }
             case "SECONDFLOOR" -> {
                 apartment.stream ().forEach (a -> {
-                    if (a.getFloor () == 2 && a.getAddress ().equals ("Ensingerstrasse36")) {               //TODO alle contract infos anzeigen und auch die getPrice zu getMonthlyPrice ändern sonst passt es nicht mit der Variabel
-                        //   System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
-
+                    if (a.getFloor () == 2 && a.getAddress ().equals ("Ensingerstrasse36")) {
+                        System.out.println ("The Price per month: " + a.monthlyPrice + " The Owner of this apartment: " + a.getContract ().getTenant ().getTenant () +
+                                ", This Person defines themself as: " + a.getContract ().getTenant ().getGender () + ", The Tenant was born on: " + a.getContract ().getTenant ().getBirthDate () +
+                                ", This Contract expires on this date: " + a.getContract ().getExperationDate ());
                     }
                 });
                 yield Contract.getEnsingerApartments.SECONDFLOOR;
@@ -183,8 +186,9 @@ public class ImmobilienFirmaSite {
             case "THIRDFLOOR" -> {
                 apartment.stream ().forEach (a -> {
                     if (a.getFloor () == 3 && a.getAddress ().equals ("Ensingerstrasse36")) {
-                        //   System.out.println ("The Price" + a.getPrice () + " This room is Owned by(If Vacant its not owned yet): " + a.getTenant () + ", The HouseNumber:  " + a.getHouseNumber () + ", Its Description " + a.getDescription ());
-
+                        System.out.println ("The Price per month: " + a.monthlyPrice + " The Owner of this apartment: " + a.getContract ().getTenant ().getTenant () +
+                                ", This Person defines themself as: " + a.getContract ().getTenant ().getGender () + ", The Tenant was born on: " + a.getContract ().getTenant ().getBirthDate () +
+                                ", This Contract expires on this date: " + a.getContract ().getExperationDate ());
                     }
                 });
                 yield Contract.getEnsingerApartments.THIRDFLOOR;
