@@ -32,7 +32,14 @@ public class ImmobilienFirmaSite {
 
             case 3 -> fullContract ();
 
-            case 4 -> System.out.println ("as");//Todo all expire conts in month
+            case 4 -> {
+                Date expiring = new Date (2023,0,30);
+                apartment.stream ().forEach (a -> {
+                  //  if (a.getContract ().getExperationDate () < expiring) {
+
+                  //  }
+                });
+            }//Todo all expire conts in month
 
             //  case 5 -> //todo contracts sorted by peeps
 
@@ -77,7 +84,7 @@ public class ImmobilienFirmaSite {
     public static void initApartment() {
         List<Apartment> apartmentList = new ArrayList<> ();
         //Apartments for the first Property \/                                                                                                                                                              //MONTH ist 0 = januer und dezember = 11
-        apartmentList.add (new Apartment ("Kornweg71", 1, 11, "1'900Fr.", "3 Room apartment with a good earthy feel to it", new Contract (new Date (2022, 11, 25), new Tenant ("Nick Bracher", "Male", new Date (2007, 8, 13)))));
+      /*  apartmentList.add (new Apartment ("Kornweg71", 1, 11, "1'900Fr.", "3 Room apartment with a good earthy feel to it", new Contract (new Date (2022, 11, 25), new Tenant ("Nick Bracher", "Male", new Date (2007, 8, 13)))));
         apartmentList.add (new Apartment ("Kornweg71", 1, 12, "1'900Fr.", "3 Room apartment with a good earthy feel to it", new Contract (null, new Tenant (null, null, null))));
         apartmentList.add (new Apartment ("Kornweg71", 1, 13, "1'900Fr.", "3 Room apartment with a good earthy feel to it", new Contract (new Date (2022, 11, 10), new Tenant ("Yanir Gopal", "Diverse", new Date (2006, 10, 25)))));
         apartmentList.add (new Apartment ("Kornweg71", 1, 13, "1'900Fr.", "3 Room apartment with a good earthy feel to it", new Contract (null, new Tenant (null, null, null))));
@@ -95,7 +102,7 @@ public class ImmobilienFirmaSite {
         apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 31, "2'750Fr.", "6 Room apartment with big balcony and nice View", new Contract (null, new Tenant (null, null, null))));
         apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 32, "2'750Fr.", "6 Room apartment with big balcony and nice View", new Contract (null, new Tenant (null, null, null))));
         apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 33, "2'750Fr.", "6 Room apartment with big balcony and nice View", new Contract (new Date (2024, 11, 30), new Tenant ("Luka Nikolic", "Male", new Date (2006, 4, 4)))));
-        apartment = apartmentList;
+        apartment = apartmentList;*/
     }
 
     public static void contract() {

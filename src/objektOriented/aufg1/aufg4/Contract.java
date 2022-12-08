@@ -1,13 +1,13 @@
 package objektOriented.aufg1.aufg4;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Contract {
 
-    private Date experationDate;
+    private Calendar experationDate;
     private Tenant tenant;
 
-    public Contract(Date experationDate, Tenant tenant) {
+    public Contract(Calendar experationDate, Tenant tenant) {
         this.experationDate = experationDate;
         this.tenant = tenant;
     }
@@ -18,7 +18,7 @@ public class Contract {
 
     public enum getEnsingerApartments {FIRSTFLOOR, SECONDFLOOR, THIRDFLOOR}
 
-    public void setExperationDate(Date experationDate) {
+    public void setExperationDate(Calendar experationDate) {
         this.experationDate = experationDate;
     }
 
@@ -30,7 +30,7 @@ public class Contract {
         this.tenant = tenant;
     }
 
-    public Date getExperationDate() {
+    public Calendar getExperationDate() {
         return experationDate;
     }
 }
