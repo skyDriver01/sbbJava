@@ -3,6 +3,7 @@ package objektOriented.aufg1.aufg4;
 import objektOriented.aufg1.aufg2.InputIn;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ImmobilienFirmaSite {
@@ -76,26 +77,26 @@ public class ImmobilienFirmaSite {
     public static void initApartment() {
         List<Apartment> apartmentList = new ArrayList<> ();
         //Apartments for the first Property \/
-   /*     apartmentList.add (new Apartment ("Kornweg71", 1, 11, "1'900Fr.", "3 Room apartment with a good earthy feel to it", "Shervan Yacoub"));
-        apartmentList.add (new Apartment ("Kornweg71", 1, 12, "1'900Fr.", "3 Room apartment with a good earthy feel to it", "Tobias Merino"));
-        apartmentList.add (new Apartment ("Kornweg71", 1, 13, "1'900Fr.", "3 Room apartment with a good earthy feel to it", "Nick Bracher"));
-        apartmentList.add (new Apartment ("Kornweg71", 1, 13, "1'900Fr.", "3 Room apartment with a good earthy feel to it", "Vacant"));
-        apartmentList.add (new Apartment ("Kornweg71", 2, 21, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", "Yanick Minder"));
-        apartmentList.add (new Apartment ("Kornweg71", 2, 22, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", "Manuel Möri"));
-        apartmentList.add (new Apartment ("Kornweg71", 2, 23, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", "Jannik Pulfer"));
-        apartmentList.add (new Apartment ("Kornweg71", 2, 24, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", "Vacant"));
+        apartmentList.add (new Apartment ("Kornweg71", 1, 11, "1'900Fr.", "3 Room apartment with a good earthy feel to it", new Contract (new Date (2022, 12, 24), new Tenant ("Nick Bracher", "Male", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Kornweg71", 1, 12, "1'900Fr.", "3 Room apartment with a good earthy feel to it", new Contract (new Date (2022, 12, 24), new Tenant ("Rahul Gurung", "Else", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Kornweg71", 1, 13, "1'900Fr.", "3 Room apartment with a good earthy feel to it", new Contract (new Date (2022, 12, 24), new Tenant ("Yanir Gopal", "Else", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Kornweg71", 1, 13, "1'900Fr.", "3 Room apartment with a good earthy feel to it", new Contract (new Date (2022, 12, 24), new Tenant ("Tobias Merino", "Else", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Kornweg71", 2, 21, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", new Contract (new Date (2022, 12, 24), new Tenant ("Andrin Gurtner", "Male", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Kornweg71", 2, 22, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", new Contract (new Date (2022, 12, 24), new Tenant ("Sven Schmid", "Else", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Kornweg71", 2, 23, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", new Contract (new Date (2022, 12, 24), new Tenant ("Shirvan Yacoub", "Male", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Kornweg71", 2, 24, "1'600Fr.", "1, 1/2 Room apartment not very suitable to live in if you aren't used to small spaces (NO BALCONY)", new Contract (new Date (2022, 12, 24), new Tenant ("Nick Bracher", "Male", new Date (2007, 8, 13)))));
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Apartments for the second Property \/
-        apartmentList.add (new Apartment ("Ensingerstrasse36", 1, 11, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", "Tobias Merino"));
-        apartmentList.add (new Apartment ("Ensingerstrasse36", 1, 12, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", "Michael Widmer"));
-        apartmentList.add (new Apartment ("Ensingerstrasse36", 1, 13, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", "Vacant"));
-        apartmentList.add (new Apartment ("Ensingerstrasse36", 2, 23, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", "Vacant"));
-        apartmentList.add (new Apartment ("Ensingerstrasse36", 2, 21, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", "Michael Widmer"));
-        apartmentList.add (new Apartment ("Ensingerstrasse36", 2, 22, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", "Arthur Deierlein"));
-        apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 31, "2'750Fr.", "6 Room apartment with big balcony and nice View", "Andrin Gurtner"));
-        apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 32, "2'750Fr.", "6 Room apartment with big balcony and nice View", "Lars Ruch"));
-        apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 33, "2'750Fr.", "6 Room apartment with big balcony and nice View", "Nick Bracher"));
-        apartment = apartmentList;*/
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 1, 11, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", new Contract (new Date (2022, 12, 24), new Tenant ("Yanick Pulfer", "Male", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 1, 12, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", new Contract (new Date (2022, 12, 24), new Tenant ("Manuel Möri", "Else", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 1, 13, "2'000Fr.", "3, 1/2 Room apartment with a nice small terrace", new Contract (new Date (2022, 12, 24), new Tenant ("Arthur Deierlein", "Male", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 2, 23, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", new Contract (new Date (2022, 12, 24), new Tenant ("Jessica Bracher", "Female", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 2, 21, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", new Contract (new Date (2022, 12, 24), new Tenant ("Kristina Milenkovic", "Female", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 2, 22, "2'250Fr.", "4, 1/2 Room apartment with a nice cozy feeling", new Contract (new Date (2022, 12, 24), new Tenant ("Hans Ueli", "Male", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 31, "2'750Fr.", "6 Room apartment with big balcony and nice View", new Contract (new Date (2022, 12, 24), new Tenant ("Ronald Mcdonald", "Male", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 32, "2'750Fr.", "6 Room apartment with big balcony and nice View", new Contract (new Date (2022, 12, 24), new Tenant ("Hatsune Miku", "Else", new Date (2007, 8, 13)))));
+        apartmentList.add (new Apartment ("Ensingerstrasse36", 3, 33, "2'750Fr.", "6 Room apartment with big balcony and nice View", new Contract (new Date (2022, 12, 24), new Tenant ("Luka Nikolic", "Male", new Date (2007, 8, 13)))));
+        apartment = apartmentList;
     }
 
     public static void contract() {

@@ -28,7 +28,7 @@ Die Standard Befehle:
 Static
 ---
 ###
-Wenn etwas static ist  vordefinieren wie  damit nicht so machen musst : Variabel variabel = new variabel();
+Wenn etwas static ist  vordefinieren damit nicht so machen musst |: Variabel variabel = new variabel(); -> bei non-Static so
 und non-Static objekt variabel muss neu immer angefüngen
 ###
 ###

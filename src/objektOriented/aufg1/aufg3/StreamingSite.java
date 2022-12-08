@@ -10,7 +10,7 @@ public class StreamingSite {
     static List<Movie> movies;
     static List<Person> accounts = new ArrayList<> (); //merken Static ist nicht immer gut. "Sobald du static weg hasst kann alles besser/leichter und fehlerfreier werden" -Linus von Sbb
 
-    public static void executeSite() {
+    public void executeSite() {
         initMovies ();
         accounts.add (new Person ("siu", "siu", "siu@", "1234 1234 1234 1234", "12/12", "012", true, Person.SubscriptionType.MONTHLY));
         System.out.println ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

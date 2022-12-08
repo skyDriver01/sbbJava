@@ -1,11 +1,13 @@
 package objektOriented.aufg1.aufg4;
 
+import java.util.Date;
+
 public class Tenant {
     private String tenant;
     private String gender;
-    private int birthDate;
+    private Date birthDate;
 
-    public Tenant(String tenant, String gender, int birthDate) {
+    public Tenant(String tenant, String gender, Date birthDate) {
         this.tenant = tenant;
         this.gender = gender;
         this.birthDate = birthDate;
@@ -19,7 +21,7 @@ public class Tenant {
         return gender;
     }
 
-    public int getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 }

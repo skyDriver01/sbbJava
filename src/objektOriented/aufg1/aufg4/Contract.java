@@ -1,9 +1,16 @@
 package objektOriented.aufg1.aufg4;
 
-import java.time.Duration;
+import java.util.Date;
 
 public class Contract {
-    private Duration experationDate;
+
+    private Date experationDate;
+    private Tenant tenant;
+
+    public Contract(Date experationDate, Tenant tenant) {
+        this.experationDate = experationDate;
+        this.tenant = tenant;
+    }
 
     public enum getPropertyContract {KORNWEG71, ENSINGERSTRASSE36}
 
@@ -11,11 +18,19 @@ public class Contract {
 
     public enum getEnsingerApartments {FIRSTFLOOR, SECONDFLOOR, THIRDFLOOR}
 
-    public Contract(Duration experationDate) {
+    public void setExperationDate(Date experationDate) {
         this.experationDate = experationDate;
     }
 
-    public Duration getExperationDate() {
+    public Tenant getTenant() {
+        return tenant;
+    }
+
+    public void setTenant(Tenant tenant) {
+        this.tenant = tenant;
+    }
+
+    public Date getExperationDate() {
         return experationDate;
     }
 }
