@@ -15,20 +15,24 @@ public class aufg1 {
 
     public static void getNumbersForList() {
         List<Integer> inputIsPostionInList = new ArrayList<>();
-        String input;
-        int x, x1;
-        x = Integer.parseInt(InputIn.nextLineOut("Type a sequence of random Numbers if you want to stop adding numbers type: exit"));         //x is the number to search for in the list x1-x9 are the numbers that will be put in the list but after you can choose the amount it would be x1-xUnlimited
-        while (!(input = InputIn.nextLine()).equals("exit")) { //nicht unbedingt so machen bei richtigen code.
-            x1 = Integer.parseInt(input);
-            inputIsPostionInList.add(x1);
-        }
-        //TODO make it so you can type as many numbers as you want until you stay stop
-        inputIsPostionInList.add(x);                //variabel heisst wenn 3 eingegeben als input das die 3te stelle in der Liste angeschaut wird.
+        int x;
+
+        x = addOrExit(inputIsPostionInList);
 
         numberList = inputIsPostionInList;
 
         checkNumbPosition(x, inputIsPostionInList);
+    }
 
+    private static int addOrExit(List<Integer> inputIsPostionInList) { //addOrExit means add more numbers or type exit to start checking the list
+        int x, x1;
+        String input;
+        x = Integer.parseInt(InputIn.nextLineOut("Type a sequence of random Numbers if you want to stop adding numbers type: exit"));
+        while (!(input = InputIn.nextLine()).equals("exit")) { //nicht unbedingt so machen bei richtigen code.
+            x1 = Integer.parseInt(input);
+            inputIsPostionInList.add(x1);
+        }
+        return x;
     }
 
     private static void checkNumbPosition(int x, List<Integer> inputIsPostionInList) {
