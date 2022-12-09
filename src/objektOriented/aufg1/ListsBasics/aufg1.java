@@ -14,6 +14,7 @@ public class aufg1 {
 
     public static void getNumbersForList() {
         List<Integer> inputIsPostionInList = new ArrayList<>();
+        System.out.println(numberList);
         int x;
 
         x = addOrExit(inputIsPostionInList);
