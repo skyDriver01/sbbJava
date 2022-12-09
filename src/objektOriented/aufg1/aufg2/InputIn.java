@@ -14,15 +14,35 @@ public final class InputIn { //Final zum nicht veränder bar.
         return scanner.nextLine();
     }
 
+    public static String next() {
+        return scanner.next();
+    }
+
+    public static String nextOut(String output) {
+        System.out.println(output);
+        return scanner.next();
+    }
+
     public static String nextLineOut(String output) { //Hat Text bsp. "Schreibe deinen namen"
         System.out.println(output);
         return scanner.nextLine();
     }
-    public static int nextIntOut(String output){
-        System.out.println (output);
-        return Integer.parseInt (scanner.nextLine ());
+
+    public static int nextLineIntOut(String output) {
+        System.out.println(output);
+        return Integer.parseInt(scanner.nextLine());
     }
-    public static int nextInt(){
-        return Integer.parseInt (scanner.nextLine ());
+
+    public static int nexIntOut(String output) {
+        System.out.println(output);
+        return Integer.parseInt(scanner.next());
+    }
+
+    public static int nexInt() {
+        return Integer.parseInt(scanner.next());
+    }
+
+    public static int nextLineInt() {
+        return Integer.parseInt(scanner.nextLine());
     }
 }
