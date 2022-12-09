@@ -10,7 +10,6 @@ public class aufg1 {
 
     public static void main(String[] args) {
         getNumbersForList();
-        System.out.println(numberList);
     }
 
     public static void getNumbersForList() {
