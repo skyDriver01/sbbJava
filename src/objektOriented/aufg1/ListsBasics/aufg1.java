@@ -14,9 +14,7 @@ public class aufg1 {
 
     public static void getNumbersForList() {
         List<Integer> inputIsPostionInList = new ArrayList<>();
-        System.out.println(numberList);
         int x;
-
         x = addOrExit(inputIsPostionInList);
 
         numberList = inputIsPostionInList;
@@ -24,19 +22,21 @@ public class aufg1 {
         checkNumbPosition(x, inputIsPostionInList);
     }
 
-    private static int addOrExit(List<Integer> inputIsPostionInList) { //addOrExit means add more numbers or type exit to start checking the list
+    private static int addOrExit(List<Integer> inputIsPostionInList) {
         int x, x1;
-        String input;
-        x = Integer.parseInt(InputIn.nextLineOut("Type a sequence of random Numbers if you want to stop adding numbers type: exit"));
-        while (!(input = InputIn.nextLine()).equals("exit")) { //nicht unbedingt so machen bei richtigen code.
-            x1 = Integer.parseInt(input);
+        System.out.println("Just type some numbers. To stop typing press Enter");
+
+        String[] numbers = InputIn.nextLine().split("\\s+"); // \\s+ = more than one whitespace
+        for (String number : numbers) {
+            x1 = Integer.parseInt(number);
             inputIsPostionInList.add(x1);
         }
+        x = inputIsPostionInList.get(0); //0 is index of first number to make it get that position
         return x;
     }
 
     private static void checkNumbPosition(int x, List<Integer> inputIsPostionInList) {
-        if (x <= inputIsPostionInList.size() - 1){
+        if(x <= inputIsPostionInList.size() - 1) {
             System.out.println(
                     "This is the number at the position " + x + " that you entered = " + inputIsPostionInList.get(x));
         } else {

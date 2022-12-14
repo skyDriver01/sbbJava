@@ -45,4 +45,8 @@ public final class InputIn { //Final zum nicht veränder bar.
     public static int nextLineInt() {
         return Integer.parseInt(scanner.nextLine());
     }
+    public static String[] nextLineArrayOut(String output) { //Hat Text bsp. "Schreibe deinen namen"
+        System.out.println(output);
+        return new String[]{scanner.nextLine()};
+    }
 }
