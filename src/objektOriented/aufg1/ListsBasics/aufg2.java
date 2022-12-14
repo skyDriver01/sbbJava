@@ -30,16 +30,13 @@ public class aufg2 {
 
     private static void checkForNouns(List<String> words) {
         for (String noun : words) {
-            if(noun.matches(".*[A-Z].*"))  // Doesn't work yet
+            if(noun.matches(".*^[A-Z].*"))  // Doesn't work yet
                 System.out.println(noun.toUpperCase());
         }
-
-
-        words.stream()
+        /*words.stream()
                 .filter(x -> x.matches(".*[A-Z].*"))
-                .forEach(a -> System.out.println(a.toUpperCase()));
+                .forEach(a -> System.out.println(a.toUpperCase()));*/   //  so würde das mit them for-each und dem if gehen bei streams
     }
-
     private static void reverseTheOrder(List<String> words) {
         Collections.reverse(words);
         System.out.println(words);

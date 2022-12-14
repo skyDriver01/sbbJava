@@ -2,7 +2,6 @@ package objektOriented.aufg1.streamBasics;
 
 import objektOriented.aufg1.aufg2.InputIn;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +13,6 @@ public class aufg1 {
     }
 
     private static List<Integer> addNumbers() {
-        List<Integer> numberList = new ArrayList<>();
-        int x;
         System.out.println("Type some numbers as you want");
         String[] numbers = InputIn.nextLine().split("\\s+");
 

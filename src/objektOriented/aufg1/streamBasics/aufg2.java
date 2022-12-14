@@ -34,7 +34,7 @@ public class aufg2 {
     private static List <Integer> multipliedList(List <Integer> numberList) {
         return numberList
                 .stream()
-                .map(n -> n *n)
+                .map(n -> n *n)  // Map ist dafür da um von einer variabel den Datentyp zu ändern zu diese mwo man will.
                 .toList();
 
     }
