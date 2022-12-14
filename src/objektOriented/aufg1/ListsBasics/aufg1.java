@@ -15,14 +15,14 @@ public class aufg1 {
     public static void getNumbersForList() {
         List<Integer> inputIsPostionInList = new ArrayList<>();
         int x;
-        x = addOrExit(inputIsPostionInList);
+        x = addNumbers(inputIsPostionInList);
 
         numberList = inputIsPostionInList;
 
         checkNumbPosition(x, inputIsPostionInList);
     }
 
-    private static int addOrExit(List<Integer> inputIsPostionInList) {
+    private static int addNumbers(List<Integer> inputIsPostionInList) {
         int x, x1;
         System.out.println("Just type some numbers. To stop typing press Enter");
 
