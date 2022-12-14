@@ -31,12 +31,11 @@ public class aufg1 {
             x1 = Integer.parseInt(number);
             inputIsPostionInList.add(x1);
         }
-        x = inputIsPostionInList.get(0); //0 is index of first number to make it get that position
-        return x;
+        return inputIsPostionInList.get(0); //0 is index of first number to make it get that position
     }
 
     private static void checkNumbPosition(int x, List<Integer> inputIsPostionInList) {
-        if(x <= inputIsPostionInList.size() - 1) {
+        if(x + 1 <= inputIsPostionInList.size()) {
             System.out.println(
                     "This is the number at the position " + x + " that you entered = " + inputIsPostionInList.get(x));
         } else {

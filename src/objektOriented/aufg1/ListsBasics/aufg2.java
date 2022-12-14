@@ -30,9 +30,14 @@ public class aufg2 {
 
     private static void checkForNouns(List<String> words) {
         for (String noun : words) {
-            if(noun.matches(".*[A-Z].*"))//Doesn't work yet
+            if(noun.matches(".*[A-Z].*"))  // Doesn't work yet
                 System.out.println(noun.toUpperCase());
         }
+
+
+        words.stream()
+                .filter(x -> x.matches(".*[A-Z].*"))
+                .forEach(a -> System.out.println(a.toUpperCase()));
     }
 
     private static void reverseTheOrder(List<String> words) {
