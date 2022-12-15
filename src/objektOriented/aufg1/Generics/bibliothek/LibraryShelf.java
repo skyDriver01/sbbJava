@@ -28,39 +28,34 @@ public class LibraryShelf<T extends Comparable> {
 
     final private List <T> cdList() {
         List <T> cds = new ArrayList <>();
-        cds.add((T) new CD <T>((T) "Let it Happen",32));
-        cds.add((T) new CD <T>((T) "America's Funnyman",44));
-        cds.add((T) new CD <T>((T) "",0));
-        cds.add((T) new CD <T>((T) "",0));
-        cds.add((T) new CD <T>((T) "",0));
-        cds.add((T) new CD <T>((T) "",0));
+        cds.add((T) new CD <T>((T) "Pink Floyd",10));
+        cds.add((T) new CD <T>((T) "Led Zeppelin",8));
+        cds.add((T) new CD <T>((T) "The Beatles",9));
+        cds.add((T) new CD <T>((T) "AC/DC",14));
+        cds.add((T) new CD <T>((T) "Def Leppard",7));
+        cds.add((T) new CD <T>((T) "Neil Young",12));
         return cdList();
     }
 
     final private List <T> dvdList() {
         List <T> dvds = new ArrayList <>();
-        dvds.add((T) new DVD <T>((T) "", (T) ""));
-        dvds.add((T) new DVD <T>((T) "", (T) ""));
-        dvds.add((T) new DVD <T>((T) "", (T) ""));
-        dvds.add((T) new DVD <T>((T) "", (T) ""));
-        dvds.add((T) new DVD <T>((T) "", (T) ""));
-        dvds.add((T) new DVD <T>((T) "", (T) ""));
-        dvds.add((T) new DVD <T>((T) "", (T) ""));
-        dvds.add((T) new DVD <T>((T) "", (T) ""));
+        dvds.add((T) new DVD <T>((T) "David Fincher", (T) "Crime"));
+        dvds.add((T) new DVD <T>((T) "Fracis Ford Coppola", (T) "Drama"));
+        dvds.add((T) new DVD <T>((T) "Jean-Jacques Annaud", (T) "Adventure"));
+        dvds.add((T) new DVD <T>((T) "Edward Zwick", (T) "Thriller"));
+        dvds.add((T) new DVD <T>((T) "Guy Ritchie", (T) "Comedy"));
+        dvds.add((T) new DVD <T>((T) "Christopher Nolan", (T) "Action"));
         return dvdList();
     }
 
     final private List <T> newspaperList() {
         List <T> newspapers = new ArrayList <>();
-        newspapers.add((T) new Newspaper <T>((T) "", (T) ""));
-        newspapers.add((T) new Newspaper <T>((T) "", (T) ""));
-        newspapers.add((T) new Newspaper <T>((T) "", (T) ""));
-        newspapers.add((T) new Newspaper <T>((T) "", (T) ""));
-        newspapers.add((T) new Newspaper <T>((T) "", (T) ""));
-        newspapers.add((T) new Newspaper <T>((T) "", (T) ""));
-        newspapers.add((T) new Newspaper <T>((T) "", (T) ""));
-        newspapers.add((T) new Newspaper <T>((T) "", (T) ""));
-        newspapers.add((T) new Newspaper <T>((T) "", (T) ""));
+        newspapers.add((T) new Newspaper <T>((T) "The New York Times", (T) "16th April 1912"));  // TODO: Change the second T Type to Date or smth that works better with dates.
+        newspapers.add((T) new Newspaper <T>((T) "Daily Mail", (T) "25th October 1929"));
+        newspapers.add((T) new Newspaper <T>((T) "The News Chronicle", (T) "2nd May 1945"));
+        newspapers.add((T) new Newspaper <T>((T) "Chicago Tribune", (T) "22nd November 1963"));
+        newspapers.add((T) new Newspaper <T>((T) "Evening Standard", (T) "21st July 1969"));
+        newspapers.add((T) new Newspaper <T>((T) "The Sun", (T) "17th August 1977"));
         return newspaperList();
     }
 }
