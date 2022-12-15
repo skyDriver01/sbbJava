@@ -46,6 +46,9 @@ public class NumberList<T extends Comparable> {
         doubleList.addElements(doubleNumberList
                                        .stream()
                                        .toArray(Double[]::new));
-        System.out.println(numberList);
+        Double biggestDouble = doubleList.getBiggest();
+        Double smallestDouble = doubleList.getSmallest();
+        System.out.println("Biggest Double: " + biggestDouble);
+        System.out.println("Smallest Double: " + smallestDouble);
     }
 }
