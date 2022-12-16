@@ -1,21 +1,23 @@
 package objektOriented.aufg1.Generics.bibliothek;
 
 public class CD<T> {
+    private T name;
     private T artist; // artist of the song in this verion of artist
     private int amountOfSongs;
-    private T leased;
+    private boolean leased;
 
-    public CD(T artist, int amountOfSongs, boolean leased) {
+    public CD(T name,T artist, int amountOfSongs, boolean leased) {
+        this.name = name;
         this.artist = artist;
         this.amountOfSongs = amountOfSongs;
         this.leased = leased;
     }
 
-    public T getLeased() {
+    public boolean getLeased() {
         return leased;
     }
 
-    public void setLeased(T leased) {
+    public void setLeased(boolean leased) {
         this.leased = leased;
     }
 
@@ -33,5 +35,17 @@ public class CD<T> {
 
     public void setAmountOfSongs(int amountOfSongs) {
         this.amountOfSongs = amountOfSongs;
+    }
+
+    public T getName() {
+        return name;
+    }
+
+    public void setName(T name) {
+        this.name = name;
+    }
+
+    public boolean isLeased() {
+        return leased;
     }
 }

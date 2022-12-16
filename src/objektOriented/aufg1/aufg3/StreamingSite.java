@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StreamingSite {
-    static List<Movie> movies;
-    static List<Person> accounts = new ArrayList<>(); //merken Static ist nicht immer gut. "Sobald du static weg hasst kann alles besser/leichter und fehlerfreier werden" -Linus von Sbb
+    static List <Movie> movies;
+    static List <Person> accounts = new ArrayList <>(); //merken Static ist nicht immer gut. "Sobald du static weg hasst kann alles besser/leichter und fehlerfreier werden" -Linus von Sbb
 
     public void executeSite() {
         initMovies();
@@ -162,7 +162,9 @@ public class StreamingSite {
     private static Person.SubscriptionType getSubscriptionType() {
         Person.SubscriptionType subscriptionType;
         System.out.println("What kind of subscription would you like the monthly subscription for 15Fr.(type: monthly) or the yearly subscription for 150fr.(type: yearly)");
-        subscriptionType = switch (InputIn.nextLine().toUpperCase()) {
+        subscriptionType = switch (InputIn
+                .nextLine()
+                .toUpperCase()) {
             case "MONTHLY" -> Person.SubscriptionType.MONTHLY;
             case "YEARLY" -> Person.SubscriptionType.YEARLY;
             default -> null;
@@ -251,12 +253,16 @@ public class StreamingSite {
     }
 
     private static void displayMovieSearchHistory(Person loggedInAccount) {
-        loggedInAccount.getWatchedMovies().forEach(movie -> System.out.println(movie.name));
+        loggedInAccount
+                .getWatchedMovies()
+                .forEach(movie -> System.out.println(movie.name));
     }
 
     private static void getCreditcardInfoFromMonthlyPaymentUsers() {
         for (Person loggedInAccount : accounts) {
-            if(loggedInAccount.getSubscriptionType().equals(Person.SubscriptionType.MONTHLY)) {
+            if(loggedInAccount
+                    .getSubscriptionType()
+                    .equals(Person.SubscriptionType.MONTHLY)) {
                 System.out.println(loggedInAccount.getCreditCard());
             }
         }
@@ -271,10 +277,14 @@ public class StreamingSite {
 
         String input = InputIn.nextLine();
         for (int i = 0; i < accounts.size(); i++) {
-            if(input.equalsIgnoreCase(accounts.get(i).getUsername())) {
+            if(input.equalsIgnoreCase(accounts
+                                              .get(i)
+                                              .getUsername())) {
                 String pass = InputIn.nextLineOut("Password pls:");
 
-                if(pass.equalsIgnoreCase(accounts.get(i).getPassword())) {
+                if(pass.equalsIgnoreCase(accounts
+                                                 .get(i)
+                                                 .getPassword())) {
                     accounts.remove(accounts.get(i));
                 }
             }
@@ -285,7 +295,9 @@ public class StreamingSite {
         String creditcard = InputIn.nextLineOut("Pls enter your Old CreditCard Information if you wish to change it. Enter it like :XXXX XXXX XXXX XXXX");
 
         for (Person credit : accounts) {
-            if(credit.getCreditCard().equals(creditcard)) {
+            if(credit
+                    .getCreditCard()
+                    .equals(creditcard)) {
                 System.out.println("Type in your new Creditcard Information");
                 creditcard = InputIn.nextLine();
                 creditcard = getCreditcardNumber(creditcard);
@@ -304,11 +316,11 @@ public class StreamingSite {
 
     private static void getMovieInformationOfWantedMovie(Person loggedInAccount, String getInformation) {
         for (Movie movieSave : movies) {
-            if(movieSave.getName().equalsIgnoreCase(getInformation)) {
+            if(movieSave
+                    .getName()
+                    .equalsIgnoreCase(getInformation)) {
                 movieSave.setViews(movieSave.getViews() + 1);
-                System.out.println(
-                        movieSave.getName() + " " + movieSave.getDuration() + " " + movieSave.getGenre() + " " +
-                        movieSave.getProducer() + " " + movieSave.getViews());
+                System.out.println(movieSave.getName() + " " + movieSave.getDuration() + " " + movieSave.getGenre() + " " + movieSave.getProducer() + " " + movieSave.getViews());
                 loggedInAccount.watchMovie(movieSave);
             }
         }
@@ -316,7 +328,10 @@ public class StreamingSite {
 
     private static void showAllMovieNamesWithSimilaritiesWithTheInput(String movieFinder) {
         for (Movie movieSave : movies) {      //movieSave ist die Klasse wo alles abgespeichert ist von den Infos der Filme
-            if(movieSave.getName().toLowerCase().contains(movieFinder)) {
+            if(movieSave
+                    .getName()
+                    .toLowerCase()
+                    .contains(movieFinder)) {
                 System.out.println(movieSave.getName());
             }
         }
@@ -332,11 +347,11 @@ public class StreamingSite {
 
     private static void getTheInformationOfTheMovieWithTheSameNameAsTheInput(Person loggedInAccount, String getInformation) {
         for (Movie movieSave : movies) {
-            if(movieSave.getName().equalsIgnoreCase(getInformation)) {
+            if(movieSave
+                    .getName()
+                    .equalsIgnoreCase(getInformation)) {
                 movieSave.setViews(movieSave.getViews() + 1);
-                System.out.println(
-                        movieSave.getDuration() + " " + movieSave.getGenre() + " " + movieSave.getProducer() + " " +
-                        movieSave.getViews());
+                System.out.println(movieSave.getDuration() + " " + movieSave.getGenre() + " " + movieSave.getProducer() + " " + movieSave.getViews());
                 loggedInAccount.watchMovie(movieSave);
             }
         }
@@ -344,7 +359,10 @@ public class StreamingSite {
 
     private static void showAllMovieNamesWithTheSearchedGenre(String genreFinder) {
         for (Movie movieSave : movies) {
-            if(movieSave.getGenre().toLowerCase().contains(genreFinder)) {
+            if(movieSave
+                    .getGenre()
+                    .toLowerCase()
+                    .contains(genreFinder)) {
                 System.out.println(movieSave.getName());
             }
         }
@@ -364,30 +382,19 @@ public class StreamingSite {
     }
 
     public static void initMovies() {
-        List<Movie> movieList = new ArrayList<>();
-        movieList.add(new Movie("the Godfather", Duration.ofMinutes(175),
-                "Crime " + "Drama", "Francis Ford Coppola", 4322));
+        List <Movie> movieList = new ArrayList <>();
+        movieList.add(new Movie("the Godfather", Duration.ofMinutes(175), "Crime " + "Drama", "Francis Ford Coppola", 4322));
         movieList.add(new Movie("the Shawshank Redemption", Duration.ofMinutes(142), "Drama", "Frank Darabont", 11239));
-        movieList.add(new Movie("shindler's List", Duration.ofMinutes(195),
-                "History " + "Drama " + "Biography", "Steven Spielberg", 654321));
-        movieList.add(new Movie("forrest Gump", Duration.ofMinutes(142),
-                "Romance " + "Drama", "Robert Zemechkis", 4576856));
-        movieList.add(new Movie("angry Birds", Duration.ofMinutes(97),
-                "Animation " + "Action " + "Adventure", "Clay Kaytis" + " Fergal Reilly", 0));
-        movieList.add(new Movie("shrek", Duration.ofMinutes(90),
-                "Fantasy " + "Adventure " + "Animation", "Andrew Adamson", 999999999));
-        movieList.add(new Movie("the Dark Knight", Duration.ofMinutes(152),
-                "Action " + "Drama " + "Detective story", "Christopher Nolan", 42312));
-        movieList.add(new Movie("wall-E", Duration.ofMinutes(98),
-                "Adventure " + "Animation " + "Family", "Andrew Stanton", 1));
-        movieList.add(new Movie("avengers: Infinity War", Duration.ofMinutes(149),
-                "Sci-Fi " + "Adventure " + "Action", "Anthony Russo" + "Joe Russo", 54345));
-        movieList.add(new Movie("joker", Duration.ofMinutes(122),
-                "Thriller " + "Detective Story " + "Drama", "Todd Phillips", 999999998));
-        movieList.add(new Movie("the Wolf of Wall Street", Duration.ofMinutes(180),
-                "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", 1234543));
-        movieList.add(new Movie("the Truman Show", Duration.ofMinutes(103),
-                "Drama " + "Comedy", "Peter Weir", 999999997));
+        movieList.add(new Movie("shindler's List", Duration.ofMinutes(195), "History " + "Drama " + "Biography", "Steven Spielberg", 654321));
+        movieList.add(new Movie("forrest Gump", Duration.ofMinutes(142), "Romance " + "Drama", "Robert Zemechkis", 4576856));
+        movieList.add(new Movie("angry Birds", Duration.ofMinutes(97), "Animation " + "Action " + "Adventure", "Clay Kaytis" + " Fergal Reilly", 0));
+        movieList.add(new Movie("shrek", Duration.ofMinutes(90), "Fantasy " + "Adventure " + "Animation", "Andrew Adamson", 999999999));
+        movieList.add(new Movie("the Dark Knight", Duration.ofMinutes(152), "Action " + "Drama " + "Detective story", "Christopher Nolan", 42312));
+        movieList.add(new Movie("wall-E", Duration.ofMinutes(98), "Adventure " + "Animation " + "Family", "Andrew Stanton", 1));
+        movieList.add(new Movie("avengers: Infinity War", Duration.ofMinutes(149), "Sci-Fi " + "Adventure " + "Action", "Anthony Russo" + "Joe Russo", 54345));
+        movieList.add(new Movie("joker", Duration.ofMinutes(122), "Thriller " + "Detective Story " + "Drama", "Todd Phillips", 999999998));
+        movieList.add(new Movie("the Wolf of Wall Street", Duration.ofMinutes(180), "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", 1234543));
+        movieList.add(new Movie("the Truman Show", Duration.ofMinutes(103), "Drama " + "Comedy", "Peter Weir", 999999997));
         movies = movieList;
     }
 }

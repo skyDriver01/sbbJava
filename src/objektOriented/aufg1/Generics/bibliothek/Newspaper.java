@@ -3,7 +3,7 @@ package objektOriented.aufg1.Generics.bibliothek;
 public class Newspaper <T> {
     private T publisher;
     private T date;
-    private T leased;
+    private boolean leased;
 
     public Newspaper(T publisher, T date, boolean leased) {
         this.publisher = publisher;
@@ -11,11 +11,11 @@ public class Newspaper <T> {
         this.leased = leased;
     }
 
-    public T getLeased() {
+    public boolean getLeased() {
         return leased;
     }
 
-    public void setLeased(T leased) {
+    public void setLeased(boolean leased) {
         this.leased = leased;
     }
 
