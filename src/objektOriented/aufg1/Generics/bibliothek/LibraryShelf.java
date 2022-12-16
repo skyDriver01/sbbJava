@@ -14,13 +14,11 @@ public class LibraryShelf<T> {
     public void insideTheLibrary(T element) {
         booklist();
         cdList();
-        System.out.println("Hello what would you like to do?");
-        System.out.println("1: Lease a Item");
-        System.out.println("2: Give back a leased Item");
-        System.out.println("3: Give the Information of the Item in the Library");
-        System.out.println("4: leave");
+        dvdList();
+        newspaperList();
         boolean exit = true;
         while (exit) {
+            options();
             int option = InputIn.nextLineIntOut("choose one of these options pls.");
             switch (option) {
                 case 1 -> {
@@ -30,35 +28,42 @@ public class LibraryShelf<T> {
 
                 }
                 case 3 -> {
-                    boolean askForItem = true;
-                    while (askForItem) {
-                        String getItem = InputIn.nextLineOut("What Item would you like to get the Info from? The Items are: Book, Cd, Dvd or Newspaper, Type in what you want to see");
-                        switch (getItem) {
-                            case "Book" -> {
-                                bookList
-                                        .stream()
-                                        .forEach(a -> System.out.println(a.getName()));
-                                for (Book bookInfo : bookList) {     //  Works rn TODO: make it so it gives all the books out before asking you and
-                                    String getBook = InputIn.nextLineOut("What Book do you went to get the Information from");
-                                }
-                            }
-                            case "Cd" -> {
-                                String getCD = InputIn.nextLineOut("What CD do you went to get the Information from");
-                                for (CD cdInfo : cdList) {
+                    String getItem = InputIn.nextLineOut("What Item would you like to get the Info from? The Items are: Book, Cd, Dvd or Newspaper, Type in what you want to see");
+                    switch (getItem) {
+                        case "Book" -> {
+                            bookList
+                                    .stream()
+                                    .forEach(a -> System.out.println(a.getName()));
+                            String getBook = InputIn.nextLineOut("What Book do you went to get the Information from");
+                            for (Book bookInfo : bookList) {     //  Works rn TODO: make it so it gives all the books out before asking you and
 
-                                }
                             }
-                            case "Dvd" -> {
-                                String getDVD = InputIn.nextLineOut("What DVD do you went to get the Information from");
-                                for (DVD dvdInfo : dvdList) {
+                        }
+                        case "Cd" -> {
+                            cdList
+                                    .stream()
+                                    .forEach(a -> System.out.println(a.getName()));
+                            String getCD = InputIn.nextLineOut("What CD do you went to get the Information from");
+                            for (CD cdInfo : cdList) {
 
-                                }
                             }
-                            case "Newspaper" -> {
-                                String getNewspaper = InputIn.nextLineOut("What Newspaper do you went to get the Information from");
-                                for (Newspaper newspaperInfo : newspaperList) {
+                        }
+                        case "Dvd" -> {
+                            dvdList
+                                    .stream()
+                                    .forEach(a -> System.out.println(a.getName()));
+                            String getDVD = InputIn.nextLineOut("What DVD do you went to get the Information from");
+                            for (DVD dvdInfo : dvdList) {
 
-                                }
+                            }
+                        }
+                        case "Newspaper" -> {
+                            newspaperList
+                                    .stream()
+                                    .forEach(a -> System.out.println(a.getPublisher()));
+                            String getNewspaper = InputIn.nextLineOut("What Newspaper do you went to get the Information from");
+                            for (Newspaper newspaperInfo : newspaperList) {
+
                             }
                         }
                     }
@@ -68,7 +73,15 @@ public class LibraryShelf<T> {
         }
     }
 
-    final private void booklist() {
+    private static void options() {
+        System.out.println("Hello what would you like to do?");
+        System.out.println("1: Lease a Item");
+        System.out.println("2: Give back a leased Item");
+        System.out.println("3: Give the Information of the Item in the Library");
+        System.out.println("4: leave");
+    }
+
+    private void booklist() {
         List <T> books = new ArrayList <>();
         books.add((T) new Book("The Great Gatsby", "F. Scott Fitzgerald", "Fantasy", false));
         books.add((T) new Book("Oliver Twist", "Charles Dickens", "History", false));
@@ -77,29 +90,27 @@ public class LibraryShelf<T> {
         bookList = (List <Book>) books;
     }
 
-    final private void cdList() {
+    private void cdList() {
         List <T> cds = new ArrayList <>();
-        cds.add((T) new CD("", "Pink Floyd", 10, false));
-        cds.add((T) new CD("", "Led Zeppelin", 8, false));
-        cds.add((T) new CD("", "The Beatles", 9, false));
-        cds.add((T) new CD("", "AC/DC", 14, false));
-        cds.add((T) new CD("", "Def Leppard", 7, false));
-        cds.add((T) new CD("", "Neil Young", 12, false));
+        cds.add((T) new CD("Dark Side Of the Moon", "Pink Floyd", 10, false));
+        cds.add((T) new CD("Led Zeppelin IV", "Led Zeppelin", 8, false));
+        cds.add((T) new CD("Abbey Road", "The Beatles", 9, false));
+        cds.add((T) new CD("Highway to Hell", "AC/DC", 14, false));
+        cds.add((T) new CD("Hysteria", "Def Leppard", 7, false));
+        cds.add((T) new CD("Harvest Moon", "Neil Young", 12, false));
         cdList = (List <CD>) cds;
     }
 
-    final private void dvdList() {
+    private void dvdList() {
         List <T> dvds = new ArrayList <>();
-        dvds.add((T) new DVD("", "David Fincher", "Crime", false));
-        dvds.add((T) new DVD("", "Fracis Ford Coppola", "Drama", false));
-        dvds.add((T) new DVD("", "Jean-Jacques Annaud", "Adventure", false));
-        dvds.add((T) new DVD("", "Edward Zwick", "Thriller", false));
-        dvds.add((T) new DVD("", "Guy Ritchie", "Comedy", false));
-        dvds.add((T) new DVD("", "Christopher Nolan", "Action", false));
+        dvds.add((T) new DVD("Fight Club", "David Fincher", "Crime", false));
+        dvds.add((T) new DVD("The Godfather", "Fracis Ford Coppola", "Drama", false));
+        dvds.add((T) new DVD("Black Gold", "Jean-Jacques Annaud", "Adventure", false));
+        dvds.add((T) new DVD("Inception", "Christopher Nolan", "Action", false));
         dvdList = (List <DVD>) dvds;
     }
 
-    final private void newspaperList() {
+    private void newspaperList() {
         List <T> newspapers = new ArrayList <>();
         newspapers.add((T) new Newspaper("The New York Times", "16April 1912", false));  // TODO: Change the second T Type to Date or smth that works better with dates.
         newspapers.add((T) new Newspaper("Daily Mail", "25th October 1929", false));
