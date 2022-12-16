@@ -23,7 +23,7 @@ public class LibraryShelf<T> {
             switch (option) {
                 case 1 -> {
 
-                }
+                }               // Todo: Extract the case 3 into a method were it gives out all the names to be able to make it so yo ucan lease it
                 case 2 -> {
 
                 }
