@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryShelf<T> {
-    static List<Book> bookList;
-    static List<CD> cdList;
-    static List<DVD> dvdList;
-    static List<Newspaper> newspaperList;
+    static List <Book> bookList;
+    static List <CD> cdList;
+    static List <DVD> dvdList;
+    static List <Newspaper> newspaperList;
 
     public void insideTheLibrary(T element) {
         booklist();
@@ -33,47 +33,46 @@ public class LibraryShelf<T> {
                     boolean askForItem = true;
                     while (askForItem) {
                         String getItem = InputIn.nextLineOut("What Item would you like to get the Info from? The Items are: Book, Cd, Dvd or Newspaper, Type in what you want to see");
-                        switch (getItem){
-                            case "Book" ->{
-                                String getBook = InputIn.nextLineOut("What Book do you went to get the Information from");
-                                for (Book bookInfo : bookList){     //  Works rn TODO: make it so it gives all the books out before asking you and
-                                                                            // Todo: make the getItem give out all the Items there are so: Book, Cd, DVD and Newspaper but dont hardcode it.
+                        switch (getItem) {
+                            case "Book" -> {
+                                bookList
+                                        .stream()
+                                        .forEach(a -> System.out.println(a.getName()));
+                                for (Book bookInfo : bookList) {     //  Works rn TODO: make it so it gives all the books out before asking you and
+                                    String getBook = InputIn.nextLineOut("What Book do you went to get the Information from");
                                 }
                             }
                             case "Cd" -> {
                                 String getCD = InputIn.nextLineOut("What CD do you went to get the Information from");
-                                for (CD cdInfo : cdList){
+                                for (CD cdInfo : cdList) {
 
                                 }
                             }
                             case "Dvd" -> {
                                 String getDVD = InputIn.nextLineOut("What DVD do you went to get the Information from");
-                                for (DVD dvdInfo : dvdList){
+                                for (DVD dvdInfo : dvdList) {
 
                                 }
                             }
                             case "Newspaper" -> {
                                 String getNewspaper = InputIn.nextLineOut("What Newspaper do you went to get the Information from");
-                                for (Newspaper newspaperInfo : newspaperList){
+                                for (Newspaper newspaperInfo : newspaperList) {
 
                                 }
                             }
                         }
                     }
-                } case 4 -> exit = false;
+                }
+                case 4 -> exit = false;
             }
         }
     }
 
     final private void booklist() {
         List <T> books = new ArrayList <>();
-        books.add((T) new Book("", "Steven Spielberg", "Fantasy", false));
-        books.add((T) new Book("", "Walt Disney", "Comedy", false));
-        books.add((T) new Book("", "Marcel Proust", "Novel", false));
-        books.add((T) new Book("", "James Joyce", "History", false));
-        books.add((T) new Book("", "F. Scott Fitzgerald", "Fantasy", false));
-        books.add((T) new Book("", "Charles Dickens", "History", false));
-        books.add((T) new Book("", "Harper Lee", "Novel", false));
+        books.add((T) new Book("The Great Gatsby", "F. Scott Fitzgerald", "Fantasy", false));
+        books.add((T) new Book("Oliver Twist", "Charles Dickens", "History", false));
+        books.add((T) new Book("To kill a Mockingbird", "Harper Lee", "Novel", false));
         books.add((T) new Book("The Art of War", "Sun tzu", "treatise", false));
         bookList = (List <Book>) books;
     }
