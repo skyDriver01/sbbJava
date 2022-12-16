@@ -35,8 +35,15 @@ public class LibraryShelf<T> {
                                     .stream()
                                     .forEach(a -> System.out.println(a.getName()));
                             String getBook = InputIn.nextLineOut("What Book do you went to get the Information from");
-                            for (Book bookInfo : bookList) {     //  Works rn TODO: make it so it gives all the books out before asking you and
-
+                            for (Book bookInfo : bookList) {
+                                if(bookInfo
+                                        .getName()
+                                        .equals(getBook)) {
+                                    System.out.println(
+                                            "The Name of the Book: " + bookInfo.getName() + ", Who wrote it: " +
+                                            bookInfo.getAuthor() + ", What Genre it is: " + bookInfo.getGenre() +
+                                            ", Is it already leased: " + bookInfo.getLeased());
+                                }
                             }
                         }
                         case "Cd" -> {
@@ -45,7 +52,14 @@ public class LibraryShelf<T> {
                                     .forEach(a -> System.out.println(a.getName()));
                             String getCD = InputIn.nextLineOut("What CD do you went to get the Information from");
                             for (CD cdInfo : cdList) {
-
+                                if(cdInfo
+                                        .getName()
+                                        .equals(getCD)) {
+                                    System.out.println(
+                                            "The Name of the Album: " + cdInfo.getName() + ", Who is the artist: " +
+                                            cdInfo.getArtist() + ", How many Tracks: " + cdInfo.getAmountOfSongs() +
+                                            ", Is it already leased: " + cdInfo.getLeased());
+                                }
                             }
                         }
                         case "Dvd" -> {
@@ -54,7 +68,14 @@ public class LibraryShelf<T> {
                                     .forEach(a -> System.out.println(a.getName()));
                             String getDVD = InputIn.nextLineOut("What DVD do you went to get the Information from");
                             for (DVD dvdInfo : dvdList) {
-
+                                if(dvdInfo
+                                        .getName()
+                                        .equals(getDVD)) {
+                                    System.out.println(
+                                            "The Name of the Dvd: " + dvdInfo.getName() + ", Who is the Director: " +
+                                            dvdInfo.getDirector() + ", What Genre is it: " + dvdInfo.getGenre() +
+                                            ", Is it already leased: " + dvdInfo.getLeased());
+                                }
                             }
                         }
                         case "Newspaper" -> {
@@ -63,7 +84,13 @@ public class LibraryShelf<T> {
                                     .forEach(a -> System.out.println(a.getPublisher()));
                             String getNewspaper = InputIn.nextLineOut("What Newspaper do you went to get the Information from");
                             for (Newspaper newspaperInfo : newspaperList) {
-
+                                if(newspaperInfo
+                                        .getPublisher()
+                                        .equals(getNewspaper)) {
+                                    System.out.println("The Name of the Publishing Agency: " + newspaperInfo.getPublisher() +
+                                                       ", When was this published: " + newspaperInfo.getDate() +
+                                                       ", Is it already leased: " + newspaperInfo.getLeased());
+                                }
                             }
                         }
                     }
@@ -85,26 +112,26 @@ public class LibraryShelf<T> {
         List <T> books = new ArrayList <>();
         books.add((T) new Book("The Great Gatsby", "F. Scott Fitzgerald", "Fantasy", false));
         books.add((T) new Book("Oliver Twist", "Charles Dickens", "History", false));
-        books.add((T) new Book("To kill a Mockingbird", "Harper Lee", "Novel", false));
+        books.add((T) new Book("To kill a Mockingbird", "Harper Lee", "Novel", true));
         books.add((T) new Book("The Art of War", "Sun tzu", "treatise", false));
         bookList = (List <Book>) books;
     }
 
     private void cdList() {
         List <T> cds = new ArrayList <>();
-        cds.add((T) new CD("Dark Side Of the Moon", "Pink Floyd", 10, false));
+        cds.add((T) new CD("Dark Side Of the Moon", "Pink Floyd", 10, true));
         cds.add((T) new CD("Led Zeppelin IV", "Led Zeppelin", 8, false));
         cds.add((T) new CD("Abbey Road", "The Beatles", 9, false));
-        cds.add((T) new CD("Highway to Hell", "AC/DC", 14, false));
+        cds.add((T) new CD("Highway to Hell", "AC/DC", 14, true));
         cds.add((T) new CD("Hysteria", "Def Leppard", 7, false));
-        cds.add((T) new CD("Harvest Moon", "Neil Young", 12, false));
+        cds.add((T) new CD("Harvest Moon", "Neil Young", 12, true));
         cdList = (List <CD>) cds;
     }
 
     private void dvdList() {
         List <T> dvds = new ArrayList <>();
-        dvds.add((T) new DVD("Fight Club", "David Fincher", "Crime", false));
-        dvds.add((T) new DVD("The Godfather", "Fracis Ford Coppola", "Drama", false));
+        dvds.add((T) new DVD("Fight Club", "David Fincher", "Crime", true));
+        dvds.add((T) new DVD("The Godfather", "Fracis Ford Coppola", "Drama", true));
         dvds.add((T) new DVD("Black Gold", "Jean-Jacques Annaud", "Adventure", false));
         dvds.add((T) new DVD("Inception", "Christopher Nolan", "Action", false));
         dvdList = (List <DVD>) dvds;
@@ -112,11 +139,11 @@ public class LibraryShelf<T> {
 
     private void newspaperList() {
         List <T> newspapers = new ArrayList <>();
-        newspapers.add((T) new Newspaper("The New York Times", "16April 1912", false));  // TODO: Change the second T Type to Date or smth that works better with dates.
-        newspapers.add((T) new Newspaper("Daily Mail", "25th October 1929", false));
+        newspapers.add((T) new Newspaper("The New York Times", "16April 1912", true));  // TODO: Change the second T Type to Date or smth that works better with dates.
+        newspapers.add((T) new Newspaper("Daily Mail", "25th October 1929", true));
         newspapers.add((T) new Newspaper("The News Chronicle", "2nd May 1945", false));
-        newspapers.add((T) new Newspaper("Chicago Tribune", "22nd November 1963", false)); //these dont work bc i need to make them with Calender datatype but i dont understand it yet
-        newspapers.add((T) new Newspaper("Evening Standard", "21st July 1969", false));
+        newspapers.add((T) new Newspaper("Chicago Tribune", "22nd November 1963", false));
+        newspapers.add((T) new Newspaper("Evening Standard", "21st July 1969", true));
         newspapers.add((T) new Newspaper("The Sun", "17th August 1977", false));
         newspaperList = (List <Newspaper>) newspapers;
     }
