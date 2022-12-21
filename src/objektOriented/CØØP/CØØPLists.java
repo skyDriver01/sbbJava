@@ -1,9 +1,6 @@
 package objektOriented.CØØP;
 
-import objektOriented.CØØP.Groceries.Fruits;
-import objektOriented.CØØP.Groceries.Pastry;
-import objektOriented.CØØP.Groceries.Sweets;
-import objektOriented.CØØP.Groceries.Vegetables;
+import objektOriented.CØØP.Groceries.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,23 +116,49 @@ public class CØØPLists {
         pastries.add(new Pastry("Bretzel", 0, ""));
     }
 
-    private void hygieneList() {
-
+    private void hygieneList() {        //Hygiene products like face wash or toothbrush usw.
+        List <Hygiene> hygienes = new ArrayList <>();
+        hygienes.add(new Hygiene("Toothbrush", 7.45, true));
+        hygienes.add(new Hygiene("Face Cream", 5.35, true));
+        hygienes.add(new Hygiene("Hand Cream", 3.20, true));
+        hygienes.add(new Hygiene("Labello", 2.15, true));
+        hygienes.add(new Hygiene("Axe Deodorant", 4.25, true));
+        hygienes.add(new Hygiene("Floss", 3.50, true));
     }
 
     private void workerList() {
-
+        List <Worker> workers = new ArrayList <>();
+        workers.add(new Worker("Yanir", "", "Luka", "Cashier"));
+        workers.add(new Worker("Jaemi", "", "Luka", "Restocker"));
+        workers.add(new Worker("Manuel", "", "Nick", "Cashier"));
+        workers.add(new Worker("Shervan", "", "Nick", "Restocker"));
+        workers.add(new Worker("Neil", "", "Sven", "Restocker"));
+        workers.add(new Worker("Andrin", "", "Sven", "Cashier"));
     }
 
     private void schüpercardList() {
-
+        List <Schüpercard> schüpercards = new ArrayList <>();
+        schüpercards.add(new Schüpercard(0, "A111"));
+        schüpercards.add(new Schüpercard(0, "A112"));
+        schüpercards.add(new Schüpercard(0, "A113"));
+        schüpercards.add(new Schüpercard(0, "A114"));
+        schüpercards.add(new Schüpercard(0, "A115"));
     }
 
     private void customerList() {
-
+        List <Customer> customers = new ArrayList <>();
+        customers.add(new Customer(0, "", "", ""));
+        customers.add(new Customer(0, "", "", ""));
     }
 
     private void drinkList() {
-
+        List <Drinks> drinks = new ArrayList <>();
+        drinks.add(new Drinks("Redbull", 2.35, true));
+        drinks.add(new Drinks("Fanta", 1.50, true));
+        drinks.add(new Drinks("Cola", 1.75, true));
+        drinks.add(new Drinks("Sprite", 1.60, true));
+        drinks.add(new Drinks("Ice Tea", 0.80, true));
+        drinks.add(new Drinks("Pepsi", 3, true));
+        drinks.add(new Drinks("Schorle", 2.10, true));
     }
 }
