@@ -25,17 +25,11 @@ public class CD<T> {
         return artist;
     }
 
-    public void setArtist(T artist) {
-        this.artist = artist;
-    }
 
     public int getAmountOfSongs() {
         return amountOfSongs;
     }
 
-    public void setAmountOfSongs(int amountOfSongs) {
-        this.amountOfSongs = amountOfSongs;
-    }
 
     public T getName() {
         return name;

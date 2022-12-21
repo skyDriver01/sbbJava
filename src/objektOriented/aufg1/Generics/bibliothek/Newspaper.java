@@ -23,15 +23,9 @@ public class Newspaper <T> {
         return publisher;
     }
 
-    public void setPublisher(T publisher) {
-        this.publisher = publisher;
-    }
 
     public T getDate() {
         return date;
     }
 
-    public void setDate(T date) {
-        this.date = date;
-    }
 }

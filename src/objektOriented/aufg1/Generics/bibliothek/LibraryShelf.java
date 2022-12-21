@@ -23,7 +23,65 @@ public class LibraryShelf<T> {
             switch (option) {
                 case 1 -> lease();
                 case 2 -> {
-
+                    String getItem = InputIn.nextLineOut("What Item kind would you like to return? (Book, Cd, Dvd or Newspaper)");
+                    switch (getItem) {
+                        case "Book" -> {
+                            bookList
+                                    .stream()
+                                    .filter(a -> a.isLeased())
+                                    .forEach(a -> System.out.println(a.getName()));
+                            String returnItem = InputIn.nextLineOut("What Book do you want to return?");
+                            for (Book book : bookList) {
+                                if(book
+                                        .getName()
+                                        .equals(returnItem)) {
+                                    book.setLeased(false);
+                                }
+                            }
+                        }
+                        case "Cd" -> {
+                            cdList
+                                    .stream()
+                                    .filter(a -> a.isLeased())
+                                    .forEach(a -> System.out.println(a.getName()));
+                            String returnItem = InputIn.nextLineOut("What Cd would you like to return?");
+                            for (CD cd : cdList) {
+                                if(cd
+                                        .getName()
+                                        .equals(returnItem)) {
+                                    cd.setLeased(false);
+                                }
+                            }
+                        }
+                        case "Dvd" -> {
+                            dvdList
+                                    .stream()
+                                    .filter(a -> a.isLeased())
+                                    .forEach(a -> System.out.println(a.getName()));
+                            String returnItem = InputIn.nextLineOut("What Dvd would you like to return?");
+                            for (DVD dvd : dvdList) {
+                                if(dvd
+                                        .getName()
+                                        .equals(returnItem)) {
+                                    dvd.setLeased(false);
+                                }
+                            }
+                        }
+                        case "Newspaper" -> {
+                            newspaperList
+                                    .stream()
+                                    .filter(a -> a.getLeased())
+                                    .forEach(a -> System.out.println(a.getPublisher()));
+                            String returnItem = InputIn.nextLineOut("What Newspaper would you like to return?");
+                            for (Newspaper newspaper : newspaperList) {
+                                if(newspaper
+                                        .getPublisher()
+                                        .equals(returnItem)) {
+                                    newspaper.setLeased(false);
+                                }
+                            }
+                        }
+                    }
                 }
                 case 3 -> getInformation();
                 case 4 -> exit = false;
