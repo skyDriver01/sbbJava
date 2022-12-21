@@ -21,81 +21,240 @@ public class LibraryShelf<T> {
             options();
             int option = InputIn.nextLineIntOut("choose one of these options pls.");
             switch (option) {
-                case 1 -> {
-
-                }               // Todo: Extract the case 3 into a method were it gives out all the names to be able to make it so yo ucan lease it
+                case 1 -> lease();
                 case 2 -> {
 
                 }
-                case 3 -> {
-                    String getItem = InputIn.nextLineOut("What Item would you like to get the Info from? The Items are: Book, Cd, Dvd or Newspaper, Type in what you want to see");
-                    switch (getItem) {
-                        case "Book" -> {
-                            bookList
-                                    .stream()
-                                    .forEach(a -> System.out.println(a.getName()));
-                            String getBook = InputIn.nextLineOut("What Book do you went to get the Information from");
-                            for (Book bookInfo : bookList) {
-                                if(bookInfo
-                                        .getName()
-                                        .equals(getBook)) {
-                                    System.out.println(
-                                            "The Name of the Book: " + bookInfo.getName() + ", Who wrote it: " +
-                                            bookInfo.getAuthor() + ", What Genre it is: " + bookInfo.getGenre() +
-                                            ", Is it already leased: " + bookInfo.getLeased());
-                                }
-                            }
-                        }
-                        case "Cd" -> {
-                            cdList
-                                    .stream()
-                                    .forEach(a -> System.out.println(a.getName()));
-                            String getCD = InputIn.nextLineOut("What CD do you went to get the Information from");
-                            for (CD cdInfo : cdList) {
-                                if(cdInfo
-                                        .getName()
-                                        .equals(getCD)) {
-                                    System.out.println(
-                                            "The Name of the Album: " + cdInfo.getName() + ", Who is the artist: " +
-                                            cdInfo.getArtist() + ", How many Tracks: " + cdInfo.getAmountOfSongs() +
-                                            ", Is it already leased: " + cdInfo.getLeased());
-                                }
-                            }
-                        }
-                        case "Dvd" -> {
-                            dvdList
-                                    .stream()
-                                    .forEach(a -> System.out.println(a.getName()));
-                            String getDVD = InputIn.nextLineOut("What DVD do you went to get the Information from");
-                            for (DVD dvdInfo : dvdList) {
-                                if(dvdInfo
-                                        .getName()
-                                        .equals(getDVD)) {
-                                    System.out.println(
-                                            "The Name of the Dvd: " + dvdInfo.getName() + ", Who is the Director: " +
-                                            dvdInfo.getDirector() + ", What Genre is it: " + dvdInfo.getGenre() +
-                                            ", Is it already leased: " + dvdInfo.getLeased());
-                                }
-                            }
-                        }
-                        case "Newspaper" -> {
-                            newspaperList
-                                    .stream()
-                                    .forEach(a -> System.out.println(a.getPublisher()));
-                            String getNewspaper = InputIn.nextLineOut("What Newspaper do you went to get the Information from");
-                            for (Newspaper newspaperInfo : newspaperList) {
-                                if(newspaperInfo
-                                        .getPublisher()
-                                        .equals(getNewspaper)) {
-                                    System.out.println("The Name of the Publishing Agency: " + newspaperInfo.getPublisher() +
-                                                       ", When was this published: " + newspaperInfo.getDate() +
-                                                       ", Is it already leased: " + newspaperInfo.getLeased());
-                                }
-                            }
-                        }
+                case 3 -> getInformation();
+                case 4 -> exit = false;
+            }
+        }
+    }
+
+    private static void lease() {
+        String getItem = InputIn.nextLineOut("What Item kind would you like to lease? (Book, Cd, Dvd or Newspaper)");
+        switch (getItem) {
+            case "Book" -> leaseABook();
+            case "Cd" -> leaseACd();
+            case "Dvd" -> leaseADvd();
+            case "Newspaper" -> leaseANewspaper();
+        }
+    }
+
+    private static void leaseABook() {
+        bookList
+                .stream()
+                .forEach(a -> System.out.println(a.getName()));
+        String getBook = InputIn.nextLineOut("What Book do you went to get the Information from");
+        for (Book bookInfo : bookList) {
+            if(bookInfo
+                    .getName()
+                    .equals(getBook)) {
+                System.out.println(
+                        "The Name of the Book: " + bookInfo.getName() + ", Who wrote it: " + bookInfo.getAuthor() +
+                        ", What Genre it is: " + bookInfo.getGenre() + ", Is it already leased: " +
+                        bookInfo.getLeased());
+            }
+        }
+        String askToLease = InputIn.nextLineOut("Do you want to lease it, if it isnt leased already?(Yes or No)");
+        switch (askToLease) {
+            case "Yes" -> {
+                for (Book book : bookList) {
+                    if(book
+                            .getName()
+                            .equals(getBook)) {
+                        book.setLeased(true);
                     }
                 }
-                case 4 -> exit = false;
+            }
+            case "No" -> {
+                System.out.println("Ok");
+            }
+        }
+    }
+
+    private static void leaseANewspaper() {
+        newspaperList
+                .stream()
+                .forEach(a -> System.out.println(a.getPublisher()));
+        String getNewspaper = InputIn.nextLineOut("What Newspaper do you want to get the Information of");
+        for (Newspaper newspaperInfo : newspaperList) {
+            if(newspaperInfo
+                    .getPublisher()
+                    .equals(getNewspaper)) {
+                System.out.println("The Name of the Publishing Agency: " + newspaperInfo.getPublisher() +
+                                   ", When was this published: " + newspaperInfo.getDate() +
+                                   ", Is it already leased: " + newspaperInfo.getLeased());
+            }
+        }
+        String askToLease = InputIn.nextLineOut("Do you want to lease it, if it isnt leased already?(Yes or No)");
+        switch (askToLease) {
+            case "Yes" -> {
+                for (Newspaper newspaper : newspaperList) {
+                    if(newspaper
+                            .getPublisher()
+                            .equals(getNewspaper)) {
+                        newspaper.setLeased(true);
+                    }
+                }
+            }
+            case "No" -> {
+                System.out.println("Ok");
+            }
+        }
+    }
+
+    private static void leaseADvd() {
+        dvdList
+                .stream()
+                .forEach(a -> System.out.println(a.getName()));
+        String getDvd = InputIn.nextLineOut("What Dvd do you want the Information of?");
+        for (DVD dvdInfo : dvdList) {
+            if(dvdInfo
+                    .getName()
+                    .equals(getDvd)) {
+                System.out.println("The Name of the Dvd: " + dvdInfo.getName() + ", Who is the Director: " +
+                                   dvdInfo.getDirector() + ", What Genre is it: " + dvdInfo.getGenre() +
+                                   ", Is it already leased: " + dvdInfo.getLeased());
+            }
+        }
+        String askToLease = InputIn.nextLineOut("Do you want to lease it, if it isnt leased already?(Yes or No)");
+        switch (askToLease) {
+            case "Yes" -> {
+                for (DVD dvd : dvdList) {
+                    if(dvd
+                            .getName()
+                            .equals(getDvd)) {
+                        dvd.setLeased(true);
+                    }
+                }
+            }
+            case "No" -> {
+                System.out.println("Ok");
+            }
+        }
+    }
+
+    private static void leaseACd() {
+        cdList
+                .stream()
+                .forEach(a -> System.out.println(a.getName()));
+        String getCd = InputIn.nextLineOut("What Cd do you want the Information of?");
+        for (CD cdInfo : cdList) {
+            if(cdInfo
+                    .getName()
+                    .equals(getCd)) {
+                System.out.println(
+                        "The Name of the Album: " + cdInfo.getName() + ", Who is the artist: " + cdInfo.getArtist() +
+                        ", How many Tracks: " + cdInfo.getAmountOfSongs() + ", Is it already leased: " +
+                        cdInfo.getLeased());
+            }
+        }
+        String askToLease = InputIn.nextLineOut("Do you want to lease it, if it isnt leased already?(Yes or No)");
+        switch (askToLease) {
+            case "Yes" -> {
+                for (CD cd : cdList) {
+                    if(cd
+                            .getName()
+                            .equals(getCd)) {
+                        cd.setLeased(true);
+                    }
+                }
+            }
+            case "No" -> {
+                System.out.println("Ok");
+            }
+        }
+    }
+
+    private static void getInformation() {
+        String getItem = InputIn.nextLineOut("What Item would you like to get the Info from? The Items are: Book, Cd, Dvd or Newspaper, Type in what you want to see");
+        switch (getItem) {
+            case "Book" -> bookCase();
+            case "Cd" -> cdCase();
+            case "Dvd" -> dvdCase();
+            case "Newspaper" -> newspaperCase();
+        }
+    }
+
+    public static void bookCase() {
+        bookList
+                .stream()
+                .forEach(a -> System.out.println(a.getName()));
+        getBookInfo();
+    }
+
+    private static void getBookInfo() {
+        String getBook = InputIn.nextLineOut("What Book do you went to get the Information from");
+        for (Book bookInfo : bookList) {
+            if(bookInfo
+                    .getName()
+                    .equals(getBook)) {
+                System.out.println(
+                        "The Name of the Book: " + bookInfo.getName() + ", Who wrote it: " + bookInfo.getAuthor() +
+                        ", What Genre it is: " + bookInfo.getGenre() + ", Is it already leased: " +
+                        bookInfo.getLeased());
+            }
+        }
+    }
+
+    public static void newspaperCase() {
+        newspaperList
+                .stream()
+                .forEach(a -> System.out.println(a.getPublisher()));
+        getNewsPaperInfo();
+    }
+
+    private static void getNewsPaperInfo() {
+        String getNewspaper = InputIn.nextLineOut("What Newspaper do you went to get the Information from");
+        for (Newspaper newspaperInfo : newspaperList) {
+            if(newspaperInfo
+                    .getPublisher()
+                    .equals(getNewspaper)) {
+                System.out.println("The Name of the Publishing Agency: " + newspaperInfo.getPublisher() +
+                                   ", When was this published: " + newspaperInfo.getDate() +
+                                   ", Is it already leased: " + newspaperInfo.getLeased());
+            }
+        }
+    }
+
+    public static void dvdCase() {
+        dvdList
+                .stream()
+                .forEach(a -> System.out.println(a.getName()));
+        getDvdInfo();
+    }
+
+    private static void getDvdInfo() {
+        String getDVD = InputIn.nextLineOut("What DVD do you went to get the Information from");
+        for (DVD dvdInfo : dvdList) {
+            if(dvdInfo
+                    .getName()
+                    .equals(getDVD)) {
+                System.out.println("The Name of the Dvd: " + dvdInfo.getName() + ", Who is the Director: " +
+                                   dvdInfo.getDirector() + ", What Genre is it: " + dvdInfo.getGenre() +
+                                   ", Is it already leased: " + dvdInfo.getLeased());
+            }
+        }
+    }
+
+    public static void cdCase() {
+        cdList
+                .stream()
+                .forEach(a -> System.out.println(a.getName()));
+        getCDInfo();
+    }
+
+    private static void getCDInfo() {
+        String getCD = InputIn.nextLineOut("What CD do you went to get the Information from");
+        for (CD cdInfo : cdList) {
+            if(cdInfo
+                    .getName()
+                    .equals(getCD)) {
+                System.out.println(
+                        "The Name of the Album: " + cdInfo.getName() + ", Who is the artist: " + cdInfo.getArtist() +
+                        ", How many Tracks: " + cdInfo.getAmountOfSongs() + ", Is it already leased: " +
+                        cdInfo.getLeased());
             }
         }
     }

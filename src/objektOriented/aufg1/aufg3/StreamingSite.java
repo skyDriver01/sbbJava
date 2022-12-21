@@ -320,7 +320,9 @@ public class StreamingSite {
                     .getName()
                     .equalsIgnoreCase(getInformation)) {
                 movieSave.setViews(movieSave.getViews() + 1);
-                System.out.println(movieSave.getName() + " " + movieSave.getDuration() + " " + movieSave.getGenre() + " " + movieSave.getProducer() + " " + movieSave.getViews());
+                System.out.println(
+                        movieSave.getName() + " " + movieSave.getDuration() + " " + movieSave.getGenre() + " " +
+                        movieSave.getProducer() + " " + movieSave.getViews());
                 loggedInAccount.watchMovie(movieSave);
             }
         }
@@ -351,7 +353,9 @@ public class StreamingSite {
                     .getName()
                     .equalsIgnoreCase(getInformation)) {
                 movieSave.setViews(movieSave.getViews() + 1);
-                System.out.println(movieSave.getDuration() + " " + movieSave.getGenre() + " " + movieSave.getProducer() + " " + movieSave.getViews());
+                System.out.println(
+                        movieSave.getDuration() + " " + movieSave.getGenre() + " " + movieSave.getProducer() + " " +
+                        movieSave.getViews());
                 loggedInAccount.watchMovie(movieSave);
             }
         }
@@ -383,18 +387,29 @@ public class StreamingSite {
 
     public static void initMovies() {
         List <Movie> movieList = new ArrayList <>();
-        movieList.add(new Movie("the Godfather", Duration.ofMinutes(175), "Crime " + "Drama", "Francis Ford Coppola", 4322));
+        movieList.add(new Movie("the Godfather", Duration.ofMinutes(175),
+                                "Crime " + "Drama", "Francis Ford Coppola", 4322));
         movieList.add(new Movie("the Shawshank Redemption", Duration.ofMinutes(142), "Drama", "Frank Darabont", 11239));
-        movieList.add(new Movie("shindler's List", Duration.ofMinutes(195), "History " + "Drama " + "Biography", "Steven Spielberg", 654321));
-        movieList.add(new Movie("forrest Gump", Duration.ofMinutes(142), "Romance " + "Drama", "Robert Zemechkis", 4576856));
-        movieList.add(new Movie("angry Birds", Duration.ofMinutes(97), "Animation " + "Action " + "Adventure", "Clay Kaytis" + " Fergal Reilly", 0));
-        movieList.add(new Movie("shrek", Duration.ofMinutes(90), "Fantasy " + "Adventure " + "Animation", "Andrew Adamson", 999999999));
-        movieList.add(new Movie("the Dark Knight", Duration.ofMinutes(152), "Action " + "Drama " + "Detective story", "Christopher Nolan", 42312));
-        movieList.add(new Movie("wall-E", Duration.ofMinutes(98), "Adventure " + "Animation " + "Family", "Andrew Stanton", 1));
-        movieList.add(new Movie("avengers: Infinity War", Duration.ofMinutes(149), "Sci-Fi " + "Adventure " + "Action", "Anthony Russo" + "Joe Russo", 54345));
-        movieList.add(new Movie("joker", Duration.ofMinutes(122), "Thriller " + "Detective Story " + "Drama", "Todd Phillips", 999999998));
-        movieList.add(new Movie("the Wolf of Wall Street", Duration.ofMinutes(180), "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", 1234543));
-        movieList.add(new Movie("the Truman Show", Duration.ofMinutes(103), "Drama " + "Comedy", "Peter Weir", 999999997));
+        movieList.add(new Movie("shindler's List", Duration.ofMinutes(195),
+                                "History " + "Drama " + "Biography", "Steven Spielberg", 654321));
+        movieList.add(new Movie("forrest Gump", Duration.ofMinutes(142),
+                                "Romance " + "Drama", "Robert Zemechkis", 4576856));
+        movieList.add(new Movie("angry Birds", Duration.ofMinutes(97),
+                                "Animation " + "Action " + "Adventure", "Clay Kaytis" + " Fergal Reilly", 0));
+        movieList.add(new Movie("shrek", Duration.ofMinutes(90),
+                                "Fantasy " + "Adventure " + "Animation", "Andrew Adamson", 999999999));
+        movieList.add(new Movie("the Dark Knight", Duration.ofMinutes(152),
+                                "Action " + "Drama " + "Detective story", "Christopher Nolan", 42312));
+        movieList.add(new Movie("wall-E", Duration.ofMinutes(98),
+                                "Adventure " + "Animation " + "Family", "Andrew Stanton", 1));
+        movieList.add(new Movie("avengers: Infinity War", Duration.ofMinutes(149),
+                                "Sci-Fi " + "Adventure " + "Action", "Anthony Russo" + "Joe Russo", 54345));
+        movieList.add(new Movie("joker", Duration.ofMinutes(122),
+                                "Thriller " + "Detective Story " + "Drama", "Todd Phillips", 999999998));
+        movieList.add(new Movie("the Wolf of Wall Street", Duration.ofMinutes(180),
+                                "Comedy " + "Biography" + "Detective Story", "Martin Scorsese", 1234543));
+        movieList.add(new Movie("the Truman Show", Duration.ofMinutes(103),
+                                "Drama " + "Comedy", "Peter Weir", 999999997));
         movies = movieList;
     }
 }
