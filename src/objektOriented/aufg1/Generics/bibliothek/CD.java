@@ -25,11 +25,9 @@ public class CD<T> {
         return artist;
     }
 
-
     public int getAmountOfSongs() {
         return amountOfSongs;
     }
-
 
     public T getName() {
         return name;

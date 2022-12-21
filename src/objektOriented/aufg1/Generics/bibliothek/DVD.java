@@ -25,16 +25,8 @@ public class DVD<T> {
         return director;
     }
 
-    public void setDirector(T director) {
-        this.director = director;
-    }
-
     public T getGenre() {
         return genre;
-    }
-
-    public void setGenre(T genre) {
-        this.genre = genre;
     }
 
     public T getName() {

@@ -29,14 +29,6 @@ public class Book<T> {
         return genre;
     }
 
-    public void setAuthor(T author) {
-        this.author = author;
-    }
-
-    public void setGenre(T genre) {
-        this.genre = genre;
-    }
-
     public T getName() {
         return name;
     }
