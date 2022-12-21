@@ -2,10 +2,10 @@ package objektOriented.CØØP.Groceries;
 
 public class Pastry {
     private String product;
-    private int price;
+    private double price;
     private String articleCode;
 
-    public Pastry(String product, int price, String articleCode) {
+    public Pastry(String product, double price, String articleCode) {
         this.product = product;
         this.price = price;
         this.articleCode = articleCode;
@@ -19,11 +19,11 @@ public class Pastry {
         this.product = product;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

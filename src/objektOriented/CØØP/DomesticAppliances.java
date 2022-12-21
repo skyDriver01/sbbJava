@@ -2,10 +2,10 @@ package objektOriented.CØØP;
 
 public class DomesticAppliances {
     private String product;
-    private int price;
+    private double price;
     private boolean barcode;
 
-    public DomesticAppliances(String product, int price, boolean barcode) {
+    public DomesticAppliances(String product, double price, boolean barcode) {
         this.product = product;
         this.price = price;
         this.barcode = barcode;
@@ -19,11 +19,11 @@ public class DomesticAppliances {
         this.product = product;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
