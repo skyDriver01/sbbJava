@@ -6,6 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CØØPLists {
+    public static List <Vegetables> vegetablesList;
+    public static List <Fruits> fruitsList;
+    public static List <Drinks> drinksList;
+    public static List <Schüpercard> schüpercardsList;
+    public static List <Sweets> sweetsList;
+    public static List <DomesticAppliances> domesticAppliancesList;
+    public static List <BuildingMaterial> buildingMaterialList;
+    public static List <Shelves> shelvesList;
+    public static List <Stores> storesList;
+    public static List <Pastry> pastryList;
+    public static List <Hygiene> hygieneList;
+    public static List <Worker> workerList;
+    public static List <Customer> customersList;
 
     private void vegetableList() {
         List <Vegetables> vegetables = new ArrayList <>();
