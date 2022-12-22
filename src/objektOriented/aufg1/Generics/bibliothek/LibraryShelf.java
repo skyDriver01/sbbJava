@@ -370,7 +370,7 @@ public class LibraryShelf<T> {
 
     private void newspaperList() {
         List <T> newspapers = new ArrayList <>();
-        newspapers.add((T) new Newspaper("The New York Times", "16April 1912", true));  // TODO: Change the second T Type to Date or smth that works better with dates.
+        newspapers.add((T) new Newspaper("The New York Times", "16April 1912", true));
         newspapers.add((T) new Newspaper("Daily Mail", "25th October 1929", true));
         newspapers.add((T) new Newspaper("The News Chronicle", "2nd May 1945", false));
         newspapers.add((T) new Newspaper("Chicago Tribune", "22nd November 1963", false));

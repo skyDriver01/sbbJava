@@ -108,7 +108,7 @@ public class CØØPLists {
         shelves.add(new Shelves(13, "Hygiene", ""));
 
         shelves.add(new Shelves(14, "Drinks", ""));
-        shelves.add(new Shelves(15, "Fruits", ""));
+        shelves.add(new Shelves(15, "Fruits", ""));       //  TODO: Make more Shelves for all the Locations and also not all locations can have all the available items!
         shelves.add(new Shelves(16, "Vegetables", ""));
         shelves.add(new Shelves(17, "Domestic Appliances", ""));
         shelves.add(new Shelves(18, "Sweets", ""));

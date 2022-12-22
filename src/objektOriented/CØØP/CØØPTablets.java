@@ -14,7 +14,9 @@ public class CØØPTablets {
         System.out.println("-----------------------------------------------------------------------------------");
         String chooseAStore = InputIn.nextLineOut("What Store would you like to look over? Type in only to the Stores Address.");
         switch (chooseAStore){
-            case "Wangen an der Aare" -> {}
+            case "Wangen an der Aare" -> {
+                System.out.println("What would you like to buy in this Store?");
+            }
             case "Bern Bahnhof" -> {}
             case "Zürich Bahnhof" -> {}
             case "Zürichsee" -> {}
