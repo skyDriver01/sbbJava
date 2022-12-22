@@ -20,7 +20,7 @@ public class CØØPLists {
     public static List <Worker> workerList;
     public static List <Customer> customersList;
 
-    private void vegetableList() {
+    public List vegetableList() {
         List <Vegetables> vegetables = new ArrayList <>();
         vegetables.add(new Vegetables("Cucumber", 0.85, true));
         vegetables.add(new Vegetables("Tomato", 0.80, true));
@@ -31,10 +31,11 @@ public class CØØPLists {
         vegetables.add(new Vegetables("Beet", 1.10, true));
         vegetables.add(new Vegetables("Onion", 0.65, true));
         vegetables.add(new Vegetables("Broccoli", 1.15, true));
-
+        vegetablesList = vegetables;
+        return vegetables;
     }
 
-    private void fruitList() {
+    public List fruitList() {
         List <Fruits> fruits = new ArrayList <>();
         fruits.add(new Fruits("Apple", 1.20, true));
         fruits.add(new Fruits("Pear", 0.95, true));
@@ -44,10 +45,11 @@ public class CØØPLists {
         fruits.add(new Fruits("Kiwi", 1.20, true));
         fruits.add(new Fruits("Papaya", 1.20, true));
         fruits.add(new Fruits("Pomegranate", 2.50, true));
-
+        fruitsList = fruits;
+        return fruits;
     }
 
-    private void sweetsList() {
+    public List sweetsList() {
         List <Sweets> sweets = new ArrayList <>();
         sweets.add(new Sweets("Kinder Bueno", 2.10, true));
         sweets.add(new Sweets("Chocolate", 1.50, true));
@@ -57,9 +59,11 @@ public class CØØPLists {
         sweets.add(new Sweets("Pop Rocks", 1.40, true));
         sweets.add(new Sweets("Kinder Choco Bons", 2.50, true));
         sweets.add(new Sweets("Maltesers", 4.10, true));
+        sweetsList = sweets;
+        return sweets;
     }
 
-    private void domesticApplianceList() {
+    public List domesticApplianceList() {
         List <DomesticAppliances> domesticAppliances = new ArrayList <>();
         domesticAppliances.add(new DomesticAppliances("Knife", 7.50, true));
         domesticAppliances.add(new DomesticAppliances("Frying Pan", 15, true));
@@ -68,9 +72,11 @@ public class CØØPLists {
         domesticAppliances.add(new DomesticAppliances("Dishes", 12.50, true));
         domesticAppliances.add(new DomesticAppliances("Spatula", 8, true));
         domesticAppliances.add(new DomesticAppliances("Boiler", 20.50, true));
+        domesticAppliancesList = domesticAppliances;
+        return domesticAppliances;
     }
 
-    private void buildingMaterialsList() {
+    public List buildingMaterialsList() {
         List <BuildingMaterial> buildingMaterials = new ArrayList <>();
         buildingMaterials.add(new BuildingMaterial("Wood", 10, true));
         buildingMaterials.add(new BuildingMaterial("Brick", 20, true));
@@ -79,9 +85,11 @@ public class CØØPLists {
         buildingMaterials.add(new BuildingMaterial("Diamond", 50000, true));
         buildingMaterials.add(new BuildingMaterial("Gold", 10000, true));
         buildingMaterials.add(new BuildingMaterial("Netherite", 100000, true));
+        buildingMaterialList = buildingMaterials;
+        return buildingMaterials;
     }
 
-    private void shelvesList() {
+    public List <Shelves> shelvesList() {
         List <Shelves> shelves = new ArrayList <>();
         shelves.add(new Shelves(0, "Drinks", ""));
         shelves.add(new Shelves(1, "Fruits", ""));
@@ -106,30 +114,34 @@ public class CØØPLists {
         shelves.add(new Shelves(18, "Sweets", ""));
         shelves.add(new Shelves(19, "Pastry", ""));
         shelves.add(new Shelves(20, "Hygiene", ""));
+        shelvesList = shelves;
+        return shelves;
 
     }
 
-    private void storeList() {
+    public List <Stores> storeList() {
         List <Stores> stores = new ArrayList <>();
-        stores.add(new Stores("Bern", ""));
-        stores.add(new Stores("Bern", ""));
-        stores.add(new Stores("Zürich", ""));
-        stores.add(new Stores("Zürich", ""));
-        stores.add(new Stores("Basel", ""));
-        stores.add(new Stores("Bern", ""));
-        stores.add(new Stores("Schwyz", ""));
+        stores.add(new Stores("Bern", "Wangen an der Aare"));
+        stores.add(new Stores("Bern", "Bern Bahnhof"));
+        stores.add(new Stores("Zürich", "Zürich Bahnhof"));
+        stores.add(new Stores("Zürich", "Zürichsee"));
+        stores.add(new Stores("Bern", "Grosse Schanze"));
+        storesList = stores;
+        return stores;
     }
 
-    private void pastryList() {
+    public List pastryList() {
         List <Pastry> pastries = new ArrayList <>();
         pastries.add(new Pastry("Bread", 0, ""));
         pastries.add(new Pastry("Croissant", 0, ""));
         pastries.add(new Pastry("Weggli", 0, ""));
         pastries.add(new Pastry("Donut", 0, ""));
         pastries.add(new Pastry("Bretzel", 0, ""));
+        pastryList = pastries;
+        return pastries;
     }
 
-    private void hygieneList() {        //Hygiene products like face wash or toothbrush usw.
+    public List hygieneList() {        //Hygiene products like face wash or toothbrush usw.
         List <Hygiene> hygienes = new ArrayList <>();
         hygienes.add(new Hygiene("Toothbrush", 7.45, true));
         hygienes.add(new Hygiene("Face Cream", 5.35, true));
@@ -137,34 +149,45 @@ public class CØØPLists {
         hygienes.add(new Hygiene("Labello", 2.15, true));
         hygienes.add(new Hygiene("Axe Deodorant", 4.25, true));
         hygienes.add(new Hygiene("Floss", 3.50, true));
+        hygieneList = hygienes;
+        return hygienes;
     }
 
-    private void workerList() {
+    public List workerList() {
         List <Worker> workers = new ArrayList <>();
-        workers.add(new Worker("Yanir", "", "Luka", "Cashier"));
-        workers.add(new Worker("Jaemi", "", "Luka", "Restocker"));
-        workers.add(new Worker("Manuel", "", "Nick", "Cashier"));
-        workers.add(new Worker("Shervan", "", "Nick", "Restocker"));
-        workers.add(new Worker("Neil", "", "Sven", "Restocker"));
-        workers.add(new Worker("Andrin", "", "Sven", "Cashier"));
+        workers.add(new Worker("Yanir", "Bern Bahnhof", "Luka", "Cashier"));
+        workers.add(new Worker("Jaemi", "Bern Bahnhof", "Luka", "Restocker"));
+        workers.add(new Worker("Sven", "Wangen an der Aare", "Nick", "Cashier"));
+        workers.add(new Worker("Shervan", "Wangen an der Aare", "Nick", "Restocker"));
+        workers.add(new Worker("Neil", "Zürich Bahnhof", "Manuel", "Restocker"));
+        workers.add(new Worker("Andrin", "Zürich Bahnhof", "Manuel", "Cashier"));
+        workers.add(new Worker("Janik", "Zürichsee", "Steve", "Cashier"));
+        workers.add(new Worker("Rahul", "Zürichsee", "Steve", "Restocker"));
+        workers.add(new Worker("Tan", "Grosse Schanze", "Oliver", "Cashier"));
+        workers.add(new Worker("Lennox", "Grosse Schanze", "Oliver", "Restocker"));
+        workerList = workers;
+        return workers;
     }
 
-    private void schüpercardList() {
+    public List schüpercardList() {
         List <Schüpercard> schüpercards = new ArrayList <>();
         schüpercards.add(new Schüpercard(0, "A111"));
         schüpercards.add(new Schüpercard(0, "A112"));
         schüpercards.add(new Schüpercard(0, "A113"));
         schüpercards.add(new Schüpercard(0, "A114"));
         schüpercards.add(new Schüpercard(0, "A115"));
+        schüpercardsList = schüpercards;
+        return schüpercards;
     }
 
-    private void customerList() {
+    public List customerList() {
         List <Customer> customers = new ArrayList <>();
         customers.add(new Customer(0, "", "", ""));
-        customers.add(new Customer(0, "", "", ""));
+        customersList = customers;
+        return customers;
     }
 
-    private void drinkList() {
+    public List drinkList() {
         List <Drinks> drinks = new ArrayList <>();
         drinks.add(new Drinks("Redbull", 2.35, true));
         drinks.add(new Drinks("Fanta", 1.50, true));
@@ -173,5 +196,7 @@ public class CØØPLists {
         drinks.add(new Drinks("Ice Tea", 0.80, true));
         drinks.add(new Drinks("Pepsi", 3, true));
         drinks.add(new Drinks("Schorle", 2.10, true));
+        drinksList = drinks;
+        return drinks;
     }
 }

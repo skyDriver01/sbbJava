@@ -2,13 +2,13 @@ package objektOriented.CØØP;
 
 public class Worker {
     private String name;
-    private String store;
+    private String storeAddress;
     private String boss;
     private String task;
 
-    public Worker(String name, String store, String boss, String task) {
+    public Worker(String name, String storeAddress, String boss, String task) {
         this.name = name;
-        this.store = store;
+        this.storeAddress = storeAddress;
         this.boss = boss;
         this.task = task;
     }
@@ -21,12 +21,12 @@ public class Worker {
         this.name = name;
     }
 
-    public String getStore() {
-        return store;
+    public String getStoreAddress() {
+        return storeAddress;
     }
 
-    public void setStore(String store) {
-        this.store = store;
+    public void setStoreAddress(String store) {
+        this.storeAddress = store;
     }
 
     public String getBoss() {
