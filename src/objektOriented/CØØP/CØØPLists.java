@@ -6,72 +6,72 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CØØPLists {
-    public static List <Vegetables> vegetablesList;
-    public static List <Fruits> fruitsList;
+    public static List <Vegetable> vegetablesList;
+    public static List <Fruit> fruitsList;
     public static List <Drink> drinksList;
     public static List <Schüpercard> schüpercardsList;
-    public static List <Sweets> sweetsList;
-    public static List <DomesticAppliances> domesticAppliancesList;
+    public static List <Sweet> sweetsList;
+    public static List <DomesticAppliance> domesticAppliancesList;
     public static List <BuildingMaterial> buildingMaterialList;
-    public static List <Shelves> shelvesList;
-    public static List <Stores> storesList;
+    public static List <Shelf> shelvesList;
+    public static List <Store> storesList;
     public static List <Pastry> pastryList;
     public static List <Hygiene> hygieneList;
     public static List <Worker> workerList;
-    public static List <Customer> customersList;
+    public static List <SchoppingCart> schoppingCarts;
 
     public List vegetableList() {
-        List <Vegetables> vegetables = new ArrayList <>();
-        vegetables.add(new Vegetables("Potato", 0.40, true));
-        vegetables.add(new Vegetables("Onion", 0.65, true));
-        vegetables.add(new Vegetables("Carrot", 0.75, true));
-        vegetables.add(new Vegetables("Tomato", 0.80, true));
-        vegetables.add(new Vegetables("Cucumber", 0.85, true));
-        vegetables.add(new Vegetables("Radish", 1, true));
-        vegetables.add(new Vegetables("Beet", 1.10, true));
-        vegetables.add(new Vegetables("Broccoli", 1.15, true));
-        vegetables.add(new Vegetables("Salad", 2.10, true));
+        List <Vegetable> vegetables = new ArrayList <>();
+        vegetables.add(new Vegetable("Potato", 0.40, true));
+        vegetables.add(new Vegetable("Onion", 0.65, true));
+        vegetables.add(new Vegetable("Carrot", 0.75, true));
+        vegetables.add(new Vegetable("Tomato", 0.80, true));
+        vegetables.add(new Vegetable("Cucumber", 0.85, true));
+        vegetables.add(new Vegetable("Radish", 1, true));
+        vegetables.add(new Vegetable("Beet", 1.10, true));
+        vegetables.add(new Vegetable("Broccoli", 1.15, true));
+        vegetables.add(new Vegetable("Salad", 2.10, true));
         vegetablesList = vegetables;
         return vegetables;
     }
 
     public List fruitList() {
-        List <Fruits> fruits = new ArrayList <>();
-        fruits.add(new Fruits("Pear", 0.95, true));
-        fruits.add(new Fruits("Apple", 1.20, true));
-        fruits.add(new Fruits("Papaya", 1.20, true));
-        fruits.add(new Fruits("Kiwi", 1.20, true));
-        fruits.add(new Fruits("Mango", 1.30, true));
-        fruits.add(new Fruits("Strawberry", 1.50, true));
-        fruits.add(new Fruits("Pomegranate", 2.50, true));
-        fruits.add(new Fruits("Pineapple", 3, true));
+        List <Fruit> fruits = new ArrayList <>();
+        fruits.add(new Fruit("Pear", 0.95, true));
+        fruits.add(new Fruit("Apple", 1.20, true));
+        fruits.add(new Fruit("Papaya", 1.20, true));
+        fruits.add(new Fruit("Kiwi", 1.20, true));
+        fruits.add(new Fruit("Mango", 1.30, true));
+        fruits.add(new Fruit("Strawberry", 1.50, true));
+        fruits.add(new Fruit("Pomegranate", 2.50, true));
+        fruits.add(new Fruit("Pineapple", 3, true));
         fruitsList = fruits;
         return fruits;
     }
 
     public List sweetsList() {
-        List <Sweets> sweets = new ArrayList <>();
-        sweets.add(new Sweets("Caramels", 0.50, true));
-        sweets.add(new Sweets("Pop Rocks", 1.40, true));
-        sweets.add(new Sweets("Chocolate", 1.50, true));
-        sweets.add(new Sweets("Salted Chips", 1.75, true));
-        sweets.add(new Sweets("Gummy Worms", 1.80, true));
-        sweets.add(new Sweets("Kinder Bueno", 2.10, true));
-        sweets.add(new Sweets("Kinder Choco Bons", 2.50, true));
-        sweets.add(new Sweets("Maltesers", 4.10, true));
+        List <Sweet> sweets = new ArrayList <>();
+        sweets.add(new Sweet("Caramels", 0.50, true));
+        sweets.add(new Sweet("Pop Rocks", 1.40, true));
+        sweets.add(new Sweet("Chocolate", 1.50, true));
+        sweets.add(new Sweet("Salted Chips", 1.75, true));
+        sweets.add(new Sweet("Gummy Worms", 1.80, true));
+        sweets.add(new Sweet("Kinder Bueno", 2.10, true));
+        sweets.add(new Sweet("Kinder Choco Bons", 2.50, true));
+        sweets.add(new Sweet("Maltesers", 4.10, true));
         sweetsList = sweets;
         return sweets;
     }
 
     public List domesticApplianceList() {
-        List <DomesticAppliances> domesticAppliances = new ArrayList <>();
-        domesticAppliances.add(new DomesticAppliances("Lighter", 4, true));
-        domesticAppliances.add(new DomesticAppliances("Pot", 5.65, true));
-        domesticAppliances.add(new DomesticAppliances("Knife", 7.50, true));
-        domesticAppliances.add(new DomesticAppliances("Spatula", 8, true));
-        domesticAppliances.add(new DomesticAppliances("Dishes", 12.50, true));
-        domesticAppliances.add(new DomesticAppliances("Frying Pan", 15, true));
-        domesticAppliances.add(new DomesticAppliances("Boiler", 20.50, true));
+        List <DomesticAppliance> domesticAppliances = new ArrayList <>();
+        domesticAppliances.add(new DomesticAppliance("Lighter", 4, true));
+        domesticAppliances.add(new DomesticAppliance("Pot", 5.65, true));
+        domesticAppliances.add(new DomesticAppliance("Knife", 7.50, true));
+        domesticAppliances.add(new DomesticAppliance("Spatula", 8, true));
+        domesticAppliances.add(new DomesticAppliance("Dishes", 12.50, true));
+        domesticAppliances.add(new DomesticAppliance("Frying Pan", 15, true));
+        domesticAppliances.add(new DomesticAppliance("Boiler", 20.50, true));
         domesticAppliancesList = domesticAppliances;
         return domesticAppliances;
     }
@@ -89,49 +89,49 @@ public class CØØPLists {
         return buildingMaterials;
     }
 
-    public List <Shelves> shelvesList() {
-        List <Shelves> shelves = new ArrayList <>();
-        shelves.add(new Shelves(0, "Drinks", "Wangen an der Aare"));
-        shelves.add(new Shelves(1, "Fruits", "Wangen an der Aare"));
-        shelves.add(new Shelves(2, "Vegetables", "Wangen an der Aare"));
-        shelves.add(new Shelves(4, "Sweets", "Wangen an der Aare"));
-        shelves.add(new Shelves(5, "Pastry", "Wangen an der Aare"));
-        shelves.add(new Shelves(21, "Building Materials", "Wangen an der Aare"));
+    public List <Shelf> shelvesList() {
+        List <Shelf> shelves = new ArrayList <>();
+        shelves.add(new Shelf(0, "Drinks", "Wangen an der Aare"));
+        shelves.add(new Shelf(1, "Fruits", "Wangen an der Aare"));
+        shelves.add(new Shelf(2, "Vegetables", "Wangen an der Aare"));
+        shelves.add(new Shelf(4, "Sweets", "Wangen an der Aare"));
+        shelves.add(new Shelf(5, "Pastry", "Wangen an der Aare"));
+        shelves.add(new Shelf(21, "Building Materials", "Wangen an der Aare"));
 
-        shelves.add(new Shelves(3, "Domestic Appliances", "Bern Bahnhof"));
-        shelves.add(new Shelves(6, "Hygiene", "Bern Bahnhof"));
-        shelves.add(new Shelves(7, "Drinks", "Bern Bahnhof"));
-        shelves.add(new Shelves(9, "Vegetables", "Bern Bahnhof"));
-        shelves.add(new Shelves(12, "Pastry", "Bern Bahnhof"));
-        shelves.add(new Shelves(23, "Building Materials", "Bern Bahnhof"));
+        shelves.add(new Shelf(3, "Domestic Appliances", "Bern Bahnhof"));
+        shelves.add(new Shelf(6, "Hygiene", "Bern Bahnhof"));
+        shelves.add(new Shelf(7, "Drinks", "Bern Bahnhof"));
+        shelves.add(new Shelf(9, "Vegetables", "Bern Bahnhof"));
+        shelves.add(new Shelf(12, "Pastry", "Bern Bahnhof"));
+        shelves.add(new Shelf(23, "Building Materials", "Bern Bahnhof"));
 
-        shelves.add(new Shelves(8, "Fruits", "Zürichsee"));
-        shelves.add(new Shelves(11, "Sweets", "Zürichsee"));
-        shelves.add(new Shelves(13, "Hygiene", "Zürichsee"));
-        shelves.add(new Shelves(14, "Drinks", "Zürichsee"));
+        shelves.add(new Shelf(8, "Fruits", "Zürichsee"));
+        shelves.add(new Shelf(11, "Sweets", "Zürichsee"));
+        shelves.add(new Shelf(13, "Hygiene", "Zürichsee"));
+        shelves.add(new Shelf(14, "Drinks", "Zürichsee"));
 
-        shelves.add(new Shelves(10, "Domestic Appliances", "Grosse Schanze"));
-        shelves.add(new Shelves(15, "Fruits", "Grosse Schanze"));
-        shelves.add(new Shelves(16, "Vegetables", "Grosse Schanze"));
-        shelves.add(new Shelves(18, "Sweets", "Grosse Schanze"));
+        shelves.add(new Shelf(10, "Domestic Appliances", "Grosse Schanze"));
+        shelves.add(new Shelf(15, "Fruits", "Grosse Schanze"));
+        shelves.add(new Shelf(16, "Vegetables", "Grosse Schanze"));
+        shelves.add(new Shelf(18, "Sweets", "Grosse Schanze"));
 
-        shelves.add(new Shelves(17, "Domestic Appliances", "Zürich Bahnhof"));
-        shelves.add(new Shelves(19, "Pastry", "Zürich Bahnhof"));
-        shelves.add(new Shelves(20, "Hygiene", "Zürich Bahnhof"));
-        shelves.add(new Shelves(22, "Building Materials", "Zürich Bahnhof"));
+        shelves.add(new Shelf(17, "Domestic Appliances", "Zürich Bahnhof"));
+        shelves.add(new Shelf(19, "Pastry", "Zürich Bahnhof"));
+        shelves.add(new Shelf(20, "Hygiene", "Zürich Bahnhof"));
+        shelves.add(new Shelf(22, "Building Materials", "Zürich Bahnhof"));
 
         shelvesList = shelves;
         return shelves;
 
     }
 
-    public List <Stores> storeList() {
-        List <Stores> stores = new ArrayList <>();
-        stores.add(new Stores("Bern", "Wangen an der Aare"));
-        stores.add(new Stores("Bern", "Bern Bahnhof"));
-        stores.add(new Stores("Bern", "Grosse Schanze"));
-        stores.add(new Stores("Zürich", "Zürich Bahnhof"));
-        stores.add(new Stores("Zürich", "Zürichsee"));
+    public List <Store> storeList() {
+        List <Store> stores = new ArrayList <>();
+        stores.add(new Store("Bern", "Wangen an der Aare"));
+        stores.add(new Store("Bern", "Bern Bahnhof"));
+        stores.add(new Store("Bern", "Grosse Schanze"));
+        stores.add(new Store("Zürich", "Zürich Bahnhof"));
+        stores.add(new Store("Zürich", "Zürichsee"));
         storesList = stores;
         return stores;
     }
@@ -186,12 +186,11 @@ public class CØØPLists {
         return schüpercards;
     }
 
-    public List customerList() {
-        List <Customer> customers = new ArrayList <>();
-        List <String> groceries = new ArrayList<>();
-        customers.add(new Customer(0, "", "", "",groceries));
-        customersList = customers;
-        return customers;
+    public List schopppingCartList() {
+        List <SchoppingCart> cart = new ArrayList <>();
+        cart.add(new SchoppingCart("", 0));
+        schoppingCarts = cart;
+        return cart;
     }
 
     public List drinkList() {

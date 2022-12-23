@@ -1,10 +1,10 @@
 package objektOriented.CØØP;
 
-public class Stores {
+public class Store {
     private String kanton;
     private String address;
 
-    public Stores(String kanton, String address) {
+    public Store(String kanton, String address) {
         this.kanton = kanton;
         this.address = address;
     }

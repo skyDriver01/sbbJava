@@ -1,11 +1,11 @@
 package objektOriented.CØØP;
 
-public class Shelves {
+public class Shelf {
     private int shelfNumber;
     private String products;
     private String address;
 
-    public Shelves(int shelfNumber, String products, String address) {
+    public Shelf(int shelfNumber, String products, String address) {
         this.shelfNumber = shelfNumber;
         this.products = products;
         this.address = address;

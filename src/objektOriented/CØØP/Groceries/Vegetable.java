@@ -1,11 +1,11 @@
 package objektOriented.CØØP.Groceries;
 
-public class DomesticAppliances {
+public class Vegetable {
     private String product;
     private double price;
     private boolean barcode;
 
-    public DomesticAppliances(String product, double price, boolean barcode) {
+    public Vegetable(String product, double price, boolean barcode) {
         this.product = product;
         this.price = price;
         this.barcode = barcode;
