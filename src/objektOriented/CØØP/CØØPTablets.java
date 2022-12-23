@@ -39,10 +39,11 @@ public class CØØPTablets {
                     if(veggie != null) {
                         System.out.println(veggie.getPrice() + "FR.");
                         String addToCart =
-                                InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");          //  TODO: MACHEN DAS MAN MEHR AUF EINMAL KAUFEN KANN MIT ETWA EINEM MAX VON 10 PRO MAL.
+                                InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");                         //  TODO : Machen das Items aus dem Cart entfernt werden können.
                         switch (addToCart) {                                                                                        // TODO : MACHEN DAS MAN AUSWÄHLEN KANN OB MAN NOCH MEHR ITEMS DIESER KATEGORIE WILL ANSTATT IMMER DIE KATEGORIE ZU SCHREIBEN.!!!
-                            case "Yes" -> {
+                            case "Yes" -> {                                                                                             //  Todo : Noch mehr Items hinzufügen wzbs. Glass, Türen, Mikrowellen usw.
                                 int amount = InputIn.nexIntOut("How many of this item: " + veggie.getProduct() +
+                                                               // Todo : Register endlich mal machen und alle CASES ZU EIGENEN METHODEN VERÄNDERN DAMIT DIESE EINTE METHODE NICHT MEHR SO LANG IST.
                                                                " Do you want to add to your Basket. Type a Number");
                                 for (int i = 0; i <= amount; i++) {
                                     CØØPLists.schoppingCarts.add(new SchoppingCart(veggie.getProduct(), veggie.getPrice()));
