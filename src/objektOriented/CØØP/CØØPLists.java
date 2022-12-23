@@ -71,7 +71,7 @@ public class CØØPLists {
         domesticAppliances.add(new DomesticAppliance("Spatula", 8, true));
         domesticAppliances.add(new DomesticAppliance("Dishes", 12.50, true));
         domesticAppliances.add(new DomesticAppliance("Frying Pan", 15, true));
-        domesticAppliances.add(new DomesticAppliance("Boiler", 20.50, true));
+        domesticAppliances.add(new DomesticAppliance("Kettle", 20.50, true));
         domesticAppliancesList = domesticAppliances;
         return domesticAppliances;
     }

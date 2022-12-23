@@ -38,15 +38,20 @@ public class CØØPTablets {
 
                     if(veggie != null) {
                         System.out.println(veggie.getPrice() + "FR.");
-                        String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
-                        switch (addToCart) {
+                        String addToCart =
+                                InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");          //  TODO: MACHEN DAS MAN MEHR AUF EINMAL KAUFEN KANN MIT ETWA EINEM MAX VON 10 PRO MAL.
+                        switch (addToCart) {                                                                                        // TODO : MACHEN DAS MAN AUSWÄHLEN KANN OB MAN NOCH MEHR ITEMS DIESER KATEGORIE WILL ANSTATT IMMER DIE KATEGORIE ZU SCHREIBEN.!!!
                             case "Yes" -> {
-                                CØØPLists.schoppingCarts.add(new SchoppingCart(veggie.getProduct(), veggie.getPrice()));
+                                int amount = InputIn.nexIntOut("How many of this item: " + veggie.getProduct() +
+                                                               " Do you want to add to your Basket. Type a Number");
+                                for (int i = 0; i <= amount; i++) {
+                                    CØØPLists.schoppingCarts.add(new SchoppingCart(veggie.getProduct(), veggie.getPrice()));
+
+                                }
                                 System.out.printf("The Item was added to your Cart Successfully");
                             }
-                            case "No" -> {
-                                System.out.println("Ok");
-                            }
+                            case "No" -> System.out.println("Ok");
+
                             default -> System.out.println("Ok");
                         }
                     } else {
@@ -83,12 +88,10 @@ public class CØØPTablets {
                                 CØØPLists.schoppingCarts.add(new SchoppingCart(fruit.getProduct(), fruit.getPrice()));
                                 System.out.printf("The Item was added to your Cart Successfully");
                             }
-                            case "No" -> {
-                                System.out.println("Ok");
-                            }
+                            case "No" -> System.out.println("Ok");
+
                             default -> System.out.println("Ok");
                         }
-
                     } else {
                         System.out.println("Sorry we do not have that product.");
                     }
