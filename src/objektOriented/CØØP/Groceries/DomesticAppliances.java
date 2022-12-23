@@ -1,4 +1,4 @@
-package objektOriented.CØØP;
+package objektOriented.CØØP.Groceries;
 
 public class DomesticAppliances {
     private String product;

@@ -1,16 +1,20 @@
 package objektOriented.CØØP;
 
+import java.util.List;
+
 public class Customer {
     private double money;
     private String kreditkard;
     private String schüperCard;
     private String name;
+    private String groceryCart;
 
-    public Customer(double money, String kreditkard, String schüperCard, String name) {
+    public Customer(double money, String kreditkard, String schüperCard, String name, List <String> groceryCart) {
         this.money = money;
         this.kreditkard = kreditkard;
         this.schüperCard = schüperCard;
         this.name = name;
+        this.groceryCart = groceryCart.toString();
     }
 
     public double getMoney() {
@@ -43,5 +47,13 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGroceryCart() {
+        return groceryCart;
+    }
+
+    public void setGroceryCart(String groceryCart) {
+        this.groceryCart = groceryCart;
     }
 }

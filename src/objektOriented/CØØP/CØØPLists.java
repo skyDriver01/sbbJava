@@ -8,7 +8,7 @@ import java.util.List;
 public class CØØPLists {
     public static List <Vegetables> vegetablesList;
     public static List <Fruits> fruitsList;
-    public static List <Drinks> drinksList;
+    public static List <Drink> drinksList;
     public static List <Schüpercard> schüpercardsList;
     public static List <Sweets> sweetsList;
     public static List <DomesticAppliances> domesticAppliancesList;
@@ -188,20 +188,21 @@ public class CØØPLists {
 
     public List customerList() {
         List <Customer> customers = new ArrayList <>();
-        customers.add(new Customer(0, "", "", ""));
+        List <String> groceries = new ArrayList<>();
+        customers.add(new Customer(0, "", "", "",groceries));
         customersList = customers;
         return customers;
     }
 
     public List drinkList() {
-        List <Drinks> drinks = new ArrayList <>();
-        drinks.add(new Drinks("Ice Tea", 0.80, true));
-        drinks.add(new Drinks("Fanta", 1.50, true));
-        drinks.add(new Drinks("Redbull", 2.35, true));
-        drinks.add(new Drinks("Sprite", 1.60, true));
-        drinks.add(new Drinks("Cola", 1.75, true));
-        drinks.add(new Drinks("Schorle", 2.10, true));
-        drinks.add(new Drinks("Pepsi", 3, true));
+        List <Drink> drinks = new ArrayList <>();
+        drinks.add(new Drink("Ice Tea", 0.80, true));
+        drinks.add(new Drink("Fanta", 1.50, true));
+        drinks.add(new Drink("Redbull", 2.35, true));
+        drinks.add(new Drink("Sprite", 1.60, true));
+        drinks.add(new Drink("Cola", 1.75, true));
+        drinks.add(new Drink("Schorle", 2.10, true));
+        drinks.add(new Drink("Pepsi", 3, true));
         drinksList = drinks;
         return drinks;
     }
