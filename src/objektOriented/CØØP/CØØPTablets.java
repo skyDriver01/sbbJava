@@ -78,6 +78,15 @@ public class CØØPTablets {
                 switch (register) {
                     case "Self Scan" -> {
                         getAllItemsInCart();
+                        schoppingCarts
+                                .stream()
+                                .filter(a -> {
+                                    if(a.isBarcode() == false) {
+                                        System.out.println("Enter the products that do not have a Barcode all those products are mostly Pastries in your Cart");
+                                    }
+                                    return false;
+                                })
+                                .forEach(a -> System.out.println(a.getProduct()));
                     }
 
                     case default -> {
@@ -157,7 +166,7 @@ public class CØØPTablets {
                     int amount = InputIn.nexIntOut("How many of this item: " + buildingMaterial.getProduct() +
                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
-                        schoppingCarts.add(new SchoppingCart(buildingMaterial.getProduct(), buildingMaterial.getPrice()));
+                        schoppingCarts.add(new SchoppingCart(buildingMaterial.getProduct(), buildingMaterial.getPrice(), buildingMaterial.isBarcode()));
 
                     }
                     System.out.println("The Items were successfully added to your Cart");
@@ -199,7 +208,7 @@ public class CØØPTablets {
                     int amount = InputIn.nexIntOut("How many of this item: " + domesticAppliances.getProduct() +
                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
-                        schoppingCarts.add(new SchoppingCart(domesticAppliances.getProduct(), domesticAppliances.getPrice()));
+                        schoppingCarts.add(new SchoppingCart(domesticAppliances.getProduct(), domesticAppliances.getPrice(), domesticAppliances.isBarcode()));
 
                     }
                     System.out.println("The Items were successfully added to your Cart");
@@ -241,7 +250,7 @@ public class CØØPTablets {
                     int amount = InputIn.nexIntOut("How many of this item: " + pastry.getProduct() +
                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
-                        schoppingCarts.add(new SchoppingCart(pastry.getProduct(), pastry.getPrice()));
+                        schoppingCarts.add(new SchoppingCart(pastry.getProduct(), pastry.getPrice(), pastry.isBarcode()));
 
                     }
                     System.out.println("The Items were successfully added to your Cart");
@@ -283,7 +292,7 @@ public class CØØPTablets {
                     int amount = InputIn.nexIntOut("How many of this item: " + hygiene.getProduct() +
                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
-                        schoppingCarts.add(new SchoppingCart(hygiene.getProduct(), hygiene.getPrice()));
+                        schoppingCarts.add(new SchoppingCart(hygiene.getProduct(), hygiene.getPrice(), hygiene.isBarcode()));
 
                     }
                     System.out.println("The Items were successfully added to your Cart");
@@ -325,7 +334,7 @@ public class CØØPTablets {
                     int amount = InputIn.nexIntOut("How many of this item: " + drink.getProduct() +
                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
-                        schoppingCarts.add(new SchoppingCart(drink.getProduct(), drink.getPrice()));
+                        schoppingCarts.add(new SchoppingCart(drink.getProduct(), drink.getPrice(), drink.isBarcode()));
 
                     }
                     System.out.println("The Items were successfully added to your Cart");
@@ -367,7 +376,7 @@ public class CØØPTablets {
                     int amount = InputIn.nexIntOut("How many of this item: " + sweet.getProduct() +
                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
-                        schoppingCarts.add(new SchoppingCart(sweet.getProduct(), sweet.getPrice()));
+                        schoppingCarts.add(new SchoppingCart(sweet.getProduct(), sweet.getPrice(), sweet.isBarcode()));
 
                     }
                     System.out.println("The Items were successfully added to your Cart");
@@ -409,7 +418,7 @@ public class CØØPTablets {
                     int amount = InputIn.nexIntOut("How many of this item: " + fruit.getProduct() +
                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
-                        schoppingCarts.add(new SchoppingCart(fruit.getProduct(), fruit.getPrice()));
+                        schoppingCarts.add(new SchoppingCart(fruit.getProduct(), fruit.getPrice(), fruit.isBarcode()));
 
                     }
                     System.out.println("The Items were successfully added to your Cart");
@@ -451,7 +460,7 @@ public class CØØPTablets {
                     int amount = InputIn.nexIntOut("How many of this item: " + veggie.getProduct() +
                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
-                        schoppingCarts.add(new SchoppingCart(veggie.getProduct(), veggie.getPrice()));
+                        schoppingCarts.add(new SchoppingCart(veggie.getProduct(), veggie.getPrice(), veggie.isBarcode()));
 
                     }
                     System.out.println("The Items were successfully added to your Cart");

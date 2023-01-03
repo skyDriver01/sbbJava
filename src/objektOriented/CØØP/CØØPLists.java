@@ -184,7 +184,7 @@ public class CØØPLists {
 
     public List schopppingCartList() {
         List <SchoppingCart> cart = new ArrayList <>();
-        cart.add(new SchoppingCart("", 0));
+        cart.add(new SchoppingCart("", 0, true));
         schoppingCarts = cart;
         return cart;
     }
