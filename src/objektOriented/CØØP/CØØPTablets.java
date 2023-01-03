@@ -3,6 +3,8 @@ package objektOriented.CØØP;
 import objektOriented.CØØP.Groceries.*;
 import objektOriented.aufg1.aufg2.InputIn;
 
+import static objektOriented.CØØP.CØØPLists.schoppingCarts;
+
 public class CØØPTablets {
 
     public void access() {
@@ -10,7 +12,7 @@ public class CØØPTablets {
         boolean getProduce = false;
         getAllCases(getProduce);
     }
-    // Todo : Register endlich mal machen und alle CASES ZU EIGENEN METHODEN VERÄNDERN DAMIT DIESE EINTE METHODE NICHT MEHR SO LANG IST.
+
     // Todo : Erst soll man sagen welchen Laden man ansehen will mit der adresse bsp. Wangen an der Aare und dann nur die Produkte ausgeben wo es dort hat mit den Respectiven Shelfs
     private static void getAllCases(boolean getProduce) {
         while (!getProduce) {
@@ -72,12 +74,20 @@ public class CØØPTablets {
             }
             case "Register" -> {
                 getProduce = true;
-                String register = InputIn.nextLineOut("Would you like to use a Self Scan Register or go to a normal one? Type Self Scan or Normal");
-                switch (register){
-                    case "Self Scan" -> {}
+                String register =
+                        InputIn.nextLineOut("Would you like to use a Self Scan Register or go to a normal one? Type Self Scan or Normal");
+                switch (register) {
+                    case "Self Scan" -> {
+                    }
                     case default -> {
                         getAllItemsInCart();
-                        String schuperCard =
+                        String schuperCard = InputIn.nextLineOut("Do you have a Schupercard to scan? Yes or No");
+                        switch (schuperCard) {
+                            case "Yes" -> {
+                            }
+                            case default -> System.out.println("Thx for Buying At CØØP we hope to see you again soon.");
+
+                        }
                     }
                 }
             }
@@ -94,20 +104,31 @@ public class CØØPTablets {
             case "Yes" -> {
 
                 String chooseItem = InputIn.nextLineOut("What Item do you want to remove");
-                CØØPLists.schoppingCarts
-                        .stream()
-                        .filter(a -> chooseItem.equals(a.getProduct()))
-                        .forEach(a -> CØØPLists.schoppingCarts.remove(a.getProduct() + chooseItem));  // Wont work atm ask a coach for help when there is one
+                try {
+                    CØØPLists.schoppingCarts.remove(CØØPLists.schoppingCarts
+                                                            .stream()
+                                                            .filter(a -> {
+                                                                if(a != null) {
+                                                                    return chooseItem.equals(a.getProduct());
+                                                                }
+                                                                return false;
+                                                            })
+                                                            .toList()
+                                                            .get(0));
+
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("DAS GIBT ES DOCH GAR NICHT, WAS FÄLT DIR EIN");
+                }
             }
             case default -> System.out.println("All Items stay the same");
         }
     }
 
     private static void getAllItemsInCart() {
-        CØØPLists.schoppingCarts
+        schoppingCarts
                 .stream()
                 .forEach(a -> System.out.println(a.getProduct()));
-        double totalCost = CØØPLists.schoppingCarts
+        double totalCost = schoppingCarts
                 .stream()
                 .mapToDouble(a -> a.getCost())
                 .sum();
@@ -120,7 +141,7 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    CØØPLists.schoppingCarts.add(new SchoppingCart(buildingMaterial2, buildingMaterial1));
+                    schoppingCarts.add(new SchoppingCart(buildingMaterial2, buildingMaterial1));
                     System.out.printf("The Item was added to your Cart Successfully");
                 }
                 case "No" -> {
@@ -160,7 +181,7 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    CØØPLists.schoppingCarts.add(new SchoppingCart(domesticAppliances2, domesticAppliances1));
+                    schoppingCarts.add(new SchoppingCart(domesticAppliances2, domesticAppliances1));
                     System.out.printf("The Item was added to your Cart Successfully");
                 }
                 case "No" -> {
@@ -200,7 +221,7 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    CØØPLists.schoppingCarts.add(new SchoppingCart(pastry2, pastry1));
+                    schoppingCarts.add(new SchoppingCart(pastry2, pastry1));
                     System.out.printf("The Item was added to your Cart Successfully");
                 }
                 case "No" -> {
@@ -240,7 +261,7 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    CØØPLists.schoppingCarts.add(new SchoppingCart(hygiene2, hygiene1));
+                    schoppingCarts.add(new SchoppingCart(hygiene2, hygiene1));
                     System.out.printf("The Item was added to your Cart Successfully");
                 }
                 case "No" -> {
@@ -280,7 +301,7 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    CØØPLists.schoppingCarts.add(new SchoppingCart(drinks2, drinks1));
+                    schoppingCarts.add(new SchoppingCart(drinks2, drinks1));
                     System.out.printf("The Item was added to your Cart Successfully");
                 }
                 case "No" -> {
@@ -320,7 +341,7 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    CØØPLists.schoppingCarts.add(new SchoppingCart(sweet2, sweet1));
+                    schoppingCarts.add(new SchoppingCart(sweet2, sweet1));
                     System.out.printf("The Item was added to your Cart Successfully");
                 }
                 case "No" -> {
@@ -360,7 +381,7 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    CØØPLists.schoppingCarts.add(new SchoppingCart(fruit.getProduct(), fruit.getPrice()));
+                    schoppingCarts.add(new SchoppingCart(fruit.getProduct(), fruit.getPrice()));
                     System.out.printf("The Item was added to your Cart Successfully");
                 }
                 case "No" -> System.out.println("Ok");
@@ -402,7 +423,7 @@ public class CØØPTablets {
                     int amount = InputIn.nexIntOut("How many of this item: " + veggie.getProduct() +
                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
-                        CØØPLists.schoppingCarts.add(new SchoppingCart(veggie.getProduct(), veggie.getPrice()));
+                        schoppingCarts.add(new SchoppingCart(veggie.getProduct(), veggie.getPrice()));
 
                     }
                     System.out.printf(format);
