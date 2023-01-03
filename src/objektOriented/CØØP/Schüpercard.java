@@ -13,8 +13,9 @@ public class Schüpercard {
         return points;
     }
 
-    public void setPoints(int points) {
+    public int setPoints(int points) {
         this.points = points;
+        return points;
     }
 
     public String getId() {

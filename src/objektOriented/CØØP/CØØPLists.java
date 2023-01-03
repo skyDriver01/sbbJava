@@ -138,11 +138,11 @@ public class CØØPLists {
 
     public List pastryList() {
         List <Pastry> pastries = new ArrayList <>();
-        pastries.add(new Pastry("Bread", 0.80, "A123"));
-        pastries.add(new Pastry("Croissant", 1.20, "A234"));
-        pastries.add(new Pastry("Weggli", 1, "A345"));
-        pastries.add(new Pastry("Donut", 2.10, "A456"));
-        pastries.add(new Pastry("Bretzel", 2.40, "A567"));
+        pastries.add(new Pastry("Bread", 0.80,false));
+        pastries.add(new Pastry("Croissant", 1.20,false));
+        pastries.add(new Pastry("Weggli", 1,false));
+        pastries.add(new Pastry("Donut", 2.10,false));
+        pastries.add(new Pastry("Bretzel", 2.40,false));
         pastryList = pastries;
         return pastries;
     }
@@ -178,10 +178,6 @@ public class CØØPLists {
     public List schüpercardList() {
         List <Schüpercard> schüpercards = new ArrayList <>();
         schüpercards.add(new Schüpercard(0, "A111"));
-        schüpercards.add(new Schüpercard(0, "A112"));
-        schüpercards.add(new Schüpercard(0, "A113"));
-        schüpercards.add(new Schüpercard(0, "A114"));
-        schüpercards.add(new Schüpercard(0, "A115"));
         schüpercardsList = schüpercards;
         return schüpercards;
     }

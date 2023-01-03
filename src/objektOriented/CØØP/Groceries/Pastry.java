@@ -3,12 +3,21 @@ package objektOriented.CØØP.Groceries;
 public class Pastry {
     private String product;
     private double price;
-    private String articleCode;
+    private boolean barcode;
 
-    public Pastry(String product, double price, String articleCode) {
+
+    public Pastry(String product, double price, boolean barcode) {
         this.product = product;
         this.price = price;
-        this.articleCode = articleCode;
+        this.barcode = barcode;
+    }
+
+    public boolean isBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(boolean barcode) {
+        this.barcode = barcode;
     }
 
     public String getProduct() {
@@ -27,11 +36,4 @@ public class Pastry {
         this.price = price;
     }
 
-    public String getArticleCode() {
-        return articleCode;
-    }
-
-    public void setArticleCode(String articleCode) {
-        this.articleCode = articleCode;
-    }
 }
