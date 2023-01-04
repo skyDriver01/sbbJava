@@ -77,16 +77,46 @@ public class CØØPTablets {
                         InputIn.nextLineOut("Would you like to use a Self Scan Register or go to a normal one? Type Self Scan or Normal");
                 switch (register) {
                     case "Self Scan" -> {
-                        getAllItemsInCart();
+                        double totalCost = schoppingCarts
+                                .stream()
+                                .mapToDouble(b -> b.getCost())
+                                .sum();
                         schoppingCarts
                                 .stream()
-                                .filter(a -> {
-                                    if(a.isBarcode() == false) {
-                                        System.out.println("Enter the products that do not have a Barcode all those products are mostly Pastries in your Cart");
-                                    }
-                                    return false;
-                                })
                                 .forEach(a -> System.out.println(a.getProduct()));
+                        schoppingCarts
+                                .stream()
+                                .filter(a -> !a.isBarcode())
+                                .forEach(a -> System.out.println(a.getProduct()));
+                        boolean noBarCode = false;
+                        for (int i = 0; i < schoppingCarts.size(); i++) {
+                            if(!schoppingCarts
+                                    .get(i)
+                                    .isBarcode()) {
+                                noBarCode = true;
+                            }
+                        }
+                        while (noBarCode) {
+
+                            for (SchoppingCart pastries : schoppingCarts) {
+                                String scan = InputIn.nextLineOut("Enter the Pastries in your Cart to scan them");
+                                if(pastries
+                                        .getProduct()
+                                        .equals(scan)) {
+                                    pastries.setBarcode(true);
+                                }
+                            }
+                            noBarCode = false;
+                        }
+                        System.out.println("Your Current Price of all the Items together is: " + totalCost + "FR.");
+                        double total = 0;
+                        for (int i = 0; i < schoppingCarts.size(); i++) {
+                            total += schoppingCarts
+                                    .get(i)
+                                    .getCost();
+
+                        }
+                        schüperCard(total);
                     }
 
                     case default -> {
@@ -97,26 +127,30 @@ public class CØØPTablets {
                                     .get(i)
                                     .getCost();
                         }
-                        int points = (int) Math.floor(total);
-                        String schuperCard = InputIn.nextLineOut("Do you have a Schupercard to scan? Yes or No");
-                        switch (schuperCard) {
-                            case "Yes" -> {
-                                System.out.println("You now have: ");
-                                CØØPLists.schüpercardsList
-                                        .stream()
-                                        .forEach(a -> System.out.println(a.setPoints(points)));
-                                System.out.println(" Points on your SchüperCard");
-
-                            }
-                            case default -> System.out.println("Thx for Buying At CØØP we hope to see you again soon.");
-
-                        }
+                        schüperCard(total);
                     }
                 }
             }
             default -> System.out.println("That Category does not exist");
         }
         return getProduce;
+    }
+
+    private static void schüperCard(double total) {
+        int points = (int) Math.floor(total);
+        String schuperCard = InputIn.nextLineOut("Do you have a Schupercard to scan? Yes or No");
+        switch (schuperCard) {
+            case "Yes" -> {
+                System.out.println("You now have: ");
+                CØØPLists.schüpercardsList
+                        .stream()
+                        .forEach(a -> System.out.println(a.setPoints(points)));
+                System.out.println(" Points on your SchüperCard");
+
+            }
+            case default -> System.out.println("Thx for Buying At CØØP we hope to see you again soon.");
+
+        }
     }
 
     private static void cart() {

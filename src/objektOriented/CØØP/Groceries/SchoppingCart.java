@@ -15,23 +15,23 @@ public class SchoppingCart {
         return barcode;
     }
 
-    public void setBarcode(boolean barcode) {
-        this.barcode = barcode;
-    }
-
     public String getProduct() {
         return product;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
     }
 
     public double getCost() {
         return cost;
     }
 
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
     public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    public void setBarcode(boolean barcode) {
+        this.barcode = barcode;
     }
 }
