@@ -1,22 +1,20 @@
-package objektOrientedDesign;
-
-import java.time.LocalDate;
+package objektOrientedDesign.Zoo;
 
 public class Member extends People{
-    LocalDate memberSince;
+    String memberSince;
     int memberNumber;
 
-    public Member(String phonenumber, LocalDate memberSince, int memberNumber) {
+    public Member(String phonenumber, String memberSince, int memberNumber) {
         super(phonenumber);
         this.memberSince = memberSince;
         this.memberNumber = memberNumber;
     }
 
-    public LocalDate getMemberSince() {
+    public String getMemberSince() {
         return memberSince;
     }
 
-    public void setMemberSince(LocalDate memberSince) {
+    public void setMemberSince(String memberSince) {
         this.memberSince = memberSince;
     }
 

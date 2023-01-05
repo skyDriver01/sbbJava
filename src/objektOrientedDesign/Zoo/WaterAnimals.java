@@ -1,4 +1,4 @@
-package objektOrientedDesign;
+package objektOrientedDesign.Zoo;
 
 public class WaterAnimals extends Animals {
     String type;
@@ -11,8 +11,8 @@ public class WaterAnimals extends Animals {
 
     public enum BreathType {GILLS, LUNGS}
 
-    public WaterAnimals(boolean alive, String type, String food, WaterType waterType, BreathType breathType) {
-        super(alive);
+    public WaterAnimals(int enclosureNumber, boolean alive,String speciesName, String type, String food, WaterType waterType, BreathType breathType) {
+        super(alive, speciesName, enclosureNumber);
         this.type = type;
         this.food = food;
         this.waterType = waterType;

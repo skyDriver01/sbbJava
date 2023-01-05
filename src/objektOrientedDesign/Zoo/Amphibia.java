@@ -1,15 +1,13 @@
-package objektOrientedDesign;
+package objektOrientedDesign.Zoo;
 
-public class LandAnimals extends Animals{
+public class Amphibia extends Animals {
     String skin;
     String foodPrefrence;
-    boolean bipedal;
 
-    public LandAnimals(boolean alive, String skin, String foodPrefrence, boolean bipedal) {
-        super(alive);
+    public Amphibia(int enclosureNumber,boolean alive, String speciesName, String skin, String foodPrefrence) {
+        super(alive, speciesName,enclosureNumber);
         this.skin = skin;
         this.foodPrefrence = foodPrefrence;
-        this.bipedal = bipedal;
     }
 
     public String getSkin() {
@@ -26,13 +24,5 @@ public class LandAnimals extends Animals{
 
     public void setFoodPrefrence(String foodPrefrence) {
         this.foodPrefrence = foodPrefrence;
-    }
-
-    public boolean isBipedal() {
-        return bipedal;
-    }
-
-    public void setBipedal(boolean bipedal) {
-        this.bipedal = bipedal;
     }
 }

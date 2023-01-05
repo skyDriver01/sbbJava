@@ -1,4 +1,4 @@
-package objektOrientedDesign;
+package objektOrientedDesign.Zoo;
 
 public class Worker extends People{
     int wage;

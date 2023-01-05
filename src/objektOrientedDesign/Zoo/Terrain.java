@@ -1,4 +1,4 @@
-package objektOrientedDesign;
+package objektOrientedDesign.Zoo;
 
 public class Terrain extends Enclosure{
     public Terrain(int enclosureNumber, double surfaceArea, int fenceHeight, int capacity, double humidity,
