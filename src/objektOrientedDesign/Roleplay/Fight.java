@@ -1,4 +1,4 @@
 package objektOrientedDesign.Roleplay;
 
-public class Main {
+public class Fight {
 }
