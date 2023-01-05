@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.GameFigures;
 
 public class ToTest extends Gamefigurine{
-    double instantDeath;   //To test the log and the death also the speed stuff + easier and faster to test.
+    private double instantDeath;   //To test the log and the death also the speed stuff + easier and faster to test.
 
     public ToTest(String name, double lP, double cC, double fV, double res, double speed, double accuracy,
                   double evasion,

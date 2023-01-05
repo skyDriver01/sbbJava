@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.GameFigures;
 
 public class Orc extends Gamefigurine{
- boolean rage;
+ private boolean rage;
 
     public Orc(String name, double lP, double cC, double fV, double res, double speed, double accuracy, double evasion,
                boolean rage) {

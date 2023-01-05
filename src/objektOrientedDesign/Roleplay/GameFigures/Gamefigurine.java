@@ -4,16 +4,16 @@ import objektOrientedDesign.Roleplay.Items.Armor;
 import objektOrientedDesign.Roleplay.Weapons.Weapon;
 
 public class Gamefigurine {
-    String name;
-    double lP;  // LP like in most games stands for Life Points
-    double cC;  //CC is Carrying Capacity
-    double fV;  //FV is Fighting Value
-    double res;  // res is resistance
+    private String name;
+    private double lP;  // LP like in most games stands for Life Points
+    private double cC;  //CC is Carrying Capacity
+    private double fV;  //FV is Fighting Value
+    private double res;  // res is resistance
     public Weapon weapon;
     public Armor armor;
-    double speed;  //Speed is the initiative value
-    double accuracy;
-    double evasion;
+    private double speed;  //Speed is the initiative value
+    private double accuracy;
+    private double evasion;
 
     public Gamefigurine(String name, double lP, double cC, double fV, double res, double speed, double accuracy,
                         double evasion) {

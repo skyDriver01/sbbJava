@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.Items;
 
 public class Potion {
-    double weight;
+    private double weight;
 
 
     public Potion(double weight) {

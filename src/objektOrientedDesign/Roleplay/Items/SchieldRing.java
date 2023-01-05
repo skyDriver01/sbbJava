@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.Items;
 
 public class SchieldRing extends Ring{
-    double moreRes;
+    private double moreRes;
 
     public SchieldRing(double weight, double moreRes) {
         super(weight);

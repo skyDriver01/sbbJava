@@ -1,8 +1,8 @@
 package objektOrientedDesign.Roleplay.GameFigures;
 
 public class SCP_049 extends Gamefigurine {
-    double instantDeath;
-    double regeneration;
+    private double instantDeath;
+    private double regeneration;
 
     public SCP_049(String name, double lP, double cC, double fV, double res, double speed, double accuracy,
                    double evasion,

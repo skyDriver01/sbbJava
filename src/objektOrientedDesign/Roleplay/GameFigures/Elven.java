@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.GameFigures;
 
 public class Elven extends Gamefigurine{
-    double mV;   //MV is Magic Value
+    private double mV;   //MV is Magic Value
 
     public Elven(String name, double lP, double cC, double fV, double res, double speed, double accuracy,
                  double evasion,

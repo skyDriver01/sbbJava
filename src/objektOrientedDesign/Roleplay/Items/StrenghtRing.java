@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.Items;
 
 public class StrenghtRing extends Ring{
-    double moreCC;
+    private double moreCC;
 
     public StrenghtRing(double weight, double moreCC) {
         super(weight);

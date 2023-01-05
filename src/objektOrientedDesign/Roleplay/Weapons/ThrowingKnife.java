@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.Weapons;
 
 public class ThrowingKnife extends LongRange {
-    int amountOfKnives;
+    private int amountOfKnives;
 
     public ThrowingKnife(double weight, double fV, double accuracy, int amountOfKnives) {
         super(weight, fV, accuracy);

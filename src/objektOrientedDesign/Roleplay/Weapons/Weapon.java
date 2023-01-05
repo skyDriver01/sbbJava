@@ -1,9 +1,9 @@
 package objektOrientedDesign.Roleplay.Weapons;
 
 public class Weapon {
-    double weight;
-    double fV;
-    double accuracy;
+    private double weight;
+    private double fV;
+    private double accuracy;
 
     public Weapon(double weight, double fV, double accuracy) {
         this.weight = weight;

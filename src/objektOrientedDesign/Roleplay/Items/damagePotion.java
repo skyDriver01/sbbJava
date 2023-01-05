@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.Items;
 
 public class damagePotion extends Potion{
-    double takeLP;
+    private double takeLP;
 
     public damagePotion(double weight, double takeLP) {
         super(weight);

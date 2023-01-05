@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.Items;
 
 public class HealthPotion extends Potion{
-    double giveLP;
+    private double giveLP;
 
     public HealthPotion(double weight, double giveLP) {
         super(weight);

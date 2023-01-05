@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.Items;
 
 public class PowerPotion extends Potion {
-    double giveMoreCC;
+    private double giveMoreCC;
 
     public PowerPotion(double weight, double giveMoreCC) {
         super(weight);

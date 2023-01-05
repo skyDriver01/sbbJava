@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.GameFigures;
 
 public class Troll extends Gamefigurine{
-    boolean gotClub;
+    private boolean gotClub;
 
     public Troll(String name, double lP, double cC, double fV, double res, double speed, double accuracy,
                  double evasion,

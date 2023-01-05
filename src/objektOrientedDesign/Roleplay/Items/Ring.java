@@ -1,7 +1,7 @@
 package objektOrientedDesign.Roleplay.Items;
 
 public class Ring{
-    double weight;
+    private double weight;
 
     public Ring(double weight) {
         this.weight = weight;
