@@ -1,4 +1,4 @@
-package objektOrientedDesign.Zoo;
+package objektOrientedDesign.Zoo.Person;
 
 public class Member extends People{
     String memberSince;

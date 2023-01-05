@@ -1,4 +1,4 @@
-package objektOrientedDesign.Zoo;
+package objektOrientedDesign.Zoo.Enclosure;
 
 public class Terrarium extends Enclosure{
     public Terrarium(int enclosureNumber, double surfaceArea, int fenceHeight, int capacity, double humidity,

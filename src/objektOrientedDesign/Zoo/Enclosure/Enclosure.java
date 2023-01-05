@@ -1,4 +1,4 @@
-package objektOrientedDesign.Zoo;
+package objektOrientedDesign.Zoo.Enclosure;
 
 public class Enclosure {
     int enclosureNumber;

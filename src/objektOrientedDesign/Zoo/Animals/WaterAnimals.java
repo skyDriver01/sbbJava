@@ -1,4 +1,4 @@
-package objektOrientedDesign.Zoo;
+package objektOrientedDesign.Zoo.Animals;
 
 public class WaterAnimals extends Animals {
     String type;

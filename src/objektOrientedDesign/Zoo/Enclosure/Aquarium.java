@@ -1,4 +1,4 @@
-package objektOrientedDesign.Zoo;
+package objektOrientedDesign.Zoo.Enclosure;
 
 public class Aquarium extends Enclosure {
     private WaterType waterType;
