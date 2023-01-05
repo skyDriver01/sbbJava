@@ -18,18 +18,18 @@ public class Fight {
         double minFV = 0.9;
         double maxFV = 1.1;
         double minRes = 1;
-        double maxRes = 3;
-        double minSpeed = 0.5;
-        double maxSpeed = 1.5;
+        double maxRes = 1.3;
+        double minSpeed = 1;
+        double maxSpeed = 2;
         List <Gamefigurine> characters = new ArrayList <>();
-        characters.add(new Dwarf("Dwarf", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 50, 30));
-        characters.add(new Elven("Elven", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 50, 9, 0.5));
-        characters.add(new Human("Human", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 50, 7));
-        characters.add(new Orc("Orc", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 50, 5, false));
-        characters.add(new SCP_049("SCP_049", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 50, 2, 0.01, 0.05));
-        characters.add(new Troll("Troll", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 50, 0, false));
+        characters.add(new Dwarf("Dwarf", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0.3));
+        characters.add(new Elven("Elven", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.75, 0.09, ((Math.random() * (1.5 - 1)) + 1)));
+        characters.add(new Human("Human", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.8, 0.07));
+        characters.add(new Orc("Orc", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.75, 0.05, false));
+        characters.add(new SCP_049("SCP_049", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.9, 0.02, 0.01, 0.05));
+        characters.add(new Troll("Troll", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0, false));
         characters.add(new ToTest("OP", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 1, 1, 1));
-        characters.add(new Goblin("Goblin", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 50, 8));
+        characters.add(new Goblin("Goblin", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0.08));
         gameFigurines = characters;
     }
 
@@ -51,6 +51,7 @@ public class Fight {
         switch (chooseFigure) {
             case 1 -> {
                 gameFigurines.stream().filter(a -> a.getName().equals("Dwarf")).forEach(a -> System.out.println(a.getfV()));
+
             }
             case 2 -> {
                 gameFigurines.stream().filter(a -> a.getName().equals("Elven")).forEach(a -> System.out.println(a.getfV()));
