@@ -46,7 +46,7 @@ public class Fight {
         characters.add(new Troll("Troll", 125, 20, ((Math.random() * (maxFV - minFV)) + minFV), (
                 (Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) +
                                                                 minSpeed), 0.5, 0, false));
-        characters.add(new ToTest("OP", 10000, 1500, ((Math.random() * (maxFV - minFV)) + minFV), (
+        characters.add(new ToTest("OP", 10000, 15000, ((Math.random() * (maxFV - minFV)) + minFV), (
                 (Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) +
                                                                 minSpeed), 1, 1, 1));
         characters.add(new Goblin("Goblin", 85, 13, ((Math.random() * (maxFV - minFV)) + minFV), (
@@ -87,54 +87,66 @@ public class Fight {
     public static void chooseYourCharacter() {
         System.out.println("Player One Choose the Character that you wish to play. (Every Character is a bit different and Combinations are also important to make your character the Strongest possible.)");
         System.out.println("Btw CC is Carrying Capacity so how much The Character can carry");
-        initGameFigurines();
+        boolean noCharacterChosen = true;
         HashMap <Integer, String> chooseFigurine = new HashMap <Integer, String>();
-        chooseFigurine.put(1, "1: Dwarf, CC = 14");
-        chooseFigurine.put(2, "2: Elven, CC = 12");
-        chooseFigurine.put(3, "3: Human, CC = 15");
-        chooseFigurine.put(4, "4: Orc, CC = 17");
-        chooseFigurine.put(5, "5: SCP_049, CC = 18");
-        chooseFigurine.put(6, "6: Troll, CC = 20");
-        chooseFigurine.put(7, "7: OP, CC = 1500");
-        chooseFigurine.put(8, "8: Goblin, CC = 13");
-        for (int i = 1; i <= chooseFigurine.size(); i++) {
-            System.out.println(chooseFigurine.get(i));
-        }
-        int chooseFigure = InputIn.nexIntOut("Type the Number of the Character that you want to Play");
-        switch (chooseFigure) {
-            case 1 -> {
-                saveCharacter(gameFigurines.get(0), 0);
-                chooseAWeapon();
+        initGameFigurines();
+        while (noCharacterChosen) {
+
+            chooseFigurine.put(1, "0: Dwarf, CC = 14");
+            chooseFigurine.put(2, "1: Elven, CC = 12");
+            chooseFigurine.put(3, "2: Human, CC = 15");
+            chooseFigurine.put(4, "3: Orc, CC = 17");
+            chooseFigurine.put(5, "4: SCP_049, CC = 18");
+            chooseFigurine.put(6, "5: Troll, CC = 20");
+            chooseFigurine.put(7, "6: OP, CC = 1500");
+            chooseFigurine.put(8, "7: Goblin, CC = 13");
+            for (int i = 1; i <= chooseFigurine.size(); i++) {
+                System.out.println(chooseFigurine.get(i));
             }
-            case 2 -> {
-                saveCharacter(gameFigurines.get(1), 0);
-                chooseAWeapon();
+            int chooseFigure = InputIn.nexIntOut("Type the Number of the Character that you want to Play");
+            switch (chooseFigure) {
+                case 0 -> {
+                    saveCharacter(gameFigurines.get(0), 0);
+                    noCharacterChosen = false;
+                    chooseAWeapon();
+                }
+                case 1 -> {
+                    saveCharacter(gameFigurines.get(1), 0);
+                    noCharacterChosen = false;
+                    chooseAWeapon();
+                }
+                case 2 -> {
+                    saveCharacter(gameFigurines.get(2), 0);
+                    noCharacterChosen = false;
+                    chooseAWeapon();
+                }
+                case 3 -> {
+                    saveCharacter(gameFigurines.get(3), 0);
+                    noCharacterChosen = false;
+                    chooseAWeapon();
+                }
+                case 4 -> {
+                    saveCharacter(gameFigurines.get(4), 0);
+                    noCharacterChosen = false;
+                    chooseAWeapon();
+                }
+                case 5 -> {
+                    saveCharacter(gameFigurines.get(5), 0);
+                    noCharacterChosen = false;
+                    chooseAWeapon();
+                }
+                case 6 -> {
+                    saveCharacter(gameFigurines.get(6), 0);
+                    noCharacterChosen = false;
+                    chooseAWeapon();
+                }
+                case 7 -> {
+                    saveCharacter(gameFigurines.get(7), 0);
+                    noCharacterChosen =false;
+                    chooseAWeapon();
+                }
+                default -> System.out.println("You did not choose a Character");
             }
-            case 3 -> {
-                saveCharacter(gameFigurines.get(2), 0);
-                chooseAWeapon();
-            }
-            case 4 -> {
-                saveCharacter(gameFigurines.get(3), 0);
-                chooseAWeapon();
-            }
-            case 5 -> {
-                saveCharacter(gameFigurines.get(4), 0);
-                chooseAWeapon();
-            }
-            case 6 -> {
-                saveCharacter(gameFigurines.get(5), 0);
-                chooseAWeapon();
-            }
-            case 7 -> {
-                saveCharacter(gameFigurines.get(6), 0);
-                chooseAWeapon();
-            }
-            case 8 -> {
-                saveCharacter(gameFigurines.get(7), 0);
-                chooseAWeapon();
-            }
-            default -> System.out.println("You did not choose a Character");
         }
     }
 
@@ -229,6 +241,8 @@ public class Fight {
                     .setcC(fightingCharacters
                                    .get(player)
                                    .getcC() - item.getWeight());
+        } else {
+            System.out.println("That Item is to Heavy for you");
         }
         fightingCharacters
                 .get(0)
