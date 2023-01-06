@@ -2,6 +2,8 @@ package objektOrientedDesign.Roleplay;
 
 import objektOriented.aufg1.aufg2.InputIn;
 import objektOrientedDesign.Roleplay.GameFigures.*;
+import objektOrientedDesign.Roleplay.Items.*;
+import objektOrientedDesign.Roleplay.Weapons.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +11,8 @@ import java.util.List;
 
 public class Fight {
     static List <Gamefigurine> gameFigurines;
+    static List<Weapon> weapons;
+    static List<Item> items;
     static List <Gamefigurine> playerOne = new ArrayList <>();
     static List <Gamefigurine> playerTwo = new ArrayList <>();
 
@@ -50,6 +54,30 @@ public class Fight {
                 (Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) +
                                                                 minSpeed), 0.5, 0.08));
         gameFigurines = characters;
+    }
+
+    public static void initWeapons(){
+        List<Weapon> weaponList = new ArrayList <>();
+        weaponList.add(new Club(4,5,0.8,5));
+        weaponList.add(new Sword(2, 6, 0.95, 3,0.05));
+        weaponList.add(new Scythe(3, 7, 1, 1,0.05));
+        weaponList.add(new Bow(1, 5.5, 0.75));
+        weaponList.add(new Musket(2.5,8,1,false));
+        weaponList.add(new ThrowingKnife(0.5,10,0.9,3));
+        weapons = weaponList;
+    }
+
+    public static void initItems(){
+        List<Item> itemsList = new ArrayList<>();
+        itemsList.add(new DamagePotion(2,((Math.random() * (15 - 5)) + 5)));        //Random Amount of Enemy Health Taken
+        itemsList.add(new PowerPotion(2, 5));
+        itemsList.add(new HealthPotion(2, ((Math.random() * (20 - 5)) + 5)));       //Random Amount of Health gain
+        itemsList.add(new SchieldRing(1.5, ((Math.random() * (2 - 0.75)) + 0.75)));  //Random Amount of resistance gain
+        itemsList.add(new StrenghtRing(1.5,5));
+        itemsList.add(new CharmRing(1.5,((Math.random() * (2 - 0.45)) + 0.45),0.5));   //Almost like Resistance only differencz is the enemies FV gets lower  // Charm = the Chances that it Works
+        itemsList.add(new LightArmor(3,0.3,0.1,0.5));
+        itemsList.add(new HeavyArmor(6.5,0.75,0.25,1));
+        items = itemsList;
     }
 
     public static void chooseYourCharacter() {
@@ -120,8 +148,10 @@ public class Fight {
             default -> System.out.println("You did not choose a Character");
         }
     }
-    public static void chooseAWeapon(){
-        HashMap<Integer, String>weaponChoice = new HashMap<Integer, String>();
+
+    public static void chooseAWeapon() {
+        initWeapons();
+        HashMap <Integer, String> weaponChoice = new HashMap <Integer, String>();
         System.out.println("Choose the weapon you would like. (BTW when choosing the Throwing Knives you only get 3 uses per one you pick but they do a good amount of Damage for this reason)");
         System.out.println("You also have a limited amount of CC (Carrying Capacity) so keep in mind not to use it all up already");
         weaponChoice.put(1, "1: Club");
@@ -135,16 +165,25 @@ public class Fight {
             System.out.println(weaponChoice.get(i));
         }
         int chooseYourWeapons = InputIn.nexIntOut("Type the Number of the Desired Action");
-        while (chooseYourWeapons != 7){
-            switch (chooseYourWeapons){
-                case 1 ->{}
-                case 2 ->{}
-                case 3 ->{}
-                case 4 ->{}
-                case 5 ->{}
-                case 6 ->{}
-                case 7 ->{}
-                default -> System.out.println("Really now? You have 7 Options and you did not manage to pick any of them. Try Again");
+        while (chooseYourWeapons != 7) {
+            switch (chooseYourWeapons) {
+                case 1 -> {
+               //     playerOne.add()
+                }
+                case 2 -> {
+                }
+                case 3 -> {
+                }
+                case 4 -> {
+                }
+                case 5 -> {
+                }
+                case 6 -> {
+                }
+                case 7 -> {
+                }
+                default ->
+                        System.out.println("Really now? You have 7 Options and you did not manage to pick any of them. Try Again");
 
             }
         }

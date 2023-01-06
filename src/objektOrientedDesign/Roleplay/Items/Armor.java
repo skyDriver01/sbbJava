@@ -1,24 +1,15 @@
 package objektOrientedDesign.Roleplay.Items;
 
-public class Armor {
-    private double weight;
+public class Armor extends Item{
     private double slowness;
     private double noDamage;
     private double res;
 
     public Armor(double weight, double slowness, double noDamage, double resistance) {
-        this.weight = weight;
+        super(weight);
         this.slowness = slowness;
         this.noDamage = noDamage;
         this.res = resistance;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
     }
 
     public double getSlowness() {

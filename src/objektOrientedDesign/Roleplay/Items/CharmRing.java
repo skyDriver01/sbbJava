@@ -1,10 +1,10 @@
 package objektOrientedDesign.Roleplay.Items;
 
-public class charmRing extends Ring{
+public class CharmRing extends Ring{
     private double lessenEnemiesFV;
     private double charm;       //To make the enemies FV go down a bit
 
-    public charmRing(double weight, double lessenEnemiesFV, double charm) {
+    public CharmRing(double weight, double lessenEnemiesFV, double charm) {
         super(weight);
         this.lessenEnemiesFV = lessenEnemiesFV;
         this.charm = charm;

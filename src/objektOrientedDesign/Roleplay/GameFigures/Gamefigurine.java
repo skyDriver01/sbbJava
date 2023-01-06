@@ -1,6 +1,7 @@
 package objektOrientedDesign.Roleplay.GameFigures;
 
 import objektOrientedDesign.Roleplay.Items.Armor;
+import objektOrientedDesign.Roleplay.Items.Item;
 import objektOrientedDesign.Roleplay.Weapons.Weapon;
 
 public class Gamefigurine {
@@ -11,6 +12,7 @@ public class Gamefigurine {
     private double res;  // res is resistance
     private Weapon weapon;
     private Armor armor;
+    private Item item;
     private double mV;
     private double speed;  //Speed is the initiative value
     private double accuracy;
@@ -110,5 +112,13 @@ public class Gamefigurine {
 
     public double getmV() {
         return (Math.random() * (2 - 1)) + 1;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
 }
