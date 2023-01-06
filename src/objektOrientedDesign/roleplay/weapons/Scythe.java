@@ -3,8 +3,8 @@ package objektOrientedDesign.roleplay.weapons;
 public class Scythe extends CloseRange{
     private double bleeding;
 
-    public Scythe(double weight, double fV, double accuracy, double bV, double bleeding) {
-        super(weight, fV, accuracy, bV);
+    public Scythe(String weapon, double weight, double fV, double accuracy, double bV, double bleeding) {
+        super(weapon, weight, fV, accuracy, bV);
         this.bleeding = bleeding;
     }
 

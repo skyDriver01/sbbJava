@@ -12,7 +12,7 @@ public class Gamefigurine {
     private double cC;  //CC is Carrying Capacity
     private double fV;  //FV is Fighting Value
     private double res;  // res is resistance
-    private List <Weapon> weapon;
+    private Weapon weapon;
     private Armor armor;
     private List <Item> item;
     private double mV;
@@ -73,11 +73,11 @@ public class Gamefigurine {
         this.res = res;
     }
 
-    public List <Weapon> getWeapon() {
+    public Weapon getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(List <Weapon> weapon) {
+    public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
 

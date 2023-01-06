@@ -1,14 +1,24 @@
 package objektOrientedDesign.roleplay.weapons;
 
 public class Weapon {
+    private String weapon;
     private double weight;
     private double fV;
     private double accuracy;
 
-    public Weapon(double weight, double fV, double accuracy) {
+    public Weapon(String weapon, double weight, double fV, double accuracy) {
+        this.weapon = weapon;
         this.weight = weight;
         this.fV = fV;
         this.accuracy = accuracy;
+    }
+
+    public String getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(String weapon) {
+        this.weapon = weapon;
     }
 
     public double getWeight() {
