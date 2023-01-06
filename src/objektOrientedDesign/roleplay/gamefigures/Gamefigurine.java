@@ -4,9 +4,11 @@ import objektOrientedDesign.roleplay.items.Armor;
 import objektOrientedDesign.roleplay.items.Item;
 import objektOrientedDesign.roleplay.weapons.Weapon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Gamefigurine {
+
     private String name;
     private double lP;  // LP like in most games stands for Life Points
     private double cC;  //CC is Carrying Capacity
@@ -15,6 +17,8 @@ public class Gamefigurine {
     private Weapon weapon;
     private Armor armor;
     private List <Item> item;
+
+    private List<Weapon> weaponBackpack = new ArrayList <>();
     private double mV;
     private double speed;  //Speed is the initiative value
     private double accuracy;
@@ -80,6 +84,15 @@ public class Gamefigurine {
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
+
+    public List <Weapon> getWeaponBackpack() {
+        return weaponBackpack;
+    }
+
+    public void setWeaponBackpack(List <Weapon> weaponBackpack) {
+        this.weaponBackpack = weaponBackpack;
+    }
+
 
     public Armor getArmor() {
         return armor;

@@ -156,12 +156,7 @@ public class Fight {
             switch (chooseYourWeapons) {
                 case 1 -> {
                     equipWeapon(weapons.get(0), 0);
-                    System.out.println(fightingCharacters
-                                               .get(0)
-                                               .getName() + fightingCharacters
-                                               .get(0)
-                                               .getWeapon()
-                                               .getWeapon());
+
                 }
                 case 2 -> {
                     equipWeapon(weapons.get(1), 0);
@@ -194,17 +189,27 @@ public class Fight {
         if(fightingCharacters
                    .get(player)
                    .getcC() >= weapon.getWeight()) {
-            fightingCharacters
-                    .get(player)
-                    .setWeapon(weapon);
-            fightingCharacters
-                    .get(player)
-                    .setcC(fightingCharacters
-                                   .get(player)
-                                   .getcC() - weapon.getWeight());
+            if (fightingCharacters.get(player).getWeapon() == null) {
+                fightingCharacters
+                        .get(player)
+                        .setWeapon(weapon);
+                fightingCharacters
+                        .get(player)
+                        .setcC(fightingCharacters
+                                       .get(player)
+                                       .getcC() - weapon.getWeight());
+            } else {
+                fightingCharacters.get(player).getWeaponBackpack().add(weapon);
+                fightingCharacters
+                        .get(player)
+                        .setcC(fightingCharacters
+                                       .get(player)
+                                       .getcC() - weapon.getWeight());
+            }
         } else {
             System.out.println("That weapon is to heavy for you to carry");
         }
+        fightingCharacters.get(0).getWeaponBackpack().stream().forEach(a -> System.out.println(a.getWeapon()));
     }
 
     public static void saveCharacter(Gamefigurine gamefigurine, int player) {
