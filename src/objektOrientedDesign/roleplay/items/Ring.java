@@ -2,7 +2,7 @@ package objektOrientedDesign.roleplay.items;
 
 public class Ring extends Item{
 
-    public Ring(double weight) {
-        super(weight);
+    public Ring(String item, double weight) {
+        super(item, weight);
     }
 }

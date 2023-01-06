@@ -3,8 +3,8 @@ package objektOrientedDesign.roleplay.items;
 public class StrenghtRing extends Ring{
     private double moreCC;
 
-    public StrenghtRing(double weight, double moreCC) {
-        super(weight);
+    public StrenghtRing(String item, double weight, double moreCC) {
+        super(item, weight);
         this.moreCC = moreCC;
     }
 

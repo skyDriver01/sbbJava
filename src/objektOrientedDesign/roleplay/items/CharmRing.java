@@ -4,8 +4,8 @@ public class CharmRing extends Ring{
     private double lessenEnemiesFV;
     private double charm;       //To make the enemies FV go down a bit
 
-    public CharmRing(double weight, double lessenEnemiesFV, double charm) {
-        super(weight);
+    public CharmRing(String item, double weight, double lessenEnemiesFV, double charm) {
+        super(item, weight);
         this.lessenEnemiesFV = lessenEnemiesFV;
         this.charm = charm;
     }

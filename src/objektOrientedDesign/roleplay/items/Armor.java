@@ -5,11 +5,11 @@ public class Armor extends Item{
     private double noDamage;
     private double res;
 
-    public Armor(double weight, double slowness, double noDamage, double resistance) {
-        super(weight);
+    public Armor(String item, double weight, double slowness, double noDamage, double res) {
+        super(item, weight);
         this.slowness = slowness;
         this.noDamage = noDamage;
-        this.res = resistance;
+        this.res = res;
     }
 
     public double getSlowness() {

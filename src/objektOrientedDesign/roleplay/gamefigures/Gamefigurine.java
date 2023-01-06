@@ -16,7 +16,8 @@ public class Gamefigurine {
     private double res;  // res is resistance
     private Weapon weapon;
     private Armor armor;
-    private List <Item> item;
+    private Item item;
+    private List <Item> itemBackpack = new ArrayList<>();
 
     private List<Weapon> weaponBackpack = new ArrayList <>();
     private double mV;
@@ -102,12 +103,12 @@ public class Gamefigurine {
         this.armor = armor;
     }
 
-    public List <Item> getItem() {
-        return item;
+    public List <Item> getItemBackpack() {
+        return itemBackpack;
     }
 
-    public void setItem(List <Item> item) {
-        this.item = item;
+    public void setItemBackpack(List <Item> itemBackpack) {
+        this.itemBackpack = itemBackpack;
     }
 
     public double getmV() {
@@ -136,5 +137,13 @@ public class Gamefigurine {
 
     public void setEvasion(double evasion) {
         this.evasion = evasion;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
 }

@@ -3,8 +3,8 @@ package objektOrientedDesign.roleplay.items;
 public class PowerPotion extends Potion {
     private double giveMoreCC;
 
-    public PowerPotion(double weight, double giveMoreCC) {
-        super(weight);
+    public PowerPotion(String item, double weight, double giveMoreCC) {
+        super(item, weight);
         this.giveMoreCC = giveMoreCC;
     }
 
