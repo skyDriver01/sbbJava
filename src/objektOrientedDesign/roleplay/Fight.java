@@ -11,9 +11,9 @@ import java.util.List;
 
 public class Fight {
     static List <Gamefigurine> gameFigurines;
-    static List<Weapon> weapons;
+    static List <Weapon> weapons;
     static List <Item> items;
-    static List<Gamefigurine> fightingCharacters;
+    static List <Gamefigurine> fightingCharacters;
 
     public static void main(String[] args) {
         System.out.println("Welcome to the Roleplaying game.");
@@ -40,7 +40,7 @@ public class Fight {
         characters.add(new Orc("Orc", 115, 17, ((Math.random() * (maxFV - minFV)) + minFV), (
                 (Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) +
                                                                 minSpeed), 0.75, 0.05, false));
-        characters.add(new SCP_049("SCP_049", 90,18 , ((Math.random() * (maxFV - minFV)) + minFV), (
+        characters.add(new SCP_049("SCP_049", 90, 18, ((Math.random() * (maxFV - minFV)) + minFV), (
                 (Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) +
                                                                 minSpeed), 0.9, 0.02, 0.01, 0.05));
         characters.add(new Troll("Troll", 125, 20, ((Math.random() * (maxFV - minFV)) + minFV), (
@@ -56,27 +56,29 @@ public class Fight {
         fightingCharacters = characters;
     }
 
-    public static void initWeapons(){
-        List<Weapon> weaponList = new ArrayList <>();
-        weaponList.add(new Club("Club",4,5,0.8,5));
-        weaponList.add(new Sword("Sword",2, 6, 0.95, 3,0.05));
-        weaponList.add(new Scythe("Scythe",3, 7, 1, 1,0.05));
-        weaponList.add(new Bow("Bow",1, 5.5, 0.75));
-        weaponList.add(new Musket("Musket",2.5,8,1,false));
-        weaponList.add(new ThrowingKnife("Throwing Knives",0.5,10,0.9,3));
+    public static void initWeapons() {
+        List <Weapon> weaponList = new ArrayList <>();
+        weaponList.add(new Club("Club", 4, 5, 0.8, 5));
+        weaponList.add(new Sword("Sword", 2, 6, 0.95, 3, 0.05));
+        weaponList.add(new Scythe("Scythe", 3, 7, 1, 1, 0.05));
+        weaponList.add(new Bow("Bow", 1, 5.5, 0.75));
+        weaponList.add(new Musket("Musket", 2.5, 8, 1, false));
+        weaponList.add(new ThrowingKnife("Throwing Knives", 0.5, 10, 0.9, 3));
         weapons = weaponList;
     }
 
-    public static void initItems(){
-        List<Item> itemsList = new ArrayList<>();
-        itemsList.add(new DamagePotion(2,((Math.random() * (15 - 5)) + 5)));        //Random Amount of Enemy Health Taken
+    public static void initItems() {
+        List <Item> itemsList = new ArrayList <>();
+        itemsList.add(new DamagePotion(2, ((Math.random() * (15 - 5)) +
+                                           5)));        //Random Amount of Enemy Health Taken
         itemsList.add(new PowerPotion(2, 5));
         itemsList.add(new HealthPotion(2, ((Math.random() * (20 - 5)) + 5)));       //Random Amount of Health gain
         itemsList.add(new SchieldRing(1.5, ((Math.random() * (2 - 0.75)) + 0.75)));  //Random Amount of resistance gain
-        itemsList.add(new StrenghtRing(1.5,5));
-        itemsList.add(new CharmRing(1.5,((Math.random() * (2 - 0.45)) + 0.45),0.5));   //Almost like Resistance only difference is the enemies FV gets lower  // Charm = the Chances that it Works
-        itemsList.add(new LightArmor(3,0.3,0.1,0.5));
-        itemsList.add(new HeavyArmor(6.5,0.75,0.25,1));
+        itemsList.add(new StrenghtRing(1.5, 5));
+        itemsList.add(new CharmRing(1.5, ((Math.random() * (2 - 0.45)) +
+                                          0.45), 0.5));   //Almost like Resistance only difference is the enemies FV gets lower  // Charm = the Chances that it Works
+        itemsList.add(new LightArmor(3, 0.3, 0.1, 0.5));
+        itemsList.add(new HeavyArmor(6.5, 0.75, 0.25, 1));
         items = itemsList;
     }
 
@@ -98,28 +100,35 @@ public class Fight {
         int chooseFigure = InputIn.nexIntOut("Type the Number of the Character that you want to Play");
         switch (chooseFigure) {
             case 1 -> {
+                saveCharacter(gameFigurines.get(0), 0);
                 chooseAWeapon();
             }
-
             case 2 -> {
+                saveCharacter(gameFigurines.get(1), 0);
                 chooseAWeapon();
             }
             case 3 -> {
+                saveCharacter(gameFigurines.get(2), 0);
                 chooseAWeapon();
             }
             case 4 -> {
+                saveCharacter(gameFigurines.get(3), 0);
                 chooseAWeapon();
             }
             case 5 -> {
+                saveCharacter(gameFigurines.get(4), 0);
                 chooseAWeapon();
             }
             case 6 -> {
+                saveCharacter(gameFigurines.get(5), 0);
                 chooseAWeapon();
             }
             case 7 -> {
+                saveCharacter(gameFigurines.get(6), 0);
                 chooseAWeapon();
             }
             case 8 -> {
+                saveCharacter(gameFigurines.get(7), 0);
                 chooseAWeapon();
             }
             default -> System.out.println("You did not choose a Character");
@@ -146,19 +155,34 @@ public class Fight {
             int chooseYourWeapons = InputIn.nexIntOut("Type the Number of the Desired Action");
             switch (chooseYourWeapons) {
                 case 1 -> {
-
+                    equipWeapon(weapons.get(0), 0);
+                    System.out.println(fightingCharacters
+                                               .get(0)
+                                               .getName() + fightingCharacters
+                                               .get(0)
+                                               .getWeapon()
+                                               .getWeapon());
                 }
                 case 2 -> {
+                    equipWeapon(weapons.get(1), 0);
                 }
                 case 3 -> {
+                    equipWeapon(weapons.get(2), 0);
                 }
                 case 4 -> {
+                    equipWeapon(weapons.get(3), 0);
                 }
                 case 5 -> {
+                    equipWeapon(weapons.get(4), 0);
                 }
+
                 case 6 -> {
+                    equipWeapon(weapons.get(5), 0);
                 }
-                case 7 -> loopForWeapons = false;
+                case 7 -> {
+                    loopForWeapons = false;
+                    chooseAItem();
+                }
                 default ->
                         System.out.println("Really now? You have 7 Options and you did not manage to pick any of them. Try Again");
 
@@ -166,24 +190,51 @@ public class Fight {
         }
     }
 
-    public static void chooseAItem(){
+    public static void equipWeapon(Weapon weapon, int player) {
+        if(fightingCharacters
+                   .get(player)
+                   .getcC() >= weapon.getWeight()) {
+            fightingCharacters
+                    .get(player)
+                    .setWeapon(weapon);
+            fightingCharacters
+                    .get(player)
+                    .setcC(fightingCharacters
+                                   .get(player)
+                                   .getcC() - weapon.getWeight());
+        } else {
+            System.out.println("That weapon is to heavy for you to carry");
+        }
+    }
+
+    public static void saveCharacter(Gamefigurine gamefigurine, int player) {
+        fightingCharacters
+                .get(player)
+                .setName((gamefigurine.getName()));
+    }
+
+    public static void chooseAItem() {
         initItems();
-        HashMap<Integer, String> itemChoice = new HashMap<Integer, String>();
+        HashMap <Integer, String> itemChoice = new HashMap <Integer, String>();
 
         boolean loopForItems = true;
-        while (loopForItems){
+        while (loopForItems) {
             System.out.println("Now you can Choose Items if you have enough CC that is");
-            itemChoice.put(1,"1: Health Potion");
-            itemChoice.put(2,"2: Power Potion");
-            itemChoice.put(3,"3: Damage Potion");
-            itemChoice.put(4,"4: Shield Ring");
-            itemChoice.put(5,"5: Strenght Ring");
-            itemChoice.put(6,"6: Charm Ring");
-            itemChoice.put(7,"7: Light Armor");
-            itemChoice.put(8,"8: Heavy Armor");
-            itemChoice.put(9,"9: No more Items");
+            itemChoice.put(1, "1: Health Potion");
+            itemChoice.put(2, "2: Power Potion");
+            itemChoice.put(3, "3: Damage Potion");
+            itemChoice.put(4, "4: Shield Ring");
+            itemChoice.put(5, "5: Strenght Ring");
+            itemChoice.put(6, "6: Charm Ring");
+            itemChoice.put(7, "7: Light Armor");
+            itemChoice.put(8, "8: Heavy Armor");
+            itemChoice.put(9, "9: No more Items");
             for (int i = 1; i <= itemChoice.size(); i++) {
                 System.out.println(itemChoice.get(i));
+            }
+            int chooseItem = InputIn.nexIntOut("Type the Number of the Desired Action");
+            switch (chooseItem) {
+                    case 1 ->{}
             }
         }
     }
