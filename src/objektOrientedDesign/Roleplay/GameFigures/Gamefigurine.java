@@ -9,8 +9,9 @@ public class Gamefigurine {
     private double cC;  //CC is Carrying Capacity
     private double fV;  //FV is Fighting Value
     private double res;  // res is resistance
-    public Weapon weapon;
-    public Armor armor;
+    private Weapon weapon;
+    private Armor armor;
+    private double mV;
     private double speed;  //Speed is the initiative value
     private double accuracy;
     private double evasion;
@@ -105,5 +106,9 @@ public class Gamefigurine {
 
     public void setEvasion(double evasion) {
         this.evasion = evasion;
+    }
+
+    public double getmV() {
+        return (Math.random() * (2 - 1)) + 1;
     }
 }
