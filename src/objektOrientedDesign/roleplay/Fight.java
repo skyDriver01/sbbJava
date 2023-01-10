@@ -199,12 +199,14 @@ public class Fight {
         }
     }
 
-    public static void equipWeapon(Weapon weapon, int player) {
+    public static void equipWeapon(Weapon weapon, int player) {     // TODO: Fix Bug bc atm the weight is not getting taken away right
+        // or it is not even gotten correctly a elve with 12 cc was able to old 14cc worth of items shouldne be possible look into it
         if(fightingCharacters
                    .get(player)
                    .getcC() >= weapon.getWeight()) {
             fightingCharacters
-                    .get(player)
+                    .get(player)            // TODO: BUG FOUND. The "Bug" is the fact that its getting the player and not the
+                    // fightingcharacter Gamefigur that you chose so its always the same weight for all players that seems to be 14cc so change it to the gamefigurine
                     .getWeaponBackpack()
                     .add(weapon);
             fightingCharacters
