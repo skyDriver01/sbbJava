@@ -13,11 +13,17 @@ public class Fight {
     static List <Gamefigurine> gameFigurines;
     static List <Weapon> weapons;
     static List <Item> items;
-    static List <Gamefigurine> fightingCharacters;
+    static List <Gamefigurine> fightingCharacters = new ArrayList <>();
+    public int player = 0;      //TODO: BUGFIX OR RATHER HOTFIX: The players values get taken both so if player one chose a club, the club will show for player 2 so fix that.
 
     public static void main(String[] args) {
         System.out.println("Welcome to the Roleplaying game.");
-        chooseYourCharacter();
+        chooseYourCharacter(0);
+        System.out.println("Now the next player can choose their character");
+        chooseYourCharacter(1);
+        fightingCharacters
+                .stream()
+                .forEach(a -> System.out.println(a.getName() + a.getWeapon() + a.getItem()));
     }
 
     public static void initGameFigurines() {
@@ -28,9 +34,10 @@ public class Fight {
         double minSpeed = 1;
         double maxSpeed = 2;
         List <Gamefigurine> characters = new ArrayList <>();
-        characters.add(new Dwarf("Dwarf", 80, 14, ((Math.random() * (maxFV - minFV)) + minFV), (
-                (Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) +
-                                                                minSpeed), 0.5, 0.3));
+        characters.add(new Dwarf("Dwarf", 80, 14, ((Math.random() * (maxFV - minFV)) +
+                                                   minFV), ( // TODO: BUGFIX : If i do the figthingcharacters.get(0 or player it automatically gets the dwarf so maybe make a int player or a list to prevent this.)
+                                         (Math.random() * (maxRes - minRes)) + minRes), (
+                                         (Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0.3));
         characters.add(new Elven("Elven", 110, 12, ((Math.random() * (maxFV - minFV)) + minFV), (
                 (Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) +
                                                                 minSpeed), 0.75, 0.09));
@@ -53,7 +60,6 @@ public class Fight {
                 (Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) +
                                                                 minSpeed), 0.5, 0.08));
         gameFigurines = characters;
-        fightingCharacters = characters;
     }
 
     public static void initWeapons() {
@@ -84,8 +90,8 @@ public class Fight {
         items = itemsList;
     }
 
-    public static void chooseYourCharacter() {
-        System.out.println("Player One Choose the Character that you wish to play. (Every Character is a bit different and Combinations are also important to make your character the Strongest possible.)");
+    public static void chooseYourCharacter(int player) {
+        System.out.println("Player Choose the Character that you wish to play. (Every Character is a bit different and Combinations are also important to make your character the Strongest possible.)");
         System.out.println("Btw CC is Carrying Capacity so how much The Character can carry");
         boolean noCharacterChosen = true;
         HashMap <Integer, String> chooseFigurine = new HashMap <Integer, String>();
@@ -106,43 +112,51 @@ public class Fight {
             int chooseFigure = InputIn.nexIntOut("Type the Number of the Character that you want to Play");
             switch (chooseFigure) {
                 case 0 -> {
-                    saveCharacter(gameFigurines.get(0), 0);
+                    fightingCharacters.add(gameFigurines.get(0));
+                    saveCharacter(gameFigurines.get(0), player);
                     noCharacterChosen = false;
                     chooseAWeapon();
                 }
                 case 1 -> {
-                    saveCharacter(gameFigurines.get(1), 0);
+                    fightingCharacters.add(gameFigurines.get(1));
+                    saveCharacter(gameFigurines.get(1), player);
                     noCharacterChosen = false;
                     chooseAWeapon();
                 }
                 case 2 -> {
-                    saveCharacter(gameFigurines.get(2), 0);
+                    fightingCharacters.add(gameFigurines.get(2));
+                    saveCharacter(gameFigurines.get(2), player);
                     noCharacterChosen = false;
                     chooseAWeapon();
                 }
                 case 3 -> {
-                    saveCharacter(gameFigurines.get(3), 0);
+                    fightingCharacters.add(gameFigurines.get(3));
+                    saveCharacter(gameFigurines.get(3), player);
                     noCharacterChosen = false;
                     chooseAWeapon();
                 }
                 case 4 -> {
-                    saveCharacter(gameFigurines.get(4), 0);
+                    fightingCharacters.add(gameFigurines.get(4));
+                    saveCharacter(gameFigurines.get(4), player);
                     noCharacterChosen = false;
                     chooseAWeapon();
                 }
                 case 5 -> {
-                    saveCharacter(gameFigurines.get(5), 0);
+                    fightingCharacters.add(gameFigurines.get(5));
+                    saveCharacter(gameFigurines.get(5), player);
                     noCharacterChosen = false;
                     chooseAWeapon();
                 }
                 case 6 -> {
-                    saveCharacter(gameFigurines.get(6), 0);
+                    fightingCharacters.add(gameFigurines.get(6));
+                    saveCharacter(gameFigurines.get(6), player);
                     noCharacterChosen = false;
                     chooseAWeapon();
                 }
                 case 7 -> {
-                    saveCharacter(gameFigurines.get(7), 0);
-                    noCharacterChosen =false;
+                    fightingCharacters.add(gameFigurines.get(7));
+                    saveCharacter(gameFigurines.get(7), player);
+                    noCharacterChosen = false;
                     chooseAWeapon();
                 }
                 default -> System.out.println("You did not choose a Character");
@@ -199,14 +213,13 @@ public class Fight {
         }
     }
 
-    public static void equipWeapon(Weapon weapon, int player) {     // TODO: Fix Bug bc atm the weight is not getting taken away right
-        // or it is not even gotten correctly a elve with 12 cc was able to old 14cc worth of items shouldne be possible look into it
+    public static void equipWeapon(Weapon weapon, int player) {
         if(fightingCharacters
                    .get(player)
                    .getcC() >= weapon.getWeight()) {
+//            fightingCharacters.add(gameFigurines.get(0));
             fightingCharacters
-                    .get(player)            // TODO: BUG FOUND. The "Bug" is the fact that its getting the player and not the
-                    // fightingcharacter Gamefigur that you chose so its always the same weight for all players that seems to be 14cc so change it to the gamefigurine
+                    .get(player)
                     .getWeaponBackpack()
                     .add(weapon);
             fightingCharacters
