@@ -278,16 +278,16 @@ public class configCharacters {
                     equipItem(items.get(5), player);
                 }
                 case 7 -> {
-                    if(!(fightingCharacters.get(player).getClass().equals(Troll.class) || fightingCharacters.get(player).getClass().equals(SCP_049.class))){
+                    if(!(fightingCharacters.get(player).getClass().equals(Troll.class) || fightingCharacters.get(player).getClass().equals(SCP_049.class))) {
                         equipArmor((Armor) items.get(6), player);
-                    }else {
+                    } else {
                         System.out.println("The Character you have Chosen is not fit to equip Light Armor");
                     }
                 }
                 case 8 -> {
-                    if(fightingCharacters.get(player).getClass().equals(Human.class) || fightingCharacters.get(player).getClass().equals(Orc.class) || fightingCharacters.get(player).getClass().equals(Dwarf.class)){
+                    if(fightingCharacters.get(player).getClass().equals(Human.class) || fightingCharacters.get(player).getClass().equals(Orc.class) || fightingCharacters.get(player).getClass().equals(Dwarf.class)) {
                         equipArmor((Armor) items.get(7), player);
-                    } else{
+                    } else {
                         System.out.println("The Character you have Chosen is not fit to equip Heavy Armor");
                     }
                 }
