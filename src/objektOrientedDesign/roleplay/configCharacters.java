@@ -15,12 +15,12 @@ public class configCharacters {
     static List <Item> items;
     static List <Gamefigurine> fightingCharacters = new ArrayList <>();
 
-    public  void executeGame() {
+    public void executeGame() {
         System.out.println("Welcome to the Roleplaying game.");
         chooseYourCharacter(0);
         System.out.println("Now the next player can choose their character");
         chooseYourCharacter(1);
-        Fight.startTheFight(fightingCharacters.get(0),fightingCharacters.get(1));
+        Fight.startTheFight(fightingCharacters.get(0), fightingCharacters.get(1));
     }
 
     public static void initGameFigurines() {
@@ -222,6 +222,22 @@ public class configCharacters {
         fightingCharacters.get(player).getItemBackpack().stream().forEach(a -> System.out.println(a.getItem()));
     }
 
+    public static void equipArmor(Armor armor, int player) {
+        if(fightingCharacters.get(player).getcC() >= armor.getWeight()) {
+            if(fightingCharacters.get(player).getArmor() == null) {
+                fightingCharacters.get(player).setArmor(armor);
+                fightingCharacters.get(player).setRes(fightingCharacters.get(player).getArmor().getRes() + armor.getRes());
+                fightingCharacters.get(player).setSpeed(fightingCharacters.get(player).getSpeed() - armor.getSlowness());
+                fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - armor.getWeight());
+            } else {
+                fightingCharacters.get(player).getItemBackpack().add(armor);
+                fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - armor.getWeight());
+            }
+        } else {
+            System.out.println("You have to much weight accumulated that you cannot hold this anymore.");
+        }
+    }
+
     public static void chooseAItem(int player) {
         initItems();
         HashMap <Integer, String> itemChoice = new HashMap <Integer, String>();
@@ -229,11 +245,13 @@ public class configCharacters {
         boolean loopForItems = true;
         while (loopForItems) {
             System.out.println("Now you can Choose Items if you have enough CC that is");
+            System.out.println("Heavy Armor cant be used by all and also your speed goes down due to armor as");
+            System.out.println("The First Armor you take will automatically be activated so there should not even be a reason for you to get more than one bc only one will be equipped");
             itemChoice.put(1, "1: Health Potion, Weight = 2");
             itemChoice.put(2, "2: Power Potion, Weight = 2");
             itemChoice.put(3, "3: Damage Potion, Weight = 2");
             itemChoice.put(4, "4: Shield Ring, Weight = 1.5");
-            itemChoice.put(5, "5: Strenght Ring, Weight = 1.5");
+            itemChoice.put(5, "5: Strength Ring, Weight = 1.5");
             itemChoice.put(6, "6: Charm Ring, Weight = 1.5");
             itemChoice.put(7, "7: Light Armor, Weight = 3");
             itemChoice.put(8, "8: Heavy Armor, Weight = 6.5");
@@ -262,13 +280,13 @@ public class configCharacters {
                     equipItem(items.get(5), player);
                 }
                 case 7 -> {
-                    equipItem(items.get(6), player);
+                    equipArmor((Armor) items.get(6), player);
                 }
                 case 8 -> {
-                    equipItem(items.get(7), player);
+                    equipArmor((Armor) items.get(7), player);
                 }
                 case 9 -> loopForItems = false;
-                default -> System.out.println("Come on man again?? THERE ARE 9 OPTIONS");
+                default -> System.out.println("Come on, again?? THERE ARE 9 OPTIONS");
             }
         }
     }

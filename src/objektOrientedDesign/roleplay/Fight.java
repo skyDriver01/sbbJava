@@ -3,12 +3,9 @@ package objektOrientedDesign.roleplay;
 import objektOriented.aufg1.aufg2.InputIn;
 import objektOrientedDesign.roleplay.gamefigures.Gamefigurine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Fight {
-    static List <Gamefigurine> fightingCharacters = new ArrayList <>();
 
     public static void startTheFight(Gamefigurine playerOne, Gamefigurine playerTwo) {
         System.out.println("It seems all preparations are done from both ends time to start the fight lets see who gets to start");
