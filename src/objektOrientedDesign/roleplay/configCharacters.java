@@ -205,7 +205,6 @@ public class configCharacters {
         } else {
             System.out.println("That weapon is to heavy for you to carry");
         }
-        fightingCharacters.get(player).getWeaponBackpack().stream().forEach(a -> System.out.println(a.getWeapon()));
     }
 
     public static void saveCharacter(Gamefigurine gamefigurine, int player) {
@@ -219,7 +218,6 @@ public class configCharacters {
         } else {
             System.out.println("That Item is to Heavy for you");
         }
-        fightingCharacters.get(player).getItemBackpack().stream().forEach(a -> System.out.println(a.getItem()));
     }
 
     public static void equipArmor(Armor armor, int player) {
@@ -280,10 +278,18 @@ public class configCharacters {
                     equipItem(items.get(5), player);
                 }
                 case 7 -> {
-                    equipArmor((Armor) items.get(6), player);
+                    if(!(fightingCharacters.get(player).getClass().equals(Troll.class) || fightingCharacters.get(player).getClass().equals(SCP_049.class))){
+                        equipArmor((Armor) items.get(6), player);
+                    }else {
+                        System.out.println("The Character you have Chosen is not fit to equip Light Armor");
+                    }
                 }
                 case 8 -> {
-                    equipArmor((Armor) items.get(7), player);
+                    if(fightingCharacters.get(player).getClass().equals(Human.class) || fightingCharacters.get(player).getClass().equals(Orc.class) || fightingCharacters.get(player).getClass().equals(Dwarf.class)){
+                        equipArmor((Armor) items.get(7), player);
+                    } else{
+                        System.out.println("The Character you have Chosen is not fit to equip Heavy Armor");
+                    }
                 }
                 case 9 -> loopForItems = false;
                 default -> System.out.println("Come on, again?? THERE ARE 9 OPTIONS");

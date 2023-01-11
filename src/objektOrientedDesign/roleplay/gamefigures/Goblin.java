@@ -5,14 +5,4 @@ public class Goblin extends Gamefigurine {
                   double evasion) {
         super(name, lP, cC, fV, res, speed, accuracy, evasion);
     }
-    @Override
-    public double getfV() {
-        if(getWeapon().getWeapon().equals("Bow")){
-            setfV(getfV() + (getfV() / 2) + getWeapon().getfV());
-        } else  if(getWeapon().getWeapon().equals("Throwing Knives")){
-            getWeapon().setAmount(6);
-            return getWeapon().getAmount();
-        }
-        return getfV();
-    }
 }

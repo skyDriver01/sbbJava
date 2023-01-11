@@ -13,9 +13,6 @@ public class SCP_049 extends Gamefigurine {
     }
 
     public double getInstantDeath() {
-        if(getWeapon().getWeapon().equals("Scythe")){
-            setInstantDeath(0.02);
-        }
         return getInstantDeath();
     }
 
