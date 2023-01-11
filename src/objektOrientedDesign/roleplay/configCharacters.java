@@ -16,7 +16,7 @@ public class configCharacters {
     static List <Gamefigurine> fightingCharacters = new ArrayList <>();
 
     public void executeGame() {
-        System.out.println("Welcome to the Roleplaying game.");
+        System.out.println("Welcome to the Role playing game.");
         chooseYourCharacter(0);
         System.out.println("Now the next player can choose their character");
         chooseYourCharacter(1);
@@ -31,7 +31,7 @@ public class configCharacters {
         double minSpeed = 1;
         double maxSpeed = 2;
         List <Gamefigurine> characters = new ArrayList <>();
-        characters.add(new Dwarf("Dwarf", 80, 14, ((Math.random() * (maxFV - minFV)) + minFV), ( // TODO: BUGFIX : If i do the figthingcharacters.get(0 or player it automatically gets the dwarf so maybe make a int player or a list to prevent this.)
+        characters.add(new Dwarf("Dwarf", 80, 14, ((Math.random() * (maxFV - minFV)) + minFV), ( // TODO: BUGFIX : If i do the fighting characters.get(0 or player it automatically gets the dwarf so maybe make a int player or a list to prevent this.)
                 (Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0.3));
         characters.add(new Elven("Elven", 110, 12, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.75, 0.09));
         characters.add(new Human("Human", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.8, 0.07));
@@ -71,7 +71,7 @@ public class configCharacters {
         System.out.println("Player Choose the Character that you wish to play. (Every Character is a bit different and Combinations are also important to make your character the Strongest possible.)");
         System.out.println("Btw CC is Carrying Capacity so how much The Character can carry");
         boolean noCharacterChosen = true;
-        HashMap <Integer, String> chooseFigurine = new HashMap <Integer, String>();
+        HashMap <Integer, String> chooseFigurine = new HashMap <>();
         initGameFigurines();
         while (noCharacterChosen) {
 
@@ -144,7 +144,7 @@ public class configCharacters {
 
     public static void chooseAWeapon(int player) {
         initWeapons();
-        HashMap <Integer, String> weaponChoice = new HashMap <Integer, String>();
+        HashMap <Integer, String> weaponChoice = new HashMap <>();
         boolean loopForWeapons = true;
         while (loopForWeapons) {
             System.out.println("Choose the weapon you would like. (BTW when choosing the Throwing Knives you only get 3 uses per one you pick but they do a good amount of Damage for this reason)");
@@ -164,23 +164,41 @@ public class configCharacters {
             switch (chooseYourWeapons) {
                 case 1 -> {
                     equipWeapon(weapons.get(0), player);
-                }
-                case 2 -> {
-                    equipWeapon(weapons.get(1), player);
-                }
-                case 3 -> {
-                    equipWeapon(weapons.get(2), player);
-                }
-                case 4 -> {
-                    equipWeapon(weapons.get(3), player);
-                }
-                case 5 -> {
-                    equipWeapon(weapons.get(4), player);
+                    if(fightingCharacters.get(player).getClass().equals(Troll.class)) {
+                        fightingCharacters.get(player).setfV(fightingCharacters.get(player).getfV() * 2);
+                    }
                 }
 
+                case 2 -> equipWeapon(weapons.get(1), player);
+
+                case 3 -> {
+                    equipWeapon(weapons.get(2), player);
+                    if(fightingCharacters.get(player).getClass().equals(SCP_049.class)){
+                        // Find out how to get the instant death stuff so you can change the value here.
+                        // TODO: Make it this way for the items as well seems the easiest atm without the possibility of asking a coach atm.
+                    }
+                }
+
+                case 4 -> {
+                    equipWeapon(weapons.get(3), player);
+                    if(fightingCharacters.get(player).getClass().equals(Elven.class)) {
+                        fightingCharacters.get(player).setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player).getfV() * 0.5));
+                        fightingCharacters.get(player).setAccuracy(1);
+                    } else if(fightingCharacters.get(player).getClass().equals(Goblin.class)) {
+                        fightingCharacters.get(player).setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player).getfV() * 0.5));
+                    }
+                }
+
+                case 5 -> equipWeapon(weapons.get(4), player);
+
+
                 case 6 -> {
+                    if(fightingCharacters.get(player).getClass().equals(Goblin.class)) {
+                        // Make it so the amount gets to 6
+                    }
                     equipWeapon(weapons.get(5), player);
                 }
+
                 case 7 -> {
                     loopForWeapons = false;
                     chooseAItem(player);
@@ -238,7 +256,7 @@ public class configCharacters {
 
     public static void chooseAItem(int player) {
         initItems();
-        HashMap <Integer, String> itemChoice = new HashMap <Integer, String>();
+        HashMap <Integer, String> itemChoice = new HashMap <>();
 
         boolean loopForItems = true;
         while (loopForItems) {
@@ -259,24 +277,18 @@ public class configCharacters {
             }
             int chooseItem = InputIn.nexIntOut("Type the Number of the Desired Action");
             switch (chooseItem) {
-                case 1 -> {
-                    equipItem(items.get(0), player);
-                }
-                case 2 -> {
-                    equipItem(items.get(1), player);
-                }
-                case 3 -> {
-                    equipItem(items.get(2), player);
-                }
-                case 4 -> {
-                    equipItem(items.get(3), player);
-                }
-                case 5 -> {
-                    equipItem(items.get(4), player);
-                }
-                case 6 -> {
-                    equipItem(items.get(5), player);
-                }
+                case 1 -> equipItem(items.get(0), player);
+
+                case 2 -> equipItem(items.get(1), player);
+
+                case 3 -> equipItem(items.get(2), player);
+
+                case 4 -> equipItem(items.get(3), player);
+
+                case 5 -> equipItem(items.get(4), player);
+
+                case 6 -> equipItem(items.get(5), player);
+
                 case 7 -> {
                     if(!(fightingCharacters.get(player).getClass().equals(Troll.class) || fightingCharacters.get(player).getClass().equals(SCP_049.class))) {
                         equipArmor((Armor) items.get(6), player);

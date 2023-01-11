@@ -10,6 +10,9 @@ public class Elven extends Gamefigurine{
         if(getWeapon().getWeapon().equals("Bow")){
             setfV(getfV() + (getfV() / 2) + getWeapon().getfV());
             setAccuracy(1);
+         /* TODO : Ask why this wont work(possibly bc of the initGameFigurines list
+             but ask for a different way to be able to keep the list,
+             maybe in the fight like when the sword is being used or so no clue yet. */
         }
         return getfV() + getAccuracy();
     }
