@@ -6,16 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryShelf<T> {
-    static List <Book> bookList;
-    static List <CD> cdList;
-    static List <DVD> dvdList;
-    static List <Newspaper> newspaperList;
+    private List <T> itemList = new ArrayList <>();
 
     public void insideTheLibrary() {
-        booklist();
-        cdList();
-        dvdList();
-        newspaperList();
+        initItemList();
         boolean exit = true;
         while (exit) {
             options();
@@ -29,7 +23,7 @@ public class LibraryShelf<T> {
         }
     }
 
-    private static void options() {
+    private void options() {
         System.out.println("Hello what would you like to do?");
         System.out.println("1: Lease a Item");
         System.out.println("2: Give back a leased Item");
@@ -37,8 +31,9 @@ public class LibraryShelf<T> {
         System.out.println("4: leave");
     }
 
-    private static void getInformation() {
-        String getItem = InputIn.nextLineOut("What Item would you like to get the Info from? The Items are: Book, Cd, Dvd or Newspaper, Type in what you want to see");
+    private void getInformation() {
+        String getItem =
+                InputIn.nextLineOut("What Item would you like to get the Info from? The Items are: Book, Cd, Dvd or Newspaper, Type in what you want to see");
         switch (getItem) {
             case "Book" -> bookCase();
             case "Cd" -> cdCase();
@@ -47,7 +42,7 @@ public class LibraryShelf<T> {
         }
     }
 
-    private static void lease() {
+    private void lease() {
         String getItem = InputIn.nextLineOut("What Item kind would you like to lease? (Book, Cd, Dvd or Newspaper)");
         switch (getItem) {
             case "Book" -> leaseABook();
@@ -57,31 +52,38 @@ public class LibraryShelf<T> {
         }
     }
 
-    private static void leaseABook() {
-        bookList
+    private void leaseABook() {
+        itemList
                 .stream()
-                .forEach(a -> System.out.println(a.getName()));
+                .forEach(a -> {
+                    if(a.getClass() == Book.class) {
+                        Book book = (Book) a;
+                        System.out.println(((Book) book).getName());
+                    }
+                });
         String getBook = InputIn.nextLineOut("What Book do you went to get the Information from");
-        for (Book bookInfo : bookList) {
-            if(bookInfo
-                    .getName()
-                    .equals(getBook)) {
-                System.out.println(
-                        "The Name of the Book: " + bookInfo.getName() + ", Who wrote it: " + bookInfo.getAuthor() +
-                        ", What Genre it is: " + bookInfo.getGenre() + ", Is it already leased: " +
-                        bookInfo.getLeased());
-            }
-        }
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == Book.class) {
+                        Book book = (Book) a;
+                        if(getBook.equals(book.getName())) {
+                            System.out.println("The Name of the Book: " + book.getName() + ", Who wrote it: " + book.getAuthor() + ", What Genre it is: " + book.getGenre() + ", Is it already leased: " + book.getLeased());
+                        }
+                    }
+                });
+
         String askToLease = InputIn.nextLineOut("Do you want to lease it, if it isnt leased already?(Yes or No)");
         switch (askToLease) {
             case "Yes" -> {
-                for (Book book : bookList) {
-                    if(book
-                            .getName()
-                            .equals(getBook)) {
-                        book.setLeased(true);
-                    }
-                }
+                itemList
+                        .stream()
+                        .forEach(a -> {
+                            if(a.getClass() == Book.class) {
+                                Book book = (Book) a;
+                                book.setLeased(true);
+                            }
+                        });
             }
             case "No" -> {
                 System.out.println("Ok");
@@ -89,30 +91,38 @@ public class LibraryShelf<T> {
         }
     }
 
-    private static void leaseANewspaper() {
-        newspaperList
+    private void leaseANewspaper() {
+        itemList
                 .stream()
-                .forEach(a -> System.out.println(a.getPublisher()));
+                .forEach(a -> {
+                    if(a.getClass() == Newspaper.class) {
+                        Newspaper news = (Newspaper) a;
+                        System.out.println(((Newspaper) news).getPublisher());
+                    }
+                });
         String getNewspaper = InputIn.nextLineOut("What Newspaper do you want to get the Information of");
-        for (Newspaper newspaperInfo : newspaperList) {
-            if(newspaperInfo
-                    .getPublisher()
-                    .equals(getNewspaper)) {
-                System.out.println("The Name of the Publishing Agency: " + newspaperInfo.getPublisher() +
-                                   ", When was this published: " + newspaperInfo.getDate() +
-                                   ", Is it already leased: " + newspaperInfo.getLeased());
-            }
-        }
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == Newspaper.class) {
+                        Newspaper newspaper = (Newspaper) a;
+                        if(getNewspaper.equals(newspaper.getPublisher())) {
+                            System.out.println("The Name of the Publishing Agency: " + newspaper.getPublisher() + ", When was this published: " + newspaper.getDate() + ", Is it already leased: " + newspaper.getLeased());
+                        }
+                    }
+                });
+
         String askToLease = InputIn.nextLineOut("Do you want to lease it, if it isnt leased already?(Yes or No)");
         switch (askToLease) {
             case "Yes" -> {
-                for (Newspaper newspaper : newspaperList) {
-                    if(newspaper
-                            .getPublisher()
-                            .equals(getNewspaper)) {
-                        newspaper.setLeased(true);
-                    }
-                }
+                itemList
+                        .stream()
+                        .forEach(a -> {
+                            if(a.getClass() == Newspaper.class) {
+                                Newspaper news = (Newspaper) a;
+                                news.setLeased(true);
+                            }
+                        });
             }
             case "No" -> {
                 System.out.println("Ok");
@@ -120,30 +130,38 @@ public class LibraryShelf<T> {
         }
     }
 
-    private static void leaseADvd() {
-        dvdList
+    private void leaseADvd() {
+        itemList
                 .stream()
-                .forEach(a -> System.out.println(a.getName()));
+                .forEach(a -> {
+                    if(a.getClass() == DVD.class) {
+                        DVD dvd = (DVD) a;
+                        System.out.println(((DVD) dvd).getName());
+                    }
+                });
         String getDvd = InputIn.nextLineOut("What Dvd do you want the Information of?");
-        for (DVD dvdInfo : dvdList) {
-            if(dvdInfo
-                    .getName()
-                    .equals(getDvd)) {
-                System.out.println("The Name of the Dvd: " + dvdInfo.getName() + ", Who is the Director: " +
-                                   dvdInfo.getDirector() + ", What Genre is it: " + dvdInfo.getGenre() +
-                                   ", Is it already leased: " + dvdInfo.getLeased());
-            }
-        }
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == DVD.class) {
+                        DVD dvd = (DVD) a;
+                        if(getDvd.equals(dvd.getName())) {
+                            System.out.println("The Name of the Dvd: " + dvd.getName() + ", Who is the Director: " + dvd.getDirector() + ", What Genre is it: " + dvd.getGenre() + ", Is it already leased: " + dvd.getLeased());
+                        }
+                    }
+                });
+
         String askToLease = InputIn.nextLineOut("Do you want to lease it, if it isnt leased already?(Yes or No)");
         switch (askToLease) {
             case "Yes" -> {
-                for (DVD dvd : dvdList) {
-                    if(dvd
-                            .getName()
-                            .equals(getDvd)) {
-                        dvd.setLeased(true);
-                    }
-                }
+                itemList
+                        .stream()
+                        .forEach(a -> {
+                            if(a.getClass() == DVD.class) {
+                                DVD dvd = (DVD) a;
+                                dvd.setLeased(true);
+                            }
+                        });
             }
             case "No" -> {
                 System.out.println("Ok");
@@ -151,31 +169,38 @@ public class LibraryShelf<T> {
         }
     }
 
-    private static void leaseACd() {
-        cdList
+    private void leaseACd() {
+        itemList
                 .stream()
-                .forEach(a -> System.out.println(a.getName()));
+                .forEach(a -> {
+                    if(a.getClass() == CD.class) {
+                        CD cd = (CD) a;
+                        System.out.println(((CD) cd).getName());
+                    }
+                });
         String getCd = InputIn.nextLineOut("What Cd do you want the Information of?");
-        for (CD cdInfo : cdList) {
-            if(cdInfo
-                    .getName()
-                    .equals(getCd)) {
-                System.out.println(
-                        "The Name of the Album: " + cdInfo.getName() + ", Who is the artist: " + cdInfo.getArtist() +
-                        ", How many Tracks: " + cdInfo.getAmountOfSongs() + ", Is it already leased: " +
-                        cdInfo.getLeased());
-            }
-        }
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == CD.class) {
+                        CD cd = (CD) a;
+                        if(getCd.equals(cd.getName())) {
+                            System.out.println("The Name of the Album: " + cd.getName() + ", Who is the artist: " + cd.getArtist() + ", How many Tracks: " + cd.getAmountOfSongs() + ", Is it already leased: " + cd.getLeased());
+                        }
+                    }
+                });
+
         String askToLease = InputIn.nextLineOut("Do you want to lease it, if it isnt leased already?(Yes or No)");
         switch (askToLease) {
             case "Yes" -> {
-                for (CD cd : cdList) {
-                    if(cd
-                            .getName()
-                            .equals(getCd)) {
-                        cd.setLeased(true);
-                    }
-                }
+                itemList
+                        .stream()
+                        .forEach(a -> {
+                            if(a.getClass() == CD.class) {
+                                CD cd = (CD) a;
+                                cd.setLeased(true);
+                            }
+                        });
             }
             case "No" -> {
                 System.out.println("Ok");
@@ -183,89 +208,112 @@ public class LibraryShelf<T> {
         }
     }
 
-    public static void bookCase() {
-        bookList
+    public void bookCase() {
+        itemList
                 .stream()
-                .forEach(a -> System.out.println(a.getName()));
+                .forEach(a -> {
+                    if(a.getClass() == Book.class) {
+                        Book book = (Book) a;
+                        System.out.println(((Book) book).getName());
+                    }
+                });
         getBookInfo();
     }
 
-    private static void getBookInfo() {
+    private void getBookInfo() {
         String getBook = InputIn.nextLineOut("What Book do you went to get the Information from");
-        for (Book bookInfo : bookList) {
-            if(bookInfo
-                    .getName()
-                    .equals(getBook)) {
-                System.out.println(
-                        "The Name of the Book: " + bookInfo.getName() + ", Who wrote it: " + bookInfo.getAuthor() +
-                        ", What Genre it is: " + bookInfo.getGenre() + ", Is it already leased: " +
-                        bookInfo.getLeased());
-            }
-        }
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == Book.class) {
+                        Book book = (Book) a;
+                        if(getBook.equals(book.getName())) {
+                            System.out.println("The Name of the Book: " + book.getName() + ", Who wrote it: " + book.getAuthor() + ", What Genre it is: " + book.getGenre() + ", Is it already leased: " + book.getLeased());
+                        }
+                    }
+                });
+
     }
 
-    public static void newspaperCase() {
-        newspaperList
+    public void newspaperCase() {
+        itemList
                 .stream()
-                .forEach(a -> System.out.println(a.getPublisher()));
+                .forEach(a -> {
+                    if(a.getClass() == Newspaper.class) {
+                        Newspaper news = (Newspaper) a;
+                        System.out.println(((Newspaper) news).getPublisher());
+                    }
+                });
         getNewsPaperInfo();
     }
 
-    private static void getNewsPaperInfo() {
+    private void getNewsPaperInfo() {
         String getNewspaper = InputIn.nextLineOut("What Newspaper do you went to get the Information from");
-        for (Newspaper newspaperInfo : newspaperList) {
-            if(newspaperInfo
-                    .getPublisher()
-                    .equals(getNewspaper)) {
-                System.out.println("The Name of the Publishing Agency: " + newspaperInfo.getPublisher() +
-                                   ", When was this published: " + newspaperInfo.getDate() +
-                                   ", Is it already leased: " + newspaperInfo.getLeased());
-            }
-        }
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == Newspaper.class) {
+                        Newspaper newspaper = (Newspaper) a;
+                        if(getNewspaper.equals(newspaper.getPublisher())) {
+                            System.out.println("The Name of the Publishing Agency: " + newspaper.getPublisher() + ", When was this published: " + newspaper.getDate() + ", Is it already leased: " + newspaper.getLeased());
+                        }
+                    }
+                });
     }
 
-    public static void dvdCase() {
-        dvdList
+    public void dvdCase() {
+        itemList
                 .stream()
-                .forEach(a -> System.out.println(a.getName()));
+                .forEach(a -> {
+                    if(a.getClass() == DVD.class) {
+                        DVD dvd = (DVD) a;
+                        System.out.println(((DVD) dvd).getName());
+                    }
+                });
         getDvdInfo();
     }
 
-    private static void getDvdInfo() {
+    private void getDvdInfo() {
         String getDVD = InputIn.nextLineOut("What DVD do you went to get the Information from");
-        for (DVD dvdInfo : dvdList) {
-            if(dvdInfo
-                    .getName()
-                    .equals(getDVD)) {
-                System.out.println("The Name of the Dvd: " + dvdInfo.getName() + ", Who is the Director: " +
-                                   dvdInfo.getDirector() + ", What Genre is it: " + dvdInfo.getGenre() +
-                                   ", Is it already leased: " + dvdInfo.getLeased());
-            }
-        }
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == DVD.class) {
+                        DVD dvd = (DVD) a;
+                        if(getDVD.equals(dvd.getName())) {
+                            System.out.println("The Name of the Dvd: " + dvd.getName() + ", Who is the Director: " + dvd.getDirector() + ", What Genre is it: " + dvd.getGenre() + ", Is it already leased: " + dvd.getLeased());
+                        }
+                    }
+                });
     }
 
-    public static void cdCase() {
-        cdList
+    public void cdCase() {
+        itemList
                 .stream()
-                .forEach(a -> System.out.println(a.getName()));
+                .forEach(a -> {
+                    if(a.getClass() == CD.class) {
+                        CD cd = (CD) a;
+                        System.out.println(((CD) cd).getName());
+                    }
+                });
         getCDInfo();
     }
 
-    private static void getCDInfo() {
+    private void getCDInfo() {
         String getCD = InputIn.nextLineOut("What CD do you went to get the Information from");
-        for (CD cdInfo : cdList) {
-            if(cdInfo
-                    .getName()
-                    .equals(getCD)) {
-                System.out.println(
-                        "The Name of the Album: " + cdInfo.getName() + ", Who is the artist: " + cdInfo.getArtist() +
-                        ", How many Tracks: " + cdInfo.getAmountOfSongs() + ", Is it already leased: " +
-                        cdInfo.getLeased());
-            }
-        }
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == CD.class) {
+                        CD cd = (CD) a;
+                        if(getCD.equals(cd.getName())) {
+                            System.out.println("The Name of the Album: " + cd.getName() + ", Who is the artist: " + cd.getArtist() + ", How many Tracks: " + cd.getAmountOfSongs() + ", Is it already leased: " + cd.getLeased());
+                        }
+                    }
+                });
     }
 
-    private static void returnOption() {
+    private void returnOption() {
         String getItem = InputIn.nextLineOut("What Item kind would you like to return? (Book, Cd, Dvd or Newspaper)");
         switch (getItem) {
             case "Book" -> bookReturn();
@@ -279,103 +327,169 @@ public class LibraryShelf<T> {
         }
     }
 
-    private static void newspaperReturn() {
-        newspaperList
+    private void newspaperReturn() {
+        itemList
                 .stream()
-                .filter(a -> a.getLeased())
-                .forEach(a -> System.out.println(a.getPublisher()));
+                .forEach(a -> {
+                    if(a.getClass() == Newspaper.class) {
+                        Newspaper news = (Newspaper) a;
+                        System.out.println(((Newspaper) news).getPublisher());
+                    }
+                });
         String returnItem = InputIn.nextLineOut("What Newspaper would you like to return?");
-        for (Newspaper newspaper : newspaperList) {
-            if(newspaper
-                    .getPublisher()
-                    .equals(returnItem)) {
-                newspaper.setLeased(false);
-            }
-        }
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == Newspaper.class) {
+                        Newspaper news = (Newspaper) a;
+                        if(returnItem.equals(news.getPublisher())) {
+                            news.setLeased(false);
+                        }
+                    }
+                });
     }
 
-    private static void dvdReturn() {
-        dvdList
+    private void dvdReturn() {
+        itemList
                 .stream()
-                .filter(a -> a.isLeased())
-                .forEach(a -> System.out.println(a.getName()));
+                .forEach(a -> {
+                    if(a.getClass() == DVD.class) {
+                        DVD dvd = (DVD) a;
+                        System.out.println(((DVD) dvd).getName());
+                    }
+                });
         String returnItem = InputIn.nextLineOut("What Dvd would you like to return?");
-        for (DVD dvd : dvdList) {
-            if(dvd
-                    .getName()
-                    .equals(returnItem)) {
-                dvd.setLeased(false);
-            }
-        }
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == DVD.class) {
+                        DVD dvd = (DVD) a;
+                        if(returnItem.equals(dvd.getName())) {
+                            dvd.setLeased(false);
+                        }
+                    }
+                });
     }
 
-    private static void cdReturn() {
-        cdList
+    private void cdReturn() {
+        itemList
                 .stream()
-                .filter(a -> a.isLeased())
-                .forEach(a -> System.out.println(a.getName()));
+                .forEach(a -> {
+                    if(a.getClass() == CD.class) {
+                        CD cd = (CD) a;
+                        System.out.println(((CD) cd).getName());
+                    }
+                });
         String returnItem = InputIn.nextLineOut("What Cd would you like to return?");
-        for (CD cd : cdList) {
-            if(cd
-                    .getName()
-                    .equals(returnItem)) {
-                cd.setLeased(false);
-            }
-        }
-    }
-
-    private static void bookReturn() {
-        bookList
+        itemList
                 .stream()
-                .filter(a -> a.isLeased())
-                .forEach(a -> System.out.println(a.getName()));
-        String returnItem = InputIn.nextLineOut("What Book do you want to return?");
-        for (Book book : bookList) {
-            if(book
-                    .getName()
-                    .equals(returnItem)) {
-                book.setLeased(false);
-            }
-        }
+                .forEach(a -> {
+                    if(a.getClass() == CD.class) {
+                        CD cd = (CD) a;
+                        if(returnItem.equals(cd.getName())) {
+                            cd.setLeased(false);
+                        }
+                    }
+                });
     }
 
-    private void booklist() {
+    private void bookReturn() {
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == Book.class) {
+                        Book book = (Book) a;
+                        System.out.println(((Book) book).getName());
+                    }
+                });
+        String returnItem = InputIn.nextLineOut("What Book do you want to return?");
+        itemList
+                .stream()
+                .forEach(a -> {
+                    if(a.getClass() == Book.class) {
+                        Book book = (Book) a;
+                        if(returnItem.equals(book.getName())) {
+                            book.setLeased(false);
+                        }
+                    }
+                });
+    }
+
+    private void initItemList() {
+        List <T> genericList = new ArrayList <>();
+        genericList.add((T) new Book("The Great Gatsby", "F. Scott Fitzgerald", "Fantasy", false));
+        genericList.add((T) new Book("Oliver Twist", "Charles Dickens", "History", false));
+        genericList.add((T) new Book("To kill a Mockingbird", "Harper Lee", "Novel", true));
+        genericList.add((T) new Book("The Art of War", "Sun tzu", "treatise", false));
+        //--------------------------------------------------------------------------------------------------------------
+        genericList.add((T) new CD("Dark Side Of the Moon", "Pink Floyd", 10, true));
+        genericList.add((T) new CD("Led Zeppelin IV", "Led Zeppelin", 8, false));
+        genericList.add((T) new CD("Abbey Road", "The Beatles", 9, false));
+        genericList.add((T) new CD("Highway to hell", "AC/DC", 14, true));
+        genericList.add((T) new CD("Hysteria", "Def Leppard", 7, false));
+        genericList.add((T) new CD("Harvest Moon", "Neil Young", 12, true));
+        //--------------------------------------------------------------------------------------------------------------
+        genericList.add((T) new DVD("Fight Club", "David Fincher", "Crime", true));
+        genericList.add((T) new DVD("The Godfather", "Francis Ford Coppola", "Drama", true));
+        genericList.add((T) new DVD("Black Gold", "Jean-Jacques Annaud", "Adventure", true));
+        genericList.add((T) new DVD("Inception", "Christopher Nolan", "Action", true));
+        //--------------------------------------------------------------------------------------------------------------
+        genericList.add((T) new Newspaper("The New York Times", "16th April 1912", true));
+        genericList.add((T) new Newspaper("Daily Mail", "25th October 1929", true));
+        genericList.add((T) new Newspaper("The News Chronicle", "2nd May 1945", false));
+        genericList.add((T) new Newspaper("Chicago Tribune", "22nd November 1963", false));
+        genericList.add((T) new Newspaper("Evening Standard", "21st July 1969", true));
+        genericList.add((T) new Newspaper("The Sun", "17th August 1977", false));
+        itemList = genericList;
+    }
+
+    public void genericMethod() {
+        /*itemList.forEach(a -> {
+            if(a.getClass() == DVD.class){
+                DVD d = (DVD) a;
+                System.out.println(d.getName());
+            }
+        });*/
+    }
+}
+// TODO : eingültig machen listen book nicht generisch und eine eigene liste names ITEMLIST wo generisch ist (after 3 days if not done go to migu)
+    /*private void booklist() {
         List <T> books = new ArrayList <>();
-        books.add((T) new Book <>("The Great Gatsby", "F. Scott Fitzgerald", "Fantasy", false));
-        books.add((T) new Book <>("Oliver Twist", "Charles Dickens", "History", false));
-        books.add((T) new Book <>("To kill a Mockingbird", "Harper Lee", "Novel", true));
-        books.add((T) new Book <>("The Art of War", "Sun tzu", "treatise", false));
-        bookList = (List <Book>) books;
+        books.add((T) new Book("The Great Gatsby", "F. Scott Fitzgerald", "Fantasy", false));
+        books.add((T) new Book("Oliver Twist", "Charles Dickens", "History", false));
+        books.add((T) new Book("To kill a Mockingbird", "Harper Lee", "Novel", true));
+        books.add((T) new Book("The Art of War", "Sun tzu", "treatise", false));
+        itemList = (List <T>) books;
     }
 
     private void cdList() {
         List <T> cds = new ArrayList <>();
-        cds.add((T) new CD <>("Dark Side Of the Moon", "Pink Floyd", 10, true));
-        cds.add((T) new CD <>("Led Zeppelin IV", "Led Zeppelin", 8, false));
-        cds.add((T) new CD <>("Abbey Road", "The Beatles", 9, false));
-        cds.add((T) new CD <>("Highway to Hell", "AC/DC", 14, true));
-        cds.add((T) new CD <>("Hysteria", "Def Leppard", 7, false));
-        cds.add((T) new CD <>("Harvest Moon", "Neil Young", 12, true));
-        cdList = (List <CD>) cds;
+        cds.add((T) new CD("Dark Side Of the Moon", "Pink Floyd", 10, true));
+        cds.add((T) new CD("Led Zeppelin IV", "Led Zeppelin", 8, false));
+        cds.add((T) new CD("Abbey Road", "The Beatles", 9, false));
+        cds.add((T) new CD("Highway to Hell", "AC/DC", 14, true));
+        cds.add((T) new CD("Hysteria", "Def Leppard", 7, false));
+        cds.add((T) new CD("Harvest Moon", "Neil Young", 12, true));
+        itemList = (List <T>) cds;
     }
- // TODO : eingültig machen listen book nicht generisch und eine eigene liste names ITEMLIST wo generisch ist (after 3 days if not done go to migu)
+
+
     private void dvdList() {
         List <T> dvds = new ArrayList <>();
-        dvds.add((T) new DVD <>("Fight Club", "David Fincher", "Crime", true));
-        dvds.add((T) new DVD <>("The Godfather", "Fracis Ford Coppola", "Drama", true));
-        dvds.add((T) new DVD <>("Black Gold", "Jean-Jacques Annaud", "Adventure", false));
-        dvds.add((T) new DVD <>("Inception", "Christopher Nolan", "Action", false));
-        dvdList = (List <DVD>) dvds;
+        dvds.add((T) new DVD("Fight Club", "David Fincher", "Crime", true));
+        dvds.add((T) new DVD("The Godfather", "Fracis Ford Coppola", "Drama", true));
+        dvds.add((T) new DVD("Black Gold", "Jean-Jacques Annaud", "Adventure", false));
+        dvds.add((T) new DVD("Inception", "Christopher Nolan", "Action", false));
+        itemList = (List <T>) dvds;
     }
 
     private void newspaperList() {
         List <T> newspapers = new ArrayList <>();
-        newspapers.add((T) new Newspaper <>("The New York Times", "16April 1912", true));
-        newspapers.add((T) new Newspaper <>("Daily Mail", "25th October 1929", true));
-        newspapers.add((T) new Newspaper <>("The News Chronicle", "2nd May 1945", false));
-        newspapers.add((T) new Newspaper <>("Chicago Tribune", "22nd November 1963", false));
-        newspapers.add((T) new Newspaper <>("Evening Standard", "21st July 1969", true));
-        newspapers.add((T) new Newspaper <>("The Sun", "17th August 1977", false));
-        newspaperList = (List <Newspaper>) newspapers;
-    }
-}
+        newspapers.add((T) new Newspaper("The New York Times", "16April 1912", true));
+        newspapers.add((T) new Newspaper("Daily Mail", "25th October 1929", true));
+        newspapers.add((T) new Newspaper("The News Chronicle", "2nd May 1945", false));
+        newspapers.add((T) new Newspaper("Chicago Tribune", "22nd November 1963", false));
+        newspapers.add((T) new Newspaper("Evening Standard", "21st July 1969", true));
+        newspapers.add((T) new Newspaper("The Sun", "17th August 1977", false));
+        itemList = (List <T>) newspapers;
+    }*/

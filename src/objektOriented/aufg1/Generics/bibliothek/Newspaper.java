@@ -1,11 +1,11 @@
 package objektOriented.aufg1.Generics.bibliothek;
 
-public class Newspaper <T> {
-    private T publisher;
-    private T date;
+public class Newspaper {
+    private String publisher;
+    private String date;
     private boolean leased;
 
-    public Newspaper(T publisher, T date, boolean leased) {
+    public Newspaper(String publisher, String date, boolean leased) {
         this.publisher = publisher;
         this.date = date;
         this.leased = leased;
@@ -19,12 +19,12 @@ public class Newspaper <T> {
         this.leased = leased;
     }
 
-    public T getPublisher() {
+    public String getPublisher() {
         return publisher;
     }
 
 
-    public T getDate() {
+    public String getDate() {
         return date;
     }
 

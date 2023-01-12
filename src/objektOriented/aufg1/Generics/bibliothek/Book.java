@@ -1,12 +1,11 @@
 package objektOriented.aufg1.Generics.bibliothek;
 
-public class Book<T> {
-    private T name;
-    private T author;
-    private T genre;
+public class Book{
+    private String name;
+    private String author;
+    private String genre;
     private boolean leased;
- //TODO : Specific datatypes
-    public Book(T name,T author, T genre, boolean leased) {
+    public Book(String name, String author, String genre, boolean leased) {
         this.name = name;
         this.author = author;
         this.genre = genre;
@@ -21,19 +20,19 @@ public class Book<T> {
         this.leased = leased;
     }
 
-    public T getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public T getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public T getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(T name) {
+    public void setName(String name) {
         this.name = name;
     }
 

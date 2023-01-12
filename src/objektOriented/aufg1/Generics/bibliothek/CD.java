@@ -1,12 +1,12 @@
 package objektOriented.aufg1.Generics.bibliothek;
 
-public class CD<T> {
-    private T name;
-    private T artist; // artist of the song in this verion of artist
+public class CD {
+    private String name;
+    private String artist; // artist of the song in this verion of artist
     private int amountOfSongs;
     private boolean leased;
 
-    public CD(T name,T artist, int amountOfSongs, boolean leased) {
+    public CD(String name, String artist, int amountOfSongs, boolean leased) {
         this.name = name;
         this.artist = artist;
         this.amountOfSongs = amountOfSongs;
@@ -21,7 +21,7 @@ public class CD<T> {
         this.leased = leased;
     }
 
-    public T getArtist() {
+    public String getArtist() {
         return artist;
     }
 
@@ -29,11 +29,11 @@ public class CD<T> {
         return amountOfSongs;
     }
 
-    public T getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(T name) {
+    public void setName(String name) {
         this.name = name;
     }
 

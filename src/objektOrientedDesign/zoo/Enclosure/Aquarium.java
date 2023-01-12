@@ -15,8 +15,6 @@ public class Aquarium extends Enclosure {
         this.humidity = humidity;
         this.fenceHeight = fenceHeight;
     }
-
-    //Todo: Fenceheight und humidity aus superklasse entfernen
     public WaterType getWaterType() {
         return waterType;
     }

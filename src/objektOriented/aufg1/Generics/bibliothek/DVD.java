@@ -1,12 +1,12 @@
 package objektOriented.aufg1.Generics.bibliothek;
 
-public class DVD<T> {
-    private T name;
-    private T director;
-    private T genre;
+public class DVD {
+    private String name;
+    private String director;
+    private String genre;
     private boolean leased;
 
-    public DVD(T name, T director, T genre, boolean leased) {
+    public DVD(String name, String director, String genre, boolean leased) {
         this.name = name;
         this.director = director;
         this.genre = genre;
@@ -21,19 +21,19 @@ public class DVD<T> {
         this.leased = leased;
     }
 
-    public T getDirector() {
+    public String getDirector() {
         return director;
     }
 
-    public T getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public T getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(T name) {
+    public void setName(String name) {
         this.name = name;
     }
 
