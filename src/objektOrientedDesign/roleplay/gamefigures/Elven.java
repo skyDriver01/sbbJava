@@ -8,7 +8,7 @@ public class Elven extends Gamefigurine {
 
     @Override
     public double getfV() {
-        if(getWeapon() != null) {           //TODO: BUGFIX Some Stackoverflow error happens just this thing keep looping and idk why or how
+        if(getWeapon() != null) {           //TODO: BUGFIX Some Stackoverflow error happens just this thing keep looping and idk why or how fix it
             if(getWeapon().getWeapon().equals("Bow")) {
                 setfV(getfV() + (getfV() / 2) + getWeapon().getfV());
                 setAccuracy(1);

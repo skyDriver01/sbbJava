@@ -6,23 +6,29 @@ import objektOrientedDesign.roleplay.gamefigures.Gamefigurine;
 import java.util.HashMap;
 
 public class Fight {
-    static Gamefigurine opponent;
-    static Gamefigurine player;
 
     public static void startTheFight(Gamefigurine playerOne, Gamefigurine playerTwo) {
         System.out.println("It seems all preparations are done from both ends time to start the fight lets see who gets to start");
         if(playerOne.getSpeed() > playerTwo.getSpeed()) {
             fightOptions(playerOne, playerTwo);            // Todo: Find a better way for this. Not for the random speed thats good but for the 2 player to then get chosen who plays after who with the 20 round max rule.
-            player = playerOne;
-            opponent = playerTwo;
         } else if(playerTwo.getSpeed() > playerOne.getSpeed()) {
             fightOptions(playerTwo, playerOne);
-            player = playerTwo;
-            opponent = playerOne;
         }
         for (int i = 0; i <= 20 ; i++) {
             fightOptions(playerOne, playerTwo);
             fightOptions(playerTwo, playerOne);
+            if(playerOne.getlP() < 0 || playerTwo.getlP() < 0){
+                if(playerOne.getlP() < 0){
+                    System.out.println("Player Two won. So the player who chose : " + playerTwo.getName());
+                    System.out.println(playerTwo.getlP() + " Is the Remaining amount of health on " + playerTwo.getName());
+                    System.out.println(playerOne.getlP() + " has died with that amount " + playerOne.getName());
+
+                } else if(playerTwo.getlP() < 0){
+                    System.out.println("Player One won. So the player who chose : " + playerOne.getName());
+                    System.out.println(playerOne.getlP() + " Is the Remaining amount of health on " + playerOne.getName());
+                    System.out.println(playerTwo.getlP() + " has died with that amount " + playerTwo.getName());
+                }
+            }
         }
     }
 
