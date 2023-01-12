@@ -4,7 +4,7 @@ public class Game {
 
 
     public static void main(String[] args) {
-        configCharacters game = new configCharacters();
+        ConfigCharacters game = new ConfigCharacters();
         game.executeGame();
     }
 }

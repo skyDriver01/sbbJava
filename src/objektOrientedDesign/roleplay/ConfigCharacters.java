@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class configCharacters {
+public class ConfigCharacters {
     static List <Gamefigurine> gameFigurines;
     static List <Weapon> weapons;
     static List <Item> items;
@@ -175,7 +175,7 @@ public class configCharacters {
                     equipWeapon(weapons.get(2), player);
                     if(fightingCharacters.get(player).getClass().equals(SCP_049.class)){
                         // Find out how to get the instant death stuff so you can change the value here.
-                        // TODO: Make it this way for the items as well seems the easiest atm without the possibility of asking a coach atm.
+                        // TODO: Make it this way for the items as well seems the easiest atm without the possibility of asking a coach.
                     }
                 }
 
@@ -194,7 +194,7 @@ public class configCharacters {
 
                 case 6 -> {
                     if(fightingCharacters.get(player).getClass().equals(Goblin.class)) {
-                        // Make it so the amount gets to 6
+                        // Make it so the amount of knives you get changes to 6
                     }
                     equipWeapon(weapons.get(5), player);
                 }

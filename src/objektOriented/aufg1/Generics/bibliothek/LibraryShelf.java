@@ -11,7 +11,7 @@ public class LibraryShelf<T> {
     static List <DVD> dvdList;
     static List <Newspaper> newspaperList;
 
-    public void insideTheLibrary(T element) {
+    public void insideTheLibrary() {
         booklist();
         cdList();
         dvdList();
@@ -341,41 +341,41 @@ public class LibraryShelf<T> {
 
     private void booklist() {
         List <T> books = new ArrayList <>();
-        books.add((T) new Book("The Great Gatsby", "F. Scott Fitzgerald", "Fantasy", false));
-        books.add((T) new Book("Oliver Twist", "Charles Dickens", "History", false));
-        books.add((T) new Book("To kill a Mockingbird", "Harper Lee", "Novel", true));
-        books.add((T) new Book("The Art of War", "Sun tzu", "treatise", false));
+        books.add((T) new Book <>("The Great Gatsby", "F. Scott Fitzgerald", "Fantasy", false));
+        books.add((T) new Book <>("Oliver Twist", "Charles Dickens", "History", false));
+        books.add((T) new Book <>("To kill a Mockingbird", "Harper Lee", "Novel", true));
+        books.add((T) new Book <>("The Art of War", "Sun tzu", "treatise", false));
         bookList = (List <Book>) books;
     }
 
     private void cdList() {
         List <T> cds = new ArrayList <>();
-        cds.add((T) new CD("Dark Side Of the Moon", "Pink Floyd", 10, true));
-        cds.add((T) new CD("Led Zeppelin IV", "Led Zeppelin", 8, false));
-        cds.add((T) new CD("Abbey Road", "The Beatles", 9, false));
-        cds.add((T) new CD("Highway to Hell", "AC/DC", 14, true));
-        cds.add((T) new CD("Hysteria", "Def Leppard", 7, false));
-        cds.add((T) new CD("Harvest Moon", "Neil Young", 12, true));
+        cds.add((T) new CD <>("Dark Side Of the Moon", "Pink Floyd", 10, true));
+        cds.add((T) new CD <>("Led Zeppelin IV", "Led Zeppelin", 8, false));
+        cds.add((T) new CD <>("Abbey Road", "The Beatles", 9, false));
+        cds.add((T) new CD <>("Highway to Hell", "AC/DC", 14, true));
+        cds.add((T) new CD <>("Hysteria", "Def Leppard", 7, false));
+        cds.add((T) new CD <>("Harvest Moon", "Neil Young", 12, true));
         cdList = (List <CD>) cds;
     }
 
     private void dvdList() {
         List <T> dvds = new ArrayList <>();
-        dvds.add((T) new DVD("Fight Club", "David Fincher", "Crime", true));
-        dvds.add((T) new DVD("The Godfather", "Fracis Ford Coppola", "Drama", true));
-        dvds.add((T) new DVD("Black Gold", "Jean-Jacques Annaud", "Adventure", false));
-        dvds.add((T) new DVD("Inception", "Christopher Nolan", "Action", false));
+        dvds.add((T) new DVD <>("Fight Club", "David Fincher", "Crime", true));
+        dvds.add((T) new DVD <>("The Godfather", "Fracis Ford Coppola", "Drama", true));
+        dvds.add((T) new DVD <>("Black Gold", "Jean-Jacques Annaud", "Adventure", false));
+        dvds.add((T) new DVD <>("Inception", "Christopher Nolan", "Action", false));
         dvdList = (List <DVD>) dvds;
     }
 
     private void newspaperList() {
         List <T> newspapers = new ArrayList <>();
-        newspapers.add((T) new Newspaper("The New York Times", "16April 1912", true));
-        newspapers.add((T) new Newspaper("Daily Mail", "25th October 1929", true));
-        newspapers.add((T) new Newspaper("The News Chronicle", "2nd May 1945", false));
-        newspapers.add((T) new Newspaper("Chicago Tribune", "22nd November 1963", false));
-        newspapers.add((T) new Newspaper("Evening Standard", "21st July 1969", true));
-        newspapers.add((T) new Newspaper("The Sun", "17th August 1977", false));
+        newspapers.add((T) new Newspaper <>("The New York Times", "16April 1912", true));
+        newspapers.add((T) new Newspaper <>("Daily Mail", "25th October 1929", true));
+        newspapers.add((T) new Newspaper <>("The News Chronicle", "2nd May 1945", false));
+        newspapers.add((T) new Newspaper <>("Chicago Tribune", "22nd November 1963", false));
+        newspapers.add((T) new Newspaper <>("Evening Standard", "21st July 1969", true));
+        newspapers.add((T) new Newspaper <>("The Sun", "17th August 1977", false));
         newspaperList = (List <Newspaper>) newspapers;
     }
 }
