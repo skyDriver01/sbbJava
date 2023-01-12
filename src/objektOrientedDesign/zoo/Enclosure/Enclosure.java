@@ -1,11 +1,11 @@
 package objektOrientedDesign.zoo.Enclosure;
 
 public class Enclosure {
-    int enclosureNumber;
-    double surfaceArea;
-    int capacity;
-    double temperature;
-    boolean moat;
+    private int enclosureNumber;
+    private double surfaceArea;
+    private int capacity;
+    private double temperature;
+    private boolean moat;
 
     public Enclosure(int enclosureNumber, double surfaceArea, int capacity,
                      double temperature, boolean moat) {

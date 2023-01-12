@@ -26,7 +26,7 @@ public class Zoo {
     }
     public static List<Enclosure> enclosures(){
         List<Enclosure> enclosures = new ArrayList <>();
-        enclosures.add(new Aquarium(1, 50, 4, 10, 1, 26, false, Aquarium.WaterType.SWEET));
+        enclosures.add(new Aquarium(1, 50, 4, 10, 1, true,Aquarium.WaterType.SWEET));
         enclosures.add(new Cage(2, 150, 15, 35, 60, 2, true));
         enclosures.add(new Terrain(3, 60, 3, 15, 0.64, 7, true));
         enclosures.add(new Terrarium(4, 20, 3, 12, 85, 25, true));

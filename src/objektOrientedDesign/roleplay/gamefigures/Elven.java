@@ -6,13 +6,13 @@ public class Elven extends Gamefigurine {
         super(name, lP, cC, fV, res, speed, accuracy, evasion);
     }
 
-    @Override //Todo : set weapon at the start as fist and when weapon gets picked it changes
+    @Override
     public double getfV() {
-        if(getWeapon() != null) {
+        if(getWeapon() != null) {           //TODO: BUGFIX Some Stackoverflow error happens just this thing keep looping and idk why or how
             if(getWeapon().getWeapon().equals("Bow")) {
                 setfV(getfV() + (getfV() / 2) + getWeapon().getfV());
                 setAccuracy(1);
             }
-        } return getfV() + getAccuracy();
+        } return getfV();
     }
 }

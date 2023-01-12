@@ -357,7 +357,7 @@ public class LibraryShelf<T> {
                         DVD dvd = (DVD) a;
                         System.out.println(((DVD) dvd).getName());
                     }
-                });
+                });     //TODO: Test making a generic method to get the redundant parts of code away.
         String returnItem = InputIn.nextLineOut("What Dvd would you like to return?");
         itemList
                 .stream()
