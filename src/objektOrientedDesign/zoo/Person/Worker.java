@@ -1,8 +1,8 @@
 package objektOrientedDesign.zoo.Person;
 
 public class Worker extends People{
-    int wage;
-    String description;
+    private int wage;
+    private String description;
     public Worker(String phonenumber,int wage,String description) {
         super(phonenumber);
         this.wage = wage;

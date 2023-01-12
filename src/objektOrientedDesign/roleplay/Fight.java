@@ -20,6 +20,10 @@ public class Fight {
             player = playerTwo;
             opponent = playerOne;
         }
+        for (int i = 0; i <= 20 ; i++) {
+            fightOptions(playerOne, playerTwo);
+            fightOptions(playerTwo, playerOne);
+        }
     }
 
     public static void fightOptions(Gamefigurine player, Gamefigurine opponent) {
@@ -35,9 +39,8 @@ public class Fight {
         }
         int yourMove = InputIn.nexIntOut("Choose what you would like to do this round");
         switch (yourMove) {
-            case 1 -> {
-                attackOpponent(player, opponent);
-            }
+            case 1 -> attackOpponent(player, opponent);
+
             case 2 -> {
                 //TODO: When making this lookout for the bug where i activate other weapon but the last weapons effects still stay bc that will be broken
             }
@@ -45,7 +48,7 @@ public class Fight {
                 //TODO : is supposed to take up the turn
             }
             case 4 ->
-                    System.out.println("Ok seems understandable?");       //Maybe make small easter egg that if done 3 times you will get 4xFV
+                    System.out.println("Ok seems understandable?");       //Maybe make small Easter egg that if done 3 times you will get 4xFV
             case 5 ->
                     System.exit(0);   //When there is the possibility with the winner and the upper to-do is changed this to also say who won due to the enemy giving up
             default -> System.out.println("So just do the same as 4? Got it.");
@@ -55,7 +58,7 @@ public class Fight {
     private static void attackOpponent(Gamefigurine player, Gamefigurine opponent) {
         if(Math.random() * 1 < 0 + player.getAccuracy()) {
             if(opponent.getArmor() != null) {      //some sort of bug is here that says armor is null find option to get this fixed so yk no damage?
-                //Also look about how to make the instant death thing in here so it can occur if the player has it
+                //Also look about how to make the instant death thing in here, so it can occur if the player has it
                 //Seems like the problem is when you have no armor that it says it won't work so mhm.
                 if(!(Math.random() * 1 < 0 + opponent.getArmor().getNoDamage())) {
                     opponent.setlP(opponent.getlP() - (player.getfV() / opponent.getRes()));

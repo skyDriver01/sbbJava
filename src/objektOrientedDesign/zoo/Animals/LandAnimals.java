@@ -1,9 +1,9 @@
 package objektOrientedDesign.zoo.Animals;
 
 public class LandAnimals extends Animals{
-    String skin;
-    String foodPrefrence;
-    boolean bipedal;
+    private String skin;
+    private String foodPrefrence;
+    private boolean bipedal;
 
     public LandAnimals(int enclosureNumber, boolean alive,String speciesName, String skin, String foodPrefrence, boolean bipedal) {
         super(alive, speciesName,enclosureNumber);

@@ -1,9 +1,8 @@
 package objektOrientedDesign.zoo.Animals;
 
 public class Amphibia extends Animals {
-    String skin;
-    String foodPrefrence;
-
+    private String skin;
+    private String foodPrefrence;
     public Amphibia(int enclosureNumber,boolean alive, String speciesName, String skin, String foodPrefrence) {
         super(alive, speciesName,enclosureNumber);
         this.skin = skin;

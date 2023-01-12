@@ -358,7 +358,7 @@ public class LibraryShelf<T> {
         cds.add((T) new CD <>("Harvest Moon", "Neil Young", 12, true));
         cdList = (List <CD>) cds;
     }
-
+ // TODO : eingültig machen listen book nicht generisch und eine eigene liste names ITEMLIST wo generisch ist (after 3 days if not done go to migu)
     private void dvdList() {
         List <T> dvds = new ArrayList <>();
         dvds.add((T) new DVD <>("Fight Club", "David Fincher", "Crime", true));

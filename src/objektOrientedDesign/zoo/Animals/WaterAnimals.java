@@ -1,8 +1,8 @@
 package objektOrientedDesign.zoo.Animals;
 
 public class WaterAnimals extends Animals {
-    String type;
-    String food;
+    private String type;
+    private String food;
     private WaterType waterType;
 
     public enum WaterType {SALT, SWEET}

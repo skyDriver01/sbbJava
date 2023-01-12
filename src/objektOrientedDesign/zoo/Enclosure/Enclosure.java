@@ -3,19 +3,15 @@ package objektOrientedDesign.zoo.Enclosure;
 public class Enclosure {
     int enclosureNumber;
     double surfaceArea;
-    int fenceHeight;
     int capacity;
-    double humidity;
     double temperature;
     boolean moat;
 
-    public Enclosure(int enclosureNumber, double surfaceArea, int fenceHeight, int capacity, double humidity,
+    public Enclosure(int enclosureNumber, double surfaceArea, int capacity,
                      double temperature, boolean moat) {
         this.enclosureNumber = enclosureNumber;
         this.surfaceArea = surfaceArea;
-        this.fenceHeight = fenceHeight;
         this.capacity = capacity;
-        this.humidity = humidity;
         this.temperature = temperature;
         this.moat = moat;
     }
@@ -36,14 +32,6 @@ public class Enclosure {
         this.surfaceArea = surfaceArea;
     }
 
-    public int getFenceHeight() {
-        return fenceHeight;
-    }
-
-    public void setFenceHeight(int fenceHeight) {
-        this.fenceHeight = fenceHeight;
-    }
-
     public int getCapacity() {
         return capacity;
     }
@@ -52,13 +40,6 @@ public class Enclosure {
         this.capacity = capacity;
     }
 
-    public double getHumidity() {
-        return humidity;
-    }
-
-    public void setHumidity(double humidity) {
-        this.humidity = humidity;
-    }
 
     public double getTemperature() {
         return temperature;

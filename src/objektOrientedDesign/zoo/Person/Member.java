@@ -1,8 +1,8 @@
 package objektOrientedDesign.zoo.Person;
 
 public class Member extends People{
-    String memberSince;
-    int memberNumber;
+    private String memberSince;
+    private int memberNumber;
 
     public Member(String phonenumber, String memberSince, int memberNumber) {
         super(phonenumber);

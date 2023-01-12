@@ -1,8 +1,8 @@
 package objektOrientedDesign.zoo.Animals;
 
 public class FlyingAnimals extends Animals {
-    boolean canFly;
-    String foodType;
+    private boolean canFly;
+    private String foodType;
 
     public FlyingAnimals(int enclosureNumber, boolean alive,String speciesName, boolean canFly, String foodType) {
         super(alive, speciesName, enclosureNumber);

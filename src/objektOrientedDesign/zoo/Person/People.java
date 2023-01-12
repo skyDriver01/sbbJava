@@ -1,7 +1,7 @@
 package objektOrientedDesign.zoo.Person;
 
 public class People {
-    String phonenumber;
+    private String phonenumber;
 
     public People(String phonenumber) {
         this.phonenumber = phonenumber;
