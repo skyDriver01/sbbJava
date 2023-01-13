@@ -57,7 +57,6 @@ public class Fight {
 
     public static void fightOptions(Gamefigurine player, Gamefigurine opponent) {
         System.out.println( color("cyan") + "Seems that the player who chose " + color("purple") + player.getName() + color("cyan") +" Will Be the one to choose their move" + color("r"));
-
         HashMap <Integer, String> chooseNextMove = new HashMap <>();
         System.out.println(greenLine());
         chooseNextMove.put(1, "1: Attack enemy");

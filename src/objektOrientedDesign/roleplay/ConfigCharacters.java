@@ -139,7 +139,7 @@ public class ConfigCharacters {
                     noCharacterChosen = false;
                     chooseAWeapon(player);
                 }
-                default -> System.out.println("You did not choose a Character");
+                default -> System.out.println(color("lime") + "You did not choose a Character" + color("r"));
             }
         }
     }
@@ -210,7 +210,7 @@ public class ConfigCharacters {
                     chooseAItem(player);
                 }
                 default ->
-                        System.out.println("Really now? You have 7 Options and you did not manage to pick any of them. Try Again");
+                        System.out.println(color("orange") + "Really now? You have 7 Options and you did not manage to pick any of them. Try Again" + color("r"));
 
             }
         }
@@ -227,7 +227,7 @@ public class ConfigCharacters {
                 fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - weapon.getWeight());
             }
         } else {
-            System.out.println("That weapon is to heavy for you to carry");
+            System.out.println(color("red") + "That Item is to Heavy for you" + color("r"));
         }
     }
 
@@ -240,7 +240,7 @@ public class ConfigCharacters {
             fightingCharacters.get(player).getItemBackpack().add(item);
             fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - item.getWeight());
         } else {
-            System.out.println("That Item is to Heavy for you");
+            System.out.println(color("red") + "That Item is to Heavy for you" + color("r"));
         }
     }
 
@@ -256,7 +256,7 @@ public class ConfigCharacters {
                 fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - armor.getWeight());
             }
         } else {
-            System.out.println("You have to much weight accumulated that you cannot hold this anymore.");
+            System.out.println(color("red") + "You have to much weight accumulated that you cannot hold this anymore." + color("r"));
         }
     }
 
@@ -314,7 +314,7 @@ public class ConfigCharacters {
                     }
                 }
                 case 9 -> loopForItems = false;
-                default -> System.out.println("Come on, again?? THERE ARE 9 OPTIONS");
+                default -> System.out.println(color("orange") + "Come on, again?? THERE ARE 9 OPTIONS" + color("r"));
             }
         }
     }
