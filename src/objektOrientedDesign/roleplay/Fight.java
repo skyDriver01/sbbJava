@@ -88,10 +88,10 @@ public class Fight {
                 //TODO : is supposed to take up the turn
             }
             case 5 ->
-                    System.out.println("Ok seems understandable?");       //Maybe make small Easter egg that if done 3 times you will get 4xFV
+                    System.out.println("Ok seems understandable?");
             case 6 -> {
                 player.setlP(-1);
-                winningConditions(player, opponent, 21); //When there is the possibility with the winner and the upper to-do is changed this to also say who won due to the enemy giving up
+                winningConditions(player, opponent, 21);
             }
             default -> System.out.println("So just do the same as 4? Got it.");
         }
@@ -99,33 +99,32 @@ public class Fight {
 
     private static void attackOpponent(Gamefigurine player, Gamefigurine opponent) {
         if(Math.random() * 1 < 0 + player.getAccuracy()) {
-            if(opponent.getArmor() != null) {      //some sort of bug is here that says armor is null find option to get this fixed so yk no damage?
+            if(opponent.getArmor() != null) {
                 //Also look about how to make the instant death thing in here, so it can occur if the player has it
-                //Seems like the problem is when you have no armor that it says it won't work so mhm.
                 if(!(Math.random() * 1 < 0 + opponent
                         .getArmor()
                         .getNoDamage())) {
                     opponent.setlP(opponent.getlP() - (player.getfV() / opponent.getRes()));
-                    System.out.println(player.getlP() + " Is the Remaining amount of health on " + player.getName());
-                    System.out.println(opponent.getlP() + " Is the Remaining amount of health on " + opponent.getName());
+                    System.out.println(color("blue") + player.getlP() + " Is the Remaining amount of health on " + player.getName() + color("r"));
+                    System.out.println(color("red") + opponent.getlP() + " Is the Remaining amount of health on " + opponent.getName() + color("r"));
                 } else {
-                    System.out.println("It seems you hit your opponent bur their armor saved them from taking Damage");
-                    System.out.println(player.getlP() + " Is the Remaining amount of health on " + player.getName());
-                    System.out.println(opponent.getlP() + " Is the Remaining amount of health on " + opponent.getName());
+                    System.out.println(color("orange") + "It seems you hit your opponent bur their armor saved them from taking Damage" + color("r"));
+                    System.out.println(color("blue") + player.getlP() + " Is the Remaining amount of health on " + player.getName() + color("r"));
+                    System.out.println(color("red") + opponent.getlP() + " Is the Remaining amount of health on " + opponent.getName() + color("r"));
                 }
             } else {
                 opponent.setlP(opponent.getlP() - (player.getfV() / opponent.getRes()));
-                System.out.println(player.getlP() + " Is the Remaining amount of health on " + player.getName());
-                System.out.println(opponent.getlP() + " Is the Remaining amount of health on " + opponent.getName());
+                System.out.println(color("blue") + player.getlP() + " Is the Remaining amount of health on " + player.getName() + color("r"));
+                System.out.println(color("red") + opponent.getlP() + " Is the Remaining amount of health on " + opponent.getName() + color("r"));
             }
         } else if(Math.random() * 1 < 0 + opponent.getEvasion()) {
-            System.out.println("The Opponent Evaded the attack");
-            System.out.println(player.getlP() + " Is the Remaining amount of health on " + player.getName());
-            System.out.println(opponent.getlP() + " Is the Remaining amount of health on " + opponent.getName());
+            System.out.println(color("orange") + "The Opponent Evaded the attack" + color("r"));
+            System.out.println(color("blue") + player.getlP() + " Is the Remaining amount of health on " + player.getName() + color("r"));
+            System.out.println(color("red") + opponent.getlP() + " Is the Remaining amount of health on " + opponent.getName() + color("r"));
         } else {
-            System.out.println("You missed");
-            System.out.println(player.getlP() + " Is the Remaining amount of health on " + player.getName());
-            System.out.println(opponent.getlP() + " Is the Remaining amount of health on " + opponent.getName());
+            System.out.println(color("orange") + "You missed" + color("r"));
+            System.out.println(color("blue") + player.getlP() + " Is the Remaining amount of health on " + player.getName() + color("r"));
+            System.out.println(color("red") + opponent.getlP() + " Is the Remaining amount of health on " + opponent.getName() + color("r"));
         }
     }
 }

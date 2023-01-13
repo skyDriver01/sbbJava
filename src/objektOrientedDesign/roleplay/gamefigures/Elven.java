@@ -6,13 +6,17 @@ public class Elven extends Gamefigurine {
         super(name, lP, cC, fV, res, speed, accuracy, evasion);
     }
 
-    @Override
+   /** @Override
     public double getfV() {
+        double getFVWithBow = getfV();
+        double getAccWithBow = getAccuracy();
         if(getWeapon() != null) {           //TODO: BUGFIX Some Stackoverflow error happens just this thing keep looping and idk why or how fix it
             if(getWeapon().getWeapon().equals("Bow")) {
                 setfV(getfV() + (getfV() / 2) + getWeapon().getfV());
                 setAccuracy(1);
+                getFVWithBow = getfV();
+                getAccWithBow = getAccuracy();
             }
-        } return getfV();
-    }
+        } return getFVWithBow + getAccWithBow;
+    }*/
 }
