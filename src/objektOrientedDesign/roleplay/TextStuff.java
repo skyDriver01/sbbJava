@@ -2,8 +2,23 @@ package objektOrientedDesign.roleplay;
 
 public class TextStuff {
 
-    public static String Line() {
+    public static String whiteLine() {
         return color("white") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
+    }
+    public static String greenLine() {
+        return color("green") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
+    }
+    public static String redLine() {
+        return color("red") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
+    }
+    public static String blueLine() {
+        return color("blue") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
+    }
+    public static String yellowLine() {
+        return color("yellow") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
+    }
+    public static String purpleLine() {
+        return color("purple") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
     }
 
     public static String color(String color) {

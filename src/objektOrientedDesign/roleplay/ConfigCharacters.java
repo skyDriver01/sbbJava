@@ -8,6 +8,7 @@ import objektOrientedDesign.roleplay.weapons.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import static objektOrientedDesign.roleplay.TextStuff.*;
 
 public class ConfigCharacters {
     static List <Gamefigurine> gameFigurines;
@@ -16,9 +17,9 @@ public class ConfigCharacters {
     static List <Gamefigurine> fightingCharacters = new ArrayList <>();
 
     public void executeGame() {
-        System.out.println("Welcome to the Role playing game.");
+        System.out.println(color("cyan") + "Welcome to the Role playing game." + color("r"));
         chooseYourCharacter(0);
-        System.out.println("Now the next player can choose their character");
+        System.out.println(color("cyan") + "Now the next player can choose their character" + color("r"));
         chooseYourCharacter(1);
         Fight.startTheFight(fightingCharacters.get(0), fightingCharacters.get(1));
     }
@@ -68,13 +69,13 @@ public class ConfigCharacters {
     }
 
     public static void chooseYourCharacter(int player) {
-        System.out.println("Player Choose the Character that you wish to play. (Every Character is a bit different and Combinations are also important to make your character the Strongest possible.)");
-        System.out.println("Btw CC is Carrying Capacity so how much The Character can carry");
+        System.out.println(color("cyan") + "Player Choose the Character that you wish to play. (Every Character is a bit different and Combinations are also important to make your character the Strongest possible.)");
+        System.out.println("Btw CC is Carrying Capacity so how much The Character can carry" + color("r"));
         boolean noCharacterChosen = true;
         HashMap <Integer, String> chooseFigurine = new HashMap <>();
         initGameFigurines();
         while (noCharacterChosen) {
-
+            System.out.println(yellowLine());
             chooseFigurine.put(1, "0: Dwarf, CC = 14");
             chooseFigurine.put(2, "1: Elven, CC = 12");
             chooseFigurine.put(3, "2: Human, CC = 15");
@@ -86,6 +87,7 @@ public class ConfigCharacters {
             for (int i = 1; i <= chooseFigurine.size(); i++) {
                 System.out.println(chooseFigurine.get(i));
             }
+            System.out.println(yellowLine());
             int chooseFigure = InputIn.nexIntOut("Type the Number of the Character that you want to Play");
             switch (chooseFigure) {
                 case 0 -> {
@@ -147,9 +149,12 @@ public class ConfigCharacters {
         HashMap <Integer, String> weaponChoice = new HashMap <>();
         boolean loopForWeapons = true;
         while (loopForWeapons) {
-            System.out.println("Choose the weapon you would like. (BTW when choosing the Throwing Knives you only get 3 uses per one you pick but they do a good amount of Damage for this reason)");
+            System.out.println(whiteLine());
+            System.out.println(color("cyan") + "Choose the weapon you would like. (BTW when choosing the Throwing Knives you only get 3 uses per one you pick but they do a good amount of Damage for this reason)");
             System.out.println("The First Weapon you choose will be your Active Weapon and to change the active weapon you will use up a turn");
-            System.out.println("You also have a limited amount of CC (Carrying Capacity) so keep in mind not to use it all up already");
+            System.out.println("You also have a limited amount of CC (Carrying Capacity) so keep in mind not to use it all up already" + color("r"));
+            System.out.println(whiteLine());
+            System.out.println(purpleLine());
             weaponChoice.put(1, "1: Club, Weight = 4");
             weaponChoice.put(2, "2: Sword, Weight = 2");
             weaponChoice.put(3, "3: Scythe, Weight = 3");
@@ -160,6 +165,7 @@ public class ConfigCharacters {
             for (int i = 1; i <= weaponChoice.size(); i++) {
                 System.out.println(weaponChoice.get(i));
             }
+            System.out.println(purpleLine());
             int chooseYourWeapons = InputIn.nexIntOut("Type the Number of the Desired Action");
             switch (chooseYourWeapons) {
                 case 1 -> {
@@ -260,9 +266,12 @@ public class ConfigCharacters {
 
         boolean loopForItems = true;
         while (loopForItems) {
-            System.out.println("Now you can Choose Items if you have enough CC that is");
+            System.out.println(whiteLine());
+            System.out.println(color("cyan") + "Now you can Choose Items if you have enough CC that is");
             System.out.println("Heavy Armor cant be used by all and also your speed goes down due to armor as");
-            System.out.println("The First Armor you take will automatically be activated so there should not even be a reason for you to get more than one bc only one will be equipped");
+            System.out.println("The First Armor you take will automatically be activated so there should not even be a reason for you to get more than one bc only one will be equipped" + color("r"));
+            System.out.println(whiteLine());
+            System.out.println(redLine());
             itemChoice.put(1, "1: Health Potion, Weight = 2");
             itemChoice.put(2, "2: Power Potion, Weight = 2");
             itemChoice.put(3, "3: Damage Potion, Weight = 2");
@@ -275,6 +284,7 @@ public class ConfigCharacters {
             for (int i = 1; i <= itemChoice.size(); i++) {
                 System.out.println(itemChoice.get(i));
             }
+            System.out.println(redLine());
             int chooseItem = InputIn.nexIntOut("Type the Number of the Desired Action");
             switch (chooseItem) {
                 case 1 -> equipItem(items.get(0), player);
@@ -293,14 +303,14 @@ public class ConfigCharacters {
                     if(!(fightingCharacters.get(player).getClass().equals(Troll.class) || fightingCharacters.get(player).getClass().equals(SCP_049.class))) {
                         equipArmor((Armor) items.get(6), player);
                     } else {
-                        System.out.println("The Character you have Chosen is not fit to equip Light Armor");
+                        System.out.println(color("red") + "The Character you have Chosen is not fit to equip Light Armor" + color("r"));
                     }
                 }
                 case 8 -> {
                     if(fightingCharacters.get(player).getClass().equals(Human.class) || fightingCharacters.get(player).getClass().equals(Orc.class) || fightingCharacters.get(player).getClass().equals(Dwarf.class)) {
                         equipArmor((Armor) items.get(7), player);
                     } else {
-                        System.out.println("The Character you have Chosen is not fit to equip Heavy Armor");
+                        System.out.println(color("red") + "The Character you have Chosen is not fit to equip Heavy Armor" + color("r"));
                     }
                 }
                 case 9 -> loopForItems = false;

@@ -5,15 +5,14 @@ import objektOrientedDesign.roleplay.gamefigures.Gamefigurine;
 
 import java.util.HashMap;
 
-import static objektOrientedDesign.roleplay.TextStuff.Line;
-import static objektOrientedDesign.roleplay.TextStuff.color;
+import static objektOrientedDesign.roleplay.TextStuff.*;
 
 public class Fight {
     private static int i = 0;
 
 
     public static void startTheFight(Gamefigurine playerOne, Gamefigurine playerTwo) {
-        System.out.println("It seems all preparations are done from both ends time to start the fight lets see who gets to start");
+        System.out.println(color ("cyan") + "It seems all preparations are done from both ends time to start the fight lets see who gets to start" + color("r"));
         if(playerOne.getSpeed() > playerTwo.getSpeed()) {
             fightOptions(playerOne, playerTwo);
         } else if(playerTwo.getSpeed() > playerOne.getSpeed()) {
@@ -33,12 +32,12 @@ public class Fight {
         if(playerOne.getlP() < 0 || playerTwo.getlP() < 0) {
             if(playerOne.getlP() < 0) {
                 i = 21;
-                System.out.println(Line());
+                System.out.println(whiteLine());
                 System.out.println("So the player who chose : " + playerTwo.getName() + " won");
-                System.out.println(color("yellow") + playerTwo.getlP() + " Is the Remaining amount of health on " + playerTwo.getName() + color("r"));
-                System.out.println(playerOne.getlP() + " has died with that amount on " + playerOne.getName());
+                System.out.println(color("blue") + playerTwo.getlP() + " Is the Remaining amount of health on " + playerTwo.getName() + color("r"));
+                System.out.println(color("red") + playerOne.getlP() + " has died with that amount on " + playerOne.getName() + color("r"));     //r = reset
 
-            } else if(playerTwo.getlP() < 0) {
+            } else if(playerTwo.getlP() < 0) {              //Todo: small bugfix to be done that is that the winner and loser thing gets printed twice
                 i = 21;
                 System.out.println("So the player who chose : " + playerOne.getName() + " won");
                 System.out.println(playerOne.getlP() + " Is the Remaining amount of health on " + playerOne.getName());
@@ -49,9 +48,10 @@ public class Fight {
     }
 
     public static void fightOptions(Gamefigurine player, Gamefigurine opponent) {
-        System.out.println("Seems that the player who chose " + player.getName() + " Will Be the one to choose their move");
+        System.out.println( color("cyan") + "Seems that the player who chose " + color("purple") + player.getName() + color("cyan") +" Will Be the one to choose their move" + color("r"));
 
         HashMap <Integer, String> chooseNextMove = new HashMap <>();
+        System.out.println(greenLine());
         chooseNextMove.put(1, "1: Attack enemy");
         chooseNextMove.put(2, "2: Activate Different Weapon");
         chooseNextMove.put(3, "3: Drop Weapon");
@@ -61,6 +61,7 @@ public class Fight {
         for (int i = 1; i <= chooseNextMove.size(); i++) {
             System.out.println(chooseNextMove.get(i));
         }
+        System.out.println(greenLine());
         int yourMove = InputIn.nexIntOut("Choose what you would like to do this round");
         switch (yourMove) {
             case 1 -> attackOpponent(player, opponent);
