@@ -32,20 +32,28 @@ public class Fight {
         if(playerOne.getlP() < 0 || playerTwo.getlP() < 0) {
             if(playerOne.getlP() < 0) {
                 i = 21;
-                System.out.println(whiteLine());
-                System.out.println("So the player who chose : " + playerTwo.getName() + " won");
+                System.out.println(blueLine());
+                System.out.println(color("purple") + "So the player who chose : " + playerTwo.getName() + " won" + color("r"));
+                System.out.println(blueLine());
+                System.out.println(greenLine());
                 System.out.println(color("blue") + playerTwo.getlP() + " Is the Remaining amount of health on " + playerTwo.getName() + color("r"));
                 System.out.println(color("red") + playerOne.getlP() + " has died with that amount on " + playerOne.getName() + color("r"));     //r = reset
+                System.out.println(greenLine());
 
             } else if(playerTwo.getlP() < 0) {              //Todo: small bugfix to be done that is that the winner and loser thing gets printed twice
                 i = 21;
-                System.out.println("So the player who chose : " + playerOne.getName() + " won");
-                System.out.println(playerOne.getlP() + " Is the Remaining amount of health on " + playerOne.getName());
-                System.out.println(playerTwo.getlP() + " has died with that amount on " + playerTwo.getName());
+                System.out.println(blueLine());
+                System.out.println(color("purple") + "So the player who chose : " + playerOne.getName() + " won" + color("r"));
+                System.out.println(blueLine());
+                System.out.println(greenLine());
+                System.out.println(color("blue") + playerOne.getlP() + " Is the Remaining amount of health on " + playerOne.getName() + color("r"));
+                System.out.println(color("red") + playerTwo.getlP() + " has died with that amount on " + playerTwo.getName() + color("r"));
+                System.out.println(greenLine());
             }
         }
         return i;
     }
+
 
     public static void fightOptions(Gamefigurine player, Gamefigurine opponent) {
         System.out.println( color("cyan") + "Seems that the player who chose " + color("purple") + player.getName() + color("cyan") +" Will Be the one to choose their move" + color("r"));
@@ -69,12 +77,12 @@ public class Fight {
             case 2 -> {
                 System.out.println("what weapon do you wish to activate?");
                 //TOdo find a list to make a stream or for each
-                //TODO: When making this lookout for the bug where i activate other weapon but the last weapons effects still stay bc that will be broken
+                //TODO: When making this lookout for the bug where the character activates other weapon but the last weapons effects still stay bc that will be broken
             }
             case 3 -> {
                 player.setcC(player.getcC() + player.getWeapon().getWeight());
                 player.setWeapon(null);
-                System.out.println(player.getWeapon().getWeapon());
+
             }
             case 4 -> {
                 //TODO : is supposed to take up the turn

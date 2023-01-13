@@ -25,6 +25,11 @@ public class TextStuff {
     public static String purpleLine() {
         return color("purple") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
     }
+    public static String orangeLine(){
+        return color("orange") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
+    }public static String limeLine(){
+        return color("lime") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
+    }
 
     public static String color(String color) {
         final String ANSI_BLACK = "\u001B[30m";
@@ -35,8 +40,9 @@ public class TextStuff {
         final String ANSI_PURPLE = "\u001B[35m";
         final String ANSI_CYAN = "\u001B[36m";
         final String ANSI_WHITE = "\u001B[37m";
-        final String ANSI_ORANGE = "";
         final String ANSI_RESET = "\u001B[0m";
+        final String ANSI_ORANGE = "\u001b[38;5;172m";
+        final String ANSI_LIME = "\u001b[38;5;191m";
 
         return switch (color) {
             case "black" -> ANSI_BLACK;
@@ -47,6 +53,8 @@ public class TextStuff {
             case "purple" -> ANSI_PURPLE;
             case "cyan" -> ANSI_CYAN;
             case "white" -> ANSI_WHITE;
+            case "orange" -> ANSI_ORANGE;
+            case "lime" -> ANSI_LIME;
             default -> ANSI_RESET;
         };
     }
