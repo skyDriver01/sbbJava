@@ -2,6 +2,7 @@ package objektOrientedDesign.roleplay.items;
 
 public class Potion extends Item{
     private double takeLp;
+    private double addFV;
     public Potion(String item, double weight) {
         super(item, weight);
     }
@@ -12,5 +13,13 @@ public class Potion extends Item{
 
     public void setTakeLp(double takeLp) {
         this.takeLp = takeLp;
+    }
+
+    public double getAddFV() {
+        return addFV;
+    }
+
+    public void setAddFV(double addFV) {
+        this.addFV = addFV;
     }
 }

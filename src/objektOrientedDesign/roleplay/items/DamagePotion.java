@@ -1,18 +1,18 @@
 package objektOrientedDesign.roleplay.items;
 
 public class DamagePotion extends Potion {
-    private double takeLP;
+    private double addFV;
 
     public DamagePotion(String item, double weight, double takeLP) {
         super(item, weight);
-        this.takeLP = takeLP;
+        this.addFV = takeLP;
     }
 
-    public double getTakeLP() {
-        return takeLP;
+    public double getAddFV() {
+        return addFV;
     }
 
-    public void setTakeLP(double takeLP) {
-        this.takeLP = takeLP;
+    public void setAddFV(double addFV) {
+        this.addFV = addFV;
     }
 }

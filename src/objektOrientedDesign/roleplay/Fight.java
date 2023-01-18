@@ -12,19 +12,19 @@ import static objektOrientedDesign.roleplay.TextStuff.*;
 public class Fight {
 
     public static void startTheFight(Gamefigurine playerOne, Gamefigurine playerTwo) {
-        System.out.println(color("cyan") + "It seems all preparations are done from both ends time to start the fight lets see who gets to start" + color("r"));
+        System.out.println(color("cyan") + "It seems all preparations are done from both ends time to start the fight lets see who gets the First Hit" + color("r"));
         if(playerOne.getSpeed() > playerTwo.getSpeed()) {
             fightOptions(playerOne, playerTwo);
         } else {
             if(playerTwo.getSpeed() > playerOne.getSpeed()) fightOptions(playerTwo, playerOne);
         }
         int i = 0;
-        if (i <= 20){
-            for (i = 0; i <= 20; i++){
-                fightOptions(playerOne,playerTwo);
+        if(i <= 20) {
+            for (i = 0; i <= 20; i++) {
+                fightOptions(playerOne, playerTwo);
                 i = winningConditions(playerOne, playerTwo, i);
                 fightOptions(playerTwo, playerOne);
-                i = winningConditions(playerTwo,playerOne, i);
+                i = winningConditions(playerTwo, playerOne, i);
             }
         }
     } //Todo: the thing with when round 20 end to be done so it says its a draw or not
@@ -33,29 +33,37 @@ public class Fight {
         if(playerOne.getlP() < 0 || playerTwo.getlP() < 0) {
             if(playerOne.getlP() < 0) {
                 i = 21;
-                System.out.println(blueLine());
-                System.out.println(color("purple") + "So the player who chose : " + color("gold") + playerTwo.getName() + color("purple") +  " won" + color(""));
-                System.out.println(blueLine());
-                System.out.println(greenLine());
-                System.out.println(color("gold") + playerTwo.getlP() + color("blue") + " Is the Remaining amount of health on " + playerTwo.getName() + color(""));
-                System.out.println(color("gold") + playerOne.getlP() + color("red") + " has died with that amount on " + playerOne.getName() + color(""));
-                System.out.println(greenLine());
-                System.exit(0);
+                playerTwoWins(playerOne, playerTwo);
             } else {
                 if(playerTwo.getlP() < 0) {
                     i = 21;
-                    System.out.println(blueLine());
-                    System.out.println(color("purple") + "So the player who chose : " + color("gold") + playerOne.getName() + color("purple") +  " won" + color(""));
-                    System.out.println(blueLine());
-                    System.out.println(greenLine());
-                    System.out.println(color("gold") + playerOne.getlP() + color("blue") + " Is the Remaining amount of health on " + playerOne.getName() + color(""));
-                    System.out.println(color("gold") + playerTwo.getlP() + color("red") + " has died with that amount on " + playerTwo.getName() + color(""));
-                    System.out.println(greenLine());
-                    System.exit(0);
+                    playerOneWins(playerOne, playerTwo);
                 }
             }
         }
         return i;
+    }
+
+    private static void playerOneWins(Gamefigurine playerOne, Gamefigurine playerTwo) {
+        System.out.println(blueLine());
+        System.out.println(color("purple") + "So the player who chose : " + color("gold") + playerOne.getName() + color("purple") + " won" + color(""));
+        System.out.println(blueLine());
+        System.out.println(greenLine());
+        System.out.println(color("gold") + playerOne.getlP() + color("blue") + " Is the Remaining amount of health on " + playerOne.getName() + color(""));
+        System.out.println(color("gold") + playerTwo.getlP() + color("red") + " has died with that amount on " + playerTwo.getName() + color(""));
+        System.out.println(greenLine());
+        System.exit(0);
+    }
+
+    private static void playerTwoWins(Gamefigurine playerOne, Gamefigurine playerTwo) {
+        System.out.println(blueLine());
+        System.out.println(color("purple") + "So the player who chose : " + color("gold") + playerTwo.getName() + color("purple") + " won" + color(""));
+        System.out.println(blueLine());
+        System.out.println(greenLine());
+        System.out.println(color("gold") + playerTwo.getlP() + color("blue") + " Is the Remaining amount of health on " + playerTwo.getName() + color(""));
+        System.out.println(color("gold") + playerOne.getlP() + color("red") + " has died with that amount on " + playerOne.getName() + color(""));
+        System.out.println(greenLine());
+        System.exit(0);
     }
 
     public static void fightOptions(Gamefigurine player, Gamefigurine opponent) {
@@ -104,40 +112,14 @@ public class Fight {
             }
             case 4 -> {
                 if(player.getItemBackpack() != null) {
-
-                    for (Item items : player.getItemBackpack()) {
+                    for (Item items : player.getItemBackpack()) {       //TODO: FIX THIS == IT WORKS IF I DON'T HAVE THE REMOVE OUT OF INV THING BUT THAT WILL MAKE THIS UNPLAYABLE BC YOU CAN JUST STACK ENDLESS STUFF WITHOUT LOOSING THE ITEMS
                         System.out.println(items.getItem());
                     }
                     InputIn.nextLine();
                     String useItem = InputIn.nextLineOut(color("cyan") + "What item do you want to use?" + color(""));
                     for (Item choice : player.getItemBackpack()) {
                         if(choice.getItem().equals(useItem)) {
-                            if(choice.getClass().equals(DamagePotion.class)) {
-                                damagePot(player, opponent, choice);
-                            } else {
-                                if(choice.getClass().equals(HealthPotion.class)) {
-                                    healthPot(player, opponent, choice);
-                                } else {
-                                    if(choice.getClass().equals(PowerPotion.class)) {
-                                        powerPot(player, choice);
-
-                                    } else {
-                                        if(choice.getClass().equals(StrengthRing.class)) {
-                                            strengthRing(player, choice);
-
-                                        } else {
-                                            if(choice.getClass()
-                                                     .equals(CharmRing.class)) {              //THE THING WORKS IF I DON'T HAVE THE REMOVE OUT OF INV THING BUT THAT WILL MAKE THIS UNPLAYABLE BC YOU CAN JUST STACK ENDLESS STUFF
-                                                charmRing(opponent, (CharmRing) choice);
-                                            } else {
-                                                if(choice.getClass().equals(ShieldRing.class)) {
-                                                    player.setRes(player.getRes() + ((ShieldRing) choice).getMoreRes());
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            potionsAndRings(player, opponent, choice);
                         }
                     }
                 }
@@ -148,6 +130,37 @@ public class Fight {
                 winningConditions(player, opponent, 21);
             }
             default -> System.out.println(color("orange") + "So just do the same as 5? Got it." + color(""));
+        }
+    }
+
+    private static void potionsAndRings(Gamefigurine player, Gamefigurine opponent, Item choice) {
+        if(choice.getClass().equals(DamagePotion.class)) {
+            damagePot(player, choice);
+        } else {
+            if(choice.getClass().equals(HealthPotion.class)) {
+                healthPot(player, opponent, choice);
+            } else {
+                if(choice.getClass().equals(PowerPotion.class)) {
+                    powerPot(player, choice);
+                } else {
+                    rings(player, opponent, choice);
+                }
+            }
+        }
+    }
+
+    private static void rings(Gamefigurine player, Gamefigurine opponent, Item choice) {
+        if(choice.getClass().equals(StrengthRing.class)) {
+            strengthRing(player, choice);
+
+        } else {
+            if(choice.getClass().equals(CharmRing.class)) {
+                charmRing(opponent, (CharmRing) choice);
+            } else {
+                if(choice.getClass().equals(ShieldRing.class)) {
+                    player.setRes(player.getRes() + ((ShieldRing) choice).getMoreRes());
+                }
+            }
         }
     }
 
@@ -176,11 +189,9 @@ public class Fight {
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
     }
 
-    private static void damagePot(Gamefigurine player, Gamefigurine opponent, Item choice) {
-        opponent.setlP(opponent.getlP() - ((DamagePotion) choice).getTakeLp());     // It wont deal damage no clue why not atm
+    private static void damagePot(Gamefigurine player, Item choice) {
+        player.setfV(player.getfV() + ((DamagePotion) choice).getAddFV());
         player.setcC(player.getcC() + choice.getWeight());
-        System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
-        System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
     }
 
     private static void attackOpponent(Gamefigurine player, Gamefigurine opponent) {
