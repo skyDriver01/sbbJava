@@ -61,7 +61,7 @@ public class ConfigCharacters {
         itemsList.add(new PowerPotion("Power Potion", 2, 5));
         itemsList.add(new DamagePotion("Damage Potion", 2, ((Math.random() * (15 - 5)) + 5)));       //Random Amount of Health gain
         itemsList.add(new ShieldRing("Shield Ring", 1.5, ((Math.random() * (2 - 0.75)) + 0.75)));  //Random Amount of resistance gain
-        itemsList.add(new StrenghtRing("Strength Ring", 1.5, 5));
+        itemsList.add(new StrengthRing("Strength Ring", 1.5, 5));
         itemsList.add(new CharmRing("Charm Ring", 1.5, ((Math.random() * (2 - 0.45)) + 0.45), 0.5));   //Almost like Resistance only difference is the enemies FV gets lower  // Charm = the Chances that it Works
         itemsList.add(new LightArmor("Light Armor", 3, 0.3, 0.1, 0.5));
         itemsList.add(new HeavyArmor("Heavy Armor", 6.5, 0.75, 0.25, 1));

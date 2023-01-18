@@ -1,9 +1,9 @@
 package objektOrientedDesign.roleplay.items;
 
-public class StrenghtRing extends Ring{
+public class StrengthRing extends Ring{
     private double moreCC;
 
-    public StrenghtRing(String item, double weight, double moreCC) {
+    public StrengthRing(String item, double weight, double moreCC) {
         super(item, weight);
         this.moreCC = moreCC;
     }

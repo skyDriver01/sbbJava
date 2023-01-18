@@ -10,49 +10,48 @@ import java.util.HashMap;
 import static objektOrientedDesign.roleplay.TextStuff.*;
 
 public class Fight {
-    private static int i = 0;
 
     public static void startTheFight(Gamefigurine playerOne, Gamefigurine playerTwo) {
         System.out.println(color("cyan") + "It seems all preparations are done from both ends time to start the fight lets see who gets to start" + color("r"));
         if(playerOne.getSpeed() > playerTwo.getSpeed()) {
-            fightOptions(playerOne, playerTwo);                     //Todo: Bugfix if you give up on first round it keeps going for like 2 more rounds
+            fightOptions(playerOne, playerTwo);
         } else {
-            if(playerTwo.getSpeed() > playerOne.getSpeed()) {
-                fightOptions(playerTwo, playerOne);
-            }
+            if(playerTwo.getSpeed() > playerOne.getSpeed()) fightOptions(playerTwo, playerOne);
         }
-        if(i <= 20) {
-            for (i = 0; i <= 20; i++) {
-                fightOptions(playerOne, playerTwo);
+        int i = 0;
+        if (i <= 20){
+            for (i = 0; i <= 20; i++){
+                fightOptions(playerOne,playerTwo);
                 i = winningConditions(playerOne, playerTwo, i);
                 fightOptions(playerTwo, playerOne);
-                i =
-                        winningConditions(playerTwo, playerOne, i);     //Todo: yeah the thing with who has more health wins i need to make the method to check that but dont know when to implement it here or how.
+                i = winningConditions(playerTwo,playerOne, i);
             }
         }
-    }
+    } //Todo: the thing with when round 20 end to be done so it says its a draw or not
 
     private static int winningConditions(Gamefigurine playerOne, Gamefigurine playerTwo, int i) {
         if(playerOne.getlP() < 0 || playerTwo.getlP() < 0) {
             if(playerOne.getlP() < 0) {
                 i = 21;
                 System.out.println(blueLine());
-                System.out.println(color("purple") + "So the player who chose : " + playerTwo.getName() + " won" + color(""));
+                System.out.println(color("purple") + "So the player who chose : " + color("gold") + playerTwo.getName() + color("purple") +  " won" + color(""));
                 System.out.println(blueLine());
                 System.out.println(greenLine());
                 System.out.println(color("gold") + playerTwo.getlP() + color("blue") + " Is the Remaining amount of health on " + playerTwo.getName() + color(""));
                 System.out.println(color("gold") + playerOne.getlP() + color("red") + " has died with that amount on " + playerOne.getName() + color(""));
                 System.out.println(greenLine());
+                System.exit(0);
             } else {
-                if(playerTwo.getlP() < 0) {              //Todo: small bugfix to be done that is that the winner and loser thing gets printed twice
+                if(playerTwo.getlP() < 0) {
                     i = 21;
                     System.out.println(blueLine());
-                    System.out.println(color("purple") + "So the player who chose : " + playerOne.getName() + " won" + color(""));
+                    System.out.println(color("purple") + "So the player who chose : " + color("gold") + playerOne.getName() + color("purple") +  " won" + color(""));
                     System.out.println(blueLine());
                     System.out.println(greenLine());
-                    System.out.println(color("blue") + playerOne.getlP() + " Is the Remaining amount of health on " + playerOne.getName() + color(""));
-                    System.out.println(color("red") + playerTwo.getlP() + " has died with that amount on " + playerTwo.getName() + color(""));
+                    System.out.println(color("gold") + playerOne.getlP() + color("blue") + " Is the Remaining amount of health on " + playerOne.getName() + color(""));
+                    System.out.println(color("gold") + playerTwo.getlP() + color("red") + " has died with that amount on " + playerTwo.getName() + color(""));
                     System.out.println(greenLine());
+                    System.exit(0);
                 }
             }
         }
@@ -79,8 +78,7 @@ public class Fight {
 
             case 2 -> {
                 if(player.getWeaponBackpack() != null) {
-                    String changeWeapon =
-                            InputIn.nextLineOut(color("cyan") + "what weapon do you wish to activate?" + color(""));
+                    String changeWeapon = InputIn.nextLineOut(color("cyan") + "what weapon do you wish to activate?" + color(""));
                     for (Weapon weapons : player.getWeaponBackpack()) {
                         System.out.println(weapons.getWeapon());
                         player.setfV(player.getfV() - weapons.getfV());
@@ -108,7 +106,7 @@ public class Fight {
                 if(player.getItemBackpack() != null) {
 
                     for (Item items : player.getItemBackpack()) {
-                        System.out.println(items.getItem()); //Todo: dk atm maybe make cases for the items or smth idk yet see if the name is equal if so give the stat effects like how to make this usable
+                        System.out.println(items.getItem());
                     }
                     InputIn.nextLine();
                     String useItem = InputIn.nextLineOut(color("cyan") + "What item do you want to use?" + color(""));
@@ -124,12 +122,12 @@ public class Fight {
                                         powerPot(player, choice);
 
                                     } else {
-                                        if(choice.getClass().equals(StrenghtRing.class)) {
+                                        if(choice.getClass().equals(StrengthRing.class)) {
                                             strengthRing(player, choice);
 
                                         } else {
                                             if(choice.getClass()
-                                                     .equals(CharmRing.class)) {              //THE THING WORKS IF I DONT HAVE THE REMOVE OUT OF INV THING BUT THAT WILL MAKE THIS UNPLAYABLE BC YOU CAN JUST STACK ENDLESS STUFF
+                                                     .equals(CharmRing.class)) {              //THE THING WORKS IF I DON'T HAVE THE REMOVE OUT OF INV THING BUT THAT WILL MAKE THIS UNPLAYABLE BC YOU CAN JUST STACK ENDLESS STUFF
                                                 charmRing(opponent, (CharmRing) choice);
                                             } else {
                                                 if(choice.getClass().equals(ShieldRing.class)) {
@@ -162,7 +160,7 @@ public class Fight {
     }
 
     private static void strengthRing(Gamefigurine player, Item choice) {
-        player.setcC(player.getcC() + ((StrenghtRing) choice).getMoreCC());
+        player.setcC(player.getcC() + ((StrengthRing) choice).getMoreCC());
         player.setcC(player.getcC() + choice.getWeight());
     }
 
@@ -179,8 +177,7 @@ public class Fight {
     }
 
     private static void damagePot(Gamefigurine player, Gamefigurine opponent, Item choice) {
-        double damageDeal = ((DamagePotion) choice).getTakeLp();
-        opponent.setlP(opponent.getlP() - damageDeal);     // It wont deal damage but we can heal with health pot
+        opponent.setlP(opponent.getlP() - ((DamagePotion) choice).getTakeLp());     // It wont deal damage no clue why not atm
         player.setcC(player.getcC() + choice.getWeight());
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
