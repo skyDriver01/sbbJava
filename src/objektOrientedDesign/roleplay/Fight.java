@@ -102,39 +102,11 @@ public class Fight {
             }
             case 4 -> {
                 if(player.getItemBackpack() != null) {
-                    String useItem = InputIn.nextLineOut(color("cyan") + "What item do you want to use?" + color(""));
+                    InputIn.nextLine();
+                    String useItem = InputIn.nextLineOut(color("cyan") + "What item do you want to use?" + color(""));      //TODO: Bugfix make it so it doesnt change the class during the run of the for each also put the useitem string after the fact that you know what items you have in inventory
                     for (Item items : player.getItemBackpack()) {
                         System.out.println(items.getItem()); //Todo: dk atm maybe make cases for the items or smth idk yet see if the name is equal if so give the stat effects like how to make this usable
-                        if(items.getItem().equals(useItem)) {
-                            if(items.getClass().equals(DamagePotion.class)) {
-                                opponent.setlP(opponent.getlP() - ((DamagePotion) items).getTakeLp());
-                                player.setcC(player.getcC() + items.getWeight());
-                                player.getItemBackpack().remove(items);
-                            } else if(items.getClass().equals(HealthPotion.class)) {
-                                player.setlP(player.getlP() + ((HealthPotion) items).getGiveLP());
-                                player.setcC(player.getcC() + items.getWeight());
-                                player.getItemBackpack().remove(items);
-                            } else if(items.getClass().equals(PowerPotion.class)) {
-                                player.setcC(player.getcC() + ((PowerPotion) items).getGiveMoreCC());
-                                player.setcC(player.getcC() + items.getWeight());
-                                player.getItemBackpack().remove(items);
-                            }else if(items.getClass().equals(StrenghtRing.class)){
-                                player.setcC(player.getcC() + ((StrenghtRing) items).getMoreCC());
-                                player.setcC(player.getcC() + items.getWeight());
-                                player.getItemBackpack().remove(items);
-                            } else if(items.getClass().equals(CharmRing.class)) {
-                                if(Math.random() * 1 < 0 + ((CharmRing) items).getCharm()) {
-                                    opponent.setfV(opponent.getfV() - ((CharmRing) items).getLessenEnemiesFV());
-                                    player.getItemBackpack().remove(items);
-                                } else {
-                                    System.out.println(color("red") + "Charm Ring was used but it was unable to charm the Opponent" + color(""));
-                                    player.getItemBackpack().remove(items);
-                                }
-                            } else if(items.getClass().equals(ShieldRing.class)) {
-                                player.setRes(player.getRes() + ((ShieldRing) items).getMoreRes());
-                                player.getItemBackpack().remove(items);
-                            }
-                        }
+                        itemUsages(player, opponent, useItem, items);
                     }
                 }
             }
@@ -144,6 +116,63 @@ public class Fight {
                 winningConditions(player, opponent, 21);
             }
             default -> System.out.println(color("orange") + "So just do the same as 5? Got it." + color(""));
+        }
+    }
+
+    private static void itemUsages(Gamefigurine player, Gamefigurine opponent, String useItem, Item items) {
+        if(items.getItem().equals(useItem)) {
+            if(items.getClass().equals(DamagePotion.class)) {
+                useDamagePot(player, opponent, items);
+            } else if(items.getClass().equals(HealthPotion.class)) {
+                useHealthPot(player, items);
+            } else if(items.getClass().equals(PowerPotion.class)) {
+                usePowerPot(player, items);
+            }else if(items.getClass().equals(StrenghtRing.class)){
+                useStrengthRing(player, items);
+            } else if(items.getClass().equals(CharmRing.class)) {
+                willCharmRingWork(player, opponent, items);
+            } else chooseShieldRing(player, items);
+        }
+    }
+
+    private static void useStrengthRing(Gamefigurine player, Item items) {
+        player.setcC(player.getcC() + ((StrenghtRing) items).getMoreCC());
+        player.setcC(player.getcC() + items.getWeight());
+        player.getItemBackpack().remove(items);
+    }
+
+    private static void usePowerPot(Gamefigurine player, Item items) {
+        player.setcC(player.getcC() + ((PowerPotion) items).getGiveMoreCC());
+        player.setcC(player.getcC() + items.getWeight());
+        player.getItemBackpack().remove(items);
+    }
+
+    private static void useHealthPot(Gamefigurine player, Item items) {
+        player.setlP(player.getlP() + ((HealthPotion) items).getGiveLP());
+        player.setcC(player.getcC() + items.getWeight());
+        player.getItemBackpack().remove(items);
+    }
+
+    private static void useDamagePot(Gamefigurine player, Gamefigurine opponent, Item items) {
+        opponent.setlP(opponent.getlP() - ((DamagePotion) items).getTakeLp());
+        player.setcC(player.getcC() + items.getWeight());
+        player.getItemBackpack().remove(items);
+    }
+
+    private static void chooseShieldRing(Gamefigurine player, Item items) {
+        if(items.getClass().equals(ShieldRing.class)) {
+            player.setRes(player.getRes() + ((ShieldRing) items).getMoreRes());
+            player.getItemBackpack().remove(items);
+        }
+    }
+
+    private static void willCharmRingWork(Gamefigurine player, Gamefigurine opponent, Item items) {
+        if(Math.random() * 1 < 0 + ((CharmRing) items).getCharm()) {
+            opponent.setfV(opponent.getfV() - ((CharmRing) items).getLessenEnemiesFV());
+            player.getItemBackpack().remove(items);
+        } else {
+            System.out.println(color("red") + "Charm Ring was used but it was unable to charm the Opponent" + color(""));
+            player.getItemBackpack().remove(items);
         }
     }
 
