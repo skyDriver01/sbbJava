@@ -13,6 +13,5 @@ public class CloseRange extends Weapon {
     }
 
     public void setbV(double bV) {
-        this.bV = bV;
     }
 }

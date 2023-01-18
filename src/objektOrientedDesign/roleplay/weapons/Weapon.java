@@ -6,6 +6,7 @@ public class Weapon {
     private double fV;
     private double accuracy;
     private double amount;
+    private double bv;
 
     public Weapon(String weapon, double weight, double fV, double accuracy) {
         this.weapon = weapon;
@@ -52,5 +53,13 @@ public class Weapon {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public double getBv() {
+        return bv;
+    }
+
+    public void setBv(double bv) {
+        this.bv = bv;
     }
 }

@@ -20,6 +20,8 @@ public class Gamefigurine {
     private List <Item> itemBackpack = new ArrayList<>();
 
     private List<Weapon> weaponBackpack = new ArrayList <>();
+    private double instantDeath;
+    private double amount;
     private double mV;
     private double speed;  //Speed is the initiative value
     private double accuracy;
@@ -145,5 +147,21 @@ public class Gamefigurine {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    public double getInstantDeath() {
+        return instantDeath;
+    }
+
+    public void setInstantDeath(double instantDeath) {
+        this.instantDeath = instantDeath;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 }
