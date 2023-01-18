@@ -16,8 +16,10 @@ public class Fight {
         System.out.println(color("cyan") + "It seems all preparations are done from both ends time to start the fight lets see who gets to start" + color("r"));
         if(playerOne.getSpeed() > playerTwo.getSpeed()) {
             fightOptions(playerOne, playerTwo);                     //Todo: Bugfix if you give up on first round it keeps going for like 2 more rounds
-        } else if(playerTwo.getSpeed() > playerOne.getSpeed()) {
-            fightOptions(playerTwo, playerOne);
+        } else {
+            if(playerTwo.getSpeed() > playerOne.getSpeed()) {
+                fightOptions(playerTwo, playerOne);
+            }
         }
         if(i <= 20) {
             for (i = 0; i <= 20; i++) {
@@ -41,15 +43,17 @@ public class Fight {
                 System.out.println(color("gold") + playerTwo.getlP() + color("blue") + " Is the Remaining amount of health on " + playerTwo.getName() + color(""));
                 System.out.println(color("gold") + playerOne.getlP() + color("red") + " has died with that amount on " + playerOne.getName() + color(""));
                 System.out.println(greenLine());
-            } else if(playerTwo.getlP() < 0) {              //Todo: small bugfix to be done that is that the winner and loser thing gets printed twice
-                i = 21;
-                System.out.println(blueLine());
-                System.out.println(color("purple") + "So the player who chose : " + playerOne.getName() + " won" + color(""));
-                System.out.println(blueLine());
-                System.out.println(greenLine());
-                System.out.println(color("blue") + playerOne.getlP() + " Is the Remaining amount of health on " + playerOne.getName() + color(""));
-                System.out.println(color("red") + playerTwo.getlP() + " has died with that amount on " + playerTwo.getName() + color(""));
-                System.out.println(greenLine());
+            } else {
+                if(playerTwo.getlP() < 0) {              //Todo: small bugfix to be done that is that the winner and loser thing gets printed twice
+                    i = 21;
+                    System.out.println(blueLine());
+                    System.out.println(color("purple") + "So the player who chose : " + playerOne.getName() + " won" + color(""));
+                    System.out.println(blueLine());
+                    System.out.println(greenLine());
+                    System.out.println(color("blue") + playerOne.getlP() + " Is the Remaining amount of health on " + playerOne.getName() + color(""));
+                    System.out.println(color("red") + playerTwo.getlP() + " has died with that amount on " + playerTwo.getName() + color(""));
+                    System.out.println(greenLine());
+                }
             }
         }
         return i;
@@ -102,11 +106,41 @@ public class Fight {
             }
             case 4 -> {
                 if(player.getItemBackpack() != null) {
-                    InputIn.nextLine();
-                    String useItem = InputIn.nextLineOut(color("cyan") + "What item do you want to use?" + color(""));      //TODO: Bugfix make it so it doesnt change the class during the run of the for each also put the useitem string after the fact that you know what items you have in inventory
+
                     for (Item items : player.getItemBackpack()) {
                         System.out.println(items.getItem()); //Todo: dk atm maybe make cases for the items or smth idk yet see if the name is equal if so give the stat effects like how to make this usable
-                        itemUsages(player, opponent, useItem, items);
+                    }
+                    InputIn.nextLine();
+                    String useItem = InputIn.nextLineOut(color("cyan") + "What item do you want to use?" + color(""));
+                    for (Item choice : player.getItemBackpack()) {
+                        if(choice.getItem().equals(useItem)) {
+                            if(choice.getClass().equals(DamagePotion.class)) {
+                                damagePot(player, opponent, choice);
+                            } else {
+                                if(choice.getClass().equals(HealthPotion.class)) {
+                                    healthPot(player, opponent, choice);
+                                } else {
+                                    if(choice.getClass().equals(PowerPotion.class)) {
+                                        powerPot(player, choice);
+
+                                    } else {
+                                        if(choice.getClass().equals(StrenghtRing.class)) {
+                                            strengthRing(player, choice);
+
+                                        } else {
+                                            if(choice.getClass()
+                                                     .equals(CharmRing.class)) {              //THE THING WORKS IF I DONT HAVE THE REMOVE OUT OF INV THING BUT THAT WILL MAKE THIS UNPLAYABLE BC YOU CAN JUST STACK ENDLESS STUFF
+                                                charmRing(opponent, (CharmRing) choice);
+                                            } else {
+                                                if(choice.getClass().equals(ShieldRing.class)) {
+                                                    player.setRes(player.getRes() + ((ShieldRing) choice).getMoreRes());
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -119,61 +153,37 @@ public class Fight {
         }
     }
 
-    private static void itemUsages(Gamefigurine player, Gamefigurine opponent, String useItem, Item items) {
-        if(items.getItem().equals(useItem)) {
-            if(items.getClass().equals(DamagePotion.class)) {
-                useDamagePot(player, opponent, items);
-            } else if(items.getClass().equals(HealthPotion.class)) {
-                useHealthPot(player, items);
-            } else if(items.getClass().equals(PowerPotion.class)) {
-                usePowerPot(player, items);
-            }else if(items.getClass().equals(StrenghtRing.class)){
-                useStrengthRing(player, items);
-            } else if(items.getClass().equals(CharmRing.class)) {
-                willCharmRingWork(player, opponent, items);
-            } else chooseShieldRing(player, items);
-        }
-    }
-
-    private static void useStrengthRing(Gamefigurine player, Item items) {
-        player.setcC(player.getcC() + ((StrenghtRing) items).getMoreCC());
-        player.setcC(player.getcC() + items.getWeight());
-        player.getItemBackpack().remove(items);
-    }
-
-    private static void usePowerPot(Gamefigurine player, Item items) {
-        player.setcC(player.getcC() + ((PowerPotion) items).getGiveMoreCC());
-        player.setcC(player.getcC() + items.getWeight());
-        player.getItemBackpack().remove(items);
-    }
-
-    private static void useHealthPot(Gamefigurine player, Item items) {
-        player.setlP(player.getlP() + ((HealthPotion) items).getGiveLP());
-        player.setcC(player.getcC() + items.getWeight());
-        player.getItemBackpack().remove(items);
-    }
-
-    private static void useDamagePot(Gamefigurine player, Gamefigurine opponent, Item items) {
-        opponent.setlP(opponent.getlP() - ((DamagePotion) items).getTakeLp());
-        player.setcC(player.getcC() + items.getWeight());
-        player.getItemBackpack().remove(items);
-    }
-
-    private static void chooseShieldRing(Gamefigurine player, Item items) {
-        if(items.getClass().equals(ShieldRing.class)) {
-            player.setRes(player.getRes() + ((ShieldRing) items).getMoreRes());
-            player.getItemBackpack().remove(items);
-        }
-    }
-
-    private static void willCharmRingWork(Gamefigurine player, Gamefigurine opponent, Item items) {
-        if(Math.random() * 1 < 0 + ((CharmRing) items).getCharm()) {
-            opponent.setfV(opponent.getfV() - ((CharmRing) items).getLessenEnemiesFV());
-            player.getItemBackpack().remove(items);
+    private static void charmRing(Gamefigurine opponent, CharmRing choice) {
+        if(Math.random() * 1 < 0 + choice.getCharm()) {
+            opponent.setfV(opponent.getfV() - choice.getLessenEnemiesFV());
         } else {
             System.out.println(color("red") + "Charm Ring was used but it was unable to charm the Opponent" + color(""));
-            player.getItemBackpack().remove(items);
         }
+    }
+
+    private static void strengthRing(Gamefigurine player, Item choice) {
+        player.setcC(player.getcC() + ((StrenghtRing) choice).getMoreCC());
+        player.setcC(player.getcC() + choice.getWeight());
+    }
+
+    private static void powerPot(Gamefigurine player, Item choice) {
+        player.setcC(player.getcC() + ((PowerPotion) choice).getGiveMoreCC());
+        player.setcC(player.getcC() + choice.getWeight());
+    }
+
+    private static void healthPot(Gamefigurine player, Gamefigurine opponent, Item choice) {
+        player.setlP(player.getlP() + ((HealthPotion) choice).getGiveLP());
+        player.setcC(player.getcC() + choice.getWeight());
+        System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
+        System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
+    }
+
+    private static void damagePot(Gamefigurine player, Gamefigurine opponent, Item choice) {
+        double damageDeal = ((DamagePotion) choice).getTakeLp();
+        opponent.setlP(opponent.getlP() - damageDeal);     // It wont deal damage but we can heal with health pot
+        player.setcC(player.getcC() + choice.getWeight());
+        System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
+        System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
     }
 
     private static void attackOpponent(Gamefigurine player, Gamefigurine opponent) {
@@ -184,10 +194,12 @@ public class Fight {
     private static void checkAccuracyToHit(Gamefigurine player, Gamefigurine opponent) {
         if(Math.random() * 1 < 0 + player.getAccuracy()) {  //Checks if you could hit your Attack to then check Armor and more
             gotArmor(player, opponent); //Checks if Enemy has Armor On
-        } else if(Math.random() * 1 < 0 + opponent.getEvasion()) {        //Looks if the evasion was high enought to evade the attack
-            attackEvaded(player, opponent);
         } else {
-            attackMissed(player, opponent);
+            if(Math.random() * 1 < 0 + opponent.getEvasion()) {        //Looks if the evasion was high enought to evade the attack
+                attackEvaded(player, opponent);
+            } else {
+                attackMissed(player, opponent);
+            }
         }
     }
 
@@ -207,7 +219,7 @@ public class Fight {
 
     private static void checkIfArmorWillSaveEnemy(Gamefigurine player, Gamefigurine opponent) {
         if(!(Math.random() * 1 < 0 + opponent.getArmor()                 //Checking the probability of the Armor saving you if not then you deal damage.
-                .getNoDamage())) {
+                                             .getNoDamage())) {
             damageDeal(player, opponent);
         } else {
             noDamageBcArmor(player, opponent);  //Armor saves you from the Damage

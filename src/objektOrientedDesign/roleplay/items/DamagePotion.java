@@ -7,9 +7,8 @@ public class DamagePotion extends Potion{
         super(item, weight);
         this.takeLP = takeLP;
     }
-
     public double getTakeLP() {
-        return takeLP;
+        return ((Math.random() * (15 - 5)) + 5);
     }
 
     public void setTakeLP(double takeLP) {

@@ -57,9 +57,9 @@ public class ConfigCharacters {
 
     public static void initItems() {
         List <Item> itemsList = new ArrayList <>();
-        itemsList.add(new DamagePotion("Damage Potion", 2, ((Math.random() * (15 - 5)) + 5)));        //Random Amount of Enemy Health Taken
+        itemsList.add(new HealthPotion("Health Potion", 2, ((Math.random() * (20 - 5)) + 5)));        //Random Amount of Enemy Health Taken
         itemsList.add(new PowerPotion("Power Potion", 2, 5));
-        itemsList.add(new HealthPotion("Health Potion", 2, ((Math.random() * (20 - 5)) + 5)));       //Random Amount of Health gain
+        itemsList.add(new DamagePotion("Damage Potion", 2, ((Math.random() * (15 - 5)) + 5)));       //Random Amount of Health gain
         itemsList.add(new ShieldRing("Shield Ring", 1.5, ((Math.random() * (2 - 0.75)) + 0.75)));  //Random Amount of resistance gain
         itemsList.add(new StrenghtRing("Strength Ring", 1.5, 5));
         itemsList.add(new CharmRing("Charm Ring", 1.5, ((Math.random() * (2 - 0.45)) + 0.45), 0.5));   //Almost like Resistance only difference is the enemies FV gets lower  // Charm = the Chances that it Works
@@ -222,6 +222,7 @@ public class ConfigCharacters {
             fightingCharacters.get(player)
                     .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player).getfV() * 0.5));
             fightingCharacters.get(player).setAccuracy(1);
+
         } else if(fightingCharacters.get(player).getClass().equals(Goblin.class)) {
             fightingCharacters.get(player)
                     .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player).getfV() * 0.5));
