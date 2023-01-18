@@ -18,16 +18,20 @@ public class Fight {
         } else {
             if(playerTwo.getSpeed() > playerOne.getSpeed()) fightOptions(playerTwo, playerOne);
         }
-        int i = 0;
-        if(i <= 20) {
-            for (i = 0; i <= 20; i++) {
+        int i;
+        for (i = 0; i <= 20; i++) {
+            if(i <= 20) {
                 fightOptions(playerOne, playerTwo);
                 i = winningConditions(playerOne, playerTwo, i);
                 fightOptions(playerTwo, playerOne);
                 i = winningConditions(playerTwo, playerOne, i);
+            } else {
+                System.out.println(color("red" + " It seems the Game has ended in a Draw bc no one had under 0 HP"));   //Todo Fix: As soon as the round is over like it asks to choose on of the 6 fight options it just ends without going to check the if condition.
+                System.out.println(color("gold") + playerOne.getlP() + color("blue") + " there was still that much Health in the Character " + playerOne.getName() + color(""));
+                System.out.println(color("gold") + playerTwo.getlP() + color("red") + " there was still that much Health in the Character " + playerTwo.getName() + color(""));
             }
         }
-    } //Todo: the thing with when round 20 end to be done so it says its a draw or not
+    } //Todo: the thing with when round 20 ends to be done so it says its a draw
 
     private static int winningConditions(Gamefigurine playerOne, Gamefigurine playerTwo, int i) {
         if(playerOne.getlP() < 0 || playerTwo.getlP() < 0) {
