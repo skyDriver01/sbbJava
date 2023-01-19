@@ -298,7 +298,7 @@ public class Fight {
 
     private static void damageDeal(Gamefigurine player, Gamefigurine opponent) {
         Log.addMessage(player.getName() + " attacked " + opponent.getName());
-        opponent.setlP(opponent.getlP() - (player.getfV() / opponent.getRes()));
+        opponent.setlP(opponent.getlP() - (player.getfV() / opponent.getRes())); // siu
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
     }
