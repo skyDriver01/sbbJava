@@ -2,7 +2,6 @@ package objektOrientedDesign.roleplay;
 
 import objektOriented.aufg1.aufg2.InputIn;
 import objektOrientedDesign.roleplay.gamefigures.Gamefigurine;
-import objektOrientedDesign.roleplay.gamefigures.Orc;
 import objektOrientedDesign.roleplay.items.*;
 import objektOrientedDesign.roleplay.weapons.Weapon;
 
@@ -238,16 +237,6 @@ public class Fight {
 
     private static void checkAccuracyToHit(Gamefigurine player, Gamefigurine opponent) {
         if(Math.random() * 1 < 0 + player.getAccuracy()) {  //Checks if you could hit your Attack to then check Armor and more
-            if(player.getClass().equals(Orc.class)){
-                if(player.getlP() == player.getlP() / 4){
-                    ((Orc) player).setRage(true);
-                    if(((Orc) player).isRage() == true){
-                        player.setfV(player.getfV() * 3);       //Todo: needs to be in orc class
-                        player.setRes(player.getRes() + player.getRes() / 2);
-                        Log.addMessage(player.getName() + " Was enraged");
-                    }
-                }
-            }
             gotArmor(player, opponent); //Checks if Enemy has Armor On
         } else {
             if(Math.random() * 1 < 0 + opponent.getEvasion()) {        //Looks if the evasion was high enought to evade the attack
