@@ -14,9 +14,10 @@ public class Orc extends Gamefigurine {
     public double isRage() {
         if(getClass().equals(Orc.class)) {
             if(super.getlP() == super.getlP() / 4) {
-                super.setfV(super.getfV() * 3);
-                super.setRes(getRes() + super.getRes() / 2);
+                double rageFV = super.getfV() * 3;
+                double rageRes = super.getRes() + (super.getRes() / 2);
                 Log.addMessage(getName() + " Was enraged");
+                return rageFV + rageRes;
             }
         }
         return super.getfV() + super.getRes();

@@ -13,7 +13,7 @@ public class Troll extends Gamefigurine {
     public double getfV() {
         if(getWeapon() != null) {
             if(getWeapon().getClass().equals(Club.class)) {
-                return super.setfV(super.getfV() * 2);
+                return super.getfV() * 2;
             }
         }
         return super.getfV();

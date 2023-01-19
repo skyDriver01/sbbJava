@@ -123,7 +123,6 @@ public class Fight {
                             Log.addMessage(player.getName() + " tried to changed his weapon to:" + weapons.getWeapon() + " but failed");
                         }
                     }
-
                 } else {
                     System.out.println(color("red" + "You dont have any other weapons than the one you are using. Well you just wasted your turn." + color("")));
                 }
