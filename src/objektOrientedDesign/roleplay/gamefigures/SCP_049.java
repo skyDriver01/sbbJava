@@ -2,30 +2,21 @@ package objektOrientedDesign.roleplay.gamefigures;
 
 public class SCP_049 extends Gamefigurine {
     private double instantDeath;
-    private double regeneration;
-
     public SCP_049(String name, double lP, double cC, double fV, double res, double speed, double accuracy,
                    double evasion,
-                   double instantDeath, double regeneration) {
+                   double instantDeath ) {
         super(name, lP, cC, fV, res, speed, accuracy, evasion);
         this.instantDeath = instantDeath;
-        this.regeneration = regeneration;
     }
 
+    @Override
     public double getInstantDeath() {
-        return getInstantDeath();
+        return instantDeath;
     }
 
+    @Override
     public void setInstantDeath(double instantDeath) {
         this.instantDeath = instantDeath;
-    }
-
-    public double getRegeneration() {
-        return regeneration;
-    }
-
-    public void setRegeneration(double regeneration) {
-        this.regeneration = regeneration;
     }
 }
 /*

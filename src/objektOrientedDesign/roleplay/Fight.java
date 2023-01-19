@@ -2,6 +2,7 @@ package objektOrientedDesign.roleplay;
 
 import objektOriented.aufg1.aufg2.InputIn;
 import objektOrientedDesign.roleplay.gamefigures.Gamefigurine;
+import objektOrientedDesign.roleplay.gamefigures.Orc;
 import objektOrientedDesign.roleplay.items.*;
 import objektOrientedDesign.roleplay.weapons.Weapon;
 
@@ -25,13 +26,16 @@ public class Fight {
                 i = winningConditions(playerOne, playerTwo, i);
                 fightOptions(playerTwo, playerOne);
                 i = winningConditions(playerTwo, playerOne, i);
-            } else {
-                System.out.println(color("red" + " It seems the Game has ended in a Draw bc no one had under 0 HP"));   //Todo Fix: As soon as the round is over like it asks to choose on of the 6 fight options it just ends without going to check the if condition.
-                System.out.println(color("gold") + playerOne.getlP() + color("blue") + " there was still that much Health in the Character " + playerOne.getName() + color(""));
-                System.out.println(color("gold") + playerTwo.getlP() + color("red") + " there was still that much Health in the Character " + playerTwo.getName() + color(""));
+                if(i == 20) {
+                    System.out.println(color("violet") + "It seems the Game has ended in a Draw bc no one had under 0 HP");
+                    System.out.println(whiteLine());
+                    System.out.println(color("gold") + playerOne.getlP() + color("blue") + " there was still that much Health in the Character " + playerOne.getName() + color(""));
+                    System.out.println(color("gold") + playerTwo.getlP() + color("red") + " there was still that much Health in the Character " + playerTwo.getName() + color(""));
+                    System.out.println(whiteLine());
+                }
             }
         }
-    } //Todo: the thing with when round 20 ends to be done so it says its a draw
+    }
 
     private static int winningConditions(Gamefigurine playerOne, Gamefigurine playerTwo, int i) {
         if(playerOne.getlP() < 0 || playerTwo.getlP() < 0) {
@@ -56,6 +60,8 @@ public class Fight {
         System.out.println(color("gold") + playerOne.getlP() + color("blue") + " Is the Remaining amount of health on " + playerOne.getName() + color(""));
         System.out.println(color("gold") + playerTwo.getlP() + color("red") + " has died with that amount on " + playerTwo.getName() + color(""));
         System.out.println(greenLine());
+        Log.addMessage(playerOne.getName() + " Won");
+        Log.printLog();
         System.exit(0);
     }
 
@@ -67,6 +73,8 @@ public class Fight {
         System.out.println(color("gold") + playerTwo.getlP() + color("blue") + " Is the Remaining amount of health on " + playerTwo.getName() + color(""));
         System.out.println(color("gold") + playerOne.getlP() + color("red") + " has died with that amount on " + playerOne.getName() + color(""));
         System.out.println(greenLine());
+        Log.addMessage(playerTwo.getName() + " Won");
+        Log.printLog();
         System.exit(0);
     }
 
@@ -87,7 +95,6 @@ public class Fight {
         int yourMove = InputIn.nexIntOut("Choose what you would like to do this round");
         switch (yourMove) {
             case 1 -> attackOpponent(player, opponent);
-
             case 2 -> {
                 if(player.getWeaponBackpack() != null) {
                     String changeWeapon = InputIn.nextLineOut(color("cyan") + "what weapon do you wish to activate?" + color(""));
@@ -99,8 +106,10 @@ public class Fight {
                             player.setWeapon(weapons);
                             player.setfV(player.getfV() + weapons.getfV());
                             player.setcC(player.getcC() - weapons.getWeight());
+                            Log.addMessage(player.getName() + " changed his weapon to:" + weapons.getWeapon());
                         } else {
                             System.out.println(color("red") + "seems like you dont have a weapon like that in your inventory" + color(""));
+                            Log.addMessage(player.getName() + " tried to changed his weapon to:" + weapons.getWeapon() + " but failed");
                         }
                     }
 
@@ -113,6 +122,7 @@ public class Fight {
                 player.setcC(player.getcC() + player.getWeapon().getWeight());
                 player.setWeapon(null);
                 player.setfV(1);
+                Log.addMessage(player.getName() + " dropped his weapon");
             }
             case 4 -> {
                 if(player.getItemBackpack() != null) {
@@ -128,12 +138,19 @@ public class Fight {
                     }
                 }
             }
-            case 5 -> System.out.println(color("lime") + "Ok seems understandable?" + color(""));
+            case 5 -> {
+                System.out.println(color("lime") + "Ok seems understandable?" + color(""));
+                Log.addMessage(player.getName() + " did nothing");
+            }
             case 6 -> {
                 player.setlP(-1);
+                Log.addMessage(player.getName() + " gave up");
                 winningConditions(player, opponent, 21);
             }
-            default -> System.out.println(color("orange") + "So just do the same as 5? Got it." + color(""));
+            default -> {
+                System.out.println(color("orange") + "So just do the same as 5? Got it." + color(""));
+                Log.addMessage(player.getName() + " failed to press a number from 1-6");
+            }
         }
     }
 
@@ -171,22 +188,26 @@ public class Fight {
     private static void charmRing(Gamefigurine opponent, CharmRing choice) {
         if(Math.random() * 1 < 0 + choice.getCharm()) {
             opponent.setfV(opponent.getfV() - choice.getLessenEnemiesFV());
+            Log.addMessage(opponent.getName() + " was charmed by " + choice.getItem());
         } else {
             System.out.println(color("red") + "Charm Ring was used but it was unable to charm the Opponent" + color(""));
         }
     }
 
     private static void strengthRing(Gamefigurine player, Item choice) {
+        Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setcC(player.getcC() + ((StrengthRing) choice).getMoreCC());
         player.setcC(player.getcC() + choice.getWeight());
     }
 
     private static void powerPot(Gamefigurine player, Item choice) {
+        Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setcC(player.getcC() + ((PowerPotion) choice).getGiveMoreCC());
         player.setcC(player.getcC() + choice.getWeight());
     }
 
     private static void healthPot(Gamefigurine player, Gamefigurine opponent, Item choice) {
+        Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setlP(player.getlP() + ((HealthPotion) choice).getGiveLP());
         player.setcC(player.getcC() + choice.getWeight());
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
@@ -194,17 +215,27 @@ public class Fight {
     }
 
     private static void damagePot(Gamefigurine player, Item choice) {
+        Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setfV(player.getfV() + ((DamagePotion) choice).getAddFV());
         player.setcC(player.getcC() + choice.getWeight());
     }
 
     private static void attackOpponent(Gamefigurine player, Gamefigurine opponent) {
-        //Todo: Also look about how to make the instant death thing in here, so it can occur if the player has it
         checkAccuracyToHit(player, opponent);
     }
 
     private static void checkAccuracyToHit(Gamefigurine player, Gamefigurine opponent) {
         if(Math.random() * 1 < 0 + player.getAccuracy()) {  //Checks if you could hit your Attack to then check Armor and more
+            if(player.getClass().equals(Orc.class)){
+                if(player.getlP() == player.getlP() / 4){
+                    ((Orc) player).setRage(true);
+                    if(((Orc) player).isRage() == true){
+                        player.setfV(player.getfV() * 3);
+                        player.setRes(player.getRes() + player.getRes() / 2);
+                        Log.addMessage(player.getName() + " Was enraged");
+                    }
+                }
+            }
             gotArmor(player, opponent); //Checks if Enemy has Armor On
         } else {
             if(Math.random() * 1 < 0 + opponent.getEvasion()) {        //Looks if the evasion was high enought to evade the attack
@@ -216,6 +247,7 @@ public class Fight {
     }
 
     private static void attackEvaded(Gamefigurine player, Gamefigurine opponent) {
+        Log.addMessage(opponent.getName() + " Evaded an attack");
         System.out.println(color("orange") + "The Opponent Evaded the attack" + color(""));
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
@@ -225,11 +257,11 @@ public class Fight {
         if(opponent.getArmor() != null) {       //Seeing if you have Armor if yes it does the stuff with the probability
             checkIfArmorWillSaveEnemy(player, opponent);
         } else {
-            if(Math.random() * 1 < 0 + player.getInstantDeath()){
-                System.out.println("");
+            if(Math.random() * 1 < 0 + player.getInstantDeath()) {
+                Log.addMessage(opponent.getName() + " Instantly Died");
                 System.out.println(color("ice") + "It seems you have perished instantly because death favored your opponent player: " + player.getName() + color(""));
                 opponent.setlP(-999999);
-            }else {
+            } else {
                 damageDeal(player, opponent);
             }
         }
@@ -238,10 +270,11 @@ public class Fight {
     private static void checkIfArmorWillSaveEnemy(Gamefigurine player, Gamefigurine opponent) {
         if(!(Math.random() * 1 < 0 + opponent.getArmor()                 //Checking the probability of the Armor saving you if not then you deal damage.
                                              .getNoDamage())) {
-            if(Math.random() * 1 < 0 + player.getInstantDeath()){
+            if(Math.random() * 1 < 0 + player.getInstantDeath()) {
+                Log.addMessage(opponent.getName() + " Instantly Died");
                 System.out.println(color("ice") + "It seems you have perished instantly because death favored your opponent player: " + opponent.getName() + color(""));
                 opponent.setlP(-999999);
-            }else {
+            } else {
                 damageDeal(player, opponent);
             }
         } else {
@@ -250,18 +283,21 @@ public class Fight {
     }
 
     private static void attackMissed(Gamefigurine player, Gamefigurine opponent) {
+        Log.addMessage(player.getName() + " missed");
         System.out.println(color("orange") + "You missed" + color(""));     //Looks if you had enough accuracy to hit
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
     }
 
     private static void noDamageBcArmor(Gamefigurine player, Gamefigurine opponent) {
+        Log.addMessage(opponent.getName() + " Armor saved him from Damage");
         System.out.println(color("orange") + "It seems you hit your opponent bur their armor saved them from taking Damage" + color(""));
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
     }
 
     private static void damageDeal(Gamefigurine player, Gamefigurine opponent) {
+        Log.addMessage(player.getName() + " attacked " + opponent.getName());
         opponent.setlP(opponent.getlP() - (player.getfV() / opponent.getRes()));
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));

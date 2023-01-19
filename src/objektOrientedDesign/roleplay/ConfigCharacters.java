@@ -36,10 +36,9 @@ public class ConfigCharacters {
         characters.add(new Dwarf("Dwarf", 80, 14, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0.3));
         characters.add(new Elven("Elven", 110, 12, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.75, 0.09));
         characters.add(new Human("Human", 100, 15, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.8, 0.07));
-        characters.add(new Orc("Orc", 115, 17, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.75, 0.05, false));
-        characters.add(new SCP_049("SCP_049", 90, 18, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.9, 0.02, 0.01, 0.05));
-        characters.add(new Troll("Troll", 125, 20, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0));
-        characters.add(new ToTest("OP", 10000, 15000, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 1, 1, 1));
+        characters.add(new Orc("Orc", 105, 17, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.75, 0.05, false));
+        characters.add(new SCP_049("SCP_049", 90, 18, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.9, 0.02, 0.01));
+        characters.add(new Troll("Troll", 115, 20, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0));
         characters.add(new Goblin("Goblin", 85, 13, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0.08));
         gameFigurines = characters;
     }
@@ -47,11 +46,11 @@ public class ConfigCharacters {
     public static void initWeapons() {
         List <Weapon> weaponList = new ArrayList <>();
         weaponList.add(new Club("Club", 4, 5, 0.8, 5));
-        weaponList.add(new Sword("Sword", 2, 6, 0.95, 3, 0.05));
-        weaponList.add(new Scythe("Scythe", 3, 7, 1, 1, 0.05));
+        weaponList.add(new Sword("Sword", 2, 6, 0.95, 3));
+        weaponList.add(new Scythe("Scythe", 3, 7, 1, 1));
         weaponList.add(new Bow("Bow", 1, 5.5, 0.75));
         weaponList.add(new Musket("Musket", 2.5, 8, 1));
-        weaponList.add(new ThrowingKnife("Throwing Knives", 0.5, 10, 0.9, 3));
+        weaponList.add(new ThrowingKnife("Throwing Knives", 0.5, 10, 0.9));
         weapons = weaponList;
     }
 
@@ -59,10 +58,10 @@ public class ConfigCharacters {
         List <Item> itemsList = new ArrayList <>();
         itemsList.add(new HealthPotion("Health Potion", 2, ((Math.random() * (20 - 5)) + 5)));        //Random Amount of Enemy Health Taken
         itemsList.add(new PowerPotion("Power Potion", 2, 5));
-        itemsList.add(new DamagePotion("Damage Potion", 2, ((Math.random() * (10 - 5)) + 5)));       //Random Amount of Health gain
+        itemsList.add(new DamagePotion("Damage Potion", 6, ((Math.random() * (10 - 5)) + 5)));       //Random Amount of Health gain
         itemsList.add(new ShieldRing("Shield Ring", 1.5, ((Math.random() * (2 - 0.75)) + 0.75)));  //Random Amount of resistance gain
         itemsList.add(new StrengthRing("Strength Ring", 1.5, 5));
-        itemsList.add(new CharmRing("Charm Ring", 1.5, ((Math.random() * (2 - 0.45)) + 0.45), 0.5));   //Almost like Resistance only difference is the enemies FV gets lower  // Charm = the Chances that it Works
+        itemsList.add(new CharmRing("Charm Ring", 3, ((Math.random() * (2 - 0.45)) + 0.45), 0.5));   //Almost like Resistance only difference is the enemies FV gets lower  // Charm = the Chances that it Works
         itemsList.add(new LightArmor("Light Armor", 3, 0.3, 0.1, 0.5));
         itemsList.add(new HeavyArmor("Heavy Armor", 6.5, 0.75, 0.25, 1));
         items = itemsList;
@@ -82,8 +81,7 @@ public class ConfigCharacters {
             chooseFigurine.put(4, "3: Orc, CC = 17");
             chooseFigurine.put(5, "4: SCP_049, CC = 18");
             chooseFigurine.put(6, "5: Troll, CC = 20");
-            chooseFigurine.put(7, "6: OP, CC = 1500");
-            chooseFigurine.put(8, "7: Goblin, CC = 13");
+            chooseFigurine.put(7, "6: Goblin, CC = 13");
             for (int i = 1; i <= chooseFigurine.size(); i++) {
                 System.out.println(chooseFigurine.get(i));
             }
@@ -99,8 +97,8 @@ public class ConfigCharacters {
                 case 1 -> {
                     fightingCharacters.add(gameFigurines.get(1));
                     fightingCharacters.get(player)
-                            .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player)
-                                                                                     .getmV() / 2));
+                                      .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player)
+                                                                                                         .getmV() / 2));
                     saveCharacter(gameFigurines.get(1), player);
                     noCharacterChosen = false;
                     chooseAWeapon(player);
@@ -135,12 +133,6 @@ public class ConfigCharacters {
                     noCharacterChosen = false;
                     chooseAWeapon(player);
                 }
-                case 7 -> {
-                    fightingCharacters.add(gameFigurines.get(7));
-                    saveCharacter(gameFigurines.get(7), player);
-                    noCharacterChosen = false;
-                    chooseAWeapon(player);
-                }
                 default -> System.out.println(color("lime") + "You did not choose a Character" + color(""));
             }
         }
@@ -166,7 +158,7 @@ public class ConfigCharacters {
             int chooseYourWeapons = InputIn.nexIntOut("Type the Number of the Desired Action");
             switch (chooseYourWeapons) {
                 case 1 -> {
-                    if(weapons.getClass().equals(Club.class)){
+                    if(weapons.getClass().equals(Club.class)) {
                         weapons.get(0).setfV(weapons.get(0).getfV() + (weapons.get(0).getBv() / 2));
                     }
                     equipWeapon(weapons.get(0), player);
@@ -175,14 +167,16 @@ public class ConfigCharacters {
                     }
                 }
                 case 2 -> {
-                    if(weapons.getClass().equals(Sword.class)){
+                    if(weapons.getClass().equals(Sword.class)) {
                         weapons.get(1).setfV(weapons.get(1).getfV() + (weapons.get(1).getBv() / 2));
                     }
-                    equipWeapon(weapons.get(1), player);}
+                    equipWeapon(weapons.get(1), player);
+                }
                 case 3 -> {
-                    if(weapons.getClass().equals(Scythe.class)){
+                    if(weapons.getClass().equals(Scythe.class)) {
                         weapons.get(2).setfV(weapons.get(2).getfV() + (weapons.get(2).getBv() / 2));
-                    }                    equipWeapon(weapons.get(2), player);
+                    }
+                    equipWeapon(weapons.get(2), player);
                     if(fightingCharacters.get(player).getClass().equals(SCP_049.class)) {
                         fightingCharacters.get(player).setInstantDeath(0.02);
                     }
@@ -192,25 +186,22 @@ public class ConfigCharacters {
                     changeGoblinOrElvenValues(player);  //it changes the values if they choose bow bc of the specialty of these classes
                 }
                 case 5 -> equipWeapon(weapons.get(4), player);
-                case 6 -> {
-                    if(fightingCharacters.get(player).getClass().equals(Goblin.class)) {
-                        fightingCharacters.get(player).setAmount(6);
-                    }
-                    equipWeapon(weapons.get(5), player);
-                }
+                case 6 -> equipWeapon(weapons.get(5), player);
                 case 7 -> {
                     loopForWeapons = false;
                     chooseAItem(player);
                 }
-                default ->
-                        System.out.println(color("orange") + "Really now? You have 7 Options and you did not manage to pick any of them. Try Again" + color(""));
+                default -> {
+                    System.out.println(color("orange") + "Really now? You have 7 Options and you did not manage to pick any of them. Try Again" + color(""));
+                    Log.addMessage(fightingCharacters.get(player).getName() + "failed to press a number from 1-7");
+                }
             }
         }
     }
 
     private static void infosForWeapons() {
         System.out.println(whiteLine());
-        System.out.println(color("cyan") + "Choose the weapon you would like. (BTW when choosing the Throwing Knives you only get 3 uses per one you pick but they do a good amount of Damage for this reason)");
+        System.out.println(color("cyan") + "Choose the weapon you would like.");
         System.out.println("The First Weapon you choose will be your Active Weapon and to change the active weapon you will use up a turn");
         System.out.println("You also have a limited amount of CC (Carrying Capacity) so keep in mind not to use it all up already" + color(""));
         System.out.println(whiteLine());
@@ -220,47 +211,60 @@ public class ConfigCharacters {
     private static void changeGoblinOrElvenValues(int player) {
         if(fightingCharacters.get(player).getClass().equals(Elven.class)) {
             fightingCharacters.get(player)
-                    .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player).getfV() * 0.5));
+                              .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player)
+                                                                                                 .getfV() * 0.5));
             fightingCharacters.get(player).setAccuracy(1);
 
-        } else if(fightingCharacters.get(player).getClass().equals(Goblin.class)) {
-            fightingCharacters.get(player)
-                    .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player).getfV() * 0.5));
+        } else {
+            if(fightingCharacters.get(player).getClass().equals(Goblin.class)) {
+                fightingCharacters.get(player)
+                                  .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player)
+                                                                                                     .getfV() * 0.5));
+            }
         }
     }
 
     public static void equipWeapon(Weapon weapon, int player) {
         if(fightingCharacters.get(player).getcC() >= weapon.getWeight()) {
             if(fightingCharacters.get(player)
-                       .getWeapon() == null) {    //Checks if i don't already have a weapon if not then the first weapon auto equips
+                                 .getWeapon() == null) {    //Checks if i don't already have a weapon if not then the first weapon auto equips
                 fightingCharacters.get(player).setWeapon(weapon);
                 fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - weapon.getWeight());
                 fightingCharacters.get(player).setfV(fightingCharacters.get(player).getfV() + weapon.getfV());
+                Log.addMessage(fightingCharacters.get(player)
+                                                 .getName() + " equipped this weapon first: " + weapon.getWeapon());
             } else {
                 fightingCharacters.get(player).getWeaponBackpack()
-                        .add(weapon);     //Weapon gets added to your inventory for later activation if you wish
+                                  .add(weapon);     //Weapon gets added to your inventory for later activation if you wish
                 fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - weapon.getWeight());
+                Log.addMessage(fightingCharacters.get(player)
+                                                 .getName() + " added this weapon to his inventory: " + weapon.getWeapon());
             }
         } else {
             System.out.println(color("red") + "That Item is to Heavy for you" + color(""));
+            Log.addMessage(fightingCharacters.get(player).getName() + " had no more CC to get another Weapon");
         }
         System.out.println(color("gold") + fightingCharacters.get(player)
-                .getcC() + color("magenta") + ": Is your Remaining Carrying Capacity" + color(""));
+                                                             .getcC() + color("magenta") + ": Is your Remaining Carrying Capacity" + color(""));
     }
 
     public static void saveCharacter(Gamefigurine gamefigurine, int player) {
         fightingCharacters.get(player).setName((gamefigurine.getName()));
+        Log.addMessage(fightingCharacters.get(player).getName() + " was chosen as one players Character");
     }
 
     public static void equipItem(Item item, int player) {
         if(fightingCharacters.get(player).getcC() >= item.getWeight()) {
             fightingCharacters.get(player).getItemBackpack().add(item);
             fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - item.getWeight());
+            Log.addMessage(fightingCharacters.get(player)
+                                             .getName() + " added this weapon to his inventory: " + item.getItem());
         } else {
             System.out.println(color("red") + "That Item is to Heavy for you" + color(""));
+            Log.addMessage(fightingCharacters.get(player).getName() + " had no more CC to get another Item");
         }
         System.out.println(color("gold") + fightingCharacters.get(player)
-                .getcC() + color("magenta") + ": Is your Remaining Carrying Capacity" + color(""));
+                                                             .getcC() + color("magenta") + ": Is your Remaining Carrying Capacity" + color(""));
     }
 
     public static void equipArmor(Armor armor, int player) {
@@ -268,19 +272,24 @@ public class ConfigCharacters {
             if(fightingCharacters.get(player).getArmor() == null) {
                 fightingCharacters.get(player).setArmor(armor);
                 fightingCharacters.get(player)
-                        .setRes(fightingCharacters.get(player).getArmor().getRes() + armor.getRes());
+                                  .setRes(fightingCharacters.get(player).getArmor().getRes() + armor.getRes());
                 fightingCharacters.get(player)
-                        .setSpeed(fightingCharacters.get(player).getSpeed() - armor.getSlowness());
+                                  .setSpeed(fightingCharacters.get(player).getSpeed() - armor.getSlowness());
                 fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - armor.getWeight());
+                Log.addMessage(fightingCharacters.get(player)
+                                                 .getName() + " has equipped this Armor: " + armor.getItem());
             } else {
                 fightingCharacters.get(player).getItemBackpack().add(armor);
                 fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - armor.getWeight());
+                Log.addMessage(fightingCharacters.get(player)
+                                                 .getName() + " added this Armor to his inventory " + armor.getItem());
             }
         } else {
             System.out.println(color("red") + "You have to much weight accumulated that you cannot hold this anymore." + color(""));
+            Log.addMessage(fightingCharacters.get(player).getName() + " had no more CC to get more Armor");
         }
         System.out.println(color("gold") + fightingCharacters.get(player)
-                .getcC() + color("magenta") + ": Is your Remaining Carrying Capacity" + color(""));
+                                                             .getcC() + color("magenta") + ": Is your Remaining Carrying Capacity" + color(""));
     }
 
     public static void chooseAItem(int player) {
@@ -294,10 +303,10 @@ public class ConfigCharacters {
             System.out.println(redLine());
             itemChoice.put(1, "1: Health Potion, Weight = 2");
             itemChoice.put(2, "2: Power Potion, Weight = 2");
-            itemChoice.put(3, "3: Damage Potion, Weight = 2");
+            itemChoice.put(3, "3: Damage Potion, Weight = 6");
             itemChoice.put(4, "4: Shield Ring, Weight = 1.5");
             itemChoice.put(5, "5: Strength Ring, Weight = 1.5");
-            itemChoice.put(6, "6: Charm Ring, Weight = 1.5");
+            itemChoice.put(6, "6: Charm Ring, Weight = 3");
             itemChoice.put(7, "7: Light Armor, Weight = 3");
             itemChoice.put(8, "8: Heavy Armor, Weight = 6.5");
             itemChoice.put(9, "9: No more Items");
@@ -315,23 +324,32 @@ public class ConfigCharacters {
                 case 6 -> equipItem(items.get(5), player);
                 case 7 -> {
                     if(!(fightingCharacters.get(player).getClass().equals(Troll.class) || fightingCharacters.get(player)
-                            .getClass().equals(SCP_049.class))) {
+                                                                                                            .getClass()
+                                                                                                            .equals(SCP_049.class))) {
                         equipArmor((Armor) items.get(6), player);
                     } else {
                         System.out.println(color("red") + "The Character you have Chosen is not fit to equip Light Armor" + color(""));
+                        Log.addMessage(fightingCharacters.get(player)
+                                                         .getName() + "tried to equip armor that he cant wear");
                     }
                 }
                 case 8 -> {
                     if(fightingCharacters.get(player).getClass().equals(Human.class) || fightingCharacters.get(player)
-                            .getClass().equals(Orc.class) || fightingCharacters.get(player).getClass()
-                               .equals(Dwarf.class)) {
+                                                                                                          .getClass()
+                                                                                                          .equals(Orc.class) || fightingCharacters
+                               .get(player).getClass().equals(Dwarf.class)) {
                         equipArmor((Armor) items.get(7), player);
                     } else {
                         System.out.println(color("red") + "The Character you have Chosen is not fit to equip Heavy Armor" + color(""));
+                        Log.addMessage(fightingCharacters.get(player)
+                                                         .getName() + "tried to equip armor that he cant wear");
                     }
                 }
                 case 9 -> loopForItems = false;
-                default -> System.out.println(color("orange") + "Come on, again?? THERE ARE 9 OPTIONS" + color(""));
+                default -> {
+                    System.out.println(color("orange") + "Come on, again?? THERE ARE 9 OPTIONS" + color(""));
+                    Log.addMessage(fightingCharacters.get(player).getName() + "failed to press a number from 1-9");
+                }
             }
         }
     }

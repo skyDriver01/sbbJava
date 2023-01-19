@@ -47,6 +47,7 @@ public class TextStuff {
         final String ANSI_GOLD = "\u001b[38;5;220m";
         final String ANSI_MAGENTA = "\u001b[38;5;198m";
         final String ANSI_ICEBLUE = "\u001b[38;5;195m";
+        final String ANSI_VIOLET = "\u001b[38;5;129m";
 
         return switch (color) {
             case "black" -> ANSI_BLACK;
@@ -63,6 +64,7 @@ public class TextStuff {
             case "gold" -> ANSI_GOLD;
             case "magenta" -> ANSI_MAGENTA;
             case "ice" -> ANSI_ICEBLUE;
+            case "violet" -> ANSI_VIOLET;
             default -> ANSI_RESET;
         };
     }
