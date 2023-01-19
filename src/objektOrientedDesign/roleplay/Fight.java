@@ -19,6 +19,10 @@ public class Fight {
         } else {
             if(playerTwo.getSpeed() > playerOne.getSpeed()) fightOptions(playerTwo, playerOne);
         }
+        play20Rounds(playerOne, playerTwo);
+    }
+
+    private static void play20Rounds(Gamefigurine playerOne, Gamefigurine playerTwo) {
         int i;
         for (i = 0; i <= 20; i++) {
             if(i <= 20) {
@@ -26,14 +30,18 @@ public class Fight {
                 i = winningConditions(playerOne, playerTwo, i);
                 fightOptions(playerTwo, playerOne);
                 i = winningConditions(playerTwo, playerOne, i);
-                if(i == 20) {
-                    System.out.println(color("violet") + "It seems the Game has ended in a Draw bc no one had under 0 HP");
-                    System.out.println(whiteLine());
-                    System.out.println(color("gold") + playerOne.getlP() + color("blue") + " there was still that much Health in the Character " + playerOne.getName() + color(""));
-                    System.out.println(color("gold") + playerTwo.getlP() + color("red") + " there was still that much Health in the Character " + playerTwo.getName() + color(""));
-                    System.out.println(whiteLine());
-                }
+                draw(playerOne, playerTwo, i);      //draw because no one won
             }
+        }
+    }
+
+    private static void draw(Gamefigurine playerOne, Gamefigurine playerTwo, int i) {
+        if(i == 20) {
+            System.out.println(color("violet") + "It seems the Game has ended in a Draw bc no one had under 0 HP");
+            System.out.println(whiteLine());
+            System.out.println(color("gold") + playerOne.getlP() + color("blue") + " there was still that much Health in the Character " + playerOne.getName() + color(""));
+            System.out.println(color("gold") + playerTwo.getlP() + color("red") + " there was still that much Health in the Character " + playerTwo.getName() + color(""));
+            System.out.println(whiteLine());
         }
     }
 
@@ -92,6 +100,10 @@ public class Fight {
             System.out.println(chooseNextMove.get(i));
         }
         System.out.println(greenLine());
+        moveChoices(player, opponent);
+    }
+
+    private static void moveChoices(Gamefigurine player, Gamefigurine opponent) {
         int yourMove = InputIn.nexIntOut("Choose what you would like to do this round");
         switch (yourMove) {
             case 1 -> attackOpponent(player, opponent);
@@ -230,7 +242,7 @@ public class Fight {
                 if(player.getlP() == player.getlP() / 4){
                     ((Orc) player).setRage(true);
                     if(((Orc) player).isRage() == true){
-                        player.setfV(player.getfV() * 3);
+                        player.setfV(player.getfV() * 3);       //Todo: needs to be in orc class
                         player.setRes(player.getRes() + player.getRes() / 2);
                         Log.addMessage(player.getName() + " Was enraged");
                     }
@@ -271,7 +283,7 @@ public class Fight {
         if(!(Math.random() * 1 < 0 + opponent.getArmor()                 //Checking the probability of the Armor saving you if not then you deal damage.
                                              .getNoDamage())) {
             if(Math.random() * 1 < 0 + player.getInstantDeath()) {
-                Log.addMessage(opponent.getName() + " Instantly Died");
+                Log.addMessage(opponent.getName() + " Instantly Died");     //Todo: ask if i have to put this in the specific class
                 System.out.println(color("ice") + "It seems you have perished instantly because death favored your opponent player: " + opponent.getName() + color(""));
                 opponent.setlP(-999999);
             } else {
