@@ -225,14 +225,25 @@ public class Fight {
         if(opponent.getArmor() != null) {       //Seeing if you have Armor if yes it does the stuff with the probability
             checkIfArmorWillSaveEnemy(player, opponent);
         } else {
-            damageDeal(player, opponent);
+            if(Math.random() * 1 < 0 + player.getInstantDeath()){
+                System.out.println("");
+                System.out.println(color("ice") + "It seems you have perished instantly because death favored your opponent player: " + player.getName() + color(""));
+                opponent.setlP(-999999);
+            }else {
+                damageDeal(player, opponent);
+            }
         }
     }
 
     private static void checkIfArmorWillSaveEnemy(Gamefigurine player, Gamefigurine opponent) {
         if(!(Math.random() * 1 < 0 + opponent.getArmor()                 //Checking the probability of the Armor saving you if not then you deal damage.
                                              .getNoDamage())) {
-            damageDeal(player, opponent);
+            if(Math.random() * 1 < 0 + player.getInstantDeath()){
+                System.out.println(color("ice") + "It seems you have perished instantly because death favored your opponent player: " + opponent.getName() + color(""));
+                opponent.setlP(-999999);
+            }else {
+                damageDeal(player, opponent);
+            }
         } else {
             noDamageBcArmor(player, opponent);  //Armor saves you from the Damage
         }

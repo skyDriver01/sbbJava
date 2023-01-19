@@ -286,7 +286,6 @@ public class ConfigCharacters {
     public static void chooseAItem(int player) {
         initItems();
         HashMap <Integer, String> itemChoice = new HashMap <>();
-
         boolean loopForItems = true;
         while (loopForItems) {
             System.out.println(whiteLine());
@@ -309,17 +308,11 @@ public class ConfigCharacters {
             int chooseItem = InputIn.nexIntOut("Type the Number of the Desired Action");
             switch (chooseItem) {
                 case 1 -> equipItem(items.get(0), player);
-
                 case 2 -> equipItem(items.get(1), player);
-
                 case 3 -> equipItem(items.get(2), player);
-
                 case 4 -> equipItem(items.get(3), player);
-
                 case 5 -> equipItem(items.get(4), player);
-
                 case 6 -> equipItem(items.get(5), player);
-
                 case 7 -> {
                     if(!(fightingCharacters.get(player).getClass().equals(Troll.class) || fightingCharacters.get(player)
                             .getClass().equals(SCP_049.class))) {
