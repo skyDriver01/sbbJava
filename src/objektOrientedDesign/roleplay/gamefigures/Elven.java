@@ -5,4 +5,10 @@ public class Elven extends Gamefigurine {
                  double evasion) {
         super(name, lP, cC, fV, res, speed, accuracy, evasion);
     }
+
+    @Override
+    public double getfV(){
+        return super.getfV() + (getmV() / 2);
+    }
+
 }

@@ -24,6 +24,7 @@ public class ConfigCharacters {
         chooseYourCharacter(1);
         Fight.startTheFight(fightingCharacters.get(0), fightingCharacters.get(1));
     }
+
     public static void chooseYourCharacter(int player) {
         System.out.println(color("cyan") + "Player Choose the Character that you wish to play. (Every Character is a bit different and Combinations are also important to make your character the Strongest possible.)");
         System.out.println("Btw CC is Carrying Capacity so how much The Character can carry" + color(""));
@@ -58,9 +59,7 @@ public class ConfigCharacters {
             }
             case 1 -> {
                 fightingCharacters.add(gameFigurines.get(1));        //Elven
-                fightingCharacters.get(player)
-                                  .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player)   //Todo: needs to be in the elven class says aufg 6
-                                                                                                     .getmV() / 2));
+                fightingCharacters.get(player).getfV();
                 saveCharacter(gameFigurines.get(1), player);
                 noCharacterChosen = false;
                 chooseAWeapon(player);
