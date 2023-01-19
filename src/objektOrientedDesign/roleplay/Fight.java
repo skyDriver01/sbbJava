@@ -99,7 +99,7 @@ public class Fight {
             System.out.println(chooseNextMove.get(i));
         }
         System.out.println(greenLine());
-        moveChoices(player, opponent);
+        moveChoices(player, opponent);          //TODO: BUGFIX if a troll has a club it will keep multiplying his fv times 2 for every turn he attacks so yeah CHANGE THAT PLS ALSO MAKE SURE FOR OTHERS IT DOESNT HAPPEN.
     }
 
     private static void moveChoices(Gamefigurine player, Gamefigurine opponent) {
