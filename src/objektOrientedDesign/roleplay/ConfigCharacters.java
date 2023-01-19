@@ -144,7 +144,9 @@ public class ConfigCharacters {
                 }      //Scythe
                 case 4 -> {
                     equipWeapon(weapons.get(3), player);
-                    changeGoblinOrElvenValues(player);  //it changes the values if they choose bow bc of the specialty of these classes
+                    if(fightingCharacters.get(player).getClass().equals(Elven.class) || fightingCharacters.get(player).getClass().equals(Goblin.class)){
+                        fightingCharacters.get(player).setfV(fightingCharacters.get(player).getfV());
+                    }
                 }      //Bow
                 case 5 -> equipWeapon(weapons.get(4), player);      //Musket
                 case 6 -> equipWeapon(weapons.get(5), player);      //Throwing Knives
@@ -169,20 +171,6 @@ public class ConfigCharacters {
         System.out.println(purpleLine());
     }
 
-    private static void changeGoblinOrElvenValues(int player) {
-        if(fightingCharacters.get(player).getClass().equals(Elven.class)) {
-            fightingCharacters.get(player)
-                              .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player)
-                                                                                                 .getfV() * 0.5));
-            fightingCharacters.get(player).setAccuracy(1);              //Todo: Needs to be in their respective classes
-        } else {
-            if(fightingCharacters.get(player).getClass().equals(Goblin.class)) {
-                fightingCharacters.get(player)
-                                  .setfV(fightingCharacters.get(player).getfV() + (fightingCharacters.get(player)
-                                                                                                     .getfV() * 0.5));
-            }
-        }
-    }
 
     public static void equipWeapon(Weapon weapon, int player) {
         if(fightingCharacters.get(player).getcC() >= weapon.getWeight()) {
