@@ -12,7 +12,7 @@ import java.util.List;
 import static objektOrientedDesign.roleplay.TextStuff.*;
 
 public class ConfigCharacters {
-    static List <Gamefigurine> gameFigurines;
+    static List <Gamefigurine> gameFigurines = Gamefigurine.initGameFigurines();
     static List <Weapon> weapons;
     static List <Item> items;
     static List <Gamefigurine> fightingCharacters = new ArrayList <>();

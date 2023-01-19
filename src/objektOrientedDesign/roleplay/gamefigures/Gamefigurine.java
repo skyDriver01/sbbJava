@@ -40,7 +40,7 @@ public class Gamefigurine {
         this.accuracy = accuracy;
         this.evasion = evasion;
     }
-    public static void initGameFigurines() {
+    public static List <Gamefigurine> initGameFigurines() {
         double minFV = 0.9;
         double maxFV = 1.1;
         double minRes = 1;
@@ -56,6 +56,7 @@ public class Gamefigurine {
         characters.add(new Troll("Troll", 115, 20, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0));
         characters.add(new Goblin("Goblin", 85, 13, ((Math.random() * (maxFV - minFV)) + minFV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0.08));
         gameFigurines = characters;
+        return characters;
     }
 
     public String getName() {
