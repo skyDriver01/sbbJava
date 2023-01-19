@@ -186,19 +186,29 @@ public class Fight {
 
         } else {
             if(choice.getClass().equals(CharmRing.class)) {
-                charmRing(opponent, (CharmRing) choice);
+                charmRing(player,opponent, (CharmRing) choice);
             } else {
                 if(choice.getClass().equals(ShieldRing.class)) {
                     player.setRes(player.getRes() + ((ShieldRing) choice).getMoreRes());
+                    for (int i = 0; i <player.getItemBackpack().size() ; i++) {
+                        if(player.getItem().getItem().equals(choice.getItem())) {
+                            player.getItemBackpack().remove(i);
+                        }
+                    }
                 }
             }
         }
     }
 
-    private static void charmRing(Gamefigurine opponent, CharmRing choice) {
+    private static void charmRing(Gamefigurine player,Gamefigurine opponent, CharmRing choice) {
         if(Math.random() * 1 < 0 + choice.getCharm()) {
             opponent.setfV(opponent.getfV() - choice.getLessenEnemiesFV());
             Log.addMessage(opponent.getName() + " was charmed by " + choice.getItem());
+            for (int i = 0; i <player.getItemBackpack().size() ; i++) {
+                if(player.getItem().getItem().equals(choice.getItem())) {
+                    player.getItemBackpack().remove(i);
+                }
+            }
         } else {
             System.out.println(color("red") + "Charm Ring was used but it was unable to charm the Opponent" + color(""));
         }
@@ -208,12 +218,22 @@ public class Fight {
         Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setcC(player.getcC() + ((StrengthRing) choice).getMoreCC());
         player.setcC(player.getcC() + choice.getWeight());
+        for (int i = 0; i <player.getItemBackpack().size() ; i++) {
+            if(player.getItem().getItem().equals(choice.getItem())) {
+                player.getItemBackpack().remove(i);
+            }
+        }
     }
 
     private static void powerPot(Gamefigurine player, Item choice) {
         Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setcC(player.getcC() + ((PowerPotion) choice).getGiveMoreCC());
         player.setcC(player.getcC() + choice.getWeight());
+        for (int i = 0; i <player.getItemBackpack().size() ; i++) {
+            if(player.getItem().getItem().equals(choice.getItem())) {
+                player.getItemBackpack().remove(i);
+            }
+        }
     }
 
     private static void healthPot(Gamefigurine player, Gamefigurine opponent, Item choice) {
@@ -222,12 +242,22 @@ public class Fight {
         player.setcC(player.getcC() + choice.getWeight());
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
+        for (int i = 0; i <player.getItemBackpack().size() ; i++) {     //Todo: fix cuz doesnt work yet/ either its nullpoint exception with the if and without its a concurrent modification error so yea
+            if(player.getItem().equals(choice)) {
+                player.getItemBackpack().remove(i);
+            }
+        }
     }
 
     private static void damagePot(Gamefigurine player, Item choice) {
         Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setfV(player.getfV() + ((DamagePotion) choice).getAddFV());
         player.setcC(player.getcC() + choice.getWeight());
+        for (int i = 0; i <player.getItemBackpack().size() ; i++) {
+            if(player.getItem().getItem().equals(choice.getItem())) {
+                player.getItemBackpack().remove(i);
+            }
+        }
     }
 
     private static void attackOpponent(Gamefigurine player, Gamefigurine opponent) {
@@ -298,7 +328,7 @@ public class Fight {
 
     private static void damageDeal(Gamefigurine player, Gamefigurine opponent) {
         Log.addMessage(player.getName() + " attacked " + opponent.getName());
-        opponent.setlP(opponent.getlP() - (player.getfV() / opponent.getRes())); // siu
+        opponent.setlP(opponent.getlP() - (player.getfV() / opponent.getRes()));
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
     }
