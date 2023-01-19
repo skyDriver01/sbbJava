@@ -242,7 +242,7 @@ public class Fight {
         player.setcC(player.getcC() + choice.getWeight());
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
-        for (int i = 0; i <player.getItemBackpack().size() ; i++) {     //Todo: fix cuz doesnt work yet/ either its nullpoint exception with the if and without its a concurrent modification error so yea
+        for (int i = 0; i <player.getItemBackpack().size() ; i++) {     //Todo: fix cuz doesnt work yet/ either its null point exception with the if and without its a concurrent modification error so yea
             if(player.getItem().equals(choice)) {
                 player.getItemBackpack().remove(i);
             }
