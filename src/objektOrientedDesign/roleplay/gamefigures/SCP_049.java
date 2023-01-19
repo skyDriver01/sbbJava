@@ -1,22 +1,31 @@
 package objektOrientedDesign.roleplay.gamefigures;
 
+import objektOrientedDesign.roleplay.weapons.Scythe;
+
 public class SCP_049 extends Gamefigurine {
     private double instantDeath;
+
     public SCP_049(String name, double lP, double cC, double fV, double res, double speed, double accuracy,
-                   double evasion,
-                   double instantDeath ) {
+                   double evasion, double instantDeath) {
         super(name, lP, cC, fV, res, speed, accuracy, evasion);
         this.instantDeath = instantDeath;
     }
 
     @Override
     public double getInstantDeath() {
+        if(getWeapon() != null) {
+            if(getWeapon().getClass().equals(Scythe.class)) {
+                return setInstantDeath(0.02);
+            }
+        }
+
         return instantDeath;
     }
 
     @Override
-    public void setInstantDeath(double instantDeath) {
+    public double setInstantDeath(double instantDeath) {
         this.instantDeath = instantDeath;
+        return instantDeath;
     }
 }
 /*

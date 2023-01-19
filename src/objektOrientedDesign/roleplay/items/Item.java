@@ -13,7 +13,7 @@ public class Item {
         this.weight = weight;
     }
 
-    public static void initItems() {
+    public static List <Item> initItems() {
         List <Item> itemsList = new ArrayList <>();
         itemsList.add(new HealthPotion("Health Potion", 2, ((Math.random() * (20 - 5)) + 5)));        //Random Amount of Enemy Health Taken
         itemsList.add(new PowerPotion("Power Potion", 2, 5));
@@ -24,6 +24,7 @@ public class Item {
         itemsList.add(new LightArmor("Light Armor", 3, 0.3, 0.1, 0.5));
         itemsList.add(new HeavyArmor("Heavy Armor", 6.5, 0.75, 0.25, 1));
         items = itemsList;
+        return itemsList;
     }
 
     public String getItem() {

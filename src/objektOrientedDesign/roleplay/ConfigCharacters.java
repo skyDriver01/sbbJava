@@ -13,8 +13,8 @@ import static objektOrientedDesign.roleplay.TextStuff.*;
 
 public class ConfigCharacters {
     static List <Gamefigurine> gameFigurines = Gamefigurine.initGameFigurines();
-    static List <Weapon> weapons;
-    static List <Item> items;
+    static List <Weapon> weapons= Weapon.initWeapons();
+    static List <Item> items = Item.initItems();
     static List <Gamefigurine> fightingCharacters = new ArrayList <>();
 
     public void executeGame() {
@@ -119,28 +119,13 @@ public class ConfigCharacters {
             int chooseYourWeapons = InputIn.nexIntOut("Type the Number of the Desired Action");
             switch (chooseYourWeapons) {
                 case 1 -> {
-                    if(weapons.getClass().equals(Club.class)) {
-                        weapons.get(0).setfV(weapons.get(0).getfV() + (weapons.get(0).getBv() / 2));
-                    }
                     equipWeapon(weapons.get(0), player);
-                    if(fightingCharacters.get(player).getClass().equals(Troll.class)) {
-                        fightingCharacters.get(player).setfV(fightingCharacters.get(player).getfV() * 2);
-                    }
                 }       //Club
                 case 2 -> {
-                    if(weapons.getClass().equals(Sword.class)) {
-                        weapons.get(1).setfV(weapons.get(1).getfV() + (weapons.get(1).getBv() / 2));
-                    }
                     equipWeapon(weapons.get(1), player);
                 }      //Sword
                 case 3 -> {
-                    if(weapons.getClass().equals(Scythe.class)) {
-                        weapons.get(2).setfV(weapons.get(2).getfV() + (weapons.get(2).getBv() / 2));
-                    }
                     equipWeapon(weapons.get(2), player);
-                    if(fightingCharacters.get(player).getClass().equals(SCP_049.class)) {
-                        fightingCharacters.get(player).setInstantDeath(0.02);
-                    }
                 }      //Scythe
                 case 4 -> {
                     equipWeapon(weapons.get(3), player);

@@ -14,4 +14,8 @@ public class CloseRange extends Weapon {
 
     public void setbV(double bV) {
     }
+    @Override
+    public double getfV(){
+        return super.getfV() + (getbV() / 2);
+    }
 }

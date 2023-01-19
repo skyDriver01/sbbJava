@@ -87,8 +87,9 @@ public class Gamefigurine {
         return fV;
     }
 
-    public void setfV(double fV) {
+    public double setfV(double fV) {
         this.fV = fV;
+        return fV;
     }
 
     public double getRes() {
@@ -172,8 +173,9 @@ public class Gamefigurine {
         return instantDeath;
     }
 
-    public void setInstantDeath(double instantDeath) {
+    public double setInstantDeath(double instantDeath) {
         this.instantDeath = instantDeath;
+        return instantDeath;
     }
 
     public double getAmount() {

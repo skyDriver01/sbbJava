@@ -18,7 +18,7 @@ public class Weapon {
         this.fV = fV;
         this.accuracy = accuracy;
     }
-    public static void initWeapons() {
+    public static List <Weapon> initWeapons() {
         List <Weapon> weaponList = new ArrayList <>();
         weaponList.add(new Club("Club", 4, 5, 0.8, 5));
         weaponList.add(new Sword("Sword", 2, 6, 0.95, 3));
@@ -27,6 +27,7 @@ public class Weapon {
         weaponList.add(new Musket("Musket", 2.5, 8, 1));
         weaponList.add(new ThrowingKnife("Throwing Knives", 0.5, 10, 0.9));
         weapons = weaponList;
+        return weaponList;
     }
 
     public String getWeapon() {

@@ -10,11 +10,12 @@ public class Goblin extends Gamefigurine {
 
     @Override
     public double getfV() {
-        if(getWeapon().getClass().equals(Bow.class)) {
-            double bowFV = super.getfV() + (super.getfV() / 2);
-            return bowFV;
-        } else {
-            return super.getfV();
+        if(getWeapon() != null) {
+            if(getWeapon().getClass().equals(Bow.class)) {
+                double bowFV = super.getfV() + (super.getfV() / 2);
+                return bowFV;
+            }
         }
+        return super.getfV();
     }
 }

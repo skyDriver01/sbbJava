@@ -9,11 +9,13 @@ public class Elven extends Gamefigurine {
     }
 
     @Override
-    public double getfV(){
+    public double getfV() {
         double mFV = super.getfV() + (getmV() / 2);
-        if(getWeapon().getClass().equals(Bow.class)){
-            double bowFV = mFV + (super.getfV() / 2 );
-            return bowFV;
+        if(getWeapon() != null) {
+            if(getWeapon().getClass().equals(Bow.class)) {
+                double bowFV = mFV + (super.getfV() / 2);
+                return bowFV;
+            }
         }
         return mFV;
     }
