@@ -99,8 +99,9 @@ public class Fight {
         chooseNextMove.put(2, "2: Activate Different Weapon");
         chooseNextMove.put(3, "3: Drop Weapon");
         chooseNextMove.put(4, "4: Use Item");
-        chooseNextMove.put(5, "5: Do Nothing");
-        chooseNextMove.put(6, "6: Give up");
+        chooseNextMove.put(5, "5: Drop Armor");
+        chooseNextMove.put(6, "6: Do Nothing");
+        chooseNextMove.put(7, "7: Give up");
         for (int i = 1; i <= chooseNextMove.size(); i++) {
             System.out.println(chooseNextMove.get(i));
         }
@@ -136,11 +137,23 @@ public class Fight {
                     }
                 }
             }
-            case 5 -> {
+            case 5 ->{
+                try {
+                    player.setRes(player.getRes() - player.getArmor().getRes());
+                    player.setcC(player.getcC() + player.getArmor().getWeight());
+                    player.setSpeed(player.getSpeed() + player.getArmor().getSlowness());
+                    player.setArmor(null);
+                    Log.addMessage(player.getName() + " dropped his armor");
+                }catch (Exception e){
+                    System.out.println(ANSI_RED + "You do not have Armor");
+                }
+
+            }
+            case 6 -> {
                 System.out.println(color("lime") + "Ok seems understandable?" + color(""));
                 Log.addMessage(player.getName() + " did nothing");
             }
-            case 6 -> {
+            case 7 -> {
                 player.setlP(-1);
                 Log.addMessage(player.getName() + " gave up");
                 winningConditions(player, opponent, 21);

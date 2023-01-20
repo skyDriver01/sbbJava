@@ -118,23 +118,17 @@ public class ConfigCharacters {
             System.out.println(anyLine("purple"));
             int chooseYourWeapons = InputIn.nexIntOut("Type the Number of the Desired Action");
             switch (chooseYourWeapons) {
-                case 1 -> {
-                    equipWeapon(weapons.get(0), player);
-                }       //Club
-                case 2 -> {
-                    equipWeapon(weapons.get(1), player);
-                }      //Sword
-                case 3 -> {
-                    equipWeapon(weapons.get(2), player);
-                }      //Scythe
+                case 1 -> equipWeapon(weapons.get(0), player);    //Club
+                case 2 -> equipWeapon(weapons.get(1), player);    //Sword
+                case 3 -> equipWeapon(weapons.get(2), player);    //Scythe
                 case 4 -> {
                     equipWeapon(weapons.get(3), player);
                     if(fightingCharacters.get(player).getClass().equals(Elven.class) || fightingCharacters.get(player).getClass().equals(Goblin.class)){
                         fightingCharacters.get(player).setfV(fightingCharacters.get(player).getfV());
                     }
                 }      //Bow
-                case 5 -> equipWeapon(weapons.get(4), player);      //Musket
-                case 6 -> equipWeapon(weapons.get(5), player);      //Throwing Knives
+                case 5 -> equipWeapon(weapons.get(4), player);  //Musket
+                case 6 -> equipWeapon(weapons.get(5), player);  //Throwing Knives
                 case 7 -> {
                     loopForWeapons = false;
                     chooseAItem(player);
@@ -288,7 +282,7 @@ public class ConfigCharacters {
 
     private static void itemOptions(HashMap <Integer, String> itemChoice) {
         System.out.println(anyLine("white"));
-        System.out.println(color("cyan") + "Now you can Choose Items if you have enough CC that is" + color(""));
+        System.out.println(color("cyan") + "Now you can Choose Items if you have enough CC" + color(""));
         System.out.println(anyLine("white"));
         System.out.println(anyLine("red"));
         itemChoice.put(1, "1: Health Potion, Weight = 2");
