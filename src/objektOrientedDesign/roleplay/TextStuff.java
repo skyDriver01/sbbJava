@@ -2,53 +2,28 @@ package objektOrientedDesign.roleplay;
 
 public class TextStuff {
 
-    public static String whiteLine() {
-        return color("white") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
+    static public String ANSI_BLACK = "\u001B[30m";
+    static public String ANSI_RED = "\u001B[31m";
+    static public String ANSI_GREEN = "\u001B[32m";
+    static public String ANSI_YELLOW = "\033[1;93m";
+    static public String ANSI_BLUE = "\u001B[34m";
+    static public String ANSI_PURPLE = "\u001B[35m";
+    static public String ANSI_CYAN = "\u001B[36m";
+    static public String ANSI_WHITE = "\u001B[37m";
+    static public String ANSI_RESET = "\u001B[0m";
+    static public String ANSI_ORANGE = "\u001b[38;5;172m";
+    static public String ANSI_LIME = "\u001b[38;5;191m";
+    static public String ANSI_BROWN = "\u001b[38;5;130m";
+    static public String ANSI_GOLD = "\u001b[38;5;220m";
+    static public String ANSI_MAGENTA = "\u001b[38;5;198m";
+    static public String ANSI_ICEBLUE = "\u001b[38;5;195m";
+    static public String ANSI_VIOLET = "\u001b[38;5;129m";
+    public static String anyLine(String color){
+        return color(color) + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("");
     }
 
-    public static String greenLine() {
-        return color("green") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
-    }
-
-    public static String redLine() {
-        return color("red") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
-    }
-
-    public static String blueLine() {
-        return color("blue") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
-    }
-
-    public static String yellowLine() {
-        return color("yellow") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
-    }
-
-    public static String purpleLine() {
-        return color("purple") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
-    }
-    public static String orangeLine(){
-        return color("orange") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
-    }public static String limeLine(){
-        return color("lime") + ":::::::::::::::::::::::::::::::::::::::::::::::::::::::" + color("r");
-    }
-
+    @Deprecated
     public static String color(String color) {
-        final String ANSI_BLACK = "\u001B[30m";
-        final String ANSI_RED = "\u001B[31m";
-        final String ANSI_GREEN = "\u001B[32m";
-        final String ANSI_YELLOW = "\033[1;93m";
-        final String ANSI_BLUE = "\u001B[34m";
-        final String ANSI_PURPLE = "\u001B[35m";
-        final String ANSI_CYAN = "\u001B[36m";
-        final String ANSI_WHITE = "\u001B[37m";
-        final String ANSI_RESET = "\u001B[0m";
-        final String ANSI_ORANGE = "\u001b[38;5;172m";
-        final String ANSI_LIME = "\u001b[38;5;191m";
-        final String ANSI_BROWN = "\u001b[38;5;130m";
-        final String ANSI_GOLD = "\u001b[38;5;220m";
-        final String ANSI_MAGENTA = "\u001b[38;5;198m";
-        final String ANSI_ICEBLUE = "\u001b[38;5;195m";
-        final String ANSI_VIOLET = "\u001b[38;5;129m";
-
         return switch (color) {
             case "black" -> ANSI_BLACK;
             case "red" -> ANSI_RED;

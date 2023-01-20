@@ -32,7 +32,7 @@ public class ConfigCharacters {
         HashMap <Integer, String> chooseFigurine = new HashMap <>();
         Gamefigurine.initGameFigurines();
         while (noCharacterChosen) {
-            System.out.println(yellowLine());
+            System.out.println(anyLine("yellow"));
             chooseFigurine.put(1, "0: Dwarf, CC = 14");
             chooseFigurine.put(2, "1: Elven, CC = 12");
             chooseFigurine.put(3, "2: Human, CC = 15");
@@ -43,7 +43,7 @@ public class ConfigCharacters {
             for (int i = 1; i <= chooseFigurine.size(); i++) {
                 System.out.println(chooseFigurine.get(i));
             }
-            System.out.println(yellowLine());
+            System.out.println(anyLine("yellow"));
             noCharacterChosen = characterOptions(player, noCharacterChosen);
         }
     }
@@ -115,7 +115,7 @@ public class ConfigCharacters {
             for (int i = 1; i <= weaponChoice.size(); i++) {
                 System.out.println(weaponChoice.get(i));
             }
-            System.out.println(purpleLine());
+            System.out.println(anyLine("purple"));
             int chooseYourWeapons = InputIn.nexIntOut("Type the Number of the Desired Action");
             switch (chooseYourWeapons) {
                 case 1 -> {
@@ -148,12 +148,12 @@ public class ConfigCharacters {
     }
 
     private static void infosForWeapons() {
-        System.out.println(whiteLine());
+        System.out.println(anyLine("white"));
         System.out.println(color("cyan") + "Choose the weapon you would like.");
         System.out.println("The First Weapon you choose will be your Active Weapon and to change the active weapon you will use up a turn");
         System.out.println("You also have a limited amount of CC (Carrying Capacity) so keep in mind not to use it all up already" + color(""));
-        System.out.println(whiteLine());
-        System.out.println(purpleLine());
+        System.out.println(anyLine("white"));
+        System.out.println(anyLine("purple"));
     }
 
 
@@ -240,7 +240,7 @@ public class ConfigCharacters {
         boolean loopForItems = true;
         while (loopForItems) {
             itemOptions(itemChoice);
-            System.out.println(redLine());
+            System.out.println(anyLine("red"));
             loopForItems = itemSwitch(player, loopForItems);
         }
     }
@@ -287,10 +287,10 @@ public class ConfigCharacters {
     }
 
     private static void itemOptions(HashMap <Integer, String> itemChoice) {
-        System.out.println(whiteLine());
+        System.out.println(anyLine("white"));
         System.out.println(color("cyan") + "Now you can Choose Items if you have enough CC that is" + color(""));
-        System.out.println(whiteLine());
-        System.out.println(redLine());
+        System.out.println(anyLine("white"));
+        System.out.println(anyLine("red"));
         itemChoice.put(1, "1: Health Potion, Weight = 2");
         itemChoice.put(2, "2: Power Potion, Weight = 2");
         itemChoice.put(3, "3: Damage Potion, Weight = 6");
