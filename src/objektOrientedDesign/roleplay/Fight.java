@@ -106,27 +106,7 @@ public class Fight {
         int yourMove = InputIn.nexIntOut("Choose what you would like to do this round");
         switch (yourMove) {
             case 1 -> attackOpponent(player, opponent);
-            case 2 -> {
-                if(player.getWeaponBackpack() != null) {
-                    String changeWeapon = InputIn.nextLineOut(color("cyan") + "what weapon do you wish to activate?" + color(""));
-                    for (Weapon weapons : player.getWeaponBackpack()) {
-                        System.out.println(weapons.getWeapon());
-                        player.setfV(player.getfV() - weapons.getfV());
-                        player.setcC(player.getcC() + weapons.getWeight());
-                        if(weapons.getWeapon().equals(changeWeapon)) {
-                            player.setWeapon(weapons);
-                            player.setfV(player.getfV() + weapons.getfV());
-                            player.setcC(player.getcC() - weapons.getWeight());
-                            Log.addMessage(player.getName() + " changed his weapon to:" + weapons.getWeapon());
-                        } else {
-                            System.out.println(color("red") + "seems like you dont have a weapon like that in your inventory" + color(""));
-                            Log.addMessage(player.getName() + " tried to changed his weapon to:" + weapons.getWeapon() + " but failed");
-                        }
-                    }
-                } else {
-                    System.out.println(color("red" + "You dont have any other weapons than the one you are using. Well you just wasted your turn." + color("")));
-                }
-            }
+            case 2 -> activateNewWeapon(player);
             case 3 -> {
                 player.setfV(player.getfV() - player.getWeapon().getfV());
                 player.setcC(player.getcC() + player.getWeapon().getWeight());
@@ -164,6 +144,28 @@ public class Fight {
         }
     }
 
+    private static void activateNewWeapon(Gamefigurine player) {
+        if(player.getWeaponBackpack() != null) {
+            String changeWeapon = InputIn.nextLineOut(color("cyan") + "what weapon do you wish to activate?" + color(""));
+            for (Weapon weapons : player.getWeaponBackpack()) {
+                System.out.println(weapons.getWeapon());
+                player.setfV(player.getfV() - weapons.getfV());
+                player.setcC(player.getcC() + weapons.getWeight());
+                if(weapons.getWeapon().equals(changeWeapon)) {
+                    player.setWeapon(weapons);
+                    player.setfV(player.getfV() + weapons.getfV());
+                    player.setcC(player.getcC() - weapons.getWeight());
+                    Log.addMessage(player.getName() + " changed his weapon to:" + weapons.getWeapon());
+                } else {
+                    System.out.println(color("red") + "seems like you dont have a weapon like that in your inventory" + color(""));
+                    Log.addMessage(player.getName() + " tried to changed his weapon to:" + weapons.getWeapon() + " but failed");
+                }
+            }
+        } else {
+            System.out.println(color("red" + "You dont have any other weapons than the one you are using. Well you just wasted your turn." + color("")));
+        }
+    }
+
     private static void potionsAndRings(Gamefigurine player, Gamefigurine opponent, Item choice) {
         if(choice.getClass().equals(DamagePotion.class)) {
             damagePot(player, choice);
@@ -186,11 +188,11 @@ public class Fight {
 
         } else {
             if(choice.getClass().equals(CharmRing.class)) {
-                charmRing(player,opponent, (CharmRing) choice);
+                charmRing(player, opponent, (CharmRing) choice);
             } else {
                 if(choice.getClass().equals(ShieldRing.class)) {
                     player.setRes(player.getRes() + ((ShieldRing) choice).getMoreRes());
-                    for (int i = 0; i <player.getItemBackpack().size() ; i++) {
+                    for (int i = 0; i < player.getItemBackpack().size(); i++) {
                         if(player.getItem().getItem().equals(choice.getItem())) {
                             player.getItemBackpack().remove(i);
                         }
@@ -200,11 +202,11 @@ public class Fight {
         }
     }
 
-    private static void charmRing(Gamefigurine player,Gamefigurine opponent, CharmRing choice) {
+    private static void charmRing(Gamefigurine player, Gamefigurine opponent, CharmRing choice) {
         if(Math.random() * 1 < 0 + choice.getCharm()) {
             opponent.setfV(opponent.getfV() - choice.getLessenEnemiesFV());
             Log.addMessage(opponent.getName() + " was charmed by " + choice.getItem());
-            for (int i = 0; i <player.getItemBackpack().size() ; i++) {
+            for (int i = 0; i < player.getItemBackpack().size(); i++) {
                 if(player.getItem().getItem().equals(choice.getItem())) {
                     player.getItemBackpack().remove(i);
                 }
@@ -218,7 +220,7 @@ public class Fight {
         Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setcC(player.getcC() + ((StrengthRing) choice).getMoreCC());
         player.setcC(player.getcC() + choice.getWeight());
-        for (int i = 0; i <player.getItemBackpack().size() ; i++) {
+        for (int i = 0; i < player.getItemBackpack().size(); i++) {
             if(player.getItem().getItem().equals(choice.getItem())) {
                 player.getItemBackpack().remove(i);
             }
@@ -229,23 +231,29 @@ public class Fight {
         Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setcC(player.getcC() + ((PowerPotion) choice).getGiveMoreCC());
         player.setcC(player.getcC() + choice.getWeight());
-        for (int i = 0; i <player.getItemBackpack().size() ; i++) {
+        for (int i = 0; i < player.getItemBackpack().size(); i++) {
             if(player.getItem().getItem().equals(choice.getItem())) {
                 player.getItemBackpack().remove(i);
             }
         }
     }
 
+    //todo: bugfix log isnt that accurate atm with who did what
     private static void healthPot(Gamefigurine player, Gamefigurine opponent, Item choice) {
         Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setlP(player.getlP() + ((HealthPotion) choice).getGiveLP());
         player.setcC(player.getcC() + choice.getWeight());
         System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
         System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
-        for (int i = 0; i <player.getItemBackpack().size() ; i++) {     //Todo: fix cuz doesnt work yet/ either its null point exception with the if and without its a concurrent modification error so yea
-            if(player.getItem().equals(choice)) {
-                player.getItemBackpack().remove(i);
+        for (int i = 0; i < player.getItemBackpack()
+                                  .size(); i++) {     //Todo: fix cuz doesnt work yet/ either its null point exception with the if and without its a concurrent modification error so yea
+            if() {
+                System.out.println("hahahahhhahaha");
             }
+            /*if(player.getItemBackpack().get(i).equals(choice.getItem())){
+                player.getItemBackpack().remove(i);
+                player.getItem().setItem(null);
+            }*/
         }
     }
 
@@ -253,7 +261,7 @@ public class Fight {
         Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setfV(player.getfV() + ((DamagePotion) choice).getAddFV());
         player.setcC(player.getcC() + choice.getWeight());
-        for (int i = 0; i <player.getItemBackpack().size() ; i++) {
+        for (int i = 0; i < player.getItemBackpack().size(); i++) {
             if(player.getItem().getItem().equals(choice.getItem())) {
                 player.getItemBackpack().remove(i);
             }
@@ -263,7 +271,6 @@ public class Fight {
     private static void attackOpponent(Gamefigurine player, Gamefigurine opponent) {
         checkAccuracyToHit(player, opponent);
     }
-
     private static void checkAccuracyToHit(Gamefigurine player, Gamefigurine opponent) {
         if(Math.random() * 1 < 0 + player.getAccuracy()) {  //Checks if you could hit your Attack to then check Armor and more
             gotArmor(player, opponent); //Checks if Enemy has Armor On
