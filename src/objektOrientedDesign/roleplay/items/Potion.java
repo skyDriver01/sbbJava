@@ -1,6 +1,6 @@
 package objektOrientedDesign.roleplay.items;
 
-public class Potion extends Item{
+public abstract class Potion extends Item{
     private double takeLp;
     private double addFV;
     public Potion(String item, double weight) {

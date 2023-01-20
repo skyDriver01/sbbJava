@@ -7,7 +7,7 @@ import objektOrientedDesign.roleplay.weapons.Weapon;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Gamefigurine {
+public abstract class Gamefigurine {
 
     private String name;
     private double lP;  // LP like in most games stands for Life Points

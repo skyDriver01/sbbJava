@@ -3,7 +3,7 @@ package objektOrientedDesign.roleplay.items;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Item {
+public abstract class Item {
     private String item;
     private double weight;
     private static List<Item> items;

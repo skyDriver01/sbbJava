@@ -1,6 +1,6 @@
 package objektOrientedDesign.roleplay.items;
 
-public class Armor extends Item{
+public abstract class Armor extends Item{
     private double slowness;
     private double noDamage;
     private double res;

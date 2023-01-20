@@ -1,6 +1,6 @@
 package objektOrientedDesign.roleplay.weapons;
 
-public class CloseRange extends Weapon {
+public abstract class CloseRange extends Weapon {
     private double bV;
 
     public CloseRange(String weapon, double weight, double fV, double accuracy, double bV) {

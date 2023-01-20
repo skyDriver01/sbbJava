@@ -3,7 +3,7 @@ package objektOrientedDesign.roleplay.weapons;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Weapon {
+public abstract class Weapon {
     private String weapon;
     private double weight;
     private double fV;
