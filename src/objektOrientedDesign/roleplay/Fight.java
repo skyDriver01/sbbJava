@@ -66,7 +66,7 @@ public class Fight {
         System.out.println(anyLine("green"));
         System.out.println(color("gold") + playerOne.getlP() + color("blue") + " Is the Remaining amount of health on " + playerOne.getName() + color(""));
         System.out.println(color("gold") + playerTwo.getlP() + color("red") + " has died with that amount on " + playerTwo.getName() + color(""));
-        System.out.println(anyLine("green"));
+        System.out.println(anyLine("green"));   //
         Log.addMessage(playerOne.getName() + " Won");
         System.out.println(color("ice") + "This is the log of the Game" + color(""));
         System.out.println(anyLine("ice"));
