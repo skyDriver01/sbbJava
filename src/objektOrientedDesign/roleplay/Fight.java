@@ -47,10 +47,35 @@ public class Fight {
     private static int winningConditions(Gamefigurine playerOne, Gamefigurine playerTwo, int i) {
         if(playerOne.getlP() < 0 || playerTwo.getlP() < 0) {
             if(playerOne.getlP() < 0) {
+                if(Math.random() * 1 < 0 + playerOne.getSpeed()){
+                    attackOpponent(playerOne, playerTwo);
+                    if(playerTwo.getlP() < 0){
+                        i = 21;
+                        playerOneWins(playerOne, playerTwo);
+                    }else {
+                        i = 21;
+                        playerTwoWins(playerOne, playerTwo);
+                    }
+                }else {
+                    i = 21;
+                    playerTwoWins(playerOne, playerTwo);
+                }
                 i = 21;
                 playerTwoWins(playerOne, playerTwo);
             } else {
                 if(playerTwo.getlP() < 0) {
+                    if(Math.random() * 1 < 0 + playerTwo.getSpeed()){
+                        attackOpponent(playerTwo, playerOne);
+                        if(playerOne.getlP() < 0){
+                            playerTwoWins(playerOne,playerTwo);
+                        } else {
+                            i = 21;
+                            playerOneWins(playerOne, playerTwo);
+                        }
+                    }else {
+                        i = 21;
+                        playerOneWins(playerOne, playerTwo);
+                    }
                     i = 21;
                     playerOneWins(playerOne, playerTwo);
                 }
@@ -115,11 +140,17 @@ public class Fight {
             case 1 -> attackOpponent(player, opponent);
             case 2 -> activateNewWeapon(player);
             case 3 -> {
-                player.setfV(player.getfV() - player.getWeapon().getfV());
-                player.setcC(player.getcC() + player.getWeapon().getWeight());
-                player.setWeapon(null);
-                player.setfV(1);
-                Log.addMessage(player.getName() + " dropped his weapon");
+                try {
+                    player.setfV(player.getfV() - player.getWeapon().getfV());
+                    player.setcC(player.getcC() + player.getWeapon().getWeight());
+                    player.setWeapon(null);
+                    player.setfV(1);
+                    Log.addMessage(player.getName() + " dropped his weapon");
+                }catch (Exception e){
+                    System.out.println(ANSI_RED + " You can't really drop your Fists");
+                    Log.addMessage(player.getName() + " Tried to drop his Fists");
+                }
+
             }
             case 4 -> {
                 if(player.getItemBackpack() != null) {
@@ -137,17 +168,17 @@ public class Fight {
                     }
                 }
             }
-            case 5 ->{
+            case 5 -> {
                 try {
                     player.setRes(player.getRes() - player.getArmor().getRes());
                     player.setcC(player.getcC() + player.getArmor().getWeight());
                     player.setSpeed(player.getSpeed() + player.getArmor().getSlowness());
                     player.setArmor(null);
                     Log.addMessage(player.getName() + " dropped his armor");
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(ANSI_RED + "You do not have Armor");
+                    Log.addMessage(player.getName() + " Tried to drop Armor that he did not have on");
                 }
-
             }
             case 6 -> {
                 System.out.println(color("lime") + "Ok seems understandable?" + color(""));
@@ -277,7 +308,7 @@ public class Fight {
     private static void attackEvaded(Gamefigurine player, Gamefigurine opponent) {
         Log.addMessage(opponent.getName() + " Evaded an attack");
         System.out.println(color("orange") + "The Opponent Evaded the attack" + color(""));
-        giveOutRemainingLP(player,opponent);
+        giveOutRemainingLP(player, opponent);
     }
 
     private static void gotArmor(Gamefigurine player, Gamefigurine opponent) {
@@ -323,7 +354,7 @@ public class Fight {
     private static void noDamageBcArmor(Gamefigurine player, Gamefigurine opponent) {
         Log.addMessage(opponent.getName() + " Armor saved him from Damage");
         System.out.println(color("orange") + "It seems you hit your opponent bur their armor saved them from taking Damage" + color(""));
-        giveOutRemainingLP(player,opponent);
+        giveOutRemainingLP(player, opponent);
     }
 
     private static void damageDeal(Gamefigurine player, Gamefigurine opponent) {
