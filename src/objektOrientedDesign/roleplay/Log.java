@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static objektOrientedDesign.roleplay.TextStuff.color;
+import static objektOrientedDesign.roleplay.TextStuff.*;
 
 public class Log {
     private static List <String> log = new ArrayList <>();
@@ -15,7 +15,7 @@ public class Log {
     }
     public static void printLog() {
         for (String message : log) {
-            System.out.println(color("ice") + message + color(""));
+            System.out.println(ANSI_ICEBLUE + message + ANSI_RESET);
         }
     }
 }
