@@ -1,23 +1,14 @@
 package objektOrientedDesign.roleplay.items;
 
 public abstract class Armor extends Item{
-    private double slowness;
     private double noDamage;
     private double res;
+    private double slowness;
 
-    public Armor(String item, double weight, double slowness, double noDamage, double res) {
+    public Armor(String item, double weight, double noDamage, double res) {
         super(item, weight);
-        this.slowness = slowness;
         this.noDamage = noDamage;
         this.res = res;
-    }
-
-    public double getSlowness() {
-        return slowness;
-    }
-
-    public void setSlowness(double slowness) {
-        this.slowness = slowness;
     }
 
     public double getNoDamage() {
@@ -34,5 +25,13 @@ public abstract class Armor extends Item{
 
     public void setRes(double res) {
         this.res = res;
+    }
+
+    public double getSlowness() {
+        return slowness;
+    }
+
+    public void setSlowness(double slowness) {
+        this.slowness = slowness;
     }
 }
