@@ -274,7 +274,7 @@ public class Fight {
     }
 
     private static void itemUsed(Gamefigurine player, Item choice) {
-        Log.addMessage(player.getName() + " used a " + choice.getItem());
+        Log.addMessage(player.getName() + " used a " + choice.getItem());       // Todo : bugfix activating different weapon got a bug
         player.setcC(player.getcC() + choice.getWeight());
         player.getItemBackpack().remove(choice);
     }
