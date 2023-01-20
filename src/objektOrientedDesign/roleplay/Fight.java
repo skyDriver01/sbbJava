@@ -12,7 +12,7 @@ import static objektOrientedDesign.roleplay.TextStuff.*;
 public class Fight {
 
     public static void startTheFight(Gamefigurine playerOne, Gamefigurine playerTwo) {
-        System.out.println(color("cyan") + "It seems all preparations are done from both ends time to start the fight lets see who gets the First Hit" + color("r"));
+        System.out.println(ANSI_CYAN + "It seems all preparations are done from both ends time to start the fight lets see who gets the First Hit" + ANSI_RESET);
         if(playerOne.getSpeed() > playerTwo.getSpeed()) {
             fightOptions(playerOne, playerTwo);
         } else {
@@ -36,10 +36,10 @@ public class Fight {
 
     private static void draw(Gamefigurine playerOne, Gamefigurine playerTwo, int i) {
         if(i == 20) {
-            System.out.println(color("violet") + "It seems the Game has ended in a Draw bc no one had under 0 HP");
+            System.out.println(ANSI_VIOLET + "It seems the Game has ended in a Draw bc no one had under 0 HP");
             System.out.println(anyLine("white"));
-            System.out.println(color("gold") + playerOne.getlP() + color("blue") + " there was still that much Health in the Character " + playerOne.getName() + color(""));
-            System.out.println(color("gold") + playerTwo.getlP() + color("red") + " there was still that much Health in the Character " + playerTwo.getName() + color(""));
+            System.out.println(ANSI_GOLD + playerOne.getlP() + ANSI_BLUE + " there was still that much Health in the Character " + playerOne.getName());
+            System.out.println(ANSI_GOLD + playerTwo.getlP() + ANSI_RED + " there was still that much Health in the Character " + playerTwo.getName() + ANSI_RESET);
             System.out.println(anyLine("white"));
         }
     }
@@ -47,10 +47,35 @@ public class Fight {
     private static int winningConditions(Gamefigurine playerOne, Gamefigurine playerTwo, int i) {
         if(playerOne.getlP() < 0 || playerTwo.getlP() < 0) {
             if(playerOne.getlP() < 0) {
+                if(Math.random() * 1 < 0 + playerOne.getSpeed()) {
+                    attackOpponent(playerOne, playerTwo);
+                    if(playerTwo.getlP() < 0) {
+                        i = 21;
+                        playerOneWins(playerOne, playerTwo);
+                    } else {
+                        i = 21;
+                        playerTwoWins(playerOne, playerTwo);
+                    }
+                } else {
+                    i = 21;
+                    playerTwoWins(playerOne, playerTwo);
+                }
                 i = 21;
                 playerTwoWins(playerOne, playerTwo);
             } else {
                 if(playerTwo.getlP() < 0) {
+                    if(Math.random() * 1 < 0 + playerTwo.getSpeed()) {
+                        attackOpponent(playerTwo, playerOne);
+                        if(playerOne.getlP() < 0) {
+                            playerTwoWins(playerOne, playerTwo);
+                        } else {
+                            i = 21;
+                            playerOneWins(playerOne, playerTwo);
+                        }
+                    } else {
+                        i = 21;
+                        playerOneWins(playerOne, playerTwo);
+                    }
                     i = 21;
                     playerOneWins(playerOne, playerTwo);
                 }
@@ -61,14 +86,14 @@ public class Fight {
 
     private static void playerOneWins(Gamefigurine playerOne, Gamefigurine playerTwo) {
         System.out.println(anyLine("blue"));
-        System.out.println(color("purple") + "So the player who chose : " + color("gold") + playerOne.getName() + color("purple") + " won" + color(""));
+        System.out.println(ANSI_PURPLE + "So the player who chose : " + color("gold") + playerOne.getName() + color("purple") + " won" + color(""));
         System.out.println(anyLine("blue"));
         System.out.println(anyLine("green"));
-        System.out.println(color("gold") + playerOne.getlP() + color("blue") + " Is the Remaining amount of health on " + playerOne.getName() + color(""));
-        System.out.println(color("gold") + playerTwo.getlP() + color("red") + " has died with that amount on " + playerTwo.getName() + color(""));
-        System.out.println(anyLine("green"));   //
+        System.out.println(ANSI_GOLD + playerOne.getlP() + ANSI_BLUE + " Is the Remaining amount of health on " + playerOne.getName());
+        System.out.println(ANSI_GOLD + playerTwo.getlP() + ANSI_RED + " has died with that amount on " + playerTwo.getName() + ANSI_RESET);
+        System.out.println(anyLine("green"));
         Log.addMessage(playerOne.getName() + " Won");
-        System.out.println(color("ice") + "This is the log of the Game" + color(""));
+        System.out.println(ANSI_ICEBLUE + "This is the log of the Game" + ANSI_RESET);
         System.out.println(anyLine("ice"));
         Log.printLog();
         System.out.println(anyLine("ice"));
@@ -77,14 +102,14 @@ public class Fight {
 
     private static void playerTwoWins(Gamefigurine playerOne, Gamefigurine playerTwo) {
         System.out.println(anyLine("blue"));
-        System.out.println(color("purple") + "So the player who chose : " + color("gold") + playerTwo.getName() + color("purple") + " won" + color(""));
+        System.out.println(ANSI_PURPLE + "So the player who chose : " + ANSI_GOLD + playerTwo.getName() + ANSI_PURPLE + " won");
         System.out.println(anyLine("blue"));
         System.out.println(anyLine("green"));
-        System.out.println(color("gold") + playerTwo.getlP() + color("blue") + " Is the Remaining amount of health on " + playerTwo.getName() + color(""));
-        System.out.println(color("gold") + playerOne.getlP() + color("red") + " has died with that amount on " + playerOne.getName() + color(""));
+        System.out.println(ANSI_GOLD + playerTwo.getlP() + ANSI_BLUE + " Is the Remaining amount of health on " + playerTwo.getName());
+        System.out.println(ANSI_GOLD + playerOne.getlP() + ANSI_RED + " has died with that amount on " + playerOne.getName() + ANSI_RESET);
         System.out.println(anyLine("green"));
         Log.addMessage(playerTwo.getName() + " Won");
-        System.out.println(color("ice") + "This is the log of the Game" + color(""));
+        System.out.println(ANSI_ICEBLUE + "This is the log of the Game");
         System.out.println(anyLine("ice"));
         Log.printLog();
         System.out.println(anyLine("ice"));
@@ -92,7 +117,7 @@ public class Fight {
     }
 
     public static void fightOptions(Gamefigurine player, Gamefigurine opponent) {
-        System.out.println(color("cyan") + "Seems that the player who chose " + color("purple") + player.getName() + color("cyan") + " Will Be the one to choose their move" + color(""));
+        System.out.println(ANSI_CYAN + "Seems that the player who chose " + ANSI_PURPLE + player.getName() + ANSI_CYAN + " Will Be the one to choose their move" + ANSI_RESET);
         HashMap <Integer, String> chooseNextMove = new HashMap <>();
         System.out.println(anyLine("green"));
         chooseNextMove.put(1, "1: Attack enemy");
@@ -115,11 +140,17 @@ public class Fight {
             case 1 -> attackOpponent(player, opponent);
             case 2 -> activateNewWeapon(player);
             case 3 -> {
-                player.setfV(player.getfV() - player.getWeapon().getfV());
-                player.setcC(player.getcC() + player.getWeapon().getWeight());
-                player.setWeapon(null);
-                player.setfV(1);
-                Log.addMessage(player.getName() + " dropped his weapon");
+                try {
+                    player.setfV(player.getfV() - player.getWeapon().getfV());
+                    player.setcC(player.getcC() + player.getWeapon().getWeight());
+                    player.setWeapon(null);
+                    player.setfV(1);
+                    Log.addMessage(player.getName() + " dropped his weapon");
+                } catch (Exception e) {
+                    System.out.println(ANSI_RED + " You can't really drop your Fists");
+                    Log.addMessage(player.getName() + " Tried to drop his Fists");
+                }
+
             }
             case 4 -> {
                 if(player.getItemBackpack() != null) {
@@ -127,30 +158,30 @@ public class Fight {
                         System.out.println(items.getItem());
                     }
                     InputIn.nextLine();
-                    String useItem = InputIn.nextLineOut(color("cyan") + "What item do you want to use?" + color(""));
+                    String useItem = InputIn.nextLineOut(ANSI_CYAN + "What item do you want to use?" + ANSI_RESET);
                     try {
                         potionsAndRings(player, opponent, player.getItemBackpack().stream()
                                                                 .filter(a -> a.getItem().equals(useItem)).toList()
                                                                 .get(0));
                     } catch (Exception e) {
-                        System.out.println(color("red") + "Item not Found!" + color(""));
+                        System.out.println(ANSI_RED + "Item not Found!" + ANSI_RESET);
                     }
                 }
             }
-            case 5 ->{
+            case 5 -> {
                 try {
                     player.setRes(player.getRes() - player.getArmor().getRes());
                     player.setcC(player.getcC() + player.getArmor().getWeight());
                     player.setSpeed(player.getSpeed() + player.getArmor().getSlowness());
                     player.setArmor(null);
                     Log.addMessage(player.getName() + " dropped his armor");
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(ANSI_RED + "You do not have Armor");
+                    Log.addMessage(player.getName() + " Tried to drop Armor that he did not have on");
                 }
-
             }
             case 6 -> {
-                System.out.println(color("lime") + "Ok seems understandable?" + color(""));
+                System.out.println(ANSI_LIME + "Ok seems understandable?" + ANSI_RESET);
                 Log.addMessage(player.getName() + " did nothing");
             }
             case 7 -> {
@@ -159,7 +190,7 @@ public class Fight {
                 winningConditions(player, opponent, 21);
             }
             default -> {
-                System.out.println(color("orange") + "So just do the same as 5? Got it." + color(""));
+                System.out.println(ANSI_ORANGE + "So just do the same as 5? Got it." + ANSI_RESET);
                 Log.addMessage(player.getName() + " failed to press a number from 1-6");
             }
         }
@@ -167,23 +198,27 @@ public class Fight {
 
     private static void activateNewWeapon(Gamefigurine player) {
         if(player.getWeaponBackpack() != null) {
-            String changeWeapon = InputIn.nextLineOut(color("cyan") + "what weapon do you wish to activate?" + color(""));
+            String changeWeapon = InputIn.nextLineOut(ANSI_CYAN + "what weapon do you wish to activate?" + ANSI_RESET);
             for (Weapon weapons : player.getWeaponBackpack()) {
                 System.out.println(weapons.getWeapon());
                 player.setfV(player.getfV() - weapons.getfV());
                 player.setcC(player.getcC() + weapons.getWeight());
-                if(weapons.getWeapon().equals(changeWeapon)) {
-                    player.setWeapon(weapons);
-                    player.setfV(player.getfV() + weapons.getfV());
-                    player.setcC(player.getcC() - weapons.getWeight());
-                    Log.addMessage(player.getName() + " changed his weapon to:" + weapons.getWeapon());
-                } else {
-                    System.out.println(color("red") + "seems like you dont have a weapon like that in your inventory" + color(""));
-                    Log.addMessage(player.getName() + " tried to changed his weapon to:" + weapons.getWeapon() + " but failed");
-                }
+                weaponChange(player, changeWeapon, weapons);
             }
         } else {
-            System.out.println(color("red" + "You dont have any other weapons than the one you are using. Well you just wasted your turn." + color("")));
+            System.out.println(ANSI_RED + "You dont have any other weapons than the one you are using. Well you just wasted your turn." + ANSI_RESET);
+        }
+    }
+
+    private static void weaponChange(Gamefigurine player, String changeWeapon, Weapon weapons) {
+        if(weapons.getWeapon().equals(changeWeapon)) {
+            player.setWeapon(weapons);
+            player.setfV(player.getfV() + weapons.getfV());
+            player.setcC(player.getcC() - weapons.getWeight());
+            Log.addMessage(player.getName() + " changed his weapon to:" + weapons.getWeapon());
+        } else {
+            System.out.println(ANSI_RED + "seems like you dont have a weapon like that in your inventory" + ANSI_RESET);
+            Log.addMessage(player.getName() + " tried to changed his weapon to:" + weapons.getWeapon() + " but failed");
         }
     }
 
@@ -213,7 +248,7 @@ public class Fight {
             } else {
                 if(choice.getClass().equals(ShieldRing.class)) {
                     player.setRes(player.getRes() + ((ShieldRing) choice).getMoreRes());
-                    player.getItemBackpack().remove(choice);
+                    itemUsed(player, choice);
                 }
             }
         }
@@ -222,40 +257,37 @@ public class Fight {
     private static void charmRing(Gamefigurine player, Gamefigurine opponent, CharmRing choice) {
         if(Math.random() * 1 < 0 + choice.getCharm()) {
             opponent.setfV(opponent.getfV() - choice.getLessenEnemiesFV());
-            Log.addMessage(opponent.getName() + " was charmed by " + choice.getItem());
-            player.getItemBackpack().remove(choice);
+            itemUsed(player, choice);
         } else {
-            System.out.println(color("red") + "Charm Ring was used but it was unable to charm the Opponent" + color(""));
+            System.out.println(ANSI_RED + "Charm Ring was used but it was unable to charm the Opponent" + ANSI_RESET);
         }
     }
 
     private static void strengthRing(Gamefigurine player, Item choice) {
-        Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setcC(player.getcC() + ((StrengthRing) choice).getMoreCC());
-        player.setcC(player.getcC() + choice.getWeight());
-        player.getItemBackpack().remove(choice);
+        itemUsed(player, choice);
     }
 
     private static void powerPot(Gamefigurine player, Item choice) {
-        Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setcC(player.getcC() + ((PowerPotion) choice).getGiveMoreCC());
+        itemUsed(player, choice);
+    }
+
+    private static void itemUsed(Gamefigurine player, Item choice) {
+        Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setcC(player.getcC() + choice.getWeight());
         player.getItemBackpack().remove(choice);
     }
 
     private static void healthPot(Gamefigurine player, Gamefigurine opponent, Item choice) {
-        Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setlP(player.getlP() + ((HealthPotion) choice).getGiveLP());
-        player.setcC(player.getcC() + choice.getWeight());
+        itemUsed(player, choice);
         giveOutRemainingLP(player, opponent);
-        player.getItemBackpack().remove(choice);
     }
 
     private static void damagePot(Gamefigurine player, Item choice) {
-        Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setfV(player.getfV() + ((DamagePotion) choice).getAddFV());
-        player.setcC(player.getcC() + choice.getWeight());
-        player.getItemBackpack().remove(choice);
+        itemUsed(player, choice);
     }
 
     private static void attackOpponent(Gamefigurine player, Gamefigurine opponent) {
@@ -276,8 +308,8 @@ public class Fight {
 
     private static void attackEvaded(Gamefigurine player, Gamefigurine opponent) {
         Log.addMessage(opponent.getName() + " Evaded an attack");
-        System.out.println(color("orange") + "The Opponent Evaded the attack" + color(""));
-        giveOutRemainingLP(player,opponent);
+        System.out.println(ANSI_ORANGE + "The Opponent Evaded the attack" + ANSI_RESET);
+        giveOutRemainingLP(player, opponent);
     }
 
     private static void gotArmor(Gamefigurine player, Gamefigurine opponent) {
@@ -286,7 +318,7 @@ public class Fight {
         } else {
             if(Math.random() * 1 < 0 + player.getInstantDeath()) {
                 Log.addMessage(opponent.getName() + " Instantly Died");
-                System.out.println(color("ice") + "It seems you have perished instantly because death favored your opponent player: " + player.getName() + color(""));
+                System.out.println(ANSI_ICEBLUE + "It seems you have perished instantly because death favored your opponent player: " + player.getName() + ANSI_RESET);
                 opponent.setlP(-999999);
             } else {
                 damageDeal(player, opponent);
@@ -299,7 +331,7 @@ public class Fight {
                                              .getNoDamage())) {
             if(Math.random() * 1 < 0 + player.getInstantDeath()) {
                 Log.addMessage(opponent.getName() + " Instantly Died");     //Todo: ask if i have to put this in the specific class
-                System.out.println(color("ice") + "It seems you have perished instantly because death favored your opponent player: " + opponent.getName() + color(""));
+                System.out.println(ANSI_ICEBLUE + "It seems you have perished instantly because death favored your opponent player: " + opponent.getName() + ANSI_RESET);
                 opponent.setlP(-999999);
             } else {
                 damageDeal(player, opponent);
@@ -311,19 +343,19 @@ public class Fight {
 
     private static void attackMissed(Gamefigurine player, Gamefigurine opponent) {
         Log.addMessage(player.getName() + " missed");
-        System.out.println(color("orange") + "You missed" + color(""));     //Looks if you had enough accuracy to hit
+        System.out.println(ANSI_ORANGE + "You missed" + ANSI_RESET);     //Looks if you had enough accuracy to hit
         giveOutRemainingLP(player, opponent);
     }
 
     private static void giveOutRemainingLP(Gamefigurine player, Gamefigurine opponent) {
-        System.out.println(color("gold") + player.getlP() + color("blue") + " Is the Remaining amount of health on " + player.getName() + color(""));
-        System.out.println(color("gold") + opponent.getlP() + color("red") + " Is the Remaining amount of health on " + opponent.getName() + color(""));
+        System.out.println(ANSI_GOLD + player.getlP() + ANSI_BLUE + " Is the Remaining amount of health on " + player.getName());
+        System.out.println(ANSI_GOLD + opponent.getlP() + ANSI_RED + " Is the Remaining amount of health on " + opponent.getName() + ANSI_RESET);
     }
 
     private static void noDamageBcArmor(Gamefigurine player, Gamefigurine opponent) {
         Log.addMessage(opponent.getName() + " Armor saved him from Damage");
-        System.out.println(color("orange") + "It seems you hit your opponent bur their armor saved them from taking Damage" + color(""));
-        giveOutRemainingLP(player,opponent);
+        System.out.println(ANSI_ORANGE + "It seems you hit your opponent bur their armor saved them from taking Damage" + ANSI_RESET);
+        giveOutRemainingLP(player, opponent);
     }
 
     private static void damageDeal(Gamefigurine player, Gamefigurine opponent) {

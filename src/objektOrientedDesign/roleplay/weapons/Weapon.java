@@ -22,7 +22,7 @@ public abstract class Weapon {
         List <Weapon> weaponList = new ArrayList <>();
         weaponList.add(new Club("Club", 4, 5, 0.8, 5));
         weaponList.add(new Sword("Sword", 2, 6, 0.95, 3));
-        weaponList.add(new Scythe("Scythe", 3, 7, 1, 1));
+        weaponList.add(new Scythe("Scythe", 3, 7, 1, 2));
         weaponList.add(new Bow("Bow", 1, 5.5, 0.75));
         weaponList.add(new Musket("Musket", 2.5, 8, 1));
         weaponList.add(new ThrowingKnife("Throwing Knives", 0.5, 10, 0.9));
