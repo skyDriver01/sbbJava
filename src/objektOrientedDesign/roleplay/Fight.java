@@ -198,15 +198,23 @@ public class Fight {
 
     private static void activateNewWeapon(Gamefigurine player) {
         if(player.getWeaponBackpack() != null) {
-            String changeWeapon = InputIn.nextLineOut(ANSI_CYAN + "what weapon do you wish to activate?" + ANSI_RESET);
             for (Weapon weapons : player.getWeaponBackpack()) {
                 System.out.println(weapons.getWeapon());
-                player.setfV(player.getfV() - weapons.getfV());
-                player.setcC(player.getcC() + weapons.getWeight());
-                weaponChange(player, changeWeapon, weapons);
+            }
+            InputIn.nextLine();
+            String changeWeapon = InputIn.nextLineOut(ANSI_CYAN + "what weapon do you wish to activate?" + ANSI_RESET);
+            for (Weapon weapon : player.getWeaponBackpack()) {
+                if(weapon.getWeapon().equals(changeWeapon)) {
+                    player.setfV(player.getfV() - weapon.getfV());
+                    player.setcC(player.getcC() + weapon.getWeight());
+                    weaponChange(player, changeWeapon, weapon);
+                } else {
+                    System.out.println(ANSI_RED + " not here");
+                }
             }
         } else {
             System.out.println(ANSI_RED + "You dont have any other weapons than the one you are using. Well you just wasted your turn." + ANSI_RESET);
+            Log.addMessage(" Used a turn trying to change his weapon");
         }
     }
 
@@ -214,7 +222,7 @@ public class Fight {
         if(weapons.getWeapon().equals(changeWeapon)) {
             player.setWeapon(weapons);
             player.setfV(player.getfV() + weapons.getfV());
-            player.setcC(player.getcC() - weapons.getWeight());
+            player.setcC(player.getcC() - weapons.getWeight());         //BUGFIX dont let it check all weapons Xd
             Log.addMessage(player.getName() + " changed his weapon to:" + weapons.getWeapon());
         } else {
             System.out.println(ANSI_RED + "seems like you dont have a weapon like that in your inventory" + ANSI_RESET);
@@ -274,7 +282,7 @@ public class Fight {
     }
 
     private static void itemUsed(Gamefigurine player, Item choice) {
-        Log.addMessage(player.getName() + " used a " + choice.getItem());       // Todo : bugfix activating different weapon got a bug
+        Log.addMessage(player.getName() + " used a " + choice.getItem());
         player.setcC(player.getcC() + choice.getWeight());
         player.getItemBackpack().remove(choice);
     }
