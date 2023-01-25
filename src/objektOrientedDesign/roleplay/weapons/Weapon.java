@@ -8,7 +8,6 @@ public abstract class Weapon {
     private double weight;
     private double fV;
     private double accuracy;
-    private double amount;
     private double bv;
     private static List<Weapon> weapons;
 
@@ -60,14 +59,6 @@ public abstract class Weapon {
 
     public void setAccuracy(double accuracy) {
         this.accuracy = accuracy;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 
     public double getBv() {
