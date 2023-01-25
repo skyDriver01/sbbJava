@@ -338,7 +338,7 @@ public class Fight {
         if(!(Math.random() * 1 < 0 + opponent.getArmor()                 //Checking the probability of the Armor saving you if not then you deal damage.
                                              .getNoDamage())) {
             if(Math.random() * 1 < 0 + player.getInstantDeath()) {
-                Log.addMessage(opponent.getName() + " Instantly Died");     //Todo: ask if i have to put this in the specific class
+                Log.addMessage(opponent.getName() + " Instantly Died");
                 System.out.println(ANSI_ICEBLUE + "It seems you have perished instantly because death favored your opponent player: " + opponent.getName() + ANSI_RESET);
                 opponent.setlP(-999999);
             } else {
