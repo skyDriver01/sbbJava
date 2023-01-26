@@ -193,7 +193,7 @@ public class ConfigCharacters {
         } else {
             addArmorToInv(armor, player);
         }
-    }       //Todo: Orc Rage not function yet
+    }
 
     private static void addArmorToInv(Armor armor, int player) {
         fightingCharacters.get(player).getItemBackpack().add(armor);
