@@ -19,7 +19,7 @@ public class Elven extends Gamefigurine {
     public double getfV() {
         double mFV = super.getfV() + (getmV() / 2);
         if(getWeapon() != null) {
-            if(getWeapon() instanceof Bow) {      // Todo: .getclass zu instancof ändern, weil bei abstrakten klassen es fehler geben könnte indem es nicht den richtigen bogen findet
+            if(getWeapon() instanceof Bow) {      // Todo: getclass zu instancof ändern, weil bei abstrakten klassen es fehler geben könnte indem es nicht den richtigen bogen findet
                 double bowFV = mFV + (super.getfV() / 2);
                 return bowFV;
             }
