@@ -5,4 +5,6 @@ public class Dwarf extends Gamefigurine {
                  double evasion) {
         super(name, lP, cC, fV, res, speed, accuracy, evasion);
     }
+
+
 }

@@ -1,6 +1,13 @@
 package objektOrientedDesign.roleplay.gamefigures;
 
+import objektOrientedDesign.roleplay.Log;
+import objektOrientedDesign.roleplay.items.Armor;
+import objektOrientedDesign.roleplay.items.HeavyArmor;
+import objektOrientedDesign.roleplay.items.LightArmor;
 import objektOrientedDesign.roleplay.weapons.Scythe;
+
+import static objektOrientedDesign.roleplay.TextStuff.ANSI_RED;
+import static objektOrientedDesign.roleplay.TextStuff.ANSI_RESET;
 
 public class SCP_049 extends Gamefigurine {
     private double instantDeath;
@@ -27,10 +34,20 @@ public class SCP_049 extends Gamefigurine {
         this.instantDeath = instantDeath;
         return instantDeath;
     }
+
+    @Override
+    public void setArmor(Armor armor) {
+        if(armor.getClass().equals(LightArmor.class)) {
+            System.out.println(ANSI_RED + "The Character you have Chosen is not fit to equip Light Armor" + ANSI_RESET);
+            Log.addMessage(initGameFigurines().get(4).getName() + "tried to equip armor that he cant wear");
+        }
+        if(armor.getClass().equals(HeavyArmor.class)) {
+            System.out.println(ANSI_RED + "The Character you have Chosen is not fit to equip Heavy Armor" + ANSI_RESET);
+            Log.addMessage(initGameFigurines().get(4).getName() + "tried to equip armor that he cant wear");
+        }
+    }
 }
-/*
-// SCP_049 is the Plague Doctor that can kill by touch
- to balance this out the chance of this happeniing during the game if he is chosen is 1%.
- And because he is a Doctor he can heal himself without the use of Potions but that health
- he gets by regeneration is not alot and will not happen often maybe make it like a 15% chance.
+/**
+ * SCP_049 is the Plague Doctor that can kill by touch
+ * to balance this out the chance of this happeniing during the game if he is chosen is 1%.
  */

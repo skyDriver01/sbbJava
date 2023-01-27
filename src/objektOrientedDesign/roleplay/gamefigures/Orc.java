@@ -34,6 +34,8 @@ public class Orc extends Gamefigurine {
         return super.getfV();
     }
 
+
+
     public void setRage(boolean rage) {
         this.rage = rage;
     }

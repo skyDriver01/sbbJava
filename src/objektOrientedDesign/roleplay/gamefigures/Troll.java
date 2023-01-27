@@ -1,6 +1,13 @@
 package objektOrientedDesign.roleplay.gamefigures;
 
+import objektOrientedDesign.roleplay.Log;
+import objektOrientedDesign.roleplay.items.Armor;
+import objektOrientedDesign.roleplay.items.HeavyArmor;
+import objektOrientedDesign.roleplay.items.LightArmor;
 import objektOrientedDesign.roleplay.weapons.Club;
+
+import static objektOrientedDesign.roleplay.TextStuff.ANSI_RED;
+import static objektOrientedDesign.roleplay.TextStuff.ANSI_RESET;
 
 public class Troll extends Gamefigurine {
 
@@ -17,5 +24,16 @@ public class Troll extends Gamefigurine {
             }
         }
         return super.getfV();
+    }
+    @Override
+    public void setArmor(Armor armor) {
+        if(armor.getClass().equals(LightArmor.class)) {
+            System.out.println(ANSI_RED + "The Character you have Chosen is not fit to equip Light Armor" + ANSI_RESET);
+            Log.addMessage(initGameFigurines().get(5).getName() + "tried to equip armor that he cant wear");
+        }
+        if(armor.getClass().equals(HeavyArmor.class)) {
+            System.out.println(ANSI_RED + "The Character you have Chosen is not fit to equip Heavy Armor" + ANSI_RESET);
+            Log.addMessage(initGameFigurines().get(5).getName() + "tried to equip armor that he cant wear");
+        }
     }
 }
