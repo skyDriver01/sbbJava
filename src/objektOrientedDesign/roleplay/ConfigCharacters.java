@@ -187,10 +187,13 @@ public class ConfigCharacters {
         if(fightingCharacters.get(player).getArmor() == null) {
             fightingCharacters.get(player).setArmor(armor);
             if(fightingCharacters.get(player).getArmor() != null) {
-                fightingCharacters.get(player).setRes(fightingCharacters.get(player).getArmor().getRes() + armor.getRes());
-                fightingCharacters.get(player).setSpeed(fightingCharacters.get(player).getSpeed() - armor.getSlowness());
+                fightingCharacters.get(player)
+                                  .setRes(fightingCharacters.get(player).getArmor().getRes() + armor.getRes());
+                fightingCharacters.get(player)
+                                  .setSpeed(fightingCharacters.get(player).getSpeed() - armor.getSlowness());
                 fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - armor.getWeight());
-                Log.addMessage(fightingCharacters.get(player).getName() + " has equipped this Armor: " + armor.getItem());
+                Log.addMessage(fightingCharacters.get(player)
+                                                 .getName() + " has equipped this Armor: " + armor.getItem());
             }
         } else {
             addArmorToInv(armor, player);
@@ -224,8 +227,8 @@ public class ConfigCharacters {
             case 4 -> equipItem(items.get(3), player);      //Shield Ring
             case 5 -> equipItem(items.get(4), player);      //Strength Ring
             case 6 -> equipItem(items.get(5), player);      //Charm Ring
-            case 7 -> canYouWearArmor(player, 6);      //Light Armor
-            case 8 -> canYouWearArmor(player, 7);      //Heavy Armor
+            case 7 -> equipArmor((Armor) items.get(6), player);      //Light Armor
+            case 8 -> equipArmor((Armor) items.get(7), player);      //Heavy Armor
             case 9 -> loopForItems = false;
             default -> {
                 System.out.println(ANSI_ORANGE + "Come on, again?? THERE ARE 9 OPTIONS" + ANSI_RESET);
@@ -233,10 +236,6 @@ public class ConfigCharacters {
             }
         }
         return loopForItems;
-    }
-
-    private static void canYouWearArmor(int player, int armor) {
-        equipArmor((Armor) items.get(armor), player);
     }
 
     private static void itemOptions(HashMap <Integer, String> itemChoice) {
