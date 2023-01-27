@@ -20,7 +20,6 @@ public class Fight {
         }
         play20Rounds(playerOne, playerTwo);
     }
-            // Todo: Interfaces genauer anschauen. Eigenes Klasse mit Interface schreiben und diese instanzieren und mit dem Interface dann implementieren.
     private static void play20Rounds(Gamefigurine playerOne, Gamefigurine playerTwo) {
         int i;
         for (i = 0; i <= 20; i++) {
@@ -95,7 +94,7 @@ public class Fight {
         Log.addMessage(playerOne.getName() + " Won");
         System.out.println(ANSI_ICEBLUE + "This is the log of the Game" + ANSI_RESET);
         System.out.println(anyLine("ice"));
-        Log.printLog();
+        Log.printFullLog();
         System.out.println(anyLine("ice"));
         System.exit(0);
     }
@@ -111,7 +110,7 @@ public class Fight {
         Log.addMessage(playerTwo.getName() + " Won");
         System.out.println(ANSI_ICEBLUE + "This is the log of the Game");
         System.out.println(anyLine("ice"));
-        Log.printLog();
+        Log.printFullLog();
         System.out.println(anyLine("ice"));
         System.exit(0);
     }
@@ -147,7 +146,6 @@ public class Fight {
                     player.setfV(1);
                     Log.addMessage(player.getName() + " dropped his weapon");
                 } catch (Exception e) {
-                    System.out.println(ANSI_RED + " You can't really drop your Fists");
                     Log.addMessage(player.getName() + " Tried to drop his Fists");
                 }
 
@@ -176,12 +174,10 @@ public class Fight {
                     player.setArmor(null);
                     Log.addMessage(player.getName() + " dropped his armor");
                 } catch (Exception e) {
-                    System.out.println(ANSI_RED + "You do not have Armor");
                     Log.addMessage(player.getName() + " Tried to drop Armor that he did not have on");
                 }
             }
             case 6 -> {
-                System.out.println(ANSI_LIME + "Ok seems understandable?" + ANSI_RESET);
                 Log.addMessage(player.getName() + " did nothing");
             }
             case 7 -> {
@@ -190,7 +186,6 @@ public class Fight {
                 winningConditions(player, opponent, 21);
             }
             default -> {
-                System.out.println(ANSI_ORANGE + "So just do the same as 5? Got it." + ANSI_RESET);
                 Log.addMessage(player.getName() + " failed to press a number from 1-6");
             }
         }
@@ -213,7 +208,6 @@ public class Fight {
                 }
             }
         } else {
-            System.out.println(ANSI_RED + "You dont have any other weapons than the one you are using. Well you just wasted your turn." + ANSI_RESET);
             Log.addMessage(" Used a turn trying to change his weapon");
         }
     }
@@ -222,10 +216,9 @@ public class Fight {
         if(weapons.getWeapon().equals(changeWeapon)) {
             player.setWeapon(weapons);
             player.setfV(player.getfV() + weapons.getfV());
-            player.setcC(player.getcC() - weapons.getWeight());         //BUGFIX dont let it check all weapons Xd
+            player.setcC(player.getcC() - weapons.getWeight());
             Log.addMessage(player.getName() + " changed his weapon to:" + weapons.getWeapon());
         } else {
-            System.out.println(ANSI_RED + "seems like you dont have a weapon like that in your inventory" + ANSI_RESET);
             Log.addMessage(player.getName() + " tried to changed his weapon to:" + weapons.getWeapon() + " but failed");
         }
     }
@@ -326,7 +319,6 @@ public class Fight {
         } else {
             if(Math.random() * 1 < 0 + player.getInstantDeath()) {
                 Log.addMessage(opponent.getName() + " Instantly Died");
-                System.out.println(ANSI_ICEBLUE + "It seems you have perished instantly because death favored your opponent player: " + player.getName() + ANSI_RESET);
                 opponent.setlP(-999999);
             } else {
                 damageDeal(player, opponent);
@@ -339,7 +331,6 @@ public class Fight {
                                              .getNoDamage())) {
             if(Math.random() * 1 < 0 + player.getInstantDeath()) {
                 Log.addMessage(opponent.getName() + " Instantly Died");
-                System.out.println(ANSI_ICEBLUE + "It seems you have perished instantly because death favored your opponent player: " + opponent.getName() + ANSI_RESET);
                 opponent.setlP(-999999);
             } else {
                 damageDeal(player, opponent);
@@ -350,8 +341,7 @@ public class Fight {
     }
 
     private static void attackMissed(Gamefigurine player, Gamefigurine opponent) {
-        Log.addMessage(player.getName() + " missed");
-        System.out.println(ANSI_ORANGE + "You missed" + ANSI_RESET);     //Looks if you had enough accuracy to hit
+        Log.addMessage(player.getName() + " missed");     //Looks if you had enough accuracy to hit
         giveOutRemainingLP(player, opponent);
     }
 
@@ -362,7 +352,6 @@ public class Fight {
 
     private static void noDamageBcArmor(Gamefigurine player, Gamefigurine opponent) {
         Log.addMessage(opponent.getName() + " Armor saved him from Damage");
-        System.out.println(ANSI_ORANGE + "It seems you hit your opponent bur their armor saved them from taking Damage" + ANSI_RESET);
         giveOutRemainingLP(player, opponent);
     }
 

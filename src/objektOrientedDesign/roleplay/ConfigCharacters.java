@@ -16,6 +16,7 @@ public class ConfigCharacters {
     static List <Weapon> weapons = Weapon.initWeapons(); // Von anfang an nicht probieren static zu benutzen.
     static List <Item> items = Item.initItems();
     static List <Gamefigurine> fightingCharacters = new ArrayList <>();
+    static Inventory inventory = new Inventory();
 
     public void executeGame() {
         System.out.println(ANSI_CYAN + "Welcome to the Role playing game." + ANSI_RESET);
@@ -155,26 +156,14 @@ public class ConfigCharacters {
     }
 
     public static void equipItem(Item item, int player) {
-        addItemToInv(item, player);
+        inventory.addItemToInv(item, player);
         System.out.println(ANSI_GOLD + fightingCharacters.get(player)
                                                          .getcC() + ANSI_MAGENTA + ": Is your Remaining Carrying Capacity" + ANSI_RESET);
     }
 
-    private static void addItemToInv(Item item, int player) {       // Todo: zu eigener Klasse hinzufügen wo zbs. Inventory heisst. Items, waffen und armor
-        if(fightingCharacters.get(player).getcC() >= item.getWeight()) {
-            fightingCharacters.get(player).getItemBackpack().add(item);
-            fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - item.getWeight());        // Todo: Methode machen wo restliche Tragkraft(cC) und diese nicht ändert sonder schaut wie viel noch übrig bleibt mit all den items wo man schon hat
-            Log.addMessage(fightingCharacters.get(player)
-                                             .getName() + " added this weapon to his inventory: " + item.getItem());
-        } else {
-            System.out.println(ANSI_RED + "That Item is to Heavy for you" + ANSI_RESET);
-            Log.addMessage(fightingCharacters.get(player).getName() + " had no more CC to get another Item");
-        }
-    }
-
     public static void equipArmor(Armor armor, int player) {
         if(fightingCharacters.get(player).getcC() >= armor.getWeight()) {
-            equipOrAddArmor(armor, player);
+            inventory.equipOrAddArmor(armor, player);
         } else {
             System.out.println(ANSI_RED + "You have to much weight accumulated that you cannot hold this anymore." + ANSI_RESET);
             Log.addMessage(fightingCharacters.get(player).getName() + " had no more CC to get more Armor");
@@ -183,29 +172,8 @@ public class ConfigCharacters {
                                                          .getcC() + ANSI_MAGENTA + ": Is your Remaining Carrying Capacity" + ANSI_RESET);
     }
 
-    private static void equipOrAddArmor(Armor armor, int player) {
-        if(fightingCharacters.get(player).getArmor() == null) {
-            fightingCharacters.get(player).setArmor(armor);
-            if(fightingCharacters.get(player).getArmor() != null) {
-                fightingCharacters.get(player)
-                                  .setRes(fightingCharacters.get(player).getArmor().getRes() + armor.getRes());
-                fightingCharacters.get(player)
-                                  .setSpeed(fightingCharacters.get(player).getSpeed() - armor.getSlowness());
-                fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - armor.getWeight());
-                Log.addMessage(fightingCharacters.get(player)
-                                                 .getName() + " has equipped this Armor: " + armor.getItem());
-            }
-        } else {
-            addArmorToInv(armor, player);
-        }
-    }
 
-    private static void addArmorToInv(Armor armor, int player) {
-        fightingCharacters.get(player).getItemBackpack().add(armor);
-        fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - armor.getWeight());
-        Log.addMessage(fightingCharacters.get(player)
-                                         .getName() + " added this Armor to his inventory " + armor.getItem());
-    }
+
 
     public static void chooseAItem(int player) {
         Item.initItems();
