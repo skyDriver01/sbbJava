@@ -12,8 +12,11 @@ public class Log {
     public static void addMessage(String message) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss");
         log.add(LocalDateTime.now().format(dtf) + " " + message);
+        for (int i = 0; i < log.size(); i++) {
+            System.out.println(ANSI_ICEBLUE + log.get(i).toString() + ANSI_RESET);
+        }
     }
-    public static void printLog() {     //Todo: namen ändern und auch noch log ändern das es die System.out.println nicht braucht wie bei case 6 vom fight: Das einfach der Log es printed
+    public static void printFullLog() {
         for (String message : log) {
             System.out.println(ANSI_ICEBLUE + message + ANSI_RESET);
         }

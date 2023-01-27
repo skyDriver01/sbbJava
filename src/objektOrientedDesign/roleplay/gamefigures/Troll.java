@@ -19,7 +19,7 @@ public class Troll extends Gamefigurine {
     @Override
     public double getfV() {
         if(getWeapon() != null) {
-            if(getWeapon().getClass().equals(Club.class)) {
+            if(getWeapon() instanceof Club) {
                 return super.getfV() * 2;
             }
         }
@@ -27,11 +27,11 @@ public class Troll extends Gamefigurine {
     }
     @Override
     public void setArmor(Armor armor) {
-        if(armor.getClass().equals(LightArmor.class)) {
+        if(armor instanceof LightArmor) {
             System.out.println(ANSI_RED + "The Character you have Chosen is not fit to equip Light Armor" + ANSI_RESET);
             Log.addMessage(initGameFigurines().get(5).getName() + "tried to equip armor that he cant wear");
         }
-        if(armor.getClass().equals(HeavyArmor.class)) {
+        if(armor instanceof HeavyArmor) {
             System.out.println(ANSI_RED + "The Character you have Chosen is not fit to equip Heavy Armor" + ANSI_RESET);
             Log.addMessage(initGameFigurines().get(5).getName() + "tried to equip armor that he cant wear");
         }

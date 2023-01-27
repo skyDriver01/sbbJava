@@ -19,7 +19,7 @@ public class Elven extends Gamefigurine {
     public double getfV() {
         double mFV = super.getfV() + (getmV() / 2);
         if(getWeapon() != null) {
-            if(getWeapon() instanceof Bow) {      // Todo: getclass zu instancof ändern, weil bei abstrakten klassen es fehler geben könnte indem es nicht den richtigen bogen findet
+            if(getWeapon() instanceof Bow) {
                 double bowFV = mFV + (super.getfV() / 2);
                 return bowFV;
             }
@@ -29,10 +29,10 @@ public class Elven extends Gamefigurine {
 
     @Override
     public void setArmor(Armor armor) {
-        if(armor.getClass().equals(LightArmor.class)) {
+        if(armor instanceof LightArmor) {
             super.setArmor(armor);
         } else {
-            if(armor.getClass().equals(HeavyArmor.class)) {
+            if(armor instanceof HeavyArmor) {
                 System.out.println(ANSI_RED + "The Character you have Chosen is not fit to equip Heavy Armor" + ANSI_RESET);
                 Log.addMessage(initGameFigurines().get(1).getName() + "tried to equip armor that he cant wear");
             }

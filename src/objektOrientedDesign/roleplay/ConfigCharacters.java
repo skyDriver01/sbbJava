@@ -16,6 +16,7 @@ public class ConfigCharacters {
     static List <Weapon> weapons = Weapon.initWeapons(); // Von anfang an nicht probieren static zu benutzen.
     static List <Item> items = Item.initItems();
     static List <Gamefigurine> fightingCharacters = new ArrayList <>();
+    static Inventory inventory = new Inventory();
 
     public void executeGame() {
         System.out.println(ANSI_CYAN + "Welcome to the Role playing game." + ANSI_RESET);
@@ -98,12 +99,12 @@ public class ConfigCharacters {
             System.out.println(anyLine("purple"));
             int chooseYourWeapons = InputIn.nexIntOut("Type the Number of the Desired Action");
             switch (chooseYourWeapons) {
-                case 1 -> equipWeapon(weapons.get(0), player);  //Club
-                case 2 -> equipWeapon(weapons.get(1), player);  //Sword
-                case 3 -> equipWeapon(weapons.get(2), player);  //Scythe
-                case 4 -> equipWeapon(weapons.get(3), player);  //Bow
-                case 5 -> equipWeapon(weapons.get(4), player);  //Musket
-                case 6 -> equipWeapon(weapons.get(5), player);  //Throwing Knives
+                case 1 -> inventory.equipWeapon(weapons.get(0), player);  //Club
+                case 2 -> inventory.equipWeapon(weapons.get(1), player);  //Sword
+                case 3 -> inventory.equipWeapon(weapons.get(2), player);  //Scythe
+                case 4 -> inventory.equipWeapon(weapons.get(3), player);  //Bow
+                case 5 -> inventory.equipWeapon(weapons.get(4), player);  //Musket
+                case 6 -> inventory.equipWeapon(weapons.get(5), player);  //Throwing Knives
                 case 7 -> {
                     loopForWeapons = false;
                     chooseAItem(player);
@@ -125,86 +126,26 @@ public class ConfigCharacters {
         System.out.println(anyLine("purple"));
     }
 
-    public static void equipWeapon(Weapon weapon, int player) {
-        if(fightingCharacters.get(player).getcC() >= weapon.getWeight()) {
-            if(fightingCharacters.get(player)
-                                 .getWeapon() == null) {    //Checks if i don't already have a weapon if not then the first weapon auto equips
-                fightingCharacters.get(player).setWeapon(weapon);
-                fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - weapon.getWeight());
-                fightingCharacters.get(player).setfV(fightingCharacters.get(player).getfV() + weapon.getfV());
-                Log.addMessage(fightingCharacters.get(player)
-                                                 .getName() + " equipped this weapon first: " + weapon.getWeapon());
-            } else {
-                fightingCharacters.get(player).getWeaponBackpack()
-                                  .add(weapon);     //Weapon gets added to your inventory for later activation if you wish
-                fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - weapon.getWeight());
-                Log.addMessage(fightingCharacters.get(player)
-                                                 .getName() + " added this weapon to his inventory: " + weapon.getWeapon());
-            }
-        } else {
-            System.out.println(ANSI_RED + "That Item is to Heavy for you" + ANSI_RESET);
-            Log.addMessage(fightingCharacters.get(player).getName() + " had no more CC to get another Weapon");
-        }
-        System.out.println(ANSI_GOLD + fightingCharacters.get(player)
-                                                         .getcC() + ANSI_MAGENTA + ": Is your Remaining Carrying Capacity" + ANSI_RESET);
-    }
-
     public static void saveCharacter(Gamefigurine gamefigurine, int player) {
         fightingCharacters.get(player).setName((gamefigurine.getName()));
         Log.addMessage(fightingCharacters.get(player).getName() + " was chosen as one players Character");
     }
 
     public static void equipItem(Item item, int player) {
-        addItemToInv(item, player);
+        inventory.addItemToInv(item, player);
         System.out.println(ANSI_GOLD + fightingCharacters.get(player)
                                                          .getcC() + ANSI_MAGENTA + ": Is your Remaining Carrying Capacity" + ANSI_RESET);
     }
 
-    private static void addItemToInv(Item item, int player) {       // Todo: zu eigener Klasse hinzufügen wo zbs. Inventory heisst. Items, waffen und armor
-        if(fightingCharacters.get(player).getcC() >= item.getWeight()) {
-            fightingCharacters.get(player).getItemBackpack().add(item);
-            fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - item.getWeight());        // Todo: Methode machen wo restliche Tragkraft(cC) und diese nicht ändert sonder schaut wie viel noch übrig bleibt mit all den items wo man schon hat
-            Log.addMessage(fightingCharacters.get(player)
-                                             .getName() + " added this weapon to his inventory: " + item.getItem());
-        } else {
-            System.out.println(ANSI_RED + "That Item is to Heavy for you" + ANSI_RESET);
-            Log.addMessage(fightingCharacters.get(player).getName() + " had no more CC to get another Item");
-        }
-    }
-
     public static void equipArmor(Armor armor, int player) {
         if(fightingCharacters.get(player).getcC() >= armor.getWeight()) {
-            equipOrAddArmor(armor, player);
+            inventory.equipOrAddArmor(armor, player);
         } else {
             System.out.println(ANSI_RED + "You have to much weight accumulated that you cannot hold this anymore." + ANSI_RESET);
             Log.addMessage(fightingCharacters.get(player).getName() + " had no more CC to get more Armor");
         }
         System.out.println(ANSI_GOLD + fightingCharacters.get(player)
                                                          .getcC() + ANSI_MAGENTA + ": Is your Remaining Carrying Capacity" + ANSI_RESET);
-    }
-
-    private static void equipOrAddArmor(Armor armor, int player) {
-        if(fightingCharacters.get(player).getArmor() == null) {
-            fightingCharacters.get(player).setArmor(armor);
-            if(fightingCharacters.get(player).getArmor() != null) {
-                fightingCharacters.get(player)
-                                  .setRes(fightingCharacters.get(player).getArmor().getRes() + armor.getRes());
-                fightingCharacters.get(player)
-                                  .setSpeed(fightingCharacters.get(player).getSpeed() - armor.getSlowness());
-                fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - armor.getWeight());
-                Log.addMessage(fightingCharacters.get(player)
-                                                 .getName() + " has equipped this Armor: " + armor.getItem());
-            }
-        } else {
-            addArmorToInv(armor, player);
-        }
-    }
-
-    private static void addArmorToInv(Armor armor, int player) {
-        fightingCharacters.get(player).getItemBackpack().add(armor);
-        fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - armor.getWeight());
-        Log.addMessage(fightingCharacters.get(player)
-                                         .getName() + " added this Armor to his inventory " + armor.getItem());
     }
 
     public static void chooseAItem(int player) {

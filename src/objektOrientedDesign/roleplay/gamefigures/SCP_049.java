@@ -21,7 +21,7 @@ public class SCP_049 extends Gamefigurine {
     @Override
     public double getInstantDeath() {
         if(getWeapon() != null) {
-            if(getWeapon().getClass().equals(Scythe.class)) {
+            if(getWeapon() instanceof Scythe) {
                 return setInstantDeath(0.02);
             }
         }
@@ -37,11 +37,11 @@ public class SCP_049 extends Gamefigurine {
 
     @Override
     public void setArmor(Armor armor) {
-        if(armor.getClass().equals(LightArmor.class)) {
+        if(armor instanceof LightArmor) {
             System.out.println(ANSI_RED + "The Character you have Chosen is not fit to equip Light Armor" + ANSI_RESET);
             Log.addMessage(initGameFigurines().get(4).getName() + "tried to equip armor that he cant wear");
         }
-        if(armor.getClass().equals(HeavyArmor.class)) {
+        if(armor instanceof HeavyArmor) {
             System.out.println(ANSI_RED + "The Character you have Chosen is not fit to equip Heavy Armor" + ANSI_RESET);
             Log.addMessage(initGameFigurines().get(4).getName() + "tried to equip armor that he cant wear");
         }

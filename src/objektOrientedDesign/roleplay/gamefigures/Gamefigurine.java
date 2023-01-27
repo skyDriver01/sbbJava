@@ -41,20 +41,20 @@ public abstract class Gamefigurine {
         this.evasion = evasion;
     }
     public static List <Gamefigurine> initGameFigurines() {
-        final double MIN_FV = 0.9;      // Todo: alle constant final machen und immer name CAPS.
-        double maxFV = 1.1;
-        double minRes = 1;
-        double maxRes = 1.3;
-        double minSpeed = 1;
-        double maxSpeed = 2;
+        final double MIN_FV = 0.9;
+        final double MAX_FV = 1.1;
+        final double MIN_RES = 1;
+        final double MAX_RES = 1.3;
+        final double MIN_SPEED = 1;
+        final double MAX_SPEED = 2;
         List <Gamefigurine> characters = new ArrayList <>();
-        characters.add(new Dwarf("Dwarf", 80, 14, ((Math.random() * (maxFV - MIN_FV)) + MIN_FV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0.3));
-        characters.add(new Elven("Elven", 110, 12, ((Math.random() * (maxFV - MIN_FV)) + MIN_FV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.75, 0.09));
-        characters.add(new Human("Human", 100, 15, ((Math.random() * (maxFV - MIN_FV)) + MIN_FV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.8, 0.07));
-        characters.add(new Orc("Orc", 105, 17, ((Math.random() * (maxFV - MIN_FV)) + MIN_FV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.75, 0.05, false,105));
-        characters.add(new SCP_049("SCP_049", 90, 18, ((Math.random() * (maxFV - MIN_FV)) + MIN_FV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.9, 0.02, 0.01));
-        characters.add(new Troll("Troll", 115, 20, ((Math.random() * (maxFV - MIN_FV)) + MIN_FV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0));
-        characters.add(new Goblin("Goblin", 85, 13, ((Math.random() * (maxFV - MIN_FV)) + MIN_FV), ((Math.random() * (maxRes - minRes)) + minRes), ((Math.random() * (maxSpeed - minSpeed)) + minSpeed), 0.5, 0.08));
+        characters.add(new Dwarf("Dwarf", 80, 14, ((Math.random() * (MAX_FV - MIN_FV)) + MIN_FV), ((Math.random() * (MAX_RES - MIN_RES)) + MIN_RES), ((Math.random() * (MAX_SPEED - MIN_SPEED)) + MIN_SPEED), 0.5, 0.3));
+        characters.add(new Elven("Elven", 110, 12, ((Math.random() * (MAX_FV - MIN_FV)) + MIN_FV), ((Math.random() * (MAX_RES - MIN_RES)) + MIN_RES), ((Math.random() * (MAX_SPEED - MIN_SPEED)) + MIN_SPEED), 0.75, 0.09));
+        characters.add(new Human("Human", 100, 15, ((Math.random() * (MAX_FV - MIN_FV)) + MIN_FV), ((Math.random() * (MAX_RES - MIN_RES)) + MIN_RES), ((Math.random() * (MAX_SPEED - MIN_SPEED)) + MIN_SPEED), 0.8, 0.07));
+        characters.add(new Orc("Orc", 105, 17, ((Math.random() * (MAX_FV - MIN_FV)) + MIN_FV), ((Math.random() * (MAX_RES - MIN_RES)) + MIN_RES), ((Math.random() * (MAX_SPEED - MIN_SPEED)) + MIN_SPEED), 0.75, 0.05, false,105));
+        characters.add(new SCP_049("SCP_049", 90, 18, ((Math.random() * (MAX_FV - MIN_FV)) + MIN_FV), ((Math.random() * (MAX_RES - MIN_RES)) + MIN_RES), ((Math.random() * (MAX_SPEED - MIN_SPEED)) + MIN_SPEED), 0.9, 0.02, 0.01));
+        characters.add(new Troll("Troll", 115, 20, ((Math.random() * (MAX_FV - MIN_FV)) + MIN_FV), ((Math.random() * (MAX_RES - MIN_RES)) + MIN_RES), ((Math.random() * (MAX_SPEED - MIN_SPEED)) + MIN_SPEED), 0.5, 0));
+        characters.add(new Goblin("Goblin", 85, 13, ((Math.random() * (MAX_FV - MIN_FV)) + MIN_FV), ((Math.random() * (MAX_RES - MIN_RES)) + MIN_RES), ((Math.random() * (MAX_SPEED - MIN_SPEED)) + MIN_SPEED), 0.5, 0.08));
         gameFigurines = characters;
         return characters;
     }
