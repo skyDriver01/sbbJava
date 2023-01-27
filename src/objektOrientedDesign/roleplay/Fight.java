@@ -231,13 +231,13 @@ public class Fight {
     }
 
     private static void potionsAndRings(Gamefigurine player, Gamefigurine opponent, Item choice) {
-        if(choice.getClass().equals(DamagePotion.class)) {
+        if(choice instanceof DamagePotion) {
             damagePot(player, choice);
         } else {
-            if(choice.getClass().equals(HealthPotion.class)) {
+            if(choice instanceof HealthPotion) {
                 healthPot(player, opponent, choice);
             } else {
-                if(choice.getClass().equals(PowerPotion.class)) {
+                if(choice instanceof PowerPotion) {
                     powerPot(player, choice);
                 } else {
                     rings(player, opponent, choice);
@@ -247,14 +247,14 @@ public class Fight {
     }
 
     private static void rings(Gamefigurine player, Gamefigurine opponent, Item choice) {
-        if(choice.getClass().equals(StrengthRing.class)) {
+        if(choice instanceof StrengthRing) {
             strengthRing(player, choice);
 
         } else {
-            if(choice.getClass().equals(CharmRing.class)) {
+            if(choice instanceof CharmRing) {
                 charmRing(player, opponent, (CharmRing) choice);
             } else {
-                if(choice.getClass().equals(ShieldRing.class)) {
+                if(choice instanceof ShieldRing) {
                     player.setRes(player.getRes() + ((ShieldRing) choice).getMoreRes());
                     itemUsed(player, choice);
                 }
