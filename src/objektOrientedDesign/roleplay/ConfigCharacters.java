@@ -13,7 +13,7 @@ import static objektOrientedDesign.roleplay.TextStuff.*;
 
 public class ConfigCharacters {
     static List <Gamefigurine> gameFigurines = Gamefigurine.initGameFigurines();
-    static List <Weapon> weapons = Weapon.initWeapons();
+    static List <Weapon> weapons = Weapon.initWeapons(); // Von anfang an nicht probieren static zu benutzen.
     static List <Item> items = Item.initItems();
     static List <Gamefigurine> fightingCharacters = new ArrayList <>();
 
@@ -160,10 +160,10 @@ public class ConfigCharacters {
                                                          .getcC() + ANSI_MAGENTA + ": Is your Remaining Carrying Capacity" + ANSI_RESET);
     }
 
-    private static void addItemToInv(Item item, int player) {
+    private static void addItemToInv(Item item, int player) {       // Todo: zu eigener Klasse hinzufügen wo zbs. Inventory heisst. Items, waffen und armor
         if(fightingCharacters.get(player).getcC() >= item.getWeight()) {
             fightingCharacters.get(player).getItemBackpack().add(item);
-            fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - item.getWeight());
+            fightingCharacters.get(player).setcC(fightingCharacters.get(player).getcC() - item.getWeight());        // Todo: Methode machen wo restliche Tragkraft(cC) und diese nicht ändert sonder schaut wie viel noch übrig bleibt mit all den items wo man schon hat
             Log.addMessage(fightingCharacters.get(player)
                                              .getName() + " added this weapon to his inventory: " + item.getItem());
         } else {

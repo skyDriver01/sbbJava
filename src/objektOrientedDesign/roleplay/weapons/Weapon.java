@@ -19,7 +19,7 @@ public abstract class Weapon {
     }
     public static List <Weapon> initWeapons() {
         List <Weapon> weaponList = new ArrayList <>();
-        weaponList.add(new Club("Club", 4, 5, 0.8, 5));
+        weaponList.add(new Club("Club", 4, 0.8));
         weaponList.add(new Sword("Sword", 2, 6, 0.95, 3));
         weaponList.add(new Scythe("Scythe", 3, 7, 1, 2));
         weaponList.add(new Bow("Bow", 1, 5.5, 0.75));

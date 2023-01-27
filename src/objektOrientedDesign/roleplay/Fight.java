@@ -20,7 +20,7 @@ public class Fight {
         }
         play20Rounds(playerOne, playerTwo);
     }
-
+            // Todo: Interfaces genauer anschauen. Eigenes Klasse mit Interface schreiben und diese instanzieren und mit dem Interface dann implementieren.
     private static void play20Rounds(Gamefigurine playerOne, Gamefigurine playerTwo) {
         int i;
         for (i = 0; i <= 20; i++) {
