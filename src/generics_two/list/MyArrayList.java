@@ -1,31 +1,29 @@
 package generics_two.list;
 
-public class MyArrayList<E> implements MyListInterfaceSimple <E> {
+public class MyArrayList implements MyListInterfaceSimple<Object> {
 
-    private E[] myArray = (E[]) new Object[0];
+    private Object[] myArray = new Object[0];
 
     @Override
-    public void add(E element) {
-
+    public void add(Object element) {
         if(myArray == null){
             myArray[0] = element;
         }
-        E[] secondArray = (E[]) new Object[1];
-        System.arraycopy(myArray,0,secondArray,0,1000);
+        Object[] secondArray = new Object[1];
+        System.arraycopy(myArray,0,secondArray,0,0);
         for (int i = 1; i < myArray.length; i++) {
             myArray[i] = element;
-
         }
     }
 
     @Override
-    public E get(int index) throws IndexOutOfBoundsException {
+    public Object get(int index) throws IndexOutOfBoundsException {
         return myArray[index];
     }
 
     @Override
-    public E remove(int index) throws IndexOutOfBoundsException {
-        return myArray[index];
+    public Object remove(int index) throws IndexOutOfBoundsException {
+        return myArray[index] = null;
     }
 
     @Override
@@ -35,10 +33,16 @@ public class MyArrayList<E> implements MyListInterfaceSimple <E> {
 
     @Override
     public boolean isEmpty() {
+        if(myArray.length == 0){
+            return true;
+        }
         return false;
     }
 
     @Override
     public void clear() {
+        for (int i = 0; i < myArray.length; i++) {
+            remove(i);
+        }
     }
 }
