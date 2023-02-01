@@ -1,29 +1,36 @@
 package generics_two.list;
 
-public  class MyArrayList<E> implements MyListInterfaceSimple<E>{
+public class MyArrayList<E> implements MyListInterfaceSimple <E> {
 
-    private E[] siu = (E[]) new Object[0];
+    private E[] myArray = (E[]) new Object[0];
 
     @Override
     public void add(E element) {
-        for (int i = 0; i < siu.length ; i++) {
-            siu[i] = element;
+
+        if(myArray == null){
+            myArray[0] = element;
+        }
+        E[] secondArray = (E[]) new Object[1];
+        System.arraycopy(myArray,0,secondArray,0,1000);
+        for (int i = 1; i < myArray.length; i++) {
+            myArray[i] = element;
+
         }
     }
 
     @Override
     public E get(int index) throws IndexOutOfBoundsException {
-        return null;
+        return myArray[index];
     }
 
     @Override
     public E remove(int index) throws IndexOutOfBoundsException {
-        return null;
+        return myArray[index];
     }
 
     @Override
     public int size() {
-        return siu.length;
+        return myArray.length;
     }
 
     @Override
