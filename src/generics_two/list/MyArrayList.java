@@ -1,19 +1,19 @@
 package generics_two.list;
 
-public class MyArrayList implements MyListInterfaceSimple<Object> {
+public class MyArrayList implements MyListInterfaceSimple <Object> {
+    private Object[] myArray = new Object[1];
+    private int size = 0;
 
-    private Object[] myArray = new Object[0];
-
-    @Override
     public void add(Object element) {
-        if(myArray == null){
-            myArray[0] = element;
+        if(size == myArray.length) {
+            Object[] secondArray = new Object[myArray.length * 2];
+            for (int i = 0; i < myArray.length; i++) {
+                secondArray[i] = myArray[i];
+            }
+            myArray = secondArray;
         }
-        Object[] secondArray = new Object[1];
-        System.arraycopy(myArray,0,secondArray,0,0);
-        for (int i = 1; i < myArray.length; i++) {
-            myArray[i] = element;
-        }
+        myArray[size++] = element;
+        System.out.println("You have added " + element + " to your array");
     }
 
     @Override
@@ -23,7 +23,7 @@ public class MyArrayList implements MyListInterfaceSimple<Object> {
 
     @Override
     public Object remove(int index) throws IndexOutOfBoundsException {
-        return myArray[index] = null;
+        return myArray[index] = null;       // kinda works well not really just overwrites the index with null and doesnt make it dissapear yet
     }
 
     @Override
@@ -33,7 +33,7 @@ public class MyArrayList implements MyListInterfaceSimple<Object> {
 
     @Override
     public boolean isEmpty() {
-        if(myArray.length == 0){
+        if(myArray.length == 0) {
             return true;
         }
         return false;
@@ -41,8 +41,6 @@ public class MyArrayList implements MyListInterfaceSimple<Object> {
 
     @Override
     public void clear() {
-        for (int i = 0; i < myArray.length; i++) {
-            remove(i);
-        }
+        myArray = new Object[0];
     }
 }
