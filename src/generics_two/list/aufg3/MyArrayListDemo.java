@@ -11,7 +11,9 @@ public class MyArrayListDemo {
         myArrayList.add("SOO");
         myArrayList.add("Bleh1");
         myArrayList.add(String.valueOf(11123231));
-        System.out.println(myArrayList.get(4));
+        System.out.println("The word at the index 4 is: " + myArrayList.get(4));
+        myArrayList.remove(4);
+        System.out.println("The word at the index 4 is: " + myArrayList.get(4));
         System.out.println(myArrayList.isEmpty());
         System.out.println(myArrayList.size());
         myArrayList.clear();

@@ -23,7 +23,15 @@ public class MyArrayList implements MyListInterfaceSimple <Object> {
 
     @Override
     public Object remove(int index) throws IndexOutOfBoundsException {
-        return myArray[index] = null;       // kinda works well not really just overwrites the index with null and doesnt make it dissapear yet
+        if (index >= size || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        Object removedElement = myArray[index];
+        for (int i = index; i < size - 1; i++) {
+            myArray[i] = myArray[i + 1];
+        }
+        size--;
+        return removedElement;
     }
 
     @Override
