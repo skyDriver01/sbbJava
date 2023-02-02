@@ -1,6 +1,6 @@
 package generics_two.list;
 
-public class MyArrayListExtended implements MyListInterfaceSimpleExtended {
+public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended<E> {
     private Object[] myArray = new Object[1];
     private int size = 0;
 
@@ -17,12 +17,12 @@ public class MyArrayListExtended implements MyListInterfaceSimpleExtended {
     }
 
     @Override
-    public Object get(int index) throws IndexOutOfBoundsException {
-        return myArray[index];
+    public E get(int index) throws IndexOutOfBoundsException {
+        return (E) myArray[index];
     }
 
     @Override
-    public Object remove(int index) throws IndexOutOfBoundsException {
+    public E remove(int index) throws IndexOutOfBoundsException {
         if(index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -31,7 +31,7 @@ public class MyArrayListExtended implements MyListInterfaceSimpleExtended {
             myArray[i] = myArray[i + 1];
         }
         size--;
-        return removedElement;
+        return (E) removedElement;
     }
 
     @Override

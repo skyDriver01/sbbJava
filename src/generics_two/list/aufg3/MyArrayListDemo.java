@@ -7,14 +7,14 @@ public class MyArrayListDemo {
     public static void main(String[] args) {
         aufg1Array();
         System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-        MyArrayListExtended secondArray = new MyArrayListExtended();
+        MyArrayListExtended<String> secondArray = new MyArrayListExtended<>();
         secondArray.add("1");
         secondArray.add("745");
         secondArray.add("done");
         secondArray.add("03424");
         secondArray.add("asd3q");
         secondArray.add("adxyca");
-        secondArray.add("123");
+        secondArray.add("0.2321441");
         secondArray.add("çASDFSA");
         secondArray.add("asdasdas");
         secondArray.add("lokfdsf");
@@ -36,7 +36,7 @@ public class MyArrayListDemo {
         System.out.println(secondArray.size());
         MyArrayListExtended ladw = secondArray;
         System.out.println(ladw.equals(secondArray));
-        System.out.println(secondArray.remove("123"));
+        System.out.println(secondArray.remove("0.2321441"));
         System.out.println(secondArray.get(6));
         System.out.println(secondArray.get(7));
         System.out.println(secondArray.get(8));
