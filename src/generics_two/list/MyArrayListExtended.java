@@ -62,10 +62,10 @@ public class MyArrayListExtended implements MyListInterfaceSimpleExtended {
         System.out.println("You have added " + element + " to your array at the index: " + index);
     }
 
-    // ---------------------------------All-Above-This-Works-already------------------------------------------------------------
+
     @Override
     public boolean contains(Object o) {
-        for (int i = 0; i < myArray.length; i++) { //dont works yet
+        for (int i = 0; i < myArray.length; i++) {
             if(myArray[i] == o) {
                 return true;
             }
@@ -73,6 +73,7 @@ public class MyArrayListExtended implements MyListInterfaceSimpleExtended {
         return false;
     }
 
+    // ---------------------------------All-Above-This-Works-already------------------------------------------------------------
     @Override
     public int indexOf(Object o) {
 

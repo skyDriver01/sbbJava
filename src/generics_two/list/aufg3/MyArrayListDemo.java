@@ -20,7 +20,7 @@ public class MyArrayListDemo {
         secondArray.add("lokfdsf");
         secondArray.add("%*");
         secondArray.add("+siu");
-        System.out.println(secondArray.equals("+siu"));
+        System.out.println(secondArray.contains("+siu"));
         System.out.println(secondArray.size());
         System.out.println(secondArray.get(4));
         System.out.println(secondArray.get(5));
