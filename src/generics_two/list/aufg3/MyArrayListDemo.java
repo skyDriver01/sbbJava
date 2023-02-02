@@ -20,12 +20,16 @@ public class MyArrayListDemo {
         secondArray.add("lokfdsf");
         secondArray.add("%*");
         secondArray.add("+siu");
+        System.out.println(secondArray.equals("+siu"));
+        System.out.println(secondArray.size());
         System.out.println(secondArray.get(4));
         System.out.println(secondArray.get(5));
         secondArray.add(4,"112212");
+        secondArray.set(6,"new Elements");
         System.out.println(secondArray.get(4));
         System.out.println(secondArray.get(5));
         System.out.println(secondArray.get(6));
+        System.out.println(secondArray.size());
     }
 
     private static void aufg1Array() {
