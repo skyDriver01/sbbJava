@@ -1,9 +1,34 @@
 package generics_two.list.aufg3;
 
 import generics_two.list.MyArrayList;
+import generics_two.list.MyArrayListExtended;
 
 public class MyArrayListDemo {
     public static void main(String[] args) {
+        aufg1Array();
+        System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+        MyArrayListExtended secondArray = new MyArrayListExtended();
+        secondArray.add("1");
+        secondArray.add("745");
+        secondArray.add("done");
+        secondArray.add("03424");
+        secondArray.add("asd3q");
+        secondArray.add("adxyca");
+        secondArray.add("123");
+        secondArray.add("çASDFSA");
+        secondArray.add("asdasdas");
+        secondArray.add("lokfdsf");
+        secondArray.add("%*");
+        secondArray.add("+siu");
+        System.out.println(secondArray.get(4));
+        System.out.println(secondArray.get(5));
+        secondArray.add(4,"112212");
+        System.out.println(secondArray.get(4));
+        System.out.println(secondArray.get(5));
+        System.out.println(secondArray.get(6));
+    }
+
+    private static void aufg1Array() {
         MyArrayList myArrayList = new MyArrayList();
         myArrayList.add("String");
         myArrayList.add(String.valueOf(8));
@@ -16,13 +41,10 @@ public class MyArrayListDemo {
         System.out.println("The word at the index 4 is: " + myArrayList.get(4));
         System.out.println(myArrayList.isEmpty());
         System.out.println(myArrayList.size());
-        myArrayList.clear();
         try {
             System.out.println(myArrayList.get(4));
         }catch (Exception e){
             System.out.println("Isnt in the array");
         }
-        System.out.println(myArrayList.isEmpty());
-        System.out.println(myArrayList.size());
     }
 }
