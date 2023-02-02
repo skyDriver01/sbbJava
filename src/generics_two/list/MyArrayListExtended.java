@@ -73,11 +73,18 @@ public class MyArrayListExtended implements MyListInterfaceSimpleExtended {
         return false;
     }
 
-    // ---------------------------------All-Above-This-Works-already------------------------------------------------------------
     @Override
     public int indexOf(Object o) {
-
-        return 0;
+        try{
+            for (int i = 0; i < myArray.length; i++) {
+                if (myArray[i].equals(o)) {
+                    return i;
+                }
+            }
+        }catch (Exception e){
+            return -1;
+        }
+        return -1;
     }
 
     @Override
@@ -85,15 +92,27 @@ public class MyArrayListExtended implements MyListInterfaceSimpleExtended {
         System.out.println("You have replaced the old element at: " + index + " with this: " + element);    // Works
         return myArray[index] = element;
     }
-
+    // ---------------------------------All-Above-This-Works-already------------------------------------------------------------
     @Override
     public boolean equals(Object o) {
+        for (int i = 0; i < myArray.length; i++) {
+            if(myArray == o){
+                return true;
+            }       // do later when remove is done
+        }
         return false;
     }
-
     @Override
     public boolean remove(Object o) {
-
+        for (int i = 0; i < myArray.length; i++) {
+            if(myArray[i] == o){
+                for (int j = i; j < myArray.length - 1; j++) {
+                    myArray[j] = myArray[j + 1];
+                }
+                myArray[myArray.length - 1] = -1;
+                return true;
+            }
+        }
         return false;
     }
 }

@@ -20,6 +20,7 @@ public class MyArrayListDemo {
         secondArray.add("lokfdsf");
         secondArray.add("%*");
         secondArray.add("+siu");
+        System.out.println(secondArray.indexOf("74"));
         System.out.println(secondArray.contains("+siu"));
         System.out.println(secondArray.size());
         System.out.println(secondArray.get(4));
@@ -29,7 +30,16 @@ public class MyArrayListDemo {
         System.out.println(secondArray.get(4));
         System.out.println(secondArray.get(5));
         System.out.println(secondArray.get(6));
+        System.out.println(secondArray.get(7));
+        System.out.println(secondArray.get(8));
+        System.out.println(secondArray.get(9));
         System.out.println(secondArray.size());
+        MyArrayListExtended ladw = secondArray;
+        System.out.println(ladw.equals(secondArray));
+        System.out.println(secondArray.remove("123"));
+        System.out.println(secondArray.get(6));
+        System.out.println(secondArray.get(7));
+        System.out.println(secondArray.get(8));
     }
 
     private static void aufg1Array() {
