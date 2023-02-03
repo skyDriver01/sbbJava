@@ -1,4 +1,4 @@
-package generics_two.list;
+package generics_two.list.aufg1;
 
 public interface MyListInterfaceSimple<E> {
     /**

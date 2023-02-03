@@ -1,4 +1,4 @@
-package generics_two.list;
+package generics_two.list.aufg2;
 
 public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended<E> {
     private Object[] myArray = new Object[1];

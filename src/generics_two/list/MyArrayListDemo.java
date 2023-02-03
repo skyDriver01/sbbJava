@@ -1,13 +1,13 @@
-package generics_two.list.aufg3;
+package generics_two.list;
 
-import generics_two.list.MyArrayList;
-import generics_two.list.MyArrayListExtended;
+import generics_two.list.aufg1.MyArrayList;
+import generics_two.list.aufg2.MyArrayListExtended;
 
 public class MyArrayListDemo {
     public static void main(String[] args) {
         aufg1Array();
         System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-        MyArrayListExtended<String> secondArray = new MyArrayListExtended<>();
+        MyArrayListExtended <String> secondArray = new MyArrayListExtended<>();
         secondArray.add("1");
         secondArray.add("745");
         secondArray.add("done");
