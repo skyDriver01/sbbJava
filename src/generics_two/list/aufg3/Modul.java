@@ -14,7 +14,6 @@ public class Modul {
     public float getFinalModuleGrade() throws ModulNotGradeableException {
         float finalGradeWeight = 0F;
         float finalGrade = 0F;
-        float notRounded = 0F;
         for (LBV lbv : lbvs) {
             finalGradeWeight += lbv.getWeight();
         }
