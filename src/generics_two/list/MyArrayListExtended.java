@@ -92,16 +92,24 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended<E> 
         System.out.println("You have replaced the old element at: " + index + " with this: " + element);    // Works
         return myArray[index] = element;
     }
-    // ---------------------------------All-Above-This-Works-already------------------------------------------------------------
+
     @Override
     public boolean equals(Object o) {
-        for (int i = 0; i < myArray.length; i++) {
-            if(myArray == o){
-                return true;
-            }       // do later when remove is done
+        if (o == null) {
+            return false;
         }
-        return false;
+        Object[] otherArray = myArray;
+        if (myArray.length != otherArray.length) {
+            return false;
+        }
+        for (int i = 0; i < myArray.length; i++) {
+            if (myArray[i] != otherArray[i]) {
+                return false;
+            }
+        }
+        return true;
     }
+
     @Override
     public boolean remove(Object o) {
         for (int i = 0; i < myArray.length; i++) {
