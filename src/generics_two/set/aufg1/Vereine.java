@@ -13,6 +13,7 @@ public class Vereine {
     Set <String> tanzVerein = Set.of("Emil", "Hans", "Paul", "Felix", "Max", "Lara", "Anja", "Sabine", "Anna");
 
     List <Set<String>> vereine = List.of(fussballVerein, schwimmVerein, musikVerein, tanzVerein);
+    public OutputValidation outPutValidation = new OutputValidation();
     public static void main(String[] args) {
 
     }

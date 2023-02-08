@@ -1,18 +1,13 @@
 package generics_two.list.aufg1;
 
-public class MyArrayList implements MyListInterfaceSimple <Object> {
-    private Object[] myArray = new Object[1];
-    private int size = 0;
+public class MyArrayList<E> implements MyListInterfaceSimple <Object> {
+    private Object[] myArray = new Object[0];
 
     public void add(Object element) {
-        if(size == myArray.length) {
-            Object[] secondArray = new Object[myArray.length * 2];
-            for (int i = 0; i < myArray.length; i++) {
-                secondArray[i] = myArray[i];
-            }
-            myArray = secondArray;
-        }
-        myArray[size++] = element;
+        Object[] secondArray = new Object[myArray.length + 1];
+        System.arraycopy(myArray, 0, secondArray, 0, myArray.length);
+        myArray = secondArray;
+        myArray[myArray.length - 1] = element;
         System.out.println("You have added " + element + " to your array");
     }
 
@@ -23,14 +18,18 @@ public class MyArrayList implements MyListInterfaceSimple <Object> {
 
     @Override
     public Object remove(int index) throws IndexOutOfBoundsException {
-        if (index >= size || index < 0) {
+        if(index >= myArray.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         Object removedElement = myArray[index];
-        for (int i = index; i < size - 1; i++) {
-            myArray[i] = myArray[i + 1];
+        Object[] secondArray = new Object[myArray.length - 1];
+        for (int i = 0, k = 0; i < myArray.length; i++) {
+            if(i == index) {
+                continue;
+            }
+            secondArray[k++] = myArray[i];
         }
-        size--;
+        myArray = secondArray;
         return removedElement;
     }
 
@@ -40,15 +39,15 @@ public class MyArrayList implements MyListInterfaceSimple <Object> {
     }
 
     @Override
-    public boolean isEmpty() {
-        if(myArray.length == 0) {
-            return true;
-        }
-        return false;
+    public void clear() {
+        myArray = new Object[0];
     }
 
     @Override
-    public void clear() {
-        myArray = new Object[0];
+    public boolean isEmpty() {
+        if(myArray.length == 0 || myArray.equals(null)) {
+            return true;
+        }
+        return false;
     }
 }
