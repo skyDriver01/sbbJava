@@ -116,7 +116,6 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
         Object[] secondArray = new Object[myArray.length + 1];
         for (int i = 0; i < myArray.length; i++) {
             if(myArray[i] == o) {
-                       // Todo: Auch mit einem zweiten array machen, weil es technisch gesehen einfach den null wert vom removed objekt immer noch dann im array hat.
                 myArray = secondArray;
                 myArray[myArray.length - 1] = -1;
             }
