@@ -45,7 +45,7 @@ public class MyArrayList<E> implements MyListInterfaceSimple <Object> {
 
     @Override
     public boolean isEmpty() {
-        if(myArray.length == 0 || myArray.equals(null)) {
+        if(myArray.length == 0) {
             return true;
         }
         return false;

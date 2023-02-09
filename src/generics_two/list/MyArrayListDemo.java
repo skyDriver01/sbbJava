@@ -5,7 +5,7 @@ import generics_two.list.aufg2.MyArrayListExtended;
 
 public class MyArrayListDemo {
     public static void main(String[] args) {
-        aufg1Array();
+        //aufg1Array();
         System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         MyArrayListExtended <String> secondArray = new MyArrayListExtended<>();
         secondArray.add("1");

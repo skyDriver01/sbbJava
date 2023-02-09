@@ -3,8 +3,6 @@ package generics_two.list.aufg2;
 public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E> {
     private Object[] myArray = new Object[0];
 
-    private int size = 0;
-
     public void add(Object element) {
         Object[] secondArray = new Object[myArray.length + 1];
         System.arraycopy(myArray, 0, secondArray, 0, myArray.length);
@@ -47,7 +45,7 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
 
     @Override
     public boolean isEmpty() {
-        if(myArray.length == 0 || myArray.equals(null)) {
+        if(myArray.length == 0) {
             return true;
         }
         return false;
@@ -55,10 +53,12 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
 
     @Override
     public void add(int index, Object element) throws IndexOutOfBoundsException {
-        size++;
-        for (int i = size - 1; i > index; i--) {
+        Object[] secondArray = new Object[myArray.length + 1];
+        System.arraycopy(myArray, 0, secondArray, 0, myArray.length);
+        for (int i = myArray.length - 1; i > index; i--) {
             myArray[i] = myArray[i - 1];
         }
+        myArray = secondArray;
         myArray[index] = element;
         System.out.println("You have added " + element + " to your array at the index: " + index);
     }
@@ -76,13 +76,13 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
 
     @Override
     public int indexOf(Object o) {
-        try{
+        try {
             for (int i = 0; i < myArray.length; i++) {
-                if (myArray[i].equals(o)) {
+                if(myArray[i].equals(o)) {
                     return i;
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             return -1;
         }
         return -1;
@@ -96,15 +96,15 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
 
     @Override
     public boolean equals(Object o) {
-        if (o == null) {
+        if(o == null) {
             return false;
         }
         Object[] otherArray = myArray;
-        if (myArray.length != otherArray.length) {
+        if(myArray.length != otherArray.length) {
             return false;
         }
         for (int i = 0; i < myArray.length; i++) {
-            if (myArray[i] != otherArray[i]) {
+            if(myArray[i] != otherArray[i]) {
                 return false;
             }
         }
@@ -113,14 +113,14 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
 
     @Override
     public boolean remove(Object o) {
+        Object[] secondArray = new Object[myArray.length + 1];
         for (int i = 0; i < myArray.length; i++) {
-            if(myArray[i] == o){
-                for (int j = i; j < myArray.length - 1; j++) {
-                    myArray[j] = myArray[j + 1];
-                }
+            if(myArray[i] == o) {
+                       // Todo: Auch mit einem zweiten array machen, weil es technisch gesehen einfach den null wert vom removed objekt immer noch dann im array hat.
+                myArray = secondArray;
                 myArray[myArray.length - 1] = -1;
-                return true;
             }
+            return true;
         }
         return false;
     }
