@@ -111,19 +111,23 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
         }
         return true;
     }
-
     @Override
     public boolean remove(Object o) {
         Object[] secondArray = new Object[myArray.length - 1];
+        int j = 0;
+        boolean removed = false;
         for (int i = 0; i < myArray.length; i++) {
-            if(myArray[i] == o) {
-                myArray = secondArray;
-                myArray[myArray.length - 1] = -1;
-                secondArray[i] = myArray[i];
+            if (myArray[i] == o) {
+                removed = true;
+                continue;
             }
-            return true;
+            secondArray[j++] = myArray[i];
         }
-        myArray = secondArray;
-        return false;
+        if (removed) {
+            myArray = secondArray;
+            return true;
+        } else {
+            return false;
+        }
     }
 }
