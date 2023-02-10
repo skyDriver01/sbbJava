@@ -90,7 +90,7 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
 
     @Override
     public Object set(int index, Object element) throws IndexOutOfBoundsException {
-        System.out.println("You have replaced the old element at: " + index + " with this: " + element);    // Works
+        System.out.println("You have replaced the old element at: " + index + " with this: " + element);
         return myArray[index] = element;
     }
 
