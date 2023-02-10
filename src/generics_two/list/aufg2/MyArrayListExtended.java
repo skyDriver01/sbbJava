@@ -8,7 +8,6 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
         System.arraycopy(myArray, 0, secondArray, 0, myArray.length);
         myArray = secondArray;
         myArray[myArray.length - 1] = element;
-        System.out.println("You have added " + element + " to your array");
     }
 
     @Override
@@ -53,16 +52,15 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
 
     @Override
     public void add(int index, Object element) throws IndexOutOfBoundsException {
-        Object[] secondArray = new Object[myArray.length + 1];
-        System.arraycopy(myArray, 0, secondArray, 0, myArray.length);
-        for (int i = myArray.length - 1; i > index; i--) {
-            myArray[i] = myArray[i - 1];
+        if (index < 0 || index > myArray.length) {
+            throw new IndexOutOfBoundsException();
         }
+        Object[] secondArray = new Object[myArray.length + 1];
+        System.arraycopy(myArray, 0, secondArray, 0, index);
+        secondArray[index] = element;
+        System.arraycopy(myArray, index, secondArray, index + 1, myArray.length - index);
         myArray = secondArray;
-        myArray[index] = element;
-        System.out.println("You have added " + element + " to your array at the index: " + index);
     }
-
 
     @Override
     public boolean contains(Object o) {
@@ -87,11 +85,14 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
         }
         return -1;
     }
-
     @Override
     public Object set(int index, Object element) throws IndexOutOfBoundsException {
-        System.out.println("You have replaced the old element at: " + index + " with this: " + element);
-        return myArray[index] = element;
+        if (index < 0 || index >= myArray.length) {
+            throw new IndexOutOfBoundsException();
+        }
+        Object previous = myArray[index];
+        myArray[index] = element;
+        return previous;
     }
 
     @Override
@@ -113,14 +114,16 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
 
     @Override
     public boolean remove(Object o) {
-        Object[] secondArray = new Object[myArray.length + 1];
+        Object[] secondArray = new Object[myArray.length - 1];
         for (int i = 0; i < myArray.length; i++) {
             if(myArray[i] == o) {
                 myArray = secondArray;
                 myArray[myArray.length - 1] = -1;
+                secondArray[i] = myArray[i];
             }
             return true;
         }
+        myArray = secondArray;
         return false;
     }
 }
