@@ -24,6 +24,12 @@ public class PLZMap {
             e.printStackTrace();
         }
         System.out.println("- Anzahl PLZ: " + data.size());
+        smallestPLZ("Bern");
+        largestPLZ("Bern");
+        gemeindenWithNLetters(5);
+        gemeindenWithSubstr("ent");
+        gemeindenByLetterCount(true, 4);
+
     }
 
     public static void smallestPLZ(String gemeinde) {
@@ -94,9 +100,9 @@ public class PLZMap {
                     .map(String::length)
                     .max(Comparator.naturalOrder())
                     .orElse(0);
-            List<String> largestGemeinden = (List <String>) gemeinden.stream()
+            /*List<String> largestGemeinden = (List <String>) gemeinden.stream()
                                                                      .filter(gemeinde -> gemeinde.length() == maxCount)
-                                                                     .sorted();
+                                                                     .sorted();*/
         }
     }
 }
