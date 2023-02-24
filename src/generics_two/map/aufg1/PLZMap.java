@@ -22,7 +22,7 @@ public class PLZMap {
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(cvsSplitBy);
-                data.put(values[1].replace("\"",""), values[0]);
+                data.put(values[1].replace("\"", ""), values[0]);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,13 +41,12 @@ public class PLZMap {
     }
 
     public static void smallestPLZ(String gemeinde) {
-        String smallestPLZ = data
-                .entrySet()
-                .stream()
-                .filter(entry -> entry.getKey().equals(gemeinde))
-                .map(Map.Entry::getValue)
-                .min(Comparator.naturalOrder())
-                .orElse(null);
+        String smallestPLZ = data.entrySet()     //todo fix this bc it gives out the biggest plz
+                                 .stream()
+                                 .filter(entry -> entry.getKey().equals(gemeinde))
+                                 .map(Map.Entry::getValue)
+                                 .min(Comparator.naturalOrder())
+                                 .orElse(null);
         if(smallestPLZ != null) {
             outputValidation.logAndPrint(
                     "- Kleinste PLZ der Gemeinde " + gemeinde + ": " + smallestPLZ + " " + gemeinde);
@@ -64,8 +63,6 @@ public class PLZMap {
                 .orElse(null);
         if(largestPLZ != null) {
             outputValidation.logAndPrint("- Grösste PLZ der Gemeinde " + gemeinde + ": " + largestPLZ + " " + gemeinde);
-        } else {
-            outputValidation.logAndPrint("- No PLZ found for Gemeinde " + gemeinde);
         }
     }
 
@@ -141,11 +138,14 @@ public class PLZMap {
         outputValidation.logAndPrint(
                 "- Grössten Gemeinden: " + largestGemeinden.stream().collect(Collectors.joining(", ")));
     }
+
     public static void gemeindenWith3Letters() {
-        List<String> gemeindenWith3Letters = data.keySet().stream()
-                                                 .filter(g -> g.trim().length() == 3)
-                                                 .collect(Collectors.toList());
-        outputValidation.logAndPrint("- Gemeinden mit 3 Buchstaben:");
-        outputValidation.logAndPrint("- " + gemeindenWith3Letters.stream().collect(Collectors.joining(", ")));
+        List <String> gemeindenWith3Letters = data
+                .keySet()
+                .stream()
+                .filter(g -> g.trim().length() == 3)
+                .collect(Collectors.toList());
+        outputValidation.logAndPrint(
+                "- Gemeinden mit 3 Buchstaben: " + gemeindenWith3Letters.stream().collect(Collectors.joining(", ")));
     }
 }
