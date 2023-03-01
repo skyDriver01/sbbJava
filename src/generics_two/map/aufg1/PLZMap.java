@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class PLZMap {
@@ -54,6 +55,7 @@ public class PLZMap {
         outputValidation.logAndPrint(
                 "- Kleinste PLZ der Gemeinde " + gemeinde + ": " + makeSmallestPlz + " " + gemeinde);
     }
+
     public static void largestPLZ(String gemeinde) {
         int makeLargestPLZ = 0;
         for (String plz : data.keySet()) {
@@ -61,11 +63,10 @@ public class PLZMap {
                 makeLargestPLZ = Integer.parseInt(plz);
             }
         }
-        outputValidation.logAndPrint(
-                "- Grösste PLZ der Gemeinde " + gemeinde + ": " + makeLargestPLZ + " " + gemeinde);
+        outputValidation.logAndPrint("- Grösste PLZ der Gemeinde " + gemeinde + ": " + makeLargestPLZ + " " + gemeinde);
     }
 
-
+    //Mehr als 10 sollte: 1086 sein und 7 sollte: 361 sein.
     public static void gemeindenWithNLetters(int n) {
         if(n == 10) {
             long count = data.entrySet().stream().filter(entry -> entry.getValue().length() > 10).count();
@@ -75,33 +76,23 @@ public class PLZMap {
                 long count = data
                         .entrySet()
                         .stream()
-                        .filter(entry -> entry.getKey().length() > 0 && entry.getValue().length() == n &&
-                                         !entry.getKey().equals(""))
+                        .filter(entry -> entry.getValue().length() > 0 && entry.getValue().length() == n)
                         .map(entry -> entry.getValue())
                         .distinct()
                         .count();
                 outputValidation.logAndPrint("- Anzahl Gemeinden mit 7 Buchstaben: " + count);
-            } else {
-                long count = data
-                        .entrySet()
-                        .stream()
-                        .filter(entry -> entry.getKey().length() > 0 && entry.getValue().length() < 6)
-                        .map(entry -> entry.getKey())
-                        .filter(key -> key.length() == n)
-                        .count();
-                outputValidation.logAndPrint("- Anzahl Gemeinden mit " + n + " Buchstaben: " + count);
             }
         }
     }
 
     public static void gemeindenWithSubstr(String substr) {
-        long count = data.keySet().stream().filter(key -> key.contains(substr)).count();
+        long count = data.entrySet().stream().filter(entry -> entry.getValue().contains(substr)).count();
         outputValidation.logAndPrint("- Anzahl Gemeinden mit der Buchstabenfolge '" + substr + "': " + count);
     }
 
     public static void smallestGemeinden() {
         List <String> smallestGemeinden = data
-                .keySet()
+                .values()
                 .stream()
                 .filter(g -> !g.isEmpty())
                 .filter(g -> g
@@ -115,13 +106,14 @@ public class PLZMap {
                 .map(String::length)
                 .map(Object::toString)
                 .collect(Collectors.joining(", ")));
-        outputValidation.logAndPrint(
-                "- Kleinsten Gemeinden: " + smallestGemeinden.stream().collect(Collectors.joining(", ")));
+        outputValidation.logAndPrint("- Kleinsten Gemeinden: " + data.entrySet().stream().filter(e -> e
+                .getValue()
+                .equals(smallestGemeinden.get(0))).map(Map.Entry::getValue).collect(Collectors.joining(", ")));
     }
 
     public static void largestGemeinden() {
         List <String> largestGemeinden = data
-                .keySet()
+                .values()
                 .stream()
                 .filter(g -> !g.isEmpty())
                 .filter(g -> g
@@ -135,8 +127,9 @@ public class PLZMap {
                 .map(String::length)
                 .map(Object::toString)
                 .collect(Collectors.joining(", ")));
-        outputValidation.logAndPrint(
-                "- Grössten Gemeinden: " + largestGemeinden.stream().collect(Collectors.joining(", ")));
+        outputValidation.logAndPrint("- Grössten Gemeinden: " + data.entrySet().stream().filter(e -> e
+                .getValue()
+                .equals(largestGemeinden.get(0))).map(Map.Entry::getValue).collect(Collectors.joining(", ")));
     }
 
     public static void gemeindenWith3Letters() {
