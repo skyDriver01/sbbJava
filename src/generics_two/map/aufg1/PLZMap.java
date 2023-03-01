@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class PLZMap {
@@ -18,11 +17,16 @@ public class PLZMap {
     public static void main(String[] args) {
         String csvFile = "C:\\Users\\E544157\\sbbJavaREAL\\src\\generics_two\\map\\Postleitzahlen_UTF8.csv";
         String line = "";
-        String cvsSplitBy = ",\"";     //todo: will not work for gmeindew with comma in them
+        String cvsSplitBy = ",";
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(cvsSplitBy);
-                data.put(values[1].replace("\"", ""), values[0]);
+                try {
+                    Integer.parseInt(values[0]);
+                    data.put(values[0], values[1].replace("\"", ""));
+                } catch (NumberFormatException ignore) {
+
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,7 +36,7 @@ public class PLZMap {
         largestPLZ("Bern");
         gemeindenWithNLetters(10);
         gemeindenWithNLetters(7);
-        gemeindenWith3Letters(); // needs to be a different method that gives out the gemeinden with 3 letters and not the ammount of them
+        gemeindenWith3Letters();
         gemeindenWithSubstr("ent");
         smallestGemeinden();
         largestGemeinden();
@@ -41,41 +45,37 @@ public class PLZMap {
     }
 
     public static void smallestPLZ(String gemeinde) {
-        String smallestPLZ = data.entrySet()     //todo fix this bc it gives out the biggest plz
-                                 .stream()
-                                 .filter(entry -> entry.getKey().equals(gemeinde))
-                                 .map(Map.Entry::getValue)
-                                 .min(Comparator.naturalOrder())
-                                 .orElse(null);
-        if(smallestPLZ != null) {
-            outputValidation.logAndPrint(
-                    "- Kleinste PLZ der Gemeinde " + gemeinde + ": " + smallestPLZ + " " + gemeinde);
+        int makeSmallestPlz = 9999;
+        for (String plz : data.keySet()) {
+            if(Integer.parseInt(plz) < makeSmallestPlz && data.get(plz).equals(gemeinde)) {
+                makeSmallestPlz = Integer.parseInt(plz);
+            }
         }
+        outputValidation.logAndPrint(
+                "- Kleinste PLZ der Gemeinde " + gemeinde + ": " + makeSmallestPlz + " " + gemeinde);
+    }
+    public static void largestPLZ(String gemeinde) {
+        int makeLargestPLZ = 0;
+        for (String plz : data.keySet()) {
+            if(Integer.parseInt(plz) > makeLargestPLZ && data.get(plz).equals(gemeinde)) {
+                makeLargestPLZ = Integer.parseInt(plz);
+            }
+        }
+        outputValidation.logAndPrint(
+                "- Grösste PLZ der Gemeinde " + gemeinde + ": " + makeLargestPLZ + " " + gemeinde);
     }
 
-    public static void largestPLZ(String gemeinde) {
-        String largestPLZ = data
-                .entrySet()
-                .stream()
-                .filter(entry -> entry.getKey().equals(gemeinde))
-                .map(Map.Entry::getValue)
-                .max(Comparator.naturalOrder())
-                .orElse(null);
-        if(largestPLZ != null) {
-            outputValidation.logAndPrint("- Grösste PLZ der Gemeinde " + gemeinde + ": " + largestPLZ + " " + gemeinde);
-        }
-    }
 
     public static void gemeindenWithNLetters(int n) {
         if(n == 10) {
-            long count = data.entrySet().stream().filter(entry -> entry.getKey().length() > 10).count();
+            long count = data.entrySet().stream().filter(entry -> entry.getValue().length() > 10).count();
             outputValidation.logAndPrint("- Anzahl Gemeinden mit mehr als 10 Buchstaben: " + count);
         } else {
             if(n == 7) {
                 long count = data
                         .entrySet()
                         .stream()
-                        .filter(entry -> entry.getKey().length() > 0 && entry.getKey().length() == n &&
+                        .filter(entry -> entry.getKey().length() > 0 && entry.getValue().length() == n &&
                                          !entry.getKey().equals(""))
                         .map(entry -> entry.getValue())
                         .distinct()
@@ -85,7 +85,7 @@ public class PLZMap {
                 long count = data
                         .entrySet()
                         .stream()
-                        .filter(entry -> entry.getKey().length() > 0 && entry.getKey().length() < 6)
+                        .filter(entry -> entry.getKey().length() > 0 && entry.getValue().length() < 6)
                         .map(entry -> entry.getKey())
                         .filter(key -> key.length() == n)
                         .count();
