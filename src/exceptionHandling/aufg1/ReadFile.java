@@ -10,6 +10,7 @@ import java.util.Set;
 public class ReadFile implements FileReadingInterface {
 
     static String file = "C:\\Users\\E544157\\sbbJavaREAL\\src\\exceptionHandling\\aufg1\\words.txt";
+
     @Override
     public void countWords() {
         int count = 0;
@@ -35,7 +36,7 @@ public class ReadFile implements FileReadingInterface {
             while ((line = br.readLine()) != null) {
                 String[] words = line.split("\\s+");
                 for (String word : words) {
-                    if (word.contains("q") || word.contains("Q")) {
+                    if(word.contains("q") || word.contains("Q")) {
                         count++;
                     }
                 }
@@ -50,13 +51,13 @@ public class ReadFile implements FileReadingInterface {
 
     @Override
     public void allSpecialCharactersOnce() {
-        Set<Character> uniqueChars = new HashSet<>();
+        Set <Character> uniqueChars = new HashSet <>();
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
                 char[] chars = line.toCharArray();
                 for (char c : chars) {
-                    if (!Character.isLetterOrDigit(c) && !Character.isWhitespace(c)) {
+                    if(!Character.isLetterOrDigit(c) && !Character.isWhitespace(c)) {
                         uniqueChars.add(c);
                     }
                 }
@@ -77,7 +78,9 @@ public class ReadFile implements FileReadingInterface {
             while ((line = br.readLine()) != null) {
                 String[] words = line.split("\\s+");
                 for (String word : words) {
-                    if(word.matches("^[0-9]*$")){
+                    if(word.contains("0") || word.contains("1") || word.contains("2") || word.contains("3") ||
+                       word.contains("4") || word.contains("5") || word.contains("6") || word.contains("7") ||
+                       word.contains("8") || word.contains("9")) {
                         count++;
                     }
                 }
@@ -88,7 +91,7 @@ public class ReadFile implements FileReadingInterface {
         }
     }
 
-        @Override
+    @Override
     public void allWordsStartingWithB() {
 
     }
