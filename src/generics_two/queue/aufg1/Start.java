@@ -3,12 +3,12 @@ package generics_two.queue.aufg1;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Start{
-    public static final int INPUTWORKER_NUMBER_OF_JOBS = 5;
+    public static final int INPUTWORKER_NUMBER_OF_JOBS = 4;
     public static final int INPUTWORKER_MAX_RELAX_TIME_MS = 1000;
     public static final int OUTPUTWORKER_START_AFTER_MS = 3000;
     public static final int OUTPUTWORKER_MAX_PROCESS_TIME_MS = 1000;
     public static final int OUTPUTWORKER_MAX_RELAX_TIME_MS = 1000;
-    public static final int OUTPUTWORKER_STOP_AFTER_EMPTY_CYCLES = 7;
+    public static final int OUTPUTWORKER_STOP_AFTER_EMPTY_CYCLES = 3;
 
     private static final AtomicInteger jobId = new AtomicInteger(1);
 

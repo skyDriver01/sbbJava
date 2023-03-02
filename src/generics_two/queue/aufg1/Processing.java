@@ -1,6 +1,11 @@
 package generics_two.queue.aufg1;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class Processing implements ProcessingInterface {
+
+    Deque <Job> work = new ArrayDeque <>();
 
     /**
      * Add a job to the system.
@@ -8,37 +13,34 @@ public class Processing implements ProcessingInterface {
      * @return true if the job is added.
      */
     public boolean addJob(Job job) {
-        return false;
+        return work.offerLast(job);
     }
 
     /**
      * Get the next job for processing.
      */
     public Job getNextJob() {
-        // TODO: implement this method
-        return null;
+        return work.pollFirst();
     }
 
     /**
      * Put the unprocessed job back to the system.
      */
     public void getJobBack(Job job) {
-        // TODO: implement this method
+        work.offerFirst(job);
     }
 
     /**
      * Get the number of jobs in the system.
      */
     public int getJobs() {
-        // TODO: implement this method
-        return -42;
+        return work.size();
     }
 
     /**
      * Has jobs in the system for processing?
      */
     public boolean hasJobs() {
-        // TODO: implement this method
-        return false;
+        return !work.isEmpty();
     }
 }
