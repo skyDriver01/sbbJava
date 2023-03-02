@@ -20,6 +20,12 @@ public class OutputWorker implements Runnable {
             try {
                 Job job = processingInterface.getNextJob();
                 if (job != null) {
+                    int count = 0;
+                    for (int i = 0; i < processingInterface.getJobs(); i++) {
+                        count++;
+                    }
+                    job.setMessage("This many Open jobs: " + count);
+                    System.out.printf("== [%s] open jobs:  %s%n", name, job);
                     job.setJobState(JobState.IN_PROGRESS);
                     job.setMessage("It is a really hard job!");
                     System.out.printf("<- [%s] process job: %s%n", name, job);
