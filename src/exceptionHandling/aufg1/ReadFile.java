@@ -93,6 +93,18 @@ public class ReadFile implements FileReadingInterface {
 
     @Override
     public void allWordsStartingWithB() {
-
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] words = line.split("\\s+");            //Doesnt really check yet if its only the starting letter just for Capital B atm
+                for (String word : words) {
+                    if(word.matches(".*[B].*")) {
+                        System.out.println(word);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
