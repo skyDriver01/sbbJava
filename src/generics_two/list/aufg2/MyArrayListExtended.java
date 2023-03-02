@@ -52,7 +52,7 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
 
     @Override
     public void add(int index, Object element) throws IndexOutOfBoundsException {
-        if (index < 0 || index > myArray.length) {
+        if(index < 0 || index > myArray.length) {
             throw new IndexOutOfBoundsException();
         }
         Object[] secondArray = new Object[myArray.length + 1];
@@ -74,20 +74,21 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
 
     @Override
     public int indexOf(Object o) {
-        try {
-            for (int i = 0; i < myArray.length; i++) {
-                if(myArray[i].equals(o)) {
+        for (int i = 0; i < myArray.length; i++) {
+            if(o == null && myArray[i] == null) {
+                return i;
+            } else {
+                if(myArray[i] != null && myArray[i].equals(o)) {
                     return i;
                 }
             }
-        } catch (Exception e) {
-            return -1;
         }
         return -1;
     }
+
     @Override
     public Object set(int index, Object element) throws IndexOutOfBoundsException {
-        if (index < 0 || index >= myArray.length) {
+        if(index < 0 || index >= myArray.length) {
             throw new IndexOutOfBoundsException();
         }
         Object previous = myArray[index];
@@ -111,19 +112,20 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
         }
         return true;
     }
+
     @Override
     public boolean remove(Object o) {
         Object[] secondArray = new Object[myArray.length - 1];
         int j = 0;
         boolean removed = false;
         for (int i = 0; i < myArray.length; i++) {
-            if (myArray[i] == o) {
+            if(myArray[i] == o) {
                 removed = true;
                 continue;
             }
             secondArray[j++] = myArray[i];
         }
-        if (removed) {
+        if(removed) {
             myArray = secondArray;
             return true;
         } else {
