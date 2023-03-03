@@ -96,9 +96,9 @@ public class ReadFile implements FileReadingInterface {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] words = line.split("\\s+");            //Doesnt really check yet if its only the starting letter just for Capital B atm
+                String[] words = line.split("\\s+");
                 for (String word : words) {
-                    if(word.matches(".*[B].*")) {
+                    if(word.matches("^B[a-z/A-Z]*")) {
                         System.out.println(word);
                     }
                 }
