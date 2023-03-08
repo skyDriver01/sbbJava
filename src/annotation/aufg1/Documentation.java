@@ -1,0 +1,16 @@
+package annotation.aufg1;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface Documentation {
+    String name() default "";
+    int ouevres() default 0;
+    int age();
+    String description() default "";
+    String version() default "0.0.1";
+}
