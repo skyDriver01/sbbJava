@@ -9,8 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Documentation {
     String name() default "";
-    int ouevres() default 0;
-    int age();
     String description() default "";
     String version() default "0.0.1";
 }
