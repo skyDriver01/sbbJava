@@ -19,13 +19,12 @@ public class Main {
         int[] personAges = personalData.ages();
         for (int i = 0; i < personAges.length; i++) {
             try {
-                constructor.newInstance(personNames[i], personAges[i]);
+                Object o = constructor.newInstance(personNames[i], personAges[i]);
+                System.out.println(o);
             }catch (InstantiationException | InvocationTargetException | IllegalAccessException e){
                 System.out.println("It wont allow the instance");
                 throw  new RuntimeException(e);
             }
-            System.out.println(personNames[i]);
-            System.out.println(personAges[i]);
         }
     }
 }
