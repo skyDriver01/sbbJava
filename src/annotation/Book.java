@@ -1,8 +1,8 @@
 package annotation;
 
 
-@Documentation(name = "Fred",description = "Made 1 Book", version = "0.0.2")
-public class Book extends DocumentationProcessor {
+@Documentation(name = {"He", "Him"},description = "Model Class", version = "0.0.2")
+public class Book{
     private String title;
     private String description;
     private String genre;
