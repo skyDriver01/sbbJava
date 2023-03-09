@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.roleplay;
+package objektOrientedDesign.roleplay;
 import main.java.objektOriented.aufg1.aufg2.InputIn;
 import main.java.objektOrientedDesign.roleplay.gamefigures.*;
 import main.java.objektOrientedDesign.roleplay.items.*;

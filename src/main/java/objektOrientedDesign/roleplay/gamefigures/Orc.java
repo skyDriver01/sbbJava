@@ -1,6 +1,6 @@
-package main.java.objektOrientedDesign.roleplay.gamefigures;
+package objektOrientedDesign.roleplay.gamefigures;
 
-import main.java.objektOrientedDesign.roleplay.Log;
+import objektOrientedDesign.roleplay.Log;
 
 public class Orc extends Gamefigurine {
     private boolean rage;

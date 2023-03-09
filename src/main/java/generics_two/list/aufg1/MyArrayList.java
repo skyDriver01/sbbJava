@@ -1,4 +1,4 @@
-package main.java.generics_two.list.aufg1;
+package generics_two.list.aufg1;
 
 public class MyArrayList<E> implements MyListInterfaceSimple <Object> {
     private Object[] myArray = new Object[0];

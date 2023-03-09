@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.roleplay;
+package objektOrientedDesign.roleplay;
 public class TextStuff {
 
     static public String ANSI_BLACK = "\u001B[30m";

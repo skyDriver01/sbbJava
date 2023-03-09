@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.roleplay;
+package objektOrientedDesign.roleplay;
 public class Game {
 
 

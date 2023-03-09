@@ -1,4 +1,3 @@
-package main.java;
 
 public class colortest {
     public static void main(String[] args) {

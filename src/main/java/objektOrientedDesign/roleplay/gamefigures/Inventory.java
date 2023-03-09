@@ -1,12 +1,12 @@
-package main.java.objektOrientedDesign.roleplay.gamefigures;
+package objektOrientedDesign.roleplay.gamefigures;
 
-import main.java.objektOrientedDesign.roleplay.Log;
-import main.java.objektOrientedDesign.roleplay.items.Armor;
-import main.java.objektOrientedDesign.roleplay.items.Item;
-import main.java.objektOrientedDesign.roleplay.weapons.Weapon;
+import objektOrientedDesign.roleplay.Log;
+import objektOrientedDesign.roleplay.items.Armor;
+import objektOrientedDesign.roleplay.items.Item;
+import objektOrientedDesign.roleplay.weapons.Weapon;
 
-import static main.java.objektOrientedDesign.roleplay.TextStuff.*;
-import static main.java.objektOrientedDesign.roleplay.TextStuff.ANSI_MAGENTA;
+import static objektOrientedDesign.roleplay.TextStuff.*;
+import static objektOrientedDesign.roleplay.TextStuff.ANSI_MAGENTA;
 
 public class Inventory {
     public static void addItemToInv(Item item,

@@ -1,4 +1,4 @@
-package main.java;
+
 
 import main.java.objektOriented.aufg1.Patient;
 

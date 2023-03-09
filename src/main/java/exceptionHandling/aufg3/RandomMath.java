@@ -1,4 +1,4 @@
-package main.java.exceptionHandling.aufg3;
+package exceptionHandling.aufg3;
 
 import main.java.objektOriented.aufg1.aufg2.InputIn;
 

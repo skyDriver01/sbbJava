@@ -1,4 +1,4 @@
-package main.java.generics_two.list.aufg2;
+package generics_two.list.aufg2;
 
 public interface MyListInterfaceSimpleExtended<E> {
     /**

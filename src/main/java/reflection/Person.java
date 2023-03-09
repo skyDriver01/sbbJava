@@ -1,4 +1,4 @@
-package main.java.reflection;
+package reflection;
 
 @Discover
 public class Person {

@@ -1,4 +1,4 @@
-package main.java.generics_two.list.aufg3;
+package generics_two.list.aufg3;
 
 import java.util.ArrayList;
 import java.util.List;

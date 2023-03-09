@@ -1,4 +1,4 @@
-package main.java.generics_two.list.aufg3;
+package generics_two.list.aufg3;
 
 public class LBVTest {
     public static void main(String[] args) throws ModulNotGradeableException {

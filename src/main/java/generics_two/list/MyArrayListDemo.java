@@ -1,4 +1,4 @@
-package main.java.generics_two.list;
+package generics_two.list;
 
 import main.java.generics_two.list.aufg1.MyArrayList;
 import main.java.generics_two.list.aufg2.MyArrayListExtended;
