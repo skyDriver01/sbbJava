@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class ReadFile implements FileReadingInterface {
 
-    static String file = "C:\\Users\\E544157\\sbbJavaREAL\\src\\exceptionHandling\\aufg1\\words.txt";
+    static String file = "C:\\Users\\E544157\\sbbJavaREAL\\src\\main\\java\\exceptionHandling\\aufg1\\words.txt";
 
     @Override
     public void countWords() {
@@ -22,9 +22,9 @@ public class ReadFile implements FileReadingInterface {
             }
             System.out.println("Total number of words: " + count);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("That file does not seem to be here");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Cant take an I/O");
         }
     }
 
@@ -43,9 +43,9 @@ public class ReadFile implements FileReadingInterface {
             }
             System.out.println("Total number of words containing 'q': " + count);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("That file does not seem to be here");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Cant take an I/O");
         }
     }
 
@@ -64,9 +64,9 @@ public class ReadFile implements FileReadingInterface {
             }
             System.out.println("All unique special characters: " + uniqueChars);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("That file does not seem to be here");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Cant take an I/O");
         }
     }
 
@@ -78,16 +78,23 @@ public class ReadFile implements FileReadingInterface {
             while ((line = br.readLine()) != null) {
                 String[] words = line.split("\\s+");
                 for (String word : words) {
-                    if(word.contains("0") || word.contains("1") || word.contains("2") || word.contains("3") ||
-                       word.contains("4") || word.contains("5") || word.contains("6") || word.contains("7") ||
-                       word.contains("8") || word.contains("9")) {
+                    if(word.contains("0") ||
+                       word.contains("1") ||
+                       word.contains("2") ||
+                       word.contains("3") ||
+                       word.contains("4") ||
+                       word.contains("5") ||
+                       word.contains("6") ||
+                       word.contains("7") ||
+                       word.contains("8") ||
+                       word.contains("9")) {
                         count++;
                     }
                 }
             }
             System.out.println("Total Number of Words with a Number in them: " + count);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Cant take an I/O");
         }
     }
 
@@ -104,7 +111,7 @@ public class ReadFile implements FileReadingInterface {
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Cant take an I/O");
         }
     }
 }

@@ -21,10 +21,11 @@ public class Main {
             try {
                 Object o = constructor.newInstance(personNames[i], personAges[i]);
                 System.out.println(o);
-            }catch (InstantiationException | InvocationTargetException | IllegalAccessException e){
+            } catch (InstantiationException | InvocationTargetException | IllegalAccessException b) {
                 System.out.println("It wont allow the instance");
-                throw  new RuntimeException(e);
+                throw new RuntimeException(b);
             }
         }
+
     }
 }

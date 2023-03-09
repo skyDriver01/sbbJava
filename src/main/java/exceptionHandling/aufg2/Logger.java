@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Logger {
 
-    static String file = "C:\\Users\\E544157\\sbbJavaREAL\\src\\exceptionHandling\\aufg2\\application.log";
+    static String file = "C:\\Users\\E544157\\sbbJavaREAL\\src\\main\\java\\exceptionHandling\\aufg2\\application.log";
     public static void main(String[] args) {
         String choice = InputIn.nextLineOut("What would you like to do: Write or ReadLog");
         switch (choice) {
@@ -23,7 +23,7 @@ public class Logger {
             bw.write(input);
             bw.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Cant take an I/O");
         }
     }
 
@@ -32,9 +32,9 @@ public class Logger {
             BufferedReader br = new BufferedReader(new FileReader(file));
             System.out.println(br.readLine());
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("That file does not seem to be here");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Cant take an I/O");
         }
     }
 }

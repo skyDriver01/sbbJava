@@ -10,7 +10,7 @@ import javax.lang.model.element.TypeElement;
 import java.util.Set;
 import java.util.concurrent.Flow;
 
-@SupportedAnnotationTypes("annotation.Documentation")
+@SupportedAnnotationTypes("main.java.annotation.Documentation")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class DocumentationProcessor extends AbstractProcessor {
 
