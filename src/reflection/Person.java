@@ -5,7 +5,7 @@ public class Person {
 private String name;
 private int age;
 
-@PersonalData(names = {"Hans", "Thomas", "Freddy"}, ages = {18,69, 20})
+    @PersonalData(names = {"Hans", "Thomas", "Freddy"}, ages = {18, 69, 20})
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
