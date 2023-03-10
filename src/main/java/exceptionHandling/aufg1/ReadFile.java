@@ -1,7 +1,6 @@
 package exceptionHandling.aufg1;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
@@ -21,8 +20,6 @@ public class ReadFile implements exceptionHandling.aufg1.FileReadingInterface {
                 count += words.length;
             }
             System.out.println("Total number of words: " + count);
-        } catch (FileNotFoundException e) {
-            System.out.println("That file does not seem to be here");
         } catch (IOException e) {
             System.out.println("Cant take an I/O");
         }
@@ -42,8 +39,6 @@ public class ReadFile implements exceptionHandling.aufg1.FileReadingInterface {
                 }
             }
             System.out.println("Total number of words containing 'q': " + count);
-        } catch (FileNotFoundException e) {
-            System.out.println("That file does not seem to be here");
         } catch (IOException e) {
             System.out.println("Cant take an I/O");
         }
@@ -63,8 +58,6 @@ public class ReadFile implements exceptionHandling.aufg1.FileReadingInterface {
                 }
             }
             System.out.println("All unique special characters: " + uniqueChars);
-        } catch (FileNotFoundException e) {
-            System.out.println("That file does not seem to be here");
         } catch (IOException e) {
             System.out.println("Cant take an I/O");
         }

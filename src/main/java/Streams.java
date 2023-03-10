@@ -1,6 +1,6 @@
 
 
-import main.java.objektOriented.aufg1.Patient;
+import objektOriented.aufg1.Patient;
 
 import java.util.ArrayList;
 import java.util.Arrays;

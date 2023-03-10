@@ -77,10 +77,7 @@ public class CØØPTablets {
                         InputIn.nextLineOut("Would you like to use a Self Scan Register or go to a normal one? Type Self Scan or Normal");
                 switch (register) {
                     case "Self Scan" -> selfScan();
-
-
-                    case default -> normalRegister();
-
+                    case "Normal" -> normalRegister();
                 }
             }
             default -> System.out.println("That Category does not exist");
@@ -462,7 +459,6 @@ public class CØØPTablets {
                     System.out.println("That Product is not in your cart");
                 }
             }
-            case default -> System.out.println("All Items stay the same");
         }
     }
 
@@ -545,8 +541,6 @@ public class CØØPTablets {
                 System.out.println(" Points on your SchüperCard");
 
             }
-            case default -> System.out.println("Thx for Buying At CØØP we hope to see you again soon.");
-
         }
     }
 
