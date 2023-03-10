@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.zoo.Animals;
+package objektOrientedDesign.zoo.Animals;
 
 public class Amphibia extends Animals {
     private String skin;

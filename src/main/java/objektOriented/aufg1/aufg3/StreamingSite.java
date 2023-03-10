@@ -1,6 +1,6 @@
-package main.java.objektOriented.aufg1.aufg3;
+package objektOriented.aufg1.aufg3;
 
-import main.java.objektOriented.aufg1.aufg2.InputIn;
+import objektOriented.aufg1.aufg2.InputIn;
 
 import java.time.Duration;
 import java.util.ArrayList;

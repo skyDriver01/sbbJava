@@ -1,4 +1,4 @@
-package main.java.objektOriented.CØØP;
+package objektOriented.CØØP;
 
 public class Worker {
     private String name;

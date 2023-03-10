@@ -1,13 +1,13 @@
 package objektOrientedDesign.roleplay.gamefigures;
 
-import main.java.objektOrientedDesign.roleplay.Log;
-import main.java.objektOrientedDesign.roleplay.items.Armor;
-import main.java.objektOrientedDesign.roleplay.items.HeavyArmor;
-import main.java.objektOrientedDesign.roleplay.items.LightArmor;
-import main.java.objektOrientedDesign.roleplay.weapons.Scythe;
+import objektOrientedDesign.roleplay.Log;
+import objektOrientedDesign.roleplay.items.Armor;
+import objektOrientedDesign.roleplay.items.HeavyArmor;
+import objektOrientedDesign.roleplay.items.LightArmor;
+import objektOrientedDesign.roleplay.weapons.Scythe;
 
-import static main.java.objektOrientedDesign.roleplay.TextStuff.ANSI_RED;
-import static main.java.objektOrientedDesign.roleplay.TextStuff.ANSI_RESET;
+import static objektOrientedDesign.roleplay.TextStuff.ANSI_RED;
+import static objektOrientedDesign.roleplay.TextStuff.ANSI_RESET;
 
 public class SCP_049 extends Gamefigurine {
     private double instantDeath;

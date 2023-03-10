@@ -1,4 +1,4 @@
-package main.java.objektOriented.aufg1.Generics.aufg1;
+package objektOriented.aufg1.Generics.aufg1;
 
 public class aufg1 {
     final static Double[] doubleArray = {1.1, 1.2, 1.3, 1.4, 1.5};

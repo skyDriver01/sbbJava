@@ -1,14 +1,14 @@
 package objektOrientedDesign.roleplay;
-import main.java.objektOriented.aufg1.aufg2.InputIn;
-import main.java.objektOrientedDesign.roleplay.gamefigures.*;
-import main.java.objektOrientedDesign.roleplay.items.*;
-import main.java.objektOrientedDesign.roleplay.weapons.*;
+import objektOriented.aufg1.aufg2.InputIn;
+import objektOrientedDesign.roleplay.gamefigures.*;
+import objektOrientedDesign.roleplay.items.*;
+import objektOrientedDesign.roleplay.weapons.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static main.java.objektOrientedDesign.roleplay.TextStuff.*;
+import static objektOrientedDesign.roleplay.TextStuff.*;
 
 public class ConfigCharacters {
     static List <Gamefigurine> gameFigurines = Gamefigurine.initGameFigurines();

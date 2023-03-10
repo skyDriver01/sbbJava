@@ -1,4 +1,4 @@
-package main.java.javaGrundlagen.labs1.stringExam;
+package javaGrundlagen.labs1.stringExam;
 
 public class aufg4 {
     public static void main(String[] args) {

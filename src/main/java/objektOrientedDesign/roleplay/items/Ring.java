@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.roleplay.items;
+package objektOrientedDesign.roleplay.items;
 
 public abstract class Ring extends Item{
     public Ring(String item, double weight) {

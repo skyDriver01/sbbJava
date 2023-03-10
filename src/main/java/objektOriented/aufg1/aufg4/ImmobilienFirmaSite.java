@@ -1,6 +1,6 @@
-package main.java.objektOriented.aufg1.aufg4;
+package objektOriented.aufg1.aufg4;
 
-import main.java.objektOriented.aufg1.aufg2.InputIn;
+import objektOriented.aufg1.aufg2.InputIn;
 
 import java.util.ArrayList;
 import java.util.Date;

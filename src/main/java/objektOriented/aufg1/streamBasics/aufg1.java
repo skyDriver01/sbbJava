@@ -1,6 +1,6 @@
-package main.java.objektOriented.aufg1.streamBasics;
+package objektOriented.aufg1.streamBasics;
 
-import main.java.objektOriented.aufg1.aufg2.InputIn;
+import objektOriented.aufg1.aufg2.InputIn;
 
 import java.util.Arrays;
 import java.util.List;

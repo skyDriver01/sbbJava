@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.roleplay.items;
+package objektOrientedDesign.roleplay.items;
 
 public class ShieldRing extends Ring{
     private double moreRes;

@@ -1,9 +1,9 @@
-package main.java.objektOriented.CØØP;
+package objektOriented.CØØP;
 
-import main.java.objektOriented.CØØP.Groceries.*;
-import main.java.objektOriented.aufg1.aufg2.InputIn;
+import objektOriented.CØØP.Groceries.*;
+import objektOriented.aufg1.aufg2.InputIn;
 
-import static main.java.objektOriented.CØØP.CØØPLists.schoppingCarts;
+import static objektOriented.CØØP.CØØPLists.schoppingCarts;
 
 public class CØØPTablets {
 

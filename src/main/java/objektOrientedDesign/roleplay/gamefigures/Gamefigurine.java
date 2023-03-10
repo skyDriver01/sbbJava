@@ -1,8 +1,8 @@
 package objektOrientedDesign.roleplay.gamefigures;
 
-import main.java.objektOrientedDesign.roleplay.items.Armor;
-import main.java.objektOrientedDesign.roleplay.items.Item;
-import main.java.objektOrientedDesign.roleplay.weapons.Weapon;
+import objektOrientedDesign.roleplay.items.Armor;
+import objektOrientedDesign.roleplay.items.Item;
+import objektOrientedDesign.roleplay.weapons.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;

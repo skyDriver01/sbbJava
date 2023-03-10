@@ -1,4 +1,4 @@
-package main.java.javaGrundlagen.labs1.stringExam;
+package javaGrundlagen.labs1.stringExam;
 
 import java.util.Arrays;
 

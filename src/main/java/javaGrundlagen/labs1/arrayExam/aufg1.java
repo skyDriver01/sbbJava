@@ -1,4 +1,4 @@
-package main.java.javaGrundlagen.labs1.arrayExam;
+package javaGrundlagen.labs1.arrayExam;
 
 public class aufg1 {
     public static void main(String[] args) {

@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.objektOrientedDesign.roleplay.TextStuff.*;
+import static objektOrientedDesign.roleplay.TextStuff.*;
 
 public class Log {
     private static List <String> log = new ArrayList <>();

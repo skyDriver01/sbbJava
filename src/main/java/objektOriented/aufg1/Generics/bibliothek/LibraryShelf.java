@@ -1,6 +1,6 @@
-package main.java.objektOriented.aufg1.Generics.bibliothek;
+package objektOriented.aufg1.Generics.bibliothek;
 
-import main.java.objektOriented.aufg1.aufg2.InputIn;
+import objektOriented.aufg1.aufg2.InputIn;
 
 import java.util.ArrayList;
 import java.util.List;

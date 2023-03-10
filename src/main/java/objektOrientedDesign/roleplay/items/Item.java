@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.roleplay.items;
+package objektOrientedDesign.roleplay.items;
 
 import java.util.ArrayList;
 import java.util.List;

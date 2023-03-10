@@ -1,6 +1,6 @@
-package main.java.objektOriented.CØØP;
+package objektOriented.CØØP;
 
-import main.java.objektOriented.CØØP.Groceries.*;
+import objektOriented.CØØP.Groceries.*;
 
 import java.util.ArrayList;
 import java.util.List;

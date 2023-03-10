@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ReadFile implements main.java.exceptionHandling.aufg1.FileReadingInterface {
+public class ReadFile implements exceptionHandling.aufg1.FileReadingInterface {
 
     static String file = "C:\\Users\\E544157\\sbbJavaREAL\\src\\main\\java\\exceptionHandling\\aufg1\\words.txt";
 

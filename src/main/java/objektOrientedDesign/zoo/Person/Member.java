@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.zoo.Person;
+package objektOrientedDesign.zoo.Person;
 
 public class Member extends People{
     private String memberSince;

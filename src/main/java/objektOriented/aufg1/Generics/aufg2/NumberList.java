@@ -1,4 +1,4 @@
-package main.java.objektOriented.aufg1.Generics.aufg2;
+package objektOriented.aufg1.Generics.aufg2;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,10 @@
-package main.java.objektOrientedDesign.zoo;
+package objektOrientedDesign.zoo;
 
-import main.java.objektOrientedDesign.zoo.Animals.*;
-import main.java.objektOrientedDesign.zoo.Enclosure.*;
-import main.java.objektOrientedDesign.zoo.Person.Member;
-import main.java.objektOrientedDesign.zoo.Person.People;
-import main.java.objektOrientedDesign.zoo.Person.Worker;
+import objektOrientedDesign.zoo.Animals.*;
+import objektOrientedDesign.zoo.Enclosure.*;
+import objektOrientedDesign.zoo.Person.Member;
+import objektOrientedDesign.zoo.Person.People;
+import objektOrientedDesign.zoo.Person.Worker;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package main.java.objektOriented.aufg1.aufg2;
+package objektOriented.aufg1.aufg2;
 
 public class Contact {
 

@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.zoo.Person;
+package objektOrientedDesign.zoo.Person;
 
 public class Worker extends People{
     private int wage;

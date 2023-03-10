@@ -1,4 +1,4 @@
-package main.java.objektOriented.CØØP.Groceries;
+package objektOriented.CØØP.Groceries;
 
 public class SchoppingCart {
     private String product;

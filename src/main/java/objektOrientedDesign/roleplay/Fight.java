@@ -1,12 +1,12 @@
 package objektOrientedDesign.roleplay;
-import main.java.objektOriented.aufg1.aufg2.InputIn;
-import main.java.objektOrientedDesign.roleplay.gamefigures.Gamefigurine;
-import main.java.objektOrientedDesign.roleplay.items.*;
-import main.java.objektOrientedDesign.roleplay.weapons.Weapon;
+import objektOriented.aufg1.aufg2.InputIn;
+import objektOrientedDesign.roleplay.gamefigures.Gamefigurine;
+import objektOrientedDesign.roleplay.items.*;
+import objektOrientedDesign.roleplay.weapons.Weapon;
 
 import java.util.HashMap;
 
-import static main.java.objektOrientedDesign.roleplay.TextStuff.*;
+import static objektOrientedDesign.roleplay.TextStuff.*;
 
 public class Fight {
 

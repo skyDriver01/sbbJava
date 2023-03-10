@@ -1,4 +1,4 @@
-package main.java.objektOriented.aufg1.Generics.bibliothek;
+package objektOriented.aufg1.Generics.bibliothek;
 
 public class CD {
     private String name;

@@ -1,4 +1,4 @@
-package main.java.exceptionHandling.aufg1;
+package exceptionHandling.aufg1;
 
 public interface FileReadingInterface {
     void countWordsWithNumbers();

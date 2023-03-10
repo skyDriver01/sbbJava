@@ -1,6 +1,6 @@
 package exceptionHandling.aufg2;
 
-import main.java.objektOriented.aufg1.aufg2.InputIn;
+import objektOriented.aufg1.aufg2.InputIn;
 
 import java.io.*;
 

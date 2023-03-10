@@ -1,7 +1,7 @@
 package generics_two.list;
 
-import main.java.generics_two.list.aufg1.MyArrayList;
-import main.java.generics_two.list.aufg2.MyArrayListExtended;
+import generics_two.list.aufg1.MyArrayList;
+import generics_two.list.aufg2.MyArrayListExtended;
 
 public class MyArrayListDemo {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.roleplay.items;
+package objektOrientedDesign.roleplay.items;
 
 public class HealthPotion extends Potion{
     private double giveLP;

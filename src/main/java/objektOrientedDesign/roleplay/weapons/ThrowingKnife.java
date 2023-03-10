@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.roleplay.weapons;
+package objektOrientedDesign.roleplay.weapons;
 
 
 public class ThrowingKnife extends LongRange {

@@ -1,4 +1,4 @@
-package main.java.objektOriented.aufg1.aufg3;
+package objektOriented.aufg1.aufg3;
 
 import java.util.ArrayList;
 import java.util.List;

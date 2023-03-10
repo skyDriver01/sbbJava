@@ -1,4 +1,4 @@
-package main.java.annotation;
+package annotation;
 
 
 @Documentation(name = {"He", "Him"},description = "Model Class", version = "0.0.2")

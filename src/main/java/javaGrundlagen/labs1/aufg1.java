@@ -1,4 +1,4 @@
-package main.java.javaGrundlagen.labs1;
+package javaGrundlagen.labs1;
 
 public class aufg1 {
     public static void main(String[] args) {

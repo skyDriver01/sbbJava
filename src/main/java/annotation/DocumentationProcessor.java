@@ -1,4 +1,4 @@
-package main.java.annotation;
+package annotation;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.RoundEnvironment;

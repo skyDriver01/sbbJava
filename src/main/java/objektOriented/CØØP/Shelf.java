@@ -1,4 +1,4 @@
-package main.java.objektOriented.CØØP;
+package objektOriented.CØØP;
 
 public class Shelf {
     private int shelfNumber;

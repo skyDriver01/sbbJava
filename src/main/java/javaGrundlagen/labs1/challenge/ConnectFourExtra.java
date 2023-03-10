@@ -1,4 +1,4 @@
-package main.java.javaGrundlagen.labs1.challenge;
+package javaGrundlagen.labs1.challenge;
 
 public class ConnectFourExtra implements ConnectFourCheck {
     public static void main(String[] args) {

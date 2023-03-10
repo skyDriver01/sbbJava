@@ -1,4 +1,4 @@
-package main.java.objektOriented.aufg1;
+package objektOriented.aufg1;
 
 public class Patient {
     private String name;

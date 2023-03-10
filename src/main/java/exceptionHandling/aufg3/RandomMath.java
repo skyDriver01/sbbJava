@@ -1,6 +1,6 @@
 package exceptionHandling.aufg3;
 
-import main.java.objektOriented.aufg1.aufg2.InputIn;
+import objektOriented.aufg1.aufg2.InputIn;
 
 public class RandomMath {
     public static void main(String[] args) {

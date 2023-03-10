@@ -1,4 +1,4 @@
-package main.java.objektOriented.aufg1;
+package objektOriented.aufg1;
 
 import java.util.Scanner;
 

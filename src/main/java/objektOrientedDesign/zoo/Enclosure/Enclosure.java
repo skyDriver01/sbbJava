@@ -1,4 +1,4 @@
-package main.java.objektOrientedDesign.zoo.Enclosure;
+package objektOrientedDesign.zoo.Enclosure;
 
 public class Enclosure {
     private int enclosureNumber;

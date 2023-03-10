@@ -1,4 +1,4 @@
-package main.java.javaGrundlagen.labs1;
+package javaGrundlagen.labs1;
 
 import java.util.Scanner;
 

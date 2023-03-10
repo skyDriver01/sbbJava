@@ -1,4 +1,4 @@
-package main.java.objektOriented.aufg1.aufg4;
+package objektOriented.aufg1.aufg4;
 
 public class ImmobilienfirmaDemo {
 
