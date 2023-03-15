@@ -34,7 +34,7 @@ public class GradeEvaluationSystem {
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
             PreparedStatement statement = connection.prepareStatement(query);
-            ResultSet resultSet = statement.executeQuery(); // ExecuteQuery bei Select andere Befehl executeupdate bei create execute bei Insertinto
+            ResultSet resultSet = statement.executeQuery();     // ExecuteQuery bei Select andere Befehl executeupdate bei create execute bei Insertinto
             System.out.println(resultSet);
         } catch (SQLException e) {
             System.out.println(e);
@@ -42,7 +42,7 @@ public class GradeEvaluationSystem {
     }
 
     public static void captureGrade() {
-        query = "SELECT * FROM gradingSystem";
+        query = "SELECT * FROM grade";
         configDatabase();
     }
 
