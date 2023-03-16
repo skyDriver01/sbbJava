@@ -11,7 +11,8 @@ import java.util.Set;
 import java.util.concurrent.Flow;
 
 @SupportedAnnotationTypes("main.java.annotation.Documentation")
-@SupportedSourceVersion(SourceVersion.RELEASE_18)
+@SupportedSourceVersion(SourceVersion.RELEASE_8)
+@SuppressWarnings("Release 8")
 public class DocumentationProcessor extends AbstractProcessor {
 
     @Override

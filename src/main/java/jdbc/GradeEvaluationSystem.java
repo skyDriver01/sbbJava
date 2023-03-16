@@ -35,7 +35,10 @@ public class GradeEvaluationSystem {
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);     // ExecuteQuery bei Select andere Befehl executeupdate bei create execute bei Insertinto
-            System.out.println(resultSet.toString());
+            while (resultSet.next()){
+                String data = resultSet.getString(1) + ":" + resultSet.getString(2);
+                System.out.println(data);
+            }
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -56,13 +59,11 @@ public class GradeEvaluationSystem {
                 "," +
                 datum;
         configDatabase(1);
-        System.out.println("New grade added successfully!");
     }
 
     public static void deleteGrade(Float pk) {
         query = "DELETE FROM school_subject_grade WHERE gradeID = " + pk;
         configDatabase(2);
-        System.out.println("Grade with ID " + pk + " deleted successfully!");
     }
 
     public static void alterGrade(Float grade) {
