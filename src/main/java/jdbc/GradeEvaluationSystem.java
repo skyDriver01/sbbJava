@@ -35,7 +35,7 @@ public class GradeEvaluationSystem {
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);     // ExecuteQuery bei Select andere Befehl executeupdate bei create execute bei Insertinto
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String data = resultSet.getString(1) + ":" + resultSet.getString(2);
                 System.out.println(data);
             }
@@ -49,15 +49,16 @@ public class GradeEvaluationSystem {
         int gradeID = InputIn.nexIntOut("Type a number between 0 and 20");
         int school_subject = InputIn.nexIntOut("Now a number between 1 and 7");
         InputIn.nextLine();
-        String datum = InputIn.nextLineOut("When did you get this grade(Full date like this YEAR.MONTH.DAY)");
-        query = "INSERT INTO school_subject_grade(ID, gradeID, school_subjectID, Datum)" +
+        Date datum = new Date(2022-12-3);
+        query = "INSERT INTO school_subject_grade(ID, gradeID, school_subjectID, Datum) VALUES( " +
                 pk +
                 "," +
                 gradeID +
                 "," +
                 school_subject +
                 "," +
-                datum;
+                datum +
+                ")";
         configDatabase(1);
     }
 
