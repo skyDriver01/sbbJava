@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.concurrent.Flow;
 
 @SupportedAnnotationTypes("main.java.annotation.Documentation")
-@SupportedSourceVersion(SourceVersion.RELEASE_8)
+@SupportedSourceVersion(SourceVersion.RELEASE_18)
 public class DocumentationProcessor extends AbstractProcessor {
 
     @Override
@@ -19,7 +19,8 @@ public class DocumentationProcessor extends AbstractProcessor {
         for (TypeElement annotation : annotations) {
             Set <? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(annotation);
             for (Element element : annotatedElements) {
-                Documentation documentation = element.getAnnotation(Documentation.class);
+                Documentation documentation;
+                documentation = element.getAnnotation(Documentation.class);
                 System.out.println("--------------");
                 System.out.println(Flow.Publisher.class.getName());
                 System.out.println("--------------");
@@ -31,3 +32,10 @@ public class DocumentationProcessor extends AbstractProcessor {
         return false;
     }
 }
+/*
+cd .\main\
+cd .\java\
+javac annotation/Documentation.java
+javac annotation/DocumentationProcessor.java
+javac -processor annotation.DocumentationProcessor annotation/Book.java
+ */

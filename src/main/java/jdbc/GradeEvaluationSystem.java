@@ -35,7 +35,7 @@ public class GradeEvaluationSystem {
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);     // ExecuteQuery bei Select andere Befehl executeupdate bei create execute bei Insertinto
-            System.out.println(resultSet.getString(index));
+            System.out.println(resultSet.toString());
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -66,9 +66,8 @@ public class GradeEvaluationSystem {
     }
 
     public static void alterGrade(Float grade) {
-        query = "UPDATE grade SET grade = " + grade + " WHERE GradeID = 0";
-        configDatabase(1);
-        System.out.println("Grade updated successfully!");
+        query = "UPDATE school_subject_grade SET grade = " + grade + " WHERE GradeID = 0";
+        configDatabase(0);
     }
 
     public static void giveOutModuleGrade() {

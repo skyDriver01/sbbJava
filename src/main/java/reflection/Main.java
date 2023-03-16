@@ -11,7 +11,7 @@ public class Main {
         try {
             constructor = clazz.getDeclaredConstructor(String.class, int.class);
         } catch (NoSuchMethodException | ClassCastException e) {
-            System.out.println("Smth aint worked");
+            System.out.println("seems it didnt find the method but here to know better: " + e);
         }
         assert constructor != null;
         reflection.PersonalData personalData = constructor.getAnnotation(reflection.PersonalData.class);
@@ -22,8 +22,7 @@ public class Main {
                 Object o = constructor.newInstance(personNames[i], personAges[i]);
                 System.out.println(o);
             } catch (InstantiationException | InvocationTargetException | IllegalAccessException b) {
-                System.out.println("It wont allow the instance");
-                throw new RuntimeException(b);
+                System.out.println("It wont allow the instance" + b);
             }
         }
 

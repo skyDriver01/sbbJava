@@ -15,7 +15,7 @@ public class PLZMap {
     static OutputValidation outputValidation = new OutputValidation();
 
     public static void main(String[] args) {
-        String csvFile = "C:\\Users\\E544157\\sbbJavaREAL\\src\\generics_two\\map\\Postleitzahlen_UTF8.csv";
+        String csvFile = "src/main/java/generics_two/map/Postleitzahlen_UTF8.csv";
         String line = "";
         String cvsSplitBy = ",\"";
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
