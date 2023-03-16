@@ -16,7 +16,7 @@ public class GradeEvaluationSystem {
         String choice = InputIn.nextLineOut("What would you like to do: ");
         switch (choice) {
             case "captureGrade" -> captureGrade();
-            case "deleteGrade" -> deleteGrade();
+            case "deleteGrade" -> deleteGrade(1F);
             case "alterGrade" -> alterGrade(4.25F);
             case "giveOutModuleGrade" -> giveOutModuleGrade();
             case "transcript" -> transcript();
@@ -27,7 +27,7 @@ public class GradeEvaluationSystem {
         }
     }
 
-    private static void configDatabase() {
+    private static void configDatabase(int index) {
         String url = "jdbc:mariadb://localhost:3306/java";
         String username = "root";
         String password = "Test";
@@ -35,34 +35,49 @@ public class GradeEvaluationSystem {
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);     // ExecuteQuery bei Select andere Befehl executeupdate bei create execute bei Insertinto
-            System.out.println(resultSet.toString());
+            System.out.println(resultSet.getString(index));
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
     public static void captureGrade() {
-        query = "SELECT * FROM grade";
-        configDatabase();
+        int pk = InputIn.nexIntOut("Type a int bigger than 7");
+        int gradeID = InputIn.nexIntOut("Type a number between 0 and 20");
+        int school_subject = InputIn.nexIntOut("Now a number between 1 and 7");
+        InputIn.nextLine();
+        String datum = InputIn.nextLineOut("When did you get this grade(Full date like this YEAR.MONTH.DAY)");
+        query = "INSERT INTO school_subject_grade(ID, gradeID, school_subjectID, Datum)" +
+                pk +
+                "," +
+                gradeID +
+                "," +
+                school_subject +
+                "," +
+                datum;
+        configDatabase(1);
+        System.out.println("New grade added successfully!");
     }
 
-    public static void deleteGrade() {
-        query = "DELETE FROM grade WHERE gradeID = 4";
-        configDatabase();
+    public static void deleteGrade(Float pk) {
+        query = "DELETE FROM school_subject_grade WHERE gradeID = " + pk;
+        configDatabase(2);
+        System.out.println("Grade with ID " + pk + " deleted successfully!");
     }
 
     public static void alterGrade(Float grade) {
-        query = "UPDATE grade SET grade = " + grade + " WHERE GradeID = 5";
-        configDatabase();
+        query = "UPDATE grade SET grade = " + grade + " WHERE GradeID = 0";
+        configDatabase(1);
+        System.out.println("Grade updated successfully!");
     }
 
     public static void giveOutModuleGrade() {
         query = "SELECT modulename, Grade FROM school_subject, grade";
-        configDatabase();
+        configDatabase(1);
     }
 
-    public static void transcript() {        // Zeugnis auf english
-        query = "SELECT";
-        configDatabase();
+    public static void transcript() {
+        query = "SELECT modulename, grade FROM grade g JOIN school_subject s ON modulename = modulename";
+        configDatabase(2);
     }
 }
