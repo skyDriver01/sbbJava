@@ -14,7 +14,7 @@ public class RandomMath {
             calculate(input1, input2);
         }
         catch (NumberFormatException e){
-            System.out.println("That is not a Number");
+            System.out.println("That is not a Number" + e);
             getNumbers();
         }
     }

@@ -9,11 +9,13 @@ public class Main {
         Constructor <?> constructor = null;
         Class <?> clazz = reflection.Person.class;
         try {
-            constructor = clazz.getDeclaredConstructor(String.class, int.class);
+            constructor = clazz.getDeclaredConstructor(String.class, int.class);   // Holt constructor mit diesen parametern
         } catch (NoSuchMethodException | ClassCastException e) {
             System.out.println("seems it didnt find the method but here to know better: " + e);
         }
-        assert constructor != null;
+        constructor = null;
+        assert constructor != null;   // assert muss zuerst enabled werden damit es etwas machen kann
+        // Todo assert enable herausfinden wie.
         reflection.PersonalData personalData = constructor.getAnnotation(reflection.PersonalData.class);
         String[] personNames = personalData.names();
         int[] personAges = personalData.ages();
@@ -25,6 +27,5 @@ public class Main {
                 System.out.println("It wont allow the instance" + b);
             }
         }
-
     }
 }

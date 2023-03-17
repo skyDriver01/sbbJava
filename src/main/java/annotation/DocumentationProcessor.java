@@ -7,12 +7,11 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
+import java.util.Arrays;
 import java.util.Set;
-import java.util.concurrent.Flow;
 
-@SupportedAnnotationTypes("main.java.annotation.Documentation")
-@SupportedSourceVersion(SourceVersion.RELEASE_8)
-@SuppressWarnings("Release 8")
+@SupportedAnnotationTypes("annotation.Documentation")
+@SupportedSourceVersion(SourceVersion.RELEASE_18)
 public class DocumentationProcessor extends AbstractProcessor {
 
     @Override
@@ -20,12 +19,11 @@ public class DocumentationProcessor extends AbstractProcessor {
         for (TypeElement annotation : annotations) {
             Set <? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(annotation);
             for (Element element : annotatedElements) {
-                Documentation documentation;
-                documentation = element.getAnnotation(Documentation.class);
+                Documentation documentation = element.getAnnotation(Documentation.class);
                 System.out.println("--------------");
-                System.out.println(Flow.Publisher.class.getName());
+                System.out.println(element.getSimpleName());
                 System.out.println("--------------");
-                System.out.println(documentation.name());
+                System.out.println(Arrays.toString(documentation.names()));
                 System.out.println(documentation.description());
                 System.out.println(documentation.version());
             }

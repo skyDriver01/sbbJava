@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.TYPE)
 public @interface Documentation {
-    String[] name();
+    String[] names();
     String description() default "";
     String version() default "0.0.1";
 }

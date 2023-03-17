@@ -21,7 +21,7 @@ public class ReadFile implements exceptionHandling.aufg1.FileReadingInterface {
             }
             System.out.println("Total number of words: " + count);
         } catch (IOException e) {
-            System.out.println("Cant take an I/O");
+            System.out.println("Cant take an I/O" + e);
         }
     }
 
@@ -40,7 +40,7 @@ public class ReadFile implements exceptionHandling.aufg1.FileReadingInterface {
             }
             System.out.println("Total number of words containing 'q': " + count);
         } catch (IOException e) {
-            System.out.println("Cant take an I/O");
+            System.out.println("Cant take an I/O" + e);
         }
     }
 
@@ -59,7 +59,7 @@ public class ReadFile implements exceptionHandling.aufg1.FileReadingInterface {
             }
             System.out.println("All unique special characters: " + uniqueChars);
         } catch (IOException e) {
-            System.out.println("Cant take an I/O");
+            System.out.println("Cant take an I/O" + e);
         }
     }
 
@@ -87,7 +87,7 @@ public class ReadFile implements exceptionHandling.aufg1.FileReadingInterface {
             }
             System.out.println("Total Number of Words with a Number in them: " + count);
         } catch (IOException e) {
-            System.out.println("Cant take an I/O");
+            System.out.println("Cant take an I/O" + e);
         }
     }
 
@@ -104,7 +104,7 @@ public class ReadFile implements exceptionHandling.aufg1.FileReadingInterface {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Cant take an I/O");
+            System.out.println("Cant take an I/O" + e);
         }
     }
 }

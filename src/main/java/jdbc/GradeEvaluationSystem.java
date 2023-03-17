@@ -82,7 +82,7 @@ public class GradeEvaluationSystem {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
     }
 
@@ -92,7 +92,7 @@ public class GradeEvaluationSystem {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
     }
 
@@ -106,7 +106,7 @@ public class GradeEvaluationSystem {
                 System.out.println(data);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
     }
 
@@ -120,7 +120,7 @@ public class GradeEvaluationSystem {
                 System.out.println(data);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
     }
 }

@@ -23,7 +23,7 @@ public class Logger {
             bw.write(input);
             bw.close();
         } catch (IOException e) {
-            System.out.println("Cant take an I/O");
+            System.out.println("Cant take an I/O" + e);
         }
     }
 
@@ -32,9 +32,9 @@ public class Logger {
             BufferedReader br = new BufferedReader(new FileReader(file));
             System.out.println(br.readLine());
         } catch (FileNotFoundException e) {
-            System.out.println("That file does not seem to be here");
+            System.out.println("That file does not seem to be here" + e);
         } catch (IOException e) {
-            System.out.println("Cant take an I/O");
+            System.out.println("Cant take an I/O" + e);
         }
     }
 }
