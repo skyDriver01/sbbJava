@@ -13,7 +13,6 @@ public class Main {
         } catch (NoSuchMethodException | ClassCastException e) {
             System.out.println("seems it didnt find the method but here to know better: " + e);
         }
-        constructor = null;
         assert constructor != null;   // assert muss zuerst enabled werden damit es etwas machen kann
         // Todo assert enable herausfinden wie.
         reflection.PersonalData personalData = constructor.getAnnotation(reflection.PersonalData.class);
