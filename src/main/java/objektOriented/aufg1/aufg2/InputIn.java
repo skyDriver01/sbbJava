@@ -1,6 +1,5 @@
 package objektOriented.aufg1.aufg2;
 
-import java.sql.Date;
 import java.util.Scanner;
 
 public final class InputIn { //Final zum nicht veränder bar.
@@ -49,12 +48,5 @@ public final class InputIn { //Final zum nicht veränder bar.
     public static String[] nextLineArrayOut(String output) { //Hat Text bsp. "Schreibe deinen namen"
         System.out.println(output);
         return new String[]{scanner.nextLine()};
-    }
-    public static Date dateLine() {
-        return Date.valueOf(scanner.nextLine());
-    }
-    public static Date dateLineOut(String output){
-        System.out.println(output);
-        return Date.valueOf(scanner.nextLine());
     }
 }
