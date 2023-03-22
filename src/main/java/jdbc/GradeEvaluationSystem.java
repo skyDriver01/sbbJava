@@ -100,7 +100,7 @@ public class GradeEvaluationSystem {
          query = "SELECT modulename, grade FROM java.school_subject, java.grade";
         try {
             statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
+            resultSet = statement.executeQuery(query);  //do this
             while (resultSet.next()) {
                 String data = resultSet.getString(1) + ":" + resultSet.getString(2);
                 System.out.println(data);
@@ -113,7 +113,7 @@ public class GradeEvaluationSystem {
     public static void transcript() {
           query = "SELECT modulename, grade FROM java.grade g JOIN java.school_subject s ON modulename = modulename";
         try {
-            statement = connection.createStatement();
+            statement = connection.createStatement();  // and do that
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 String data = resultSet.getString(1) + ":" + resultSet.getString(2);
