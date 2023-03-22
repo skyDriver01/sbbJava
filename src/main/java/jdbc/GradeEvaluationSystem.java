@@ -3,6 +3,10 @@ package jdbc;
 import objektOriented.aufg1.aufg2.InputIn;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GradeEvaluationSystem {
     static ResultSet resultSet;
@@ -60,8 +64,7 @@ public class GradeEvaluationSystem {
                     ")";
         } catch (IllegalArgumentException e) {
             System.out.println(e);
-        }
-        catch (RuntimeException b){
+        } catch (RuntimeException b) {
             System.out.println("Keep in mind to follow what it says to use");
             System.out.println(b);
             captureGrade();
@@ -97,13 +100,23 @@ public class GradeEvaluationSystem {
     }
 
     public static void giveOutModuleGrade() {
-         query = "SELECT modulename, grade FROM java.school_subject, java.grade";
+        query = "SELECT s.SubjectID, Modulename, g.Grade " +
+                "FROM java.school_subject_grade sg " +
+                "JOIN java.school_subject s ON sg.school_subjectID = s.SubjectID " +
+                "JOIN java.grade g ON sg.gradeID = g.gradeID";
         try {
             statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);  //do this
+            resultSet = statement.executeQuery(query);
+            Map <String, Integer> moduleGrades = new HashMap <>(); // use a map to store the grades for each module
             while (resultSet.next()) {
-                String data = resultSet.getString(1) + ":" + resultSet.getString(2);
-                System.out.println(data);
+                String moduleName = resultSet.getString("Modulename");
+                int grade = resultSet.getInt("grade");                  // Todo only make it so it gives out the module grade bc atm it gives out the last inputted date for that module
+                moduleGrades.put(moduleName, grade); // add the grade to the map for this module
+            }
+            for (String moduleName : moduleGrades.keySet()) {
+                int grade = moduleGrades.get(moduleName);
+                String data = moduleName + ":" + grade;
+                System.out.println(data); // output one line per module with the corresponding grade
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -111,13 +124,18 @@ public class GradeEvaluationSystem {
     }
 
     public static void transcript() {
-          query = "SELECT modulename, grade FROM java.grade g JOIN java.school_subject s ON modulename = modulename";
+        query = "SELECT modulename, AVG(grade) as finalgrade FROM java.grade g JOIN java.school_subject s ON g.GradeID = s.subjectid GROUP BY modulename";
         try {
-            statement = connection.createStatement();  // and do that
+            statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
+            List <String> moduleGrades = new ArrayList <>(); // use a list to store the final grades for each module
             while (resultSet.next()) {
-                String data = resultSet.getString(1) + ":" + resultSet.getString(2);
-                System.out.println(data);
+                String moduleName = resultSet.getString("modulename");
+                double finalGrade = resultSet.getDouble("finalgrade");
+                moduleGrades.add(moduleName + ":" + finalGrade); // add the final grade to the list for this module
+            }
+            for (String data : moduleGrades) {
+                System.out.println(data); // output one line per module with the final grade
             }
         } catch (SQLException e) {
             System.out.println(e);
