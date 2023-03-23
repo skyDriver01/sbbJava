@@ -100,45 +100,80 @@ public class GradeEvaluationSystem {
     }
 
     public static void giveOutModuleGrade() {
-        query = "SELECT s.SubjectID, Modulename, g.Grade " +
+        query = "SELECT s.SubjectID, Modulename, g.Grade, sg.Datum " +
                 "FROM java.school_subject_grade sg " +
                 "JOIN java.school_subject s ON sg.school_subjectID = s.SubjectID " +
                 "JOIN java.grade g ON sg.gradeID = g.gradeID";
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
-            Map <String, Integer> moduleGrades = new HashMap <>(); // use a map to store the grades for each module
+            Map<String, List<String>> moduleGrades = new HashMap<>();
             while (resultSet.next()) {
                 String moduleName = resultSet.getString("Modulename");
-                int grade = resultSet.getInt("grade");                  // Todo only make it so it gives out the module grade bc atm it gives out the last inputted date for that module
-                moduleGrades.put(moduleName, grade); // add the grade to the map for this module
+                String grade = resultSet.getString("Grade");
+                String date = resultSet.getString("Datum");
+                String data = date + ": " + grade;
+                if (!moduleGrades.containsKey(moduleName)) {
+                    moduleGrades.put(moduleName, new ArrayList<>());
+                }
+                moduleGrades.get(moduleName).add(data);
             }
             for (String moduleName : moduleGrades.keySet()) {
-                int grade = moduleGrades.get(moduleName);
-                String data = moduleName + ":" + grade;
-                System.out.println(data); // output one line per module with the corresponding grade
+                System.out.println(moduleName);
+                List<String> grades = moduleGrades.get(moduleName);
             }
+            String chooseModule = InputIn.nextLineOut("Choose the module you want to get your grade from");
+            moduleGrade(chooseModule, moduleGrades);
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
     public static void transcript() {
-        query = "SELECT modulename, AVG(grade) as finalgrade FROM java.grade g JOIN java.school_subject s ON g.GradeID = s.subjectid GROUP BY modulename";
+        query = "SELECT s.SubjectID, Modulename, AVG(g.Grade) as AverageGrade " +
+                "FROM java.school_subject_grade sg " +
+                "JOIN java.school_subject s ON sg.school_subjectID = s.SubjectID " +
+                "JOIN java.grade g ON sg.gradeID = g.gradeID " +
+                "GROUP BY s.SubjectID";
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
-            List <String> moduleGrades = new ArrayList <>(); // use a list to store the final grades for each module
+            Map<String, Float> moduleGrades = new HashMap<>();
             while (resultSet.next()) {
-                String moduleName = resultSet.getString("modulename");
-                double finalGrade = resultSet.getDouble("finalgrade");
-                moduleGrades.add(moduleName + ":" + finalGrade); // add the final grade to the list for this module
+                String moduleName = resultSet.getString("Modulename");
+                float grade = resultSet.getFloat("AverageGrade");
+                moduleGrades.put(moduleName, grade);
             }
-            for (String data : moduleGrades) {
-                System.out.println(data); // output one line per module with the final grade
+            for (String moduleName : moduleGrades.keySet()) {
+                float grade = moduleGrades.get(moduleName);
+                String data = moduleName + ": " + grade;
+                System.out.println(data);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+
+    public static void moduleGrade(String moduleName, Map<String, List<String>> moduleGrades) {
+        if (moduleGrades.containsKey(moduleName)) {
+            List<String> grades = moduleGrades.get(moduleName);
+            System.out.println("Grades for " + moduleName + ":");
+            for (String grade : grades) {
+                System.out.println("   " + grade);
+            }
+        } else {
+            System.out.println("No grades found for " + moduleName);
+        }
+    }
+
+    private static float calculateModuleGrade(List <Float> grades) {
+        if(grades.isEmpty()) {
+            return 0;
+        }
+        float sum = 0;
+        for (float grade : grades) {
+            sum += grade;
+        }
+        return sum / grades.size();
     }
 }
