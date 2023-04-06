@@ -165,15 +165,4 @@ public class GradeEvaluationSystem {
             System.out.println("No grades found for " + moduleName);
         }
     }
-
-    private static float calculateModuleGrade(List <Float> grades) {
-        if(grades.isEmpty()) {
-            return 0;
-        }
-        float sum = 0;
-        for (float grade : grades) {
-            sum += grade;
-        }
-        return sum / grades.size();
-    }
 }

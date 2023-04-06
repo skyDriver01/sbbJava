@@ -2,7 +2,7 @@ package generics_two.queue.aufg1;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Start{
+public class Start {
     public static final int INPUTWORKER_NUMBER_OF_JOBS = 4;
     public static final int INPUTWORKER_MAX_RELAX_TIME_MS = 1000;
     public static final int OUTPUTWORKER_START_AFTER_MS = 3000;

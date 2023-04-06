@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * For print the log on standard output, it uses the delimiter {@code System.lineSeparator()}.
  */
 public class OutputValidation {
-    ArrayList<String> log = new ArrayList<>();
+    ArrayList <String> log = new ArrayList <>();
 
     /**
      * Add a new line to the saved output.

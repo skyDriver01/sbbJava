@@ -22,8 +22,7 @@ public class InputWorker implements Runnable {
         for (int i = 0; i < Start.INPUTWORKER_NUMBER_OF_JOBS; i++) {
             try {
                 Thread.sleep(random.nextInt(Start.INPUTWORKER_MAX_RELAX_TIME_MS));
-                String message = String.format("[%s]: (%s) It is a very hard job!",
-                                               name, dateFormat.format(new Date()));
+                String message = String.format("[%s]: (%s) It is a very hard job!", name, dateFormat.format(new Date()));
                 Job job = new Job(Start.getNextJobId(), message);
                 processingInterface.addJob(job);
                 System.out.printf("-> [%s]  add job:     %s%n", name, job);

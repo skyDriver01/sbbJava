@@ -1,13 +1,12 @@
-package generics_two.list;
+package generics_two.list.aufg2;
 
 import generics_two.list.aufg1.MyArrayList;
-import generics_two.list.aufg2.MyArrayListExtended;
 
 public class MyArrayListDemo {
     public static void main(String[] args) {
         //aufg1Array();
         System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-        MyArrayListExtended <String> secondArray = new MyArrayListExtended<>();
+        MyArrayListExtended <String> secondArray = new MyArrayListExtended <>();
         secondArray.add("1");
         secondArray.add("745");
         secondArray.add("done");
@@ -25,8 +24,8 @@ public class MyArrayListDemo {
         System.out.println(secondArray.size());
         System.out.println(secondArray.get(4));
         System.out.println(secondArray.get(5));
-        secondArray.add(4,"112212");
-        secondArray.set(6,"new Elements");
+        secondArray.add(4, "112212");
+        secondArray.set(6, "new Elements");
         System.out.println(secondArray.get(4));
         System.out.println(secondArray.get(5));
         System.out.println(secondArray.get(6));
@@ -57,7 +56,7 @@ public class MyArrayListDemo {
         System.out.println(myArrayList.size());
         try {
             System.out.println(myArrayList.get(4));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Isnt in the array");
         }
     }

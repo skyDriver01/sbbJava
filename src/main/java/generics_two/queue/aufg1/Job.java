@@ -33,10 +33,6 @@ public class Job {
 
     @Override
     public String toString() {
-        return "Job{" +
-               "id=" + id +
-               ", message='" + message + '\'' +
-               ", jobState=" + jobState +
-               '}';
+        return "Job{" + "id=" + id + ", message='" + message + '\'' + ", jobState=" + jobState + '}';
     }
 }

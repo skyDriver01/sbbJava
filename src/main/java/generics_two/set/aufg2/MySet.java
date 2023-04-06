@@ -5,13 +5,14 @@ import java.util.Arrays;
 public class MySet<E> implements MySetInterfaceSimple <Object> {
 
     private Object[] mySet = new Object[0];
+
     @Override
     public boolean add(Object element) {
         for (Object obj : mySet) {
-            if (obj == null && element == null) {
+            if(obj == null && element == null) {
                 return false;
             }
-            if (obj != null && obj.equals(element)) {
+            if(obj != null && obj.equals(element)) {
                 return false;
             }
         }
@@ -47,7 +48,7 @@ public class MySet<E> implements MySetInterfaceSimple <Object> {
             if(j > 0) {
                 mySet = secondSet;
             } else {
-                mySet = new Object[mySet.length -1];
+                mySet = new Object[mySet.length - 1];
             }
             return true;
         } else {
@@ -58,7 +59,7 @@ public class MySet<E> implements MySetInterfaceSimple <Object> {
     @Override
     public boolean contains(Object object) {
         for (int i = 0; i < mySet.length; i++) {
-            if (mySet[i] == (object)) {
+            if(mySet[i] == (object)) {
                 return true;
             }
         }

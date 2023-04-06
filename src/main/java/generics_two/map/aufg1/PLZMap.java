@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PLZMap {
-    static HashMap <String, String> data = new HashMap <>();
+    static HashMap <String, String> plzToGemeinde = new HashMap <>();
     static OutputValidation outputValidation = new OutputValidation();
 
     public static void main(String[] args) {
@@ -23,7 +23,7 @@ public class PLZMap {
                 String[] values = line.split(cvsSplitBy);
                 try {
                     Integer.parseInt(values[0]);
-                    data.put(values[0].trim(), values[1].replace("\"", "").trim());
+                    plzToGemeinde.put(values[0].trim(), values[1].replace("\"", "").trim());
                 } catch (NumberFormatException ignore) {
 
                 }
@@ -31,7 +31,7 @@ public class PLZMap {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        outputValidation.logAndPrint("- Anzahl PLZ: " + data.size());
+        outputValidation.logAndPrint("- Anzahl PLZ: " + plzToGemeinde.size());
         smallestPLZ("Bern");
         largestPLZ("Bern");
         gemeindenWithNLetters(10);
@@ -46,19 +46,23 @@ public class PLZMap {
 
     public static void smallestPLZ(String gemeinde) {
         int makeSmallestPlz = 9999;
-        for (String plz : data.keySet()) {
-            if(Integer.parseInt(plz) < makeSmallestPlz && data.get(plz).equals(gemeinde)) {
+        for (String plz : plzToGemeinde.keySet()) {
+            if(Integer.parseInt(plz) < makeSmallestPlz && plzToGemeinde.get(plz).equals(gemeinde)) {
                 makeSmallestPlz = Integer.parseInt(plz);
             }
         }
-        outputValidation.logAndPrint(
-                "- Kleinste PLZ der Gemeinde " + gemeinde + ": " + makeSmallestPlz + " " + gemeinde);
+        outputValidation.logAndPrint("- Kleinste PLZ der Gemeinde " +
+                                     gemeinde +
+                                     ": " +
+                                     makeSmallestPlz +
+                                     " " +
+                                     gemeinde);
     }
 
     public static void largestPLZ(String gemeinde) {
         int makeLargestPLZ = 0;
-        for (String plz : data.keySet()) {
-            if(Integer.parseInt(plz) > makeLargestPLZ && data.get(plz).equals(gemeinde)) {
+        for (String plz : plzToGemeinde.keySet()) {
+            if(Integer.parseInt(plz) > makeLargestPLZ && plzToGemeinde.get(plz).equals(gemeinde)) {
                 makeLargestPLZ = Integer.parseInt(plz);
             }
         }
@@ -68,10 +72,10 @@ public class PLZMap {
     public static void gemeindenWithNLetters(int n) {
         long count = 0;
         if(n == 10) {
-            count = data.entrySet().stream().filter(entry -> entry.getValue().length() > 10).count();
+            count = plzToGemeinde.entrySet().stream().filter(entry -> entry.getValue().length() > 10).count();
             outputValidation.logAndPrint("- Anzahl Gemeinden mit mehr als 10 Buchstaben: " + count);
         } else {
-            count = data
+            count = plzToGemeinde
                     .entrySet()
                     .stream()
                     .filter(entry -> entry.getValue().length() == n)
@@ -84,56 +88,65 @@ public class PLZMap {
 
 
     public static void gemeindenWithSubstr() {
-        long count = data.entrySet().stream().filter(entry -> entry.getValue().contains("ent") ||
-                                                              entry.getValue().contains(("Ent"))).count();
+        long count = plzToGemeinde.entrySet().stream().filter(entry -> entry.getValue().contains("ent") ||
+                                                                       entry.getValue().contains(("Ent"))).count();
         outputValidation.logAndPrint("- Anzahl Gemeinden mit der Buchstabenfolge 'ent': " + count);
     }
 
     public static void smallestGemeinden() {
-        List <String> smallestGemeinden = data
+        List <String> smallestGemeinden = plzToGemeinde
                 .values()
                 .stream()
                 .filter(g -> !g.isEmpty())
                 .filter(g -> g
                                      .trim()
-                                     .length() > 0)
+                                     .length() >
+                             0)
                 .sorted(Comparator.comparingInt(s1 -> s1.length()))
                 .limit(1)
                 .collect(Collectors.toList());
-        outputValidation.logAndPrint("- Anzahl Buchstaben der kleinsten Gemeinden: " + smallestGemeinden
-                .stream()
-                .map(s -> s.length())
-                .map(integer -> integer.toString())
-                .collect(Collectors.joining(", ")));
-        outputValidation.logAndPrint("- Kleinsten Gemeinden: " + data.entrySet().stream().filter(e -> e
+        outputValidation.logAndPrint("- Anzahl Buchstaben der kleinsten Gemeinden: " +
+                                     smallestGemeinden
+                                             .stream()
+                                             .map(s -> s.length())
+                                             .map(integer -> integer.toString())
+                                             .collect(Collectors.joining(", ")));
+        outputValidation.logAndPrint("- Kleinsten Gemeinden: " + plzToGemeinde.entrySet().stream().filter(e -> e
                 .getValue()
                 .equals(smallestGemeinden.get(0))).map(entry -> entry.getValue()).collect(Collectors.joining(", ")));
     }
 
     public static void largestGemeinden() {
-        List <String> largestGemeinden = data
+        List <String> largestGemeinden = plzToGemeinde
                 .values()
                 .stream()
                 .filter(g -> !g.isEmpty())
                 .filter(g -> g
                                      .trim()
-                                     .length() > 0)
+                                     .length() >
+                             0)
                 .sorted(Comparator.comparingInt((String s1) -> s1.length()).reversed())
                 .limit(1)
                 .collect(Collectors.toList());
-        outputValidation.logAndPrint("- Anzahl Buchstaben der grössten Gemeinden: " + largestGemeinden
-                .stream()
-                .map(s -> s.length())
-                .map(integer -> integer.toString())
-                .collect(Collectors.joining(", ")));
-        outputValidation.logAndPrint("- Grössten Gemeinden: " + data.entrySet().stream().filter(e -> e
+        outputValidation.logAndPrint("- Anzahl Buchstaben der grössten Gemeinden: " +
+                                     largestGemeinden
+                                             .stream()
+                                             .map(s -> s.length())
+                                             .map(integer -> integer.toString())
+                                             .collect(Collectors.joining(", ")));
+        outputValidation.logAndPrint("- Grössten Gemeinden: " + plzToGemeinde.entrySet().stream().filter(e -> e
                 .getValue()
                 .equals(largestGemeinden.get(0))).map(entry -> entry.getValue()).collect(Collectors.joining(", ")));
     }
 
     public static void gemeindenWith3Letters() {
-        List <String> gemeindenWith3Letters = data.values().stream().filter(g -> g.length() == 3).sorted().toList();
-        outputValidation.logAndPrint(
-                "- Gemeinden mit 3 Buchstaben: " + gemeindenWith3Letters.stream().collect(Collectors.joining(", ")));
+        List <String> gemeindenWith3Letters = plzToGemeinde
+                .values()
+                .stream()
+                .filter(g -> g.length() == 3)
+                .sorted()
+                .toList();
+        outputValidation.logAndPrint("- Gemeinden mit 3 Buchstaben: " +
+                                     gemeindenWith3Letters.stream().collect(Collectors.joining(", ")));
     }
 }

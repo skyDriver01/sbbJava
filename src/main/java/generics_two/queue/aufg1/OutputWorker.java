@@ -19,7 +19,7 @@ public class OutputWorker implements Runnable {
         while (countWaitCycle < Start.OUTPUTWORKER_STOP_AFTER_EMPTY_CYCLES) {
             try {
                 Job job = processingInterface.getNextJob();
-                if (job != null) {
+                if(job != null) {
                     int count = 0;
                     for (int i = 0; i < processingInterface.getJobs(); i++) {
                         count++;
