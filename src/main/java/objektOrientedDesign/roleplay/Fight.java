@@ -133,7 +133,7 @@ public class Fight {
     }
 
     private static void moveChoices(Gamefigurine player, Gamefigurine opponent) {
-        int yourMove = InputIn.nexIntOut("Choose what you would like to do this round");
+        int yourMove = InputIn.nextIntOut("Choose what you would like to do this round");
         switch (yourMove) {
             case 1 -> attackOpponent(player, opponent);
             case 2 -> activateNewWeapon(player);

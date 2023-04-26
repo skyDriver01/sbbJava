@@ -49,7 +49,7 @@ public class ConfigCharacters {
     }
 
     private static boolean characterOptions(int player, boolean noCharacterChosen) {
-        int chooseFigure = InputIn.nexIntOut("Type the Number of the Character that you want to Play");
+        int chooseFigure = InputIn.nextIntOut("Type the Number of the Character that you want to Play");
         switch (chooseFigure) {
             case 0 -> noCharacterChosen = isCharacterChosen(player, 0);  //Dwarf
 
@@ -96,7 +96,7 @@ public class ConfigCharacters {
                 System.out.println(weaponChoice.get(i));
             }
             System.out.println(anyLine("purple"));
-            int chooseYourWeapons = InputIn.nexIntOut("Type the Number of the Desired Action");
+            int chooseYourWeapons = InputIn.nextIntOut("Type the Number of the Desired Action");
             switch (chooseYourWeapons) {
                 case 1 -> inventory.equipWeapon(weapons.get(0), player);  //Club
                 case 2 -> inventory.equipWeapon(weapons.get(1), player);  //Sword
@@ -159,7 +159,7 @@ public class ConfigCharacters {
     }
 
     private static boolean itemSwitch(int player, boolean loopForItems) {
-        int chooseItem = InputIn.nexIntOut("Type the Number of the Desired Action");
+        int chooseItem = InputIn.nextIntOut("Type the Number of the Desired Action");
         switch (chooseItem) {
             case 1 -> equipItem(items.get(0), player);      //Health Potion
             case 2 -> equipItem(items.get(1), player);      //Power Potion

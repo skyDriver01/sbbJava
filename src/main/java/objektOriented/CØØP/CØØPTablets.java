@@ -91,8 +91,8 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    int amount = InputIn.nexIntOut("How many of this item: " + veggie.getProduct() +
-                                                   " Do you want to add to your Basket. Type a Number");
+                    int amount = InputIn.nextIntOut("How many of this item: " + veggie.getProduct() +
+                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
                         schoppingCarts.add(new SchoppingCart(veggie.getProduct(), veggie.getPrice(), veggie.isBarcode()));
 
@@ -133,8 +133,8 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    int amount = InputIn.nexIntOut("How many of this item: " + fruit.getProduct() +
-                                                   " Do you want to add to your Basket. Type a Number");
+                    int amount = InputIn.nextIntOut("How many of this item: " + fruit.getProduct() +
+                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
                         schoppingCarts.add(new SchoppingCart(fruit.getProduct(), fruit.getPrice(), fruit.isBarcode()));
 
@@ -175,8 +175,8 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    int amount = InputIn.nexIntOut("How many of this item: " + sweet.getProduct() +
-                                                   " Do you want to add to your Basket. Type a Number");
+                    int amount = InputIn.nextIntOut("How many of this item: " + sweet.getProduct() +
+                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
                         schoppingCarts.add(new SchoppingCart(sweet.getProduct(), sweet.getPrice(), sweet.isBarcode()));
 
@@ -217,8 +217,8 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    int amount = InputIn.nexIntOut("How many of this item: " + drink.getProduct() +
-                                                   " Do you want to add to your Basket. Type a Number");
+                    int amount = InputIn.nextIntOut("How many of this item: " + drink.getProduct() +
+                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
                         schoppingCarts.add(new SchoppingCart(drink.getProduct(), drink.getPrice(), drink.isBarcode()));
 
@@ -259,8 +259,8 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    int amount = InputIn.nexIntOut("How many of this item: " + hygiene.getProduct() +
-                                                   " Do you want to add to your Basket. Type a Number");
+                    int amount = InputIn.nextIntOut("How many of this item: " + hygiene.getProduct() +
+                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
                         schoppingCarts.add(new SchoppingCart(hygiene.getProduct(), hygiene.getPrice(), hygiene.isBarcode()));
 
@@ -301,8 +301,8 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    int amount = InputIn.nexIntOut("How many of this item: " + pastry.getProduct() +
-                                                   " Do you want to add to your Basket. Type a Number");
+                    int amount = InputIn.nextIntOut("How many of this item: " + pastry.getProduct() +
+                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
                         schoppingCarts.add(new SchoppingCart(pastry.getProduct(), pastry.getPrice(), pastry.isBarcode()));
 
@@ -343,8 +343,8 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    int amount = InputIn.nexIntOut("How many of this item: " + domesticAppliances.getProduct() +
-                                                   " Do you want to add to your Basket. Type a Number");
+                    int amount = InputIn.nextIntOut("How many of this item: " + domesticAppliances.getProduct() +
+                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
                         schoppingCarts.add(new SchoppingCart(domesticAppliances.getProduct(), domesticAppliances.getPrice(), domesticAppliances.isBarcode()));
 
@@ -385,8 +385,8 @@ public class CØØPTablets {
             String addToCart = InputIn.nextLineOut("Do you wish to add this to your Cart? Yes or No");
             switch (addToCart) {
                 case "Yes" -> {
-                    int amount = InputIn.nexIntOut("How many of this item: " + buildingMaterial.getProduct() +
-                                                   " Do you want to add to your Basket. Type a Number");
+                    int amount = InputIn.nextIntOut("How many of this item: " + buildingMaterial.getProduct() +
+                                                    " Do you want to add to your Basket. Type a Number");
                     for (int i = 0; i < amount; i++) {
                         schoppingCarts.add(new SchoppingCart(buildingMaterial.getProduct(), buildingMaterial.getPrice(), buildingMaterial.isBarcode()));
 

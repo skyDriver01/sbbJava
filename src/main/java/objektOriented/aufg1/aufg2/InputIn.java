@@ -33,12 +33,12 @@ public final class InputIn { //Final zum nicht veränder bar.
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public static int nexIntOut(String output) {
+    public static int nextIntOut(String output) {
         System.out.println(output);
         return Integer.parseInt(scanner.next());
     }
 
-    public static int nexInt() {
+    public static int nextInt() {
         return Integer.parseInt(scanner.next());
     }
 
@@ -48,5 +48,13 @@ public final class InputIn { //Final zum nicht veränder bar.
     public static String[] nextLineArrayOut(String output) { //Hat Text bsp. "Schreibe deinen namen"
         System.out.println(output);
         return new String[]{scanner.nextLine()};
+    }
+    public static Float nextFloat() {
+        return Float.parseFloat(scanner.next());
+    }
+
+    public static Float nextFloatOut(String output) {
+        System.out.println(output);
+        return Float.parseFloat(scanner.nextLine());
     }
 }

@@ -9,8 +9,8 @@ public class RandomMath {
 
     public static void getNumbers() {
         try {
-            int input1 = InputIn.nexIntOut("Give me a Number");
-            int input2 = InputIn.nexIntOut("Give me another Number");
+            int input1 = InputIn.nextIntOut("Give me a Number");
+            int input2 = InputIn.nextIntOut("Give me another Number");
             calculate(input1, input2);
         }
         catch (NumberFormatException e){
