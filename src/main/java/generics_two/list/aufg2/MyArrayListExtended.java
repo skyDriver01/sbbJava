@@ -122,7 +122,7 @@ public class MyArrayListExtended<E> implements MyListInterfaceSimpleExtended <E>
             if(myArray[i] == o) {
                 removed = true;
                 continue;
-            }
+            }   // Todo Test implementieren und dann noch zeigen das er erfolgreich war.
             secondArray[j++] = myArray[i];
         }
         if(removed) {

@@ -7,7 +7,7 @@ public class MySet<E> implements MySetInterfaceSimple <Object> {
     private Object[] mySet = new Object[0];
 
     @Override
-    public boolean add(Object element) {
+    public boolean add(Object element) {        // Todo: Test noch zeigen
         for (Object obj : mySet) {
             if(obj == null && element == null) {
                 return false;
