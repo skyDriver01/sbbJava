@@ -8,33 +8,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// CRUD = CREATE, READ, UPDATE, DELETE
 public class GradeEvaluationSystem {
     static ResultSet resultSet;
     static Connection connection;
     static Statement statement;
     static String query = "";
 
-    public static void main(String[] args) {            //Für die nächsten Projekte nach dem 26.04.23: Kommentare im Code setzen da Ich nicht mehr genau wusste was dieser code machte erst nach etwa 20 minuten anschauen da ich in den Ferien war
+    public static void main(
+            String[] args) {            //Für die nächsten Projekte nach dem 26.04.23: Kommentare im Code setzen da Ich nicht mehr genau wusste was dieser code machte erst nach etwa 20 minuten anschauen da ich in den Ferien war
         configDatabase();
-        System.out.println("captureGrade");
+        System.out.println("createGrade");
         System.out.println("deleteGrade");
-        System.out.println("alterGrade");
-        System.out.println("giveOutModuleGrade");
-        System.out.println("transcript");
+        System.out.println("updateGrade");
+        System.out.println("readModuleGrade");
+        System.out.println("readTranscript");
 
         String choice = InputIn.nextLineOut("What would you like to do: ");
         switch (choice) {
-            case "captureGrade" -> captureGrade();
+            case "createGrade" -> createGrade();
             case "deleteGrade" -> {
                 Float pk = InputIn.nextFloatOut("Give me a number");
                 deleteGrade(pk);
             }
-            case "alterGrade" -> {
+            case "updateGrade" -> {
                 Float newGrade = InputIn.nextFloatOut("Give me your new grade");
-                alterGrade(newGrade);
+                updateGrade(newGrade);
             }
-            case "giveOutModuleGrade" -> giveOutModuleGrade();
-            case "transcript" -> transcript();
+            case "readModuleGrade" -> readModuleGrade();
+            case "readTranscript" -> readTranscript();
             default -> {
                 System.out.println("pls be careful of the spelling");
                 main(new String[]{});
@@ -57,41 +59,33 @@ public class GradeEvaluationSystem {
         }
     }
 
-    public static void captureGrade() {
+    public static void createGrade() {
         int gradeID = InputIn.nextIntOut("Type a number between 0 and 20 (0 being grade 1 and 20 being 6 goes up in increments of .25)");
-        int school_subject = InputIn.nextIntOut("Now a number between 1 and 7");     //Prob could of done text like "choose one of these modules for entering in the grade: Mod1, Mod2 aso"
-        InputIn.nextLine();                                                                 //then a switch case that takes the module1 and makes the school_subject = nmb from 1-7 based on the module
+        int school_subject = InputIn.nextIntOut("Now a number between 1 and 7");
+        InputIn.nextLine();
+        String datum = InputIn.nextLineOut("Write the Date of when you received the Grade (LIKE THIS: YYYY-MM-DD)");
 
         try {
-            Date datum = Date.valueOf(InputIn.nextLineOut("Write the Date of when you received the Grade(LIKE THIS: YYYY-MM-DD)"));
-            query = "INSERT INTO java.school_subject_grade( gradeID, school_subjectID, Datum) VALUES( " +
+            query = "INSERT INTO java.school_subject_grade(gradeID, school_subjectID, Datum) VALUES(" +
                     gradeID +
                     "," +
                     school_subject +
-                    "," +
+                    ",'" +
                     datum +
-                    ")";
-        } catch (IllegalArgumentException e) {
-            System.out.println(e);
-        } catch (RuntimeException b) {
-            System.out.println("Keep in mind to follow what it says to use");
-            System.out.println(b);
-            captureGrade();
-        }
+                    "')";
 
-        try {
             statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
+            statement.executeUpdate(query);
         } catch (SQLException e) {
             System.out.println(e);
             System.out.println("Keep in mind to follow what it says to use");
-            captureGrade();
+            createGrade();
         }
     }
 
     public static void deleteGrade(Float pk) {
         query = "DELETE FROM java.school_subject_grade WHERE ID = " + pk;
-
+        // Erinerung Jegliche Situation wo ID(Items oder werte) nicht da ist eine Meldung ausgeben das es sie nicht gibt
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
@@ -100,7 +94,7 @@ public class GradeEvaluationSystem {
         }
     }
 
-    public static void alterGrade(Float grade) {
+    public static void updateGrade(Float grade) {
         query = "UPDATE java.school_subject_grade SET gradeID = " + grade + " WHERE GradeID = 0";
 
         try {
@@ -111,11 +105,12 @@ public class GradeEvaluationSystem {
         }
     }
 
-    public static void giveOutModuleGrade() {
+    public static void readModuleGrade() {
         query = "SELECT s.SubjectID, Modulename, g.Grade, sg.Datum " +
                 "FROM java.school_subject_grade sg " +
                 "JOIN java.school_subject s ON sg.school_subjectID = s.SubjectID " +
-                "JOIN java.grade g ON sg.gradeID = g.gradeID";
+                "JOIN java.grade g ON sg.gradeID = g.gradeID " +
+                "ORDER BY Modulename";
 
         try {
             statement = connection.createStatement();
@@ -125,28 +120,43 @@ public class GradeEvaluationSystem {
             while (resultSet.next()) {
                 String moduleName = resultSet.getString("Modulename");
                 String grade = resultSet.getString("Grade");
-                String date = resultSet.getString("Datum");
-                String data = date + ": " + grade;
-
-                if(!moduleGrades.containsKey(moduleName)) {
-                    moduleGrades.put(moduleName, new ArrayList <>());
-                }
-                moduleGrades.get(moduleName).add(data);
+                moduleGrades.putIfAbsent(moduleName, new ArrayList <>());
+                /*
+                 * putIfAbsent = auto adds key to specified value(Here it being the Modulenames
+                 * if key == null or is not even there
+                 */
+                moduleGrades.get(moduleName).add(grade);
             }
+
+            System.out.println("Select a module to view grades for:");
 
             for (String moduleName : moduleGrades.keySet()) {
                 System.out.println(moduleName);
-                List <String> grades = moduleGrades.get(moduleName);
             }
+            String selectedModule = InputIn.nextLine();
+            moduleGrade(selectedModule, moduleGrades);
 
-            String chooseModule = InputIn.nextLineOut("Choose the module you want to get your grade from");
-            moduleGrade(chooseModule, moduleGrades);
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
-    public static void transcript() {
+    public static void moduleGrade(String moduleName, Map <String, List <String>> moduleGrades) {
+        if(moduleGrades.containsKey(moduleName)) {
+            List <String> grades = moduleGrades.get(moduleName);
+            double averageGrade = grades.stream().mapToDouble(Double::parseDouble).average().orElse(Double.NaN);
+
+            System.out.println("Grades for " + moduleName + ":");
+            for (String grade : grades) {
+                System.out.println("   " + grade);
+            }
+            System.out.println("Average grade: " + averageGrade);
+        } else {
+            System.out.println("No grades found for " + moduleName);
+        }
+    }
+
+    public static void readTranscript() {
         query = "SELECT s.SubjectID, Modulename, AVG(g.Grade) as AverageGrade " +
                 "FROM java.school_subject_grade sg " +
                 "JOIN java.school_subject s ON sg.school_subjectID = s.SubjectID " +
@@ -172,19 +182,6 @@ public class GradeEvaluationSystem {
 
         } catch (SQLException e) {
             System.out.println(e);
-        }
-    }
-
-    public static void moduleGrade(String moduleName, Map <String, List <String>> moduleGrades) {
-        if(moduleGrades.containsKey(moduleName)) {
-            List <String> grades = moduleGrades.get(moduleName);
-            System.out.println("Grades for " + moduleName + ":");
-
-            for (String grade : grades) {
-                System.out.println("   " + grade);
-            }
-        } else {
-            System.out.println("No grades found for " + moduleName);
         }
     }
 }
